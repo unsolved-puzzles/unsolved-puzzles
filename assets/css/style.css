@@ -470,6 +470,23 @@ a:hover {
     padding: var(--space-xl) var(--space-lg);
 }
 
+.contribute-intro {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-lg);
+}
+
+.contribute-intro a {
+    color: var(--accent-gold);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.contribute-intro a:hover {
+    text-decoration: underline;
+}
+
 .contribute-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -541,6 +558,7 @@ a:hover {
     gap: 0.6rem;
     margin-top: auto;
     padding-top: 0.75rem;
+    justify-content: center;
 }
 
 .discord-link {
@@ -559,6 +577,40 @@ a:hover {
 .discord-link:hover {
     background: rgba(114, 137, 218, 0.25);
     color: #99aef0;
+}
+
+.contribute-emojis {
+    font-size: 1.1rem;
+    letter-spacing: 0.3rem;
+    text-align: center;
+    margin-top: auto;
+    padding-top: 0.75rem;
+}
+
+.contribute-links {
+    display: flex;
+    gap: 0.6rem;
+    margin-top: auto;
+    padding-top: 0.75rem;
+    justify-content: center;
+}
+
+.contribute-link--submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.8rem;
+    color: #22c55e;
+    text-decoration: none;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    background: rgba(34, 197, 94, 0.1);
+    transition: background 0.2s;
+}
+
+.contribute-link--submit:hover {
+    background: rgba(34, 197, 94, 0.25);
+    color: #4ade80;
 }
 
 /* ── Footer ───────────────────────────────────────────────── */
@@ -713,6 +765,8 @@ a:hover {
     transform: rotate(var(--rotation, 0deg));
     transition: transform var(--transition-base), box-shadow var(--transition-base);
     box-shadow: 4px 4px 12px var(--paper-shadow);
+    display: flex;
+    flex-direction: column;
 }
 
 .finding-card:hover {
@@ -774,8 +828,12 @@ a:hover {
     line-height: 1.5;
 }
 
+.finding-card p {
+    flex: 1;
+}
+
 .finding-card-meta {
-    margin-top: var(--space-md);
+    margin-top: auto;
     padding-top: var(--space-sm);
     border-top: 1px dashed #ccc;
     font-size: 0.75rem;
@@ -1035,3 +1093,59 @@ a:hover {
 .animate-in:nth-child(2) { animation-delay: 0.1s; }
 .animate-in:nth-child(3) { animation-delay: 0.2s; }
 .animate-in:nth-child(4) { animation-delay: 0.3s; }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   Voting Widget
+   ═══════════════════════════════════════════════════════════════ */
+
+.vote-widget {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: 0.4rem;
+    padding: 0.3rem 0.5rem;
+    background: rgba(0, 0, 0, 0.06);
+    border-radius: 6px;
+    font-size: 0.85rem;
+}
+
+.vote-widget:empty {
+    display: none;
+}
+
+.vote-reactions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+}
+
+.vote-reaction {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    background: rgba(0, 0, 0, 0.07);
+    border-radius: 4px;
+    padding: 0.15rem 0.4rem;
+}
+
+.vote-count {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #3a3a3a;
+}
+
+.vote-discuss-link {
+    color: #6b5b2e;
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-left: auto;
+}
+
+.vote-discuss-link:hover {
+    text-decoration: underline;
+    color: #4a3d1a;
+}

@@ -1,5 +1,5 @@
 name: 🔍 New Finding
-description: Report a new discovery or observation for a puzzle
+description: Report a new discovery or observation for an existing puzzle
 title: "[Finding] "
 labels: ["finding", "needs-verification"]
 body:
@@ -10,7 +10,6 @@ body:
       options:
         - Blue Prince
         - Noita
-        - Other
     validations:
       required: true
 
@@ -18,7 +17,7 @@ body:
     id: puzzle
     attributes:
       label: Puzzle
-      description: Which puzzle does this relate to?
+      description: Which puzzle does this relate to? If the puzzle isn't listed, use the "New Puzzle" template instead.
       options:
         - "Blue Prince: Music Room"
         - "Blue Prince: Does It Never End?"
@@ -33,7 +32,6 @@ body:
         - "Blue Prince: Dirigiblocks"
         - "Noita: Eye Puzzle"
         - "Noita: The Cauldron Room"
-        - "Other (specify below)"
     validations:
       required: true
 
@@ -50,11 +48,14 @@ body:
   - type: textarea
     id: evidence
     attributes:
-      label: Evidence
-      description: Screenshots, video links, code/scripts, or step-by-step reproduction.
+      label: Evidence & Source
+      description: Link to where this was first discussed (Reddit thread, Discord message, video) and any screenshots or reproduction steps.
       placeholder: |
+        - Source: https://reddit.com/r/BluePrince/comments/...
         - Screenshot: [link]
         - Steps to reproduce: ...
+    validations:
+      required: true
 
   - type: textarea
     id: interpretation

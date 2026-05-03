@@ -10,7 +10,6 @@ body:
       options:
         - Blue Prince
         - Noita
-        - Other
     validations:
       required: true
 
@@ -32,7 +31,6 @@ body:
         - "Blue Prince: Dirigiblocks"
         - "Noita: Eye Puzzle"
         - "Noita: The Cauldron Room"
-        - "Other (specify below)"
     validations:
       required: true
 

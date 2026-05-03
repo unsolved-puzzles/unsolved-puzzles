@@ -1,0 +1,57 @@
+name: 🧩 New Puzzle
+description: Suggest adding a new puzzle to the board
+title: "[New Puzzle] "
+labels: ["new-puzzle"]
+body:
+  - type: dropdown
+    id: game
+    attributes:
+      label: Game
+      options:
+        - Blue Prince
+        - Noita
+        - Other (specify below)
+    validations:
+      required: true
+
+  - type: input
+    id: game-other
+    attributes:
+      label: Game name (if "Other")
+      description: Only fill this if you selected "Other" above.
+
+  - type: input
+    id: puzzle-name
+    attributes:
+      label: Puzzle name
+      description: A short name for the puzzle (e.g., "Boiler Room", "Eye Puzzle")
+      placeholder: "The Clocktower Sequence"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the puzzle
+      description: What makes this an unsolved puzzle? Why should it be tracked?
+      placeholder: |
+        In the [room/area], there is a [thing] that seems to...
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence & Source
+      description: Link to where this was first discussed and any proof it's intentional (not a bug or decoration).
+      placeholder: |
+        - Source: https://reddit.com/r/BluePrince/comments/...
+        - Screenshot: [link]
+    validations:
+      required: true
+
+  - type: textarea
+    id: known-findings
+    attributes:
+      label: Known findings so far (optional)
+      description: If the community has already found things related to this puzzle, list them here.

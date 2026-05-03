@@ -1,0 +1,20 @@
+name: ✨ Feature Request
+description: Suggest an improvement or new feature for the site
+title: "[Feature] "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: What would you like to see?
+      description: Describe your idea. What problem does it solve?
+      placeholder: |
+        It would be great if we could...
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context (optional)
+      description: Screenshots, mockups, or examples from other sites

@@ -1,0 +1,45 @@
+name: 📚 Community Resource
+description: Share a tool, guide, dataset, or reference that helps solve a puzzle
+title: "[Resource] "
+labels: ["resource"]
+body:
+  - type: dropdown
+    id: game
+    attributes:
+      label: Game
+      options:
+        - Blue Prince
+        - Noita
+        - General / Multiple
+    validations:
+      required: true
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: Resource type
+      options:
+        - Tool or script
+        - Guide or writeup
+        - Dataset or extracted data
+        - Video or stream
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: link
+    attributes:
+      label: Link
+      description: URL to the resource.
+      placeholder: "https://..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What is it and how does it help?
+      description: Brief description of what this resource does and which puzzle(s) it relates to.
+    validations:
+      required: true

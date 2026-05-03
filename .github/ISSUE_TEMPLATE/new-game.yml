@@ -1,0 +1,40 @@
+name: 🎮 New Game
+description: Suggest a game with unsolved puzzles to track on the board
+title: "[New Game] "
+labels: ["new-game"]
+body:
+  - type: input
+    id: game-name
+    attributes:
+      label: Game name
+      placeholder: "Outer Wilds"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Why should this game be tracked?
+      description: What unsolved puzzles does it have? Why does the community believe they exist?
+      placeholder: |
+        This game has [describe the puzzle or mystery]...
+    validations:
+      required: true
+
+  - type: textarea
+    id: community
+    attributes:
+      label: Community activity
+      description: Where is the community actively working on this? Link to subreddits, Discord servers, wikis, or threads.
+      placeholder: |
+        - Subreddit: r/...
+        - Discord: ...
+        - Wiki: ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: known-puzzles
+    attributes:
+      label: Known unsolved puzzles (optional)
+      description: List any specific puzzles you'd want tracked, with a short description each.

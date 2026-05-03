@@ -1,0 +1,40 @@
+name: 🐛 Bug Report
+description: Something on the website isn't working correctly
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Describe what went wrong.
+      placeholder: |
+        The vote count doesn't load on the Boiler Room page...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+      description: What should have happened instead?
+    validations:
+      required: false
+
+  - type: input
+    id: page
+    attributes:
+      label: Which page?
+      description: URL or page name where the issue occurs
+      placeholder: "https://unsolved-puzzles.github.io/unsolved-puzzles/blue-prince/boiler-room.html"
+
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Browser
+      options:
+        - Chrome
+        - Firefox
+        - Safari
+        - Edge
+        - Other

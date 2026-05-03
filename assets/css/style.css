@@ -346,6 +346,7 @@ a:hover {
 
 .game-card-banner {
     aspect-ratio: 460 / 215;
+    min-height: 180px;
     background-size: cover;
     background-position: center;
     position: relative;
@@ -631,15 +632,22 @@ a:hover {
 }
 
 .puzzle-status.unsolved {
-    background: rgba(192, 57, 43, 0.15);
-    color: #e74c3c;
-    border: 1px solid rgba(192, 57, 43, 0.4);
+    background: rgba(142, 68, 173, 0.15);
+    color: #a855f7;
+    border: 1px solid rgba(142, 68, 173, 0.4);
 }
 
 .puzzle-status.partial {
     background: rgba(241, 196, 15, 0.15);
     color: #f1c40f;
     border: 1px solid rgba(241, 196, 15, 0.4);
+}
+
+.puzzle-status.upcoming {
+    background: rgba(52, 152, 219, 0.15);
+    color: #5dade2;
+    border: 1px solid rgba(52, 152, 219, 0.4);
+    font-style: italic;
 }
 
 .puzzle-status.solved {
@@ -675,6 +683,8 @@ a:hover {
     font-size: 0.8rem;
     font-weight: 500;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
     transition: all var(--transition-fast);
     font-family: var(--font-body);
 }

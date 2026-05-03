@@ -120,7 +120,9 @@ function initFilters() {
     if (!buttons.length || !cards.length) return;
 
     buttons.forEach(btn => {
-        btn.addEventListener('click', () => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+
             // Update active button
             buttons.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
@@ -130,10 +132,8 @@ function initFilters() {
             cards.forEach(card => {
                 if (filter === 'all' || card.dataset.status === filter) {
                     card.style.display = '';
-                    card.style.opacity = '1';
                 } else {
-                    card.style.opacity = '0';
-                    setTimeout(() => { card.style.display = 'none'; }, 200);
+                    card.style.display = 'none';
                 }
             });
         });

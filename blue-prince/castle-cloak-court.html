@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Castle, Court, Cloak | Blue Prince | Unsolved Puzzles</title>
+    <meta name="description" content="Three words flash on the Grotto computer: Castle, Court, Cloak. Binary between them decodes to ARIE. Nobody knows what it means.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <canvas id="game-atmosphere"></canvas>
+
+    <!-- Hero Banner -->
+    <div class="game-hero-banner">
+        <img src="../assets/img/blue-prince-hero-banner.png" alt="Blue Prince" class="game-hero-img">
+        <div class="game-hero-fade"></div>
+    </div>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="../" class="logo">
+                <span class="logo-icon">🔍</span>
+                <span class="logo-text">Unsolved Puzzles</span>
+            </a>
+            <nav class="header-nav">
+                <a href="../">All Games</a>
+                <a href="./">Blue Prince</a>
+                <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/discussions" target="_blank">Discuss</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Puzzle Header -->
+    <section class="puzzle-header">
+        <p class="puzzle-breadcrumb"><a href="../">Home</a> / <a href="./">Blue Prince</a> / Castle, Court, Cloak</p>
+        <h1 class="puzzle-title">Castle, Court, Cloak</h1>
+        <p class="puzzle-subtitle">Three words on a screen. Binary spells ARIE. 140+ hours later, nobody knows why.</p>
+        <span class="puzzle-status unsolved">Unsolved</span>
+    </section>
+
+    <!-- Context -->
+    <section class="findings-section">
+        <h2 class="section-title">What We Know</h2>
+        <div style="max-width: 700px; margin: 0 auto var(--space-xl); color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8;">
+            <p><strong>Setup:</strong> After finding and inserting 3 microchips in the Blackbridge Grotto computer, a cutscene plays showing three words in sequence: <em>Castle</em>, <em>Court</em>, <em>Cloak</em>. Between the words, lines and dots appear that can be interpreted as binary.</p>
+            <p style="margin-top: var(--space-md);"><strong>Binary decode:</strong> The binary between words translates to: 01000001 01010010 01001001 01000101 = A R I E. Each letter lasts about a quarter second and repeats on loop.</p>
+            <p style="margin-top: var(--space-md);"><strong>Timing anomaly:</strong> When the words scroll fast, it reads "clock" not "cloak". The word "cloak" only appears when the animation slows down. This may be deliberate misdirection or a rendering artifact.</p>
+            <p style="margin-top: var(--space-md);"><strong>The mystery:</strong> What do these three words mean together? Is "ARIE" a truncation of "ARIES"? Is this foreshadowing, a hint, or encoded instructions?</p>
+        </div>
+
+        <!-- Filters -->
+        <div class="findings-filters">
+            <button class="filter-btn active" data-filter="all">All Findings</button>
+            <button class="filter-btn" data-filter="confirmed">Confirmed</button>
+            <button class="filter-btn" data-filter="testing">Testing</button>
+            <button class="filter-btn" data-filter="debunked">Debunked</button>
+        </div>
+
+        <!-- Findings Grid -->
+        <div class="findings-grid">
+
+            <div class="finding-card" data-status="confirmed">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Binary decodes to ARIE</h3>
+                <p>The dots and lines between words are binary. Multiple players have independently verified: 01000001 01010010 01001001 01000101 = A, R, I, E. The pattern repeats on loop, each letter lasting roughly a quarter second.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/Najanah, u/queenofmunchkins</span>
+                    <span>Independently confirmed</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Three words appear on first Grotto unlock</h3>
+                <p>Castle, Court, Cloak flash on the computer screen in sequence when the Grotto is first accessed. This is not a random event; it triggers consistently for every player on their first visit.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/Najanah, u/queenofmunchkins</span>
+                    <span>100% reproducible</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>"Castle" connects to the Castle puzzle (Key of Aries)</h3>
+                <p>The castle puzzle leads to the Court of Aries and the tomb containing the Key of Aries. "Castle" and "Court" have clear in-game referents. The first statue's note in the court explicitly mentions you are in a court where the king now lays.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/thescottula, u/pfcguy</span>
+                    <span>Confirmed connection</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="testing">
+                <span class="finding-card-status testing">Testing</span>
+                <h3>"Cloak" vs "Clock" speed anomaly</h3>
+                <p>When the text scrolls quickly, the word reads as "clock" (matching the clock puzzle in the tomb). When slowed, it reads "cloak". One user reports this is reproducible. Could be a deliberate double-meaning.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/ideirdre</span>
+                    <span>Needs more verification</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="testing">
+                <span class="finding-card-status testing">Testing</span>
+                <h3>ARIE = ARIES minus the missing letter</h3>
+                <p>If the game's keyboards are all missing the letter I, and ARIE is missing an S, perhaps the "missing letter" theme applies here too. ARIES with one letter missing = ARIE. Connects to the Key of Aries and the broader "missing letter" motif.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/Fayore</span>
+                    <span>Speculative but thematic</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="testing">
+                <span class="finding-card-status testing">Testing</span>
+                <h3>Anagram potential with missing letters</h3>
+                <p>Castle (missing a letter) can anagram to: Scarlet, Locates, Claret. Court can become Cuatro, Outcry. ARIE can become ARISE. The music/food connections (Celesta, Croute) are interesting but unconfirmed as meaningful.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/Fayore</span>
+                    <span>Highly speculative</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="testing">
+                <span class="finding-card-status testing">Testing</span>
+                <h3>"Cloak" as cloaking/obscuring</h3>
+                <p>Beyond the garment meaning, "cloak" implies concealment. One theory: Auravel built the house to mask/cloak the original ruins buried underground. The word may describe the manor's purpose rather than reference a physical object.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/Kira887, u/Secure-Advertising-9</span>
+                    <span>Thematic interpretation</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="testing">
+                <span class="finding-card-status testing">Testing</span>
+                <h3>Red Prince manuscript connection</h3>
+                <p>The Red Prince is depicted on the throne wearing a cloak and holding items. "Castle" and "Court" are direct hints toward reclaiming the throne. "Cloak" might point you toward the prince's appearance in the manuscript for the third piece needed.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/flip314</span>
+                    <span>Plausible but unconfirmed</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="debunked">
+                <span class="finding-card-status debunked">Debunked</span>
+                <h3>Simple foreshadowing of game progression</h3>
+                <p>"Castle to get into the Court, then clock puzzle." This reading accounts for Castle and Court, but doesn't explain why it says "cloak" specifically, or why binary encodes ARIE. Too much deliberate encoding for simple foreshadowing.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/pfcguy</span>
+                    <span>Insufficient explanation</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Theories -->
+    <section class="theories-section">
+        <h2 class="section-title">Theories (Ranked)</h2>
+
+        <div class="theory-item">
+            <span class="theory-rank high">High Priority</span>
+            <h3 class="theory-title">Key of Aries hint: Castle + Court + Cloak = three steps to the throne</h3>
+            <p class="theory-desc">Castle puzzle leads to the Court of Aries, where the clock (cloak) hides the Key. The binary "ARIE" confirms the Aries connection. This may be a compressed walkthrough for reclaiming the throne, with "cloak" as double meaning (the clock + the prince's ceremonial cloak).</p>
+        </div>
+
+        <div class="theory-item">
+            <span class="theory-rank high">High Priority</span>
+            <h3 class="theory-title">Missing letter pattern: ARIE needs one more letter</h3>
+            <p class="theory-desc">ARIE is clearly ARIES minus one letter (S). The game loves missing letters (keyboards missing I, Herbert's missing letter #3). Perhaps the three words + ARIE are a puzzle themselves: find the missing letter/word to complete the sequence.</p>
+        </div>
+
+        <div class="theory-item">
+            <span class="theory-rank medium">Medium</span>
+            <h3 class="theory-title">Clock/Cloak deliberate ambiguity encodes two paths</h3>
+            <p class="theory-desc">At fast speed = "clock" (literal clock puzzle in the tomb). At slow speed = "cloak" (concealment, the hidden nature of the ruins). Both readings are valid simultaneously, typical of the game's layered design.</p>
+        </div>
+
+        <div class="theory-item">
+            <span class="theory-rank medium">Medium</span>
+            <h3 class="theory-title">ARG component: community must collaborate</h3>
+            <p class="theory-desc">Major Key wrote that "those who try to solve a puzzle alone will only find rage." This puzzle might require outside-the-game collaboration, similar to Binding of Isaac's Keeper unlock. The data might be intentionally incomplete in-game.</p>
+        </div>
+
+        <div class="theory-item">
+            <span class="theory-rank low">Lower Priority</span>
+            <h3 class="theory-title">Synka Court office connection</h3>
+            <p class="theory-desc">One of Synka's offices is called "Synka Court." The word "court" might reference the corporate structure rather than (or in addition to) the Court of Aries. Less supported but worth noting.</p>
+        </div>
+    </section>
+
+    <!-- Discussion -->
+    <section class="discussion-section">
+        <h2 class="section-title">Discussion</h2>
+        <p style="text-align: center; color: var(--text-secondary); margin-bottom: var(--space-lg);">
+            Comments powered by <a href="https://giscus.app" target="_blank">giscus</a>. Uses GitHub Discussions.
+        </p>
+        <script src="https://giscus.app/client.js"
+            data-repo="unsolved-puzzles/unsolved-puzzles"
+            data-repo-id="R_kgDOSTBzlg"
+            data-category="Announcements"
+            data-category-id="DIC_kwDOSTBzls4C8Pva"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="dark_dimmed"
+            data-lang="en"
+            data-loading="lazy"
+            crossorigin="anonymous"
+            async>
+        </script>
+    </section>
+
+    <footer class="site-footer">
+        <p>Built by the community. <a href="https://github.com/unsolved-puzzles/unsolved-puzzles">View on GitHub</a></p>
+        <p class="footer-tagline">"The note is read, the letter is not."</p>
+    </footer>
+
+    <script src="../assets/js/blue-prince-bg.js"></script>
+</body>
+</html>

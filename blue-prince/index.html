@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blue Prince | Unsolved Puzzles</title>
+    <meta name="description" content="Blue Prince unsolved puzzles: Music Room cipher, Hand Statues, Boiler Room, Tomb Candles, the missing I, and more. Community investigation board.">
+    <meta property="og:title" content="Blue Prince | Unsolved Puzzles">
+    <meta property="og:description" content="Victorian manor hiding ciphers in music, statues, and keyboards. Help us crack the code.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <canvas id="game-atmosphere"></canvas>
+
+    <!-- Hero Banner -->
+    <div class="game-hero-banner">
+        <img src="../assets/img/blue-prince-hero-banner.png" alt="Blue Prince" class="game-hero-img">
+        <div class="game-hero-fade"></div>
+    </div>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="../" class="logo">
+                <span class="logo-icon">🔍</span>
+                <span class="logo-text">Unsolved Puzzles</span>
+            </a>
+            <nav class="header-nav">
+                <a href="../">All Games</a>
+                <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/discussions" target="_blank">Discuss</a>
+                <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/issues/new/choose" target="_blank">Submit Finding</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="puzzle-header">
+        <p class="puzzle-breadcrumb"><a href="../">Home</a> / Blue Prince</p>
+        <h1 class="puzzle-title">Blue Prince</h1>
+        <p class="puzzle-subtitle">A Victorian manor where rooms shift and puzzles hide in plain sight</p>
+        <div class="community-links">
+            <a href="https://blue-prince.fandom.com/wiki/Blue_Prince_Wiki" target="_blank" class="community-link" title="Fandom Wiki">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                Fandom Wiki
+            </a>
+            <a href="https://blueprince.wiki.gg/" target="_blank" class="community-link" title="Wiki.gg">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                Wiki.gg
+            </a>
+            <a href="https://discord.com/invite/BluePrince" target="_blank" class="community-link" title="Discord">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm6 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/><path d="M18.9 5.2A16.5 16.5 0 0 0 14.8 4a12 12 0 0 0-.5 1.1 15.3 15.3 0 0 0-4.6 0A11.5 11.5 0 0 0 9.2 4a16.5 16.5 0 0 0-4.1 1.3C2.7 9.4 2 13.5 2.3 17.5A16.6 16.6 0 0 0 7.3 20a12.2 12.2 0 0 0 1.1-1.7 10.7 10.7 0 0 1-1.7-.8l.4-.3a11.8 11.8 0 0 0 10.2 0l.4.3c-.5.3-1.1.6-1.7.8A12.2 12.2 0 0 0 17 20a16.6 16.6 0 0 0 5-2.5c.4-4.7-.7-8.7-3.1-12.3z"/></svg>
+                Discord
+            </a>
+        </div>
+    </section>
+
+    <!-- Puzzle List -->
+    <section class="games-section">
+        <h2 class="section-title">Open Cases</h2>
+        <div class="games-grid">
+
+            <a href="music-room.html" class="game-card" data-game="blue-prince">
+                <div class="game-card-banner" style="background-image: url('../assets/img/blue-prince-music-room.jpg')">
+                    <div class="game-card-overlay"></div>
+                </div>
+                <div class="game-card-body">
+                    <h3 class="game-card-title">Music Room: "Denoted in Verse"</h3>
+                    <p class="game-card-desc">8 music sheets with identical notes but different lyrics. Bold words solved (layer 1). The notes themselves are a complex variation of Her Ladyship's theme that never plays in-game. What cipher hides in the notation?</p>
+                    <div class="game-card-meta">
+                        <span class="badge badge-unsolved">Unsolved (Layer 2)</span>
+                        <span class="badge badge-confirmed">Layer 1 Solved</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="does-it-never-end.html" class="game-card" data-game="blue-prince">
+                <div class="game-card-banner" style="background-image: url('../assets/img/blue-prince-does-it-never-end.jpg')">
+                    <div class="game-card-overlay"></div>
+                </div>
+                <div class="game-card-body">
+                    <h3 class="game-card-title">Does It Never End?</h3>
+                    <p class="game-card-desc">A cryptic question that surfaces throughout the manor. Whether it's a hint, a red herring, or the key to everything remains an open mystery.</p>
+                    <div class="game-card-meta">
+                        <span class="badge badge-unsolved">Unsolved</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="hand-statues.html" class="game-card" data-game="blue-prince">
+                <div class="game-card-banner" style="background-image: url('../assets/img/blue-prince-hand-statues.jpg')">
+                    <div class="game-card-overlay"></div>
+                </div>
+                <div class="game-card-body">
+                    <h3 class="game-card-title">Hand Statues</h3>
+                    <p class="game-card-desc">Pointing hands throughout the manor serve as hints: one in the bedroom points to Baron Bafflers, one in the office to the hidden safe, others in the chamber of mirrors point up. But the two hands in the foyer, facing each other across the exit door? Nobody knows what they're pointing to.</p>
+                    <div class="game-card-meta">
+                        <span class="badge badge-unsolved">Unsolved</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="boiler-room.html" class="game-card" data-game="blue-prince">
+                <div class="game-card-banner" style="background-image: url('../assets/img/blue-prince-boiler-room.jpg')">
+                    <div class="game-card-overlay"></div>
+                </div>
+                <div class="game-card-body">
+                    <h3 class="game-card-title">Boiler Room Panels</h3>
+                    <p class="game-card-desc">Animated grid panels with a pattern that isn't a perfect loop. It runs through what appears to be a sentence, pauses, then repeats. Many believe this is encoded information, possibly a binary or Braille-like message.</p>
+                    <div class="game-card-meta">
+                        <span class="badge badge-unsolved">Unsolved</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="tomb-candles.html" class="game-card" data-game="blue-prince">
+                <div class="game-card-banner" style="background-image: url('../assets/img/blue-prince-tomb-candles.jpg')">
+                    <div class="game-card-overlay"></div>
+                </div>
+                <div class="game-card-body">
+                    <h3 class="game-card-title">Tomb Candles</h3>
+                    <p class="game-card-desc">Two votive candle stands in the tombs with different lit/unlit patterns. The grid matches the Boiler Room panel dimensions. Could these be the same encoded message viewed from a different angle, or a key to decode it?</p>
+                    <div class="game-card-meta">
+                        <span class="badge badge-unsolved">Unsolved</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="missing-i.html" class="game-card" data-game="blue-prince">
+                <div class="game-card-banner" style="background-image: url('../assets/img/blue-prince-keyboards-letter-i.jpg')">
+                    <div class="game-card-overlay"></div>
+                </div>
+                <div class="game-card-body">
+                    <h3 class="game-card-title">The Missing "I"</h3>
+                    <p class="game-card-desc">Every keyboard in the manor is missing the I key: Security, Office, Blackbridge Grotto, Shelter, and Laboratory. The keyboard is a 3D-constructed model, not a texture. An I key texture exists in the files but was deliberately omitted.</p>
+                    <div class="game-card-meta">
+                        <span class="badge badge-unsolved">Unsolved</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="castle-cloak-court.html" class="game-card" data-game="blue-prince">
+                <div class="game-card-banner" style="background-image: url('../assets/img/blue-prince-castle-court-cloak.jpg')">
+                    <div class="game-card-overlay"></div>
+                </div>
+                <div class="game-card-body">
+                    <h3 class="game-card-title">Castle, Court, Cloak</h3>
+                    <p class="game-card-desc">After finding and using 3 microchips in the Blackbridge Grotto, a cutscene plays on the computer showing three words: Castle, Court, Cloak. Binary between them decodes to ARIE. Players with 140+ hours still can't explain the meaning. Is "cloak" a misspelling of "clock"? A reference to the Key of Aries?</p>
+                    <div class="game-card-meta">
+                        <span class="badge badge-unsolved">Unsolved</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="garage-acronym.html" class="game-card" data-game="blue-prince">
+                <div class="game-card-banner" style="background-image: url('../assets/img/blue-prince-garage-acronym.jpg')">
+                    <div class="game-card-overlay"></div>
+                </div>
+                <div class="game-card-body">
+                    <h3 class="game-card-title">Garage Acronym</h3>
+                    <p class="game-card-desc">When drafted on the 8th rank, the car contains a blue memo: "The license plate on this car is an acronym." The plate reads SWNSNG. South-West-North-South-North-Garage? Nobody has cracked what the acronym actually stands for.</p>
+                    <div class="game-card-meta">
+                        <span class="badge badge-unsolved">Unsolved</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="hidden-letters.html" class="game-card" data-game="blue-prince">
+                <div class="game-card-banner" style="background-image: url('../assets/img/blue-prince-mechanarium.jpg')">
+                    <div class="game-card-overlay"></div>
+                </div>
+                <div class="game-card-body">
+                    <h3 class="game-card-title">Hidden Letters</h3>
+                    <p class="game-card-desc">Letters concealed in architecture across the estate: N in the Mechanium ceiling, E in the Planetarium projector, T in the Solarium glass panes, and more. Directly inspired by Christopher Manson's Maze. Is there a hidden phrase written across the manor?</p>
+                    <div class="game-card-meta">
+                        <span class="badge badge-unsolved">Unsolved</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="bookshop-compartment.html" class="game-card" data-game="blue-prince">
+                <div class="game-card-banner" style="background-image: url('../assets/img/blue-prince-bookshop-area.jpg')">
+                    <div class="game-card-overlay"></div>
+                </div>
+                <div class="game-card-body">
+                    <h3 class="game-card-title">The Bookshop Compartment</h3>
+                    <p class="game-card-desc">The room icon clearly shows a hidden space behind the bookshelves. Crown molding traces the compartment's outline. Books on the table match a Morajai puzzle box layout. But no one has found the trigger to open it.</p>
+                    <div class="game-card-meta">
+                        <span class="badge badge-unsolved">Unsolved</span>
+                    </div>
+                </div>
+            </a>
+
+            <div class="game-card" data-game="blue-prince">
+                <div class="game-card-banner" style="background-image: url('../assets/img/blue-prince-dirigiblocks.jpg')">
+                    <div class="game-card-overlay"></div>
+                </div>
+                <div class="game-card-body">
+                    <h3 class="game-card-title">Dirigiblocks</h3>
+                    <p class="game-card-desc">Confirmed upcoming content: both the arcade and home console versions of Dirigiblocks are coming in a future update. A blank journal page and a crossed-out fuse box label already hint at their arrival.</p>
+                    <div class="game-card-meta">
+                        <span class="badge badge-upcoming">Not Yet Implemented</span>
+                    </div>
+                </div>
+            </div>
+
+            <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/issues/new/choose" target="_blank" class="game-card" data-game="blue-prince">
+                <div class="game-card-banner" style="background: linear-gradient(135deg, #1a1a2e 0%, #4a6cf7 30%, #1a1a2e 100%)">
+                    <div class="game-card-overlay"></div>
+                </div>
+                <div class="game-card-body">
+                    <h3 class="game-card-title">More Blue Prince Puzzles</h3>
+                    <p class="game-card-desc">Know of an unsolved Blue Prince mystery? Submit it as a new finding and we'll add it to the board.</p>
+                    <div class="game-card-meta">
+                        <span class="badge badge-awaiting">Awaiting Submissions</span>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- Red Herrings -->
+    <section class="games-section">
+        <h2 class="section-title">Possible Red Herrings</h2>
+        <p style="text-align: center; color: var(--text-secondary); max-width: 600px; margin: -1rem auto var(--space-xl); font-size: 0.9rem;">Details that look significant but may exist purely for atmosphere, lore callbacks to Maze, or misdirection.</p>
+        <div class="games-grid">
+
+            <div class="game-card" data-game="blue-prince">
+                <div class="game-card-banner" style="background-image: url('../assets/img/blue-prince-hats.jpg')">
+                    <div class="game-card-overlay"></div>
+                </div>
+                <div class="game-card-body">
+                    <h3 class="game-card-title">The Hats</h3>
+                    <p class="game-card-desc">Hats are everywhere: the Cooch, Salarium, Maid's Chamber, Master Bedroom, East Wing Hall. Multiple rooms share the same hat style. In Maze, a hat + letter is critical. But after 1000+ hours of community analysis, no puzzle has emerged.</p>
+                    <div class="game-card-meta">
+                        <span class="badge badge-debunked">Likely Red Herring</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-card" data-game="blue-prince">
+                <div class="game-card-banner" style="background-image: url('../assets/img/blue-prince-globes.jpg')">
+                    <div class="game-card-overlay"></div>
+                </div>
+                <div class="game-card-body">
+                    <h3 class="game-card-title">The Globes</h3>
+                    <p class="game-card-desc">Five interactive, fully animated globes across the estate (Observatory x2, Study, Drafting Studio, Dormitory, Trophy Room). They spin when clicked. But why animate these and nothing else? Maybe just lore, maybe a Maze callback. A globe is also important in Maze.</p>
+                    <div class="game-card-meta">
+                        <span class="badge badge-debunked">Likely Red Herring</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-card" data-game="blue-prince">
+                <div class="game-card-banner" style="background-image: url('../assets/img/blue-prince-swans.jpg')">
+                    <div class="game-card-overlay"></div>
+                </div>
+                <div class="game-card-body">
+                    <h3 class="game-card-title">Swan Iconography</h3>
+                    <p class="game-card-desc">Swans appear as imagery, carvings, sculptures, and origami throughout the manor. The Red Prince manuscript says the swan represents Morajai. Likely thematic (swan song = Mary's legacy) rather than puzzle-relevant.</p>
+                    <div class="game-card-meta">
+                        <span class="badge badge-debunked">Likely Red Herring</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <p>Built by the community. <a href="https://github.com/unsolved-puzzles/unsolved-puzzles">View on GitHub</a></p>
+        <p class="footer-tagline">"The note is read, the letter is not."</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/blue-prince-bg.js"></script>
+</body>
+</html>

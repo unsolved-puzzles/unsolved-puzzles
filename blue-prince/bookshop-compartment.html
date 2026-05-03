@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Bookshop Compartment | Blue Prince | Unsolved Puzzles</title>
+    <meta name="description" content="A hidden space behind the Bookshop bookshelves. Books on the table match a Mora Jai puzzle layout. Nobody has found the trigger to open it.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <canvas id="game-atmosphere"></canvas>
+
+    <!-- Hero Banner -->
+    <div class="game-hero-banner">
+        <img src="../assets/img/blue-prince-hero-banner.png" alt="Blue Prince" class="game-hero-img">
+        <div class="game-hero-fade"></div>
+    </div>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="../" class="logo">
+                <span class="logo-icon">🔍</span>
+                <span class="logo-text">Unsolved Puzzles</span>
+            </a>
+            <nav class="header-nav">
+                <a href="../">All Games</a>
+                <a href="./">Blue Prince</a>
+                <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/discussions" target="_blank">Discuss</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Puzzle Header -->
+    <section class="puzzle-header">
+        <p class="puzzle-breadcrumb"><a href="../">Home</a> / <a href="./">Blue Prince</a> / The Bookshop Compartment</p>
+        <h1 class="puzzle-title">The Bookshop Compartment</h1>
+        <p class="puzzle-subtitle">A modeled space hides behind the bookshelves. The table is a Mora Jai layout. But the trigger remains unknown.</p>
+        <span class="puzzle-status unsolved">Unsolved</span>
+    </section>
+
+    <!-- Context -->
+    <section class="findings-section">
+        <h2 class="section-title">What We Know</h2>
+        <div style="max-width: 700px; margin: 0 auto var(--space-xl); color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8;">
+            <p><strong>Setup:</strong> The Bookshop drafts exclusively from the Library. Looking above the left bookcase, there's clearly no wall behind it — a gap is visible. The room map confirms the left side isn't shaded yellow. Crown molding traces the outline of the hidden compartment.</p>
+            <p style="margin-top: var(--space-md);"><strong>The table:</strong> A table in the center of the room holds books arranged in a pattern that matches a Mora Jai puzzle box layout — a 3×3 grid with colored books. The table model is in a separate layer called "clickable" in the game files, but no click interaction has been found.</p>
+            <p style="margin-top: var(--space-md);"><strong>Behind the shelves:</strong> Data miners have confirmed a modeled section exists behind the bookcase, but it appears empty — similar to how the Clock Tower secret room, Rough Drafts location, and Trading Post still all appear empty until triggered correctly.</p>
+            <p style="margin-top: var(--space-md);"><strong>The newspaper clue:</strong> A newspaper found elsewhere in the estate shows a picture of the Bookshop with the shelves arranged differently, implying the current configuration is not permanent.</p>
+            <p style="margin-top: var(--space-md);"><strong>Library connection:</strong> A hidden blue memo in the Library states: "If you have a hall pass, bookshop will be more likely to be drawn while drafting in the library." This suggests a deliberate link between the two rooms, though the hall pass alone doesn't unlock anything in the Bookshop.</p>
+        </div>
+
+        <!-- Filters -->
+        <div class="findings-filters">
+            <button class="filter-btn active" data-filter="all">All Findings</button>
+            <button class="filter-btn" data-filter="confirmed">Confirmed</button>
+            <button class="filter-btn" data-filter="testing">Testing</button>
+            <button class="filter-btn" data-filter="debunked">Debunked</button>
+        </div>
+
+        <!-- Findings Grid -->
+        <div class="findings-grid">
+
+            <div class="finding-card" data-status="confirmed">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Hidden space exists behind the left bookcase</h3>
+                <p>Looking above the bookshelves, a visible gap confirms there's no wall behind the left set. The room map doesn't shade this area yellow. Data mining confirms a modeled section exists behind the bookcase, though it appears empty when accessed out-of-bounds.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/Borealum_Studios</span>
+                    <span>Confirmed via data mining</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Table model is in a "clickable" layer</h3>
+                <p>The Bookshop table is in a separate layer called "clickable" in the game's object tree — unusual for a non-interactive object. Normally, clickable objects have a Box Collider + FSM (finite state machine) attached. The table has the layer designation but no attached interaction mechanism has been found.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/Borealum_Studios</span>
+                    <span>Anomalous but no trigger found</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Books on table match Mora Jai puzzle layout</h3>
+                <p>The books on the table are arranged in a pattern consistent with a Mora Jai puzzle box — a 3×3 grid of colored elements. The puzzle can be solved with purple corners, black corners, or most colors except blue and orange (blue copies the center cell).</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/JoefishTheGreat, u/piapiou</span>
+                    <span>Puzzle solvable in theory</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Newspaper shows alternate bookshelf arrangement</h3>
+                <p>A newspaper elsewhere in the estate shows a picture of the Bookshop with shelves positioned differently, suggesting the current layout isn't fixed and could potentially be rearranged to provide access to the hidden area.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/seniorsassycat</span>
+                    <span>In-game newspaper confirmed</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Blue memo links Library to Bookshop via Hall Pass</h3>
+                <p>A hidden blue memo found in the Library states: "If you have a hall pass, bookshop will be more likely to be drawn while drafting in the library." The Hall Pass increases Bookshop draft probability but doesn't trigger any interaction inside the room.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/Strauke</span>
+                    <span>Tested — no additional effect</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Secret areas appear empty until triggered</h3>
+                <p>FuryForged notes that all known secret areas (Clock Tower room, Rough Drafts location, Trading Post still) also appear empty when accessed via data mining — their contents only load after the correct in-game trigger. The empty Bookshop compartment follows this pattern.</p>
+                <div class="finding-card-meta">
+                    <span>Source: FuryForged</span>
+                    <span>Precedent from other rooms</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Antechamber was grey in the demo</h3>
+                <p>The Antechamber was a grey room (greyprint) in the demo but became a blueprint (blue) in the full release. This is relevant because the Mora Jai table has a grey/dark book that doesn't match any current room color — it may have originally represented the Antechamber.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/thescottula, u/j-internet</span>
+                    <span>Demo footage confirmed</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="testing">
+                <span class="finding-card-status testing">Testing</span>
+                <h3>Drafting a 3×3 room square may trigger something</h3>
+                <p>The books represent room colors in a 3×3 Mora Jai grid. If you draft rooms matching those exact colors in a 3×3 square on the estate map, something might happen in the Bookshop. Problem: there are no greyprints to match the grey book, making a perfect match impossible with current room types.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/j-internet</span>
+                    <span>Blocked by missing grey room type</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="testing">
+                <span class="finding-card-status testing">Testing</span>
+                <h3>Mora Jai solution applied elsewhere (Mirror Room?)</h3>
+                <p>If the table encodes a Mora Jai solution, where do you input it? The Mirror Room lets you press buttons — if pressed in the order needed to solve this specific Mora Jai layout, it might trigger something. Extremely tedious due to room constraints on corner access.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/wapkaplit, u/BrokenMirror2010</span>
+                    <span>Theoretically possible, untested</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="testing">
+                <span class="finding-card-status testing">Testing</span>
+                <h3>Drafting adjacent rooms to "open" the corner</h3>
+                <p>Some rooms have inaccessible corners that become reachable when specific adjacent rooms are drafted. The 7-door locked passage (Hallway) or a Mechanarium door placed adjacent to the Bookshop's hidden corner might provide access — similar to how Foundation works.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/Jysyn, u/drallieiv</span>
+                    <span>Untested with Mechanarium door</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="testing">
+                <span class="finding-card-status testing">Testing</span>
+                <h3>Utility box / VAC connection</h3>
+                <p>The Utility box is described as "inspired by the Mora Jai." Could the Bookshop's Mora Jai layout provide a second solution to the VAC? However, the VAC has only 6 lights, not 9, making a direct 3×3 mapping unclear. Perhaps 6 steps to solve it if we knew which color.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/eldernikolatesla, u/UMUmmd</span>
+                    <span>Speculative connection</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="testing">
+                <span class="finding-card-status testing">Testing</span>
+                <h3>Room corners forming a shared room (4-corner theory)</h3>
+                <p>Draft Bookshop, Pantry, Nook, and a fourth room such that their corners form a shared accessible space. Several rooms have inaccessible corners — placing them together might create a room-within-rooms accessible from one of them.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/Stoplight25, u/shen-ku</span>
+                    <span>Conceptual, untested</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="debunked">
+                <span class="finding-card-status debunked">Debunked</span>
+                <h3>Hall Pass triggers a Bookshop interaction</h3>
+                <p>Despite the blue memo linking the Hall Pass to the Bookshop, carrying the Hall Pass into the Bookshop doesn't enable any new clicks, open the bookcase, or reveal hidden objects. It only affects draft probability.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/Strauke</span>
+                    <span>No effect observed</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="debunked">
+                <span class="finding-card-status debunked">Debunked</span>
+                <h3>Clicking individual books opens the passage</h3>
+                <p>Multiple players have tried clicking every book on the shelves and table. Nothing responds. The table's "clickable" layer doesn't actually have an attached click handler or FSM in the current game build.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/JoefishTheGreat</span>
+                    <span>Extensively tested</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="debunked">
+                <span class="finding-card-status debunked">Debunked</span>
+                <h3>Leaving the map cell empty triggers a change</h3>
+                <p>Attempting to leave the cell where the hidden area would be empty during drafting (or placing an Aquarium there) had no visible effect on the Bookshop. The ante-chamber placement hasn't been confirmed to work either.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/another_sir_max</span>
+                    <span>No effect</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="debunked">
+                <span class="finding-card-status debunked">Debunked</span>
+                <h3>No hidden GameObject or spawn point exists</h3>
+                <p>Data mining reveals no hidden GameObject, spawn point, or scripted event in the Bookshop that would trigger content to appear. However, scripting could be hidden in the Library's code instead (since Bookshop only drafts from Library).</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/Borealum_Studios</span>
+                    <span>Caveat: Library code not fully explored</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Theories -->
+    <section class="theories-section">
+        <h2 class="section-title">Theories (Ranked)</h2>
+
+        <div class="theory-item">
+            <span class="theory-rank high">High Priority</span>
+            <h3 class="theory-title">Content awaiting a future update trigger</h3>
+            <p class="theory-desc">Like other secret areas that appear empty until triggered, the Bookshop compartment may require a game update (Dirigiblocks?) to become accessible. The "clickable" layer and modeled space suggest it's prepared for future content rather than cut. The Library's deep connection to Auravei lore makes this room a prime candidate for DLC puzzles.</p>
+        </div>
+
+        <div class="theory-item">
+            <span class="theory-rank high">High Priority</span>
+            <h3 class="theory-title">Mora Jai solution as input elsewhere</h3>
+            <p class="theory-desc">The table encodes a specific Mora Jai puzzle state. Solving it (with purple or black corners) produces an output pattern. That output could be a code to input somewhere else: the Mirror Room buttons, the VAC, or a room combination on the draft board. The answer isn't in the Bookshop itself — it's a clue pointing outward.</p>
+        </div>
+
+        <div class="theory-item">
+            <span class="theory-rank medium">Medium</span>
+            <h3 class="theory-title">Library scripting hides the trigger</h3>
+            <p class="theory-desc">Since the Bookshop only drafts from the Library — a room already entwined with deep Auravei lore — the trigger mechanism could be hidden in the Library's code rather than the Bookshop's. This would explain why data miners find nothing in the Bookshop files specifically. A multi-room chain (Library action → Bookshop effect) would be novel for the game.</p>
+        </div>
+
+        <div class="theory-item">
+            <span class="theory-rank medium">Medium</span>
+            <h3 class="theory-title">Adjacent room unlocks access (Hallway / Mechanarium)</h3>
+            <p class="theory-desc">Drafting a specific room adjacent to the Bookshop — particularly the 7-door Hallway or a room with a Mechanarium door — might provide physical access to the hidden corner, similar to how Foundation works. The newspaper showing different shelf positions implies the room's geometry can change based on context.</p>
+        </div>
+
+        <div class="theory-item">
+            <span class="theory-rank medium">Medium</span>
+            <h3 class="theory-title">Grey book = Antechamber (demo artifact)</h3>
+            <p class="theory-desc">The grey/dark book on the Mora Jai table doesn't match any current room color. In the demo, the Antechamber was grey. If the puzzle was designed when Antechamber was a greyprint, it may now be unsolvable — or the grey represents "no room" (empty cell), Blackprints (Throne Room, Treasure Trove), or the Permanent Room.</p>
+        </div>
+
+        <div class="theory-item">
+            <span class="theory-rank low">Lower Priority</span>
+            <h3 class="theory-title">Cut content / "Mew under the truck"</h3>
+            <p class="theory-desc">Some believe this is unfinished or cut content — the gaming equivalent of "Mew is under the truck." The clickable layer without a handler and the empty modeled space could be development artifacts that were never completed. However, the newspaper clue and Library memo suggest intentional design rather than leftovers.</p>
+        </div>
+
+    </section>
+
+    <!-- Discussion -->
+    <section class="discussion-section">
+        <h2 class="section-title">Discussion</h2>
+        <p style="text-align: center; color: var(--text-secondary); margin-bottom: var(--space-lg);">
+            Comments powered by <a href="https://giscus.app" target="_blank">giscus</a>. Uses GitHub Discussions.
+        </p>
+        <script src="https://giscus.app/client.js"
+            data-repo="unsolved-puzzles/unsolved-puzzles"
+            data-repo-id="R_kgDOSTBzlg"
+            data-category="Announcements"
+            data-category-id="DIC_kwDOSTBzls4C8Pva"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="dark_dimmed"
+            data-lang="en"
+            data-loading="lazy"
+            crossorigin="anonymous"
+            async>
+        </script>
+    </section>
+
+    <footer class="site-footer">
+        <p>Built by the community. <a href="https://github.com/unsolved-puzzles/unsolved-puzzles">View on GitHub</a></p>
+        <p class="footer-tagline">"Does it not have a wall right behind it?"</p>
+    </footer>
+
+    <script src="../assets/js/blue-prince-bg.js"></script>
+</body>
+</html>

@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hidden Letters | Blue Prince | Unsolved Puzzles</title>
+    <meta name="description" content="Letters concealed in architecture across the estate: N in the Mechanarium ceiling, E in the Planetarium projector, T in the Solarium glass. Inspired by Christopher Manson's Maze. Is there a hidden phrase?">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <canvas id="game-atmosphere"></canvas>
+
+    <!-- Hero Banner -->
+    <div class="game-hero-banner">
+        <img src="../assets/img/blue-prince-hero-banner.png" alt="Blue Prince" class="game-hero-img">
+        <div class="game-hero-fade"></div>
+    </div>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="../" class="logo">
+                <span class="logo-icon">🔍</span>
+                <span class="logo-text">Unsolved Puzzles</span>
+            </a>
+            <nav class="header-nav">
+                <a href="../">All Games</a>
+                <a href="./">Blue Prince</a>
+                <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/discussions" target="_blank">Discuss</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Puzzle Header -->
+    <section class="puzzle-header">
+        <p class="puzzle-breadcrumb"><a href="../">Home</a> / <a href="./">Blue Prince</a> / Hidden Letters</p>
+        <h1 class="puzzle-title">Hidden Letters</h1>
+        <p class="puzzle-subtitle">Letters concealed in architecture, geometry, and props across the estate. The -arium rooms spell N, E, T. But what about the rest?</p>
+        <span class="puzzle-status unsolved">Unsolved</span>
+    </section>
+
+    <!-- Context -->
+    <section class="findings-section">
+        <h2 class="section-title">What We Know</h2>
+        <div style="max-width: 700px; margin: 0 auto var(--space-xl); color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8;">
+            <p><strong>The core three (-arium rooms):</strong> Three rooms ending in "-arium" have unambiguous letters hidden in their geometry:</p>
+            <ul style="margin-top: var(--space-sm); padding-left: var(--space-lg);">
+                <li><strong>Mechanarium = N</strong> — visible in the ceiling girders among the gears</li>
+                <li><strong>Solarium = T</strong> — formed by darkened/tinted window panes on the left wall</li>
+                <li><strong>Planetarium = e</strong> — lowercase, on the base of the projector</li>
+            </ul>
+            <p style="margin-top: var(--space-md);"><strong>The RUMINATE theory:</strong> N + T + E + the letters A-R-I-U-M = an anagram for RUMINATE, which is also the answer to one of the Gallery puzzles. This is either an incredibly elegant Easter egg or a coincidence — the community is divided.</p>
+            <p style="margin-top: var(--space-md);"><strong>Beyond -arium:</strong> Players have catalogued potential letters in many other rooms (Conservatory S, Dovecote E, Trophy Room N, etc.) but these are less certain — formed by furniture shapes, shading, or court markings rather than clear architectural features. No unifying pattern has been confirmed for the broader set.</p>
+            <p style="margin-top: var(--space-md);"><strong>The Gymnasium question:</strong> Despite ending in "-ium," no clear letter has been found in the Gymnasium. However, Gymnasium ends in "-asium" not "-arium," which may explain its exclusion from the pattern.</p>
+            <p style="margin-top: var(--space-md);"><strong>Inspired by Maze:</strong> The game is directly inspired by Christopher Manson's <em>Maze</em> (1985), which hides letters in room illustrations that spell a message when read in the correct path order. Blue Prince may employ the same technique — letters exist in rooms, and the correct room arrangement/path reveals a phrase.</p>
+        </div>
+
+        <!-- Filters -->
+        <div class="findings-filters">
+            <button class="filter-btn active" data-filter="all">All Findings</button>
+            <button class="filter-btn" data-filter="confirmed">Confirmed</button>
+            <button class="filter-btn" data-filter="testing">Testing</button>
+            <button class="filter-btn" data-filter="debunked">Debunked</button>
+        </div>
+
+        <!-- Findings Grid -->
+        <div class="findings-grid">
+
+            <div class="finding-card" data-status="confirmed">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Mechanarium: capital N in ceiling girders</h3>
+                <p>A large, unmistakable N formed by the metal girders on the Mechanarium ceiling, visible among the gears when looking up. Does not change based on room placement. This is the most obvious of the hidden letters.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/nkrim, u/JoeSweden, u/nikbert</span>
+                    <span>Universal confirmation</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Solarium: T formed by darkened window panes</h3>
+                <p>Tinted/darkened glass panes on the left wall of the Solarium clearly form a T shape. The Solarium's directory description also references "Tea," reinforcing the letter. Always present regardless of draft position.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/nkrim, u/nikbert, u/Brofose</span>
+                    <span>Confirmed by multiple players + directory hint</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Planetarium: lowercase e on projector base</h3>
+                <p>A lowercase "e" is clearly visible on the flat base of the Planetarium's projector device. Smaller and more subtle than the N and T, but unmistakable once spotted.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/nkrim, u/nikbert, u/Free_Low5235</span>
+                    <span>Confirmed in-game</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Conservatory: S-shaped f-holes on the cello</h3>
+                <p>The cello in the Conservatory has f-holes shaped clearly as the letter S — distinct from traditional f-hole shapes. The title screen violin uses normal f-holes, proving the cello's S is an intentional deviation. Also appears on violins in the Music Room.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/IneffableQualia, u/monochromicorn, u/CptMisterNibbles</span>
+                    <span>Comparison with title screen confirms intent</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Workshop: chiseled stone shows painting-pairing letter</h3>
+                <p>The Workshop contains a chiseled stone slab that displays a letter matching the room's painting-pairing puzzle solution. This letter changes based on context. When using Blessing of the Monk, it shows an A. This makes the Workshop a "wildcard" letter room.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/Malfiecstone, u/TimbreReeder</span>
+                    <span>Letter changes with puzzle state</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Tomb: A visible above Draxus</h3>
+                <p>Above Draxus in the Tomb, there is a visible letter A. The Workshop's outer room (when using Monk) also shows an A, creating a potential connection between these two locations.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/Malfiecstone</span>
+                    <span>Observed in-game</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>N + E + T + ARIUM anagrams to RUMINATE</h3>
+                <p>Taking the three confirmed -arium room letters (N, T, e) and combining them with the shared suffix "ARIUM" produces exactly one anagram: RUMINATE. This is also the answer to one of the Gallery picture puzzles. Whether intentional Easter egg or coincidence is debated.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/donut_resuscitate</span>
+                    <span>Mathematically verified, intent debated</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Kennel: T in the Wogen fence</h3>
+                <p>A T shape formed in the middle of the Wogen fence structure in the Kennel. Another instance of a letter hidden in room geometry.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/Keksdose-2879</span>
+                    <span>Observed in-game</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="testing">
+                <span class="finding-card-status testing">Testing</span>
+                <h3>Comprehensive letter catalogue (uncertain entries)</h3>
+                <p>u/Malfiecstone's extensive hunt found potential letters in many rooms, rated by confidence: Dovecote (E, O), Trophy Room (N??), Gymnasium (D???), Den (I? — Roman numeral clock), Electric Eel Aquarium (W?), Greenhouse (A? — sawhorse legs), Weight Room (H???), Dormitory (L? — ruler), Lavatory (S? — hand towel). Most are formed by furniture/shading rather than clear architecture.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/Malfiecstone</span>
+                    <span>Varying confidence levels</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="testing">
+                <span class="finding-card-status testing">Testing</span>
+                <h3>-tory rooms as a second group</h3>
+                <p>If -arium rooms form one letter group, rooms ending in -tory (Conservatory, Dormitory, Observatory, Laboratory, Armory, Lavatory) might form another. Conservatory has S, Dormitory has L (ruler on desk). But not enough confirmed letters to form a word yet.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/XenosHg, u/dimitrispe232</span>
+                    <span>Pattern hypothesized, incomplete</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="testing">
+                <span class="finding-card-status testing">Testing</span>
+                <h3>Letters spell NEXT (including Aquarium X)</h3>
+                <p>If the Aquarium's X is included with N, E, T from the other -arium rooms, it spells NEXT. However, the Aquarium X is part of a different solved puzzle (buried archive keys location), and the game even says "this tank contains a red herring" — which could be a meta-warning about including it.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/nikbert, u/Southern_Parfait_663, u/136rad631</span>
+                    <span>Debated — X may belong to different puzzle</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="testing">
+                <span class="finding-card-status testing">Testing</span>
+                <h3">"Your directory is a trajectory" — room order matters</h3>
+                <p>The clue "your directory is a trajectory" from A New Clue suggests the room directory order is significant. If each room has a hidden letter, reading them in directory order (or a specific traversal order) might spell a message. Like Manson's Maze, the correct path through rooms reveals the phrase.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/wootitsbobby</span>
+                    <span>Conceptual, needs complete letter catalogue</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="testing">
+                <span class="finding-card-status testing">Testing</span>
+                <h3>Room arrangement on map spells words</h3>
+                <p>If rooms have associated letters, drafting them in specific positions on the 8×8 estate map could spell words. One player theorizes MANTIS (or ANT as a subset) could be spelled. The Workshop as a wildcard letter makes this more flexible. The treasure map + Baron Bafflers may provide the arrangement key.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/Malfiecstone, u/PyroneusUltrin</span>
+                    <span>Highly speculative, requires systematic testing</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="testing">
+                <span class="finding-card-status testing">Testing</span>
+                <h3>Letters fill the 4×4 grid pattern</h3>
+                <p>If 16 letters can be found, they might fill the ubiquitous 4×4 grid seen across the manor (boiler room, tomb candles, etc.). The grid arrangement could then be read to produce a message. Connects the hidden letters puzzle to the broader grid mystery.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/Malfiecstone</span>
+                    <span>Needs 16 confirmed letters</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="testing">
+                <span class="finding-card-status testing">Testing</span>
+                <h3>Compass rooms (N, W, E, S) around the Vestibule</h3>
+                <p>Place rooms whose letters are N, W, E, S in the cardinal directions around the Vestibule. The Mechanarium (N) north, a W-room west, Planetarium (E) east, a S-room south. This physical compass arrangement might trigger something.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/Malfiecstone</span>
+                    <span>Untested</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="debunked">
+                <span class="finding-card-status debunked">Debunked</span>
+                <h3>Gymnasium has a hidden letter (same pattern as -arium)</h3>
+                <p>Despite ending in "-ium," the Gymnasium ends in "-asium" not "-arium." No convincing letter has been found. The basketball court D is just standard court markings. The Gymnasium is excluded from the -arium pattern.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/trexwing, u/nkrim</span>
+                    <span>Different suffix, no clear letter</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="debunked">
+                <span class="finding-card-status debunked">Debunked</span>
+                <h3>The N indicates north (compass orientation)</h3>
+                <p>Some suggested the Mechanarium N is simply showing which direction is north. However, the floorplan map already shows orientation, and the N doesn't align with a consistent compass direction across different room placements. Combined with T and e in sibling rooms, it's clearly part of a letter pattern.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/gavingoober771, u/Malfiecstone</span>
+                    <span>Doesn't explain T and e</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="debunked">
+                <span class="finding-card-status debunked">Debunked</span>
+                <h3>Instrument S-holes are just lazy modeling</h3>
+                <p>The claim that the cello's S-shaped holes are modeling shortcuts rather than intentional letters is debunked by the title screen violin using traditional f-holes. The developer specifically chose to make the in-game instruments different.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/monochromicorn, u/CptMisterNibbles</span>
+                    <span>Title screen comparison proves intent</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Known Letters Reference -->
+    <section class="theories-section">
+        <h2 class="section-title">Letter Catalogue</h2>
+        <div style="max-width: 700px; margin: 0 auto var(--space-xl);">
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+                <thead>
+                    <tr style="border-bottom: 2px solid rgba(255,255,255,0.1);">
+                        <th style="padding: var(--space-sm); text-align: left; color: var(--text-primary);">Room</th>
+                        <th style="padding: var(--space-sm); text-align: center; color: var(--text-primary);">Letter</th>
+                        <th style="padding: var(--space-sm); text-align: center; color: var(--text-primary);">Confidence</th>
+                        <th style="padding: var(--space-sm); text-align: left; color: var(--text-primary);">Location</th>
+                    </tr>
+                </thead>
+                <tbody style="color: var(--text-secondary);">
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <td style="padding: var(--space-sm);">Mechanarium</td>
+                        <td style="padding: var(--space-sm); text-align: center; font-weight: 700; color: var(--accent-gold);">N</td>
+                        <td style="padding: var(--space-sm); text-align: center;">★★★</td>
+                        <td style="padding: var(--space-sm);">Ceiling girders</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <td style="padding: var(--space-sm);">Solarium</td>
+                        <td style="padding: var(--space-sm); text-align: center; font-weight: 700; color: var(--accent-gold);">T</td>
+                        <td style="padding: var(--space-sm); text-align: center;">★★★</td>
+                        <td style="padding: var(--space-sm);">Tinted window panes (left)</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <td style="padding: var(--space-sm);">Planetarium</td>
+                        <td style="padding: var(--space-sm); text-align: center; font-weight: 700; color: var(--accent-gold);">e</td>
+                        <td style="padding: var(--space-sm); text-align: center;">★★★</td>
+                        <td style="padding: var(--space-sm);">Projector base</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <td style="padding: var(--space-sm);">Conservatory</td>
+                        <td style="padding: var(--space-sm); text-align: center; font-weight: 700; color: var(--accent-gold);">S</td>
+                        <td style="padding: var(--space-sm); text-align: center;">★★☆</td>
+                        <td style="padding: var(--space-sm);">Cello f-holes</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <td style="padding: var(--space-sm);">Music Room</td>
+                        <td style="padding: var(--space-sm); text-align: center; font-weight: 700; color: var(--accent-gold);">S</td>
+                        <td style="padding: var(--space-sm); text-align: center;">★★☆</td>
+                        <td style="padding: var(--space-sm);">Violin f-holes</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <td style="padding: var(--space-sm);">Kennel</td>
+                        <td style="padding: var(--space-sm); text-align: center; font-weight: 700; color: var(--accent-gold);">T</td>
+                        <td style="padding: var(--space-sm); text-align: center;">★★☆</td>
+                        <td style="padding: var(--space-sm);">Wogen fence structure</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <td style="padding: var(--space-sm);">Tomb</td>
+                        <td style="padding: var(--space-sm); text-align: center; font-weight: 700; color: var(--accent-gold);">A</td>
+                        <td style="padding: var(--space-sm); text-align: center;">★★☆</td>
+                        <td style="padding: var(--space-sm);">Above Draxus</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <td style="padding: var(--space-sm);">Dovecote</td>
+                        <td style="padding: var(--space-sm); text-align: center; font-weight: 700; color: var(--text-secondary);">E, O</td>
+                        <td style="padding: var(--space-sm); text-align: center;">★☆☆</td>
+                        <td style="padding: var(--space-sm);">Pallet crate slats</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <td style="padding: var(--space-sm);">Trophy Room</td>
+                        <td style="padding: var(--space-sm); text-align: center; font-weight: 700; color: var(--text-secondary);">N</td>
+                        <td style="padding: var(--space-sm); text-align: center;">★☆☆</td>
+                        <td style="padding: var(--space-sm);">Dark shape on trophy shelf (right)</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <td style="padding: var(--space-sm);">Greenhouse</td>
+                        <td style="padding: var(--space-sm); text-align: center; font-weight: 700; color: var(--text-secondary);">A</td>
+                        <td style="padding: var(--space-sm); text-align: center;">★☆☆</td>
+                        <td style="padding: var(--space-sm);">Sawhorse table legs</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <td style="padding: var(--space-sm);">Dormitory</td>
+                        <td style="padding: var(--space-sm); text-align: center; font-weight: 700; color: var(--text-secondary);">L</td>
+                        <td style="padding: var(--space-sm); text-align: center;">★☆☆</td>
+                        <td style="padding: var(--space-sm);">Ruler on desk</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <td style="padding: var(--space-sm);">Lavatory</td>
+                        <td style="padding: var(--space-sm); text-align: center; font-weight: 700; color: var(--text-secondary);">S</td>
+                        <td style="padding: var(--space-sm); text-align: center;">★☆☆</td>
+                        <td style="padding: var(--space-sm);">Hand towel</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <td style="padding: var(--space-sm);">Den</td>
+                        <td style="padding: var(--space-sm); text-align: center; font-weight: 700; color: var(--text-secondary);">I</td>
+                        <td style="padding: var(--space-sm); text-align: center;">★☆☆</td>
+                        <td style="padding: var(--space-sm);">Roman numeral clock (1)</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <td style="padding: var(--space-sm);">Elec. Eel Aquarium</td>
+                        <td style="padding: var(--space-sm); text-align: center; font-weight: 700; color: var(--text-secondary);">W</td>
+                        <td style="padding: var(--space-sm); text-align: center;">★☆☆</td>
+                        <td style="padding: var(--space-sm);">In eel tank</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: var(--space-sm);">Workshop</td>
+                        <td style="padding: var(--space-sm); text-align: center; font-weight: 700; color: var(--text-secondary);">*</td>
+                        <td style="padding: var(--space-sm); text-align: center;">★★☆</td>
+                        <td style="padding: var(--space-sm);">Chiseled stone (changes with puzzle)</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="margin-top: var(--space-md); font-size: 0.8rem; color: var(--text-secondary); text-align: center;">★★★ = undeniable architectural letter · ★★☆ = likely intentional · ★☆☆ = might be pareidolia</p>
+        </div>
+    </section>
+
+    <!-- Theories -->
+    <section class="theories-section">
+        <h2 class="section-title">Theories (Ranked)</h2>
+
+        <div class="theory-item">
+            <span class="theory-rank high">High Priority</span>
+            <h3 class="theory-title">Room suffix groups each encode a word</h3>
+            <p class="theory-desc">Rooms sharing a name suffix (-arium, -tory, -room, etc.) form groups where hidden letters + the shared suffix anagram to a meaningful word. The -arium group (N+E+T+ARIUM = RUMINATE) is the proof of concept. If -tory rooms yield similar results, this is a systematic Easter egg layer providing Gallery puzzle answers. Requires complete letter catalogues for each suffix group.</p>
+        </div>
+
+        <div class="theory-item">
+            <span class="theory-rank high">High Priority</span>
+            <h3 class="theory-title">Maze-style path puzzle (correct room order spells phrase)</h3>
+            <p class="theory-desc">Directly inspired by Christopher Manson's <em>Maze</em>. Each room has one letter. Walking through rooms in the correct order (a specific drafted path) spells a hidden phrase. The clue "your directory is a trajectory" supports reading letters in a specific traversal sequence. The difficulty: you need both a complete letter catalogue AND the correct room order.</p>
+        </div>
+
+        <div class="theory-item">
+            <span class="theory-rank medium">Medium</span>
+            <h3 class="theory-title">Letters fill the 4×4 grid when arranged on the map</h3>
+            <p class="theory-desc">Draft 16 rooms with known letters into specific map positions. The resulting 4×4 letter grid might be readable (like the boiler room panels but decoded). The Workshop wildcard and the treasure map's position-checking mechanic suggest room placement matters for letter interpretation.</p>
+        </div>
+
+        <div class="theory-item">
+            <span class="theory-rank medium">Medium</span>
+            <h3 class="theory-title">Awaiting update 1.10 / future content</h3>
+            <p class="theory-desc">Data miners confirm the game has been largely explored but note it's "a warren" of unlabeled content. The hidden letters may be a prepared puzzle whose trigger mechanism or missing pieces arrive in a future update. Several players have paused investigation until patch 1.10.</p>
+        </div>
+
+        <div class="theory-item">
+            <span class="theory-rank low">Lower Priority</span>
+            <h3 class="theory-title">Pure Easter eggs with no actionable puzzle</h3>
+            <p class="theory-desc">The RUMINATE anagram is a clever developer joke (ruminate = to think deeply, which is what players do about these letters). The other scattered letters are environmental variety or Maze homage without forming a solvable puzzle. The "no puzzle has yet been found by anything to do with these letters" observation supports this reading.</p>
+        </div>
+
+    </section>
+
+    <!-- Discussion -->
+    <section class="discussion-section">
+        <h2 class="section-title">Discussion</h2>
+        <p style="text-align: center; color: var(--text-secondary); margin-bottom: var(--space-lg);">
+            Comments powered by <a href="https://giscus.app" target="_blank">giscus</a>. Uses GitHub Discussions.
+        </p>
+        <script src="https://giscus.app/client.js"
+            data-repo="unsolved-puzzles/unsolved-puzzles"
+            data-repo-id="R_kgDOSTBzlg"
+            data-category="Announcements"
+            data-category-id="DIC_kwDOSTBzls4C8Pva"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="dark_dimmed"
+            data-lang="en"
+            data-loading="lazy"
+            crossorigin="anonymous"
+            async>
+        </script>
+    </section>
+
+    <footer class="site-footer">
+        <p>Built by the community. <a href="https://github.com/unsolved-puzzles/unsolved-puzzles">View on GitHub</a></p>
+        <p class="footer-tagline">"The search for meaning, does it never end?"</p>
+    </footer>
+
+    <script src="../assets/js/blue-prince-bg.js"></script>
+</body>
+</html>

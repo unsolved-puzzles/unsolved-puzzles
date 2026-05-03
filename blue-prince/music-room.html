@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Room | Blue Prince | Unsolved Puzzles</title>
+    <meta name="description" content="The Music Room cipher: 8 sheets, same notes, different lyrics. Layer 1 solved via bold words. Layer 2 (the notes themselves) remains a mystery.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <canvas id="game-atmosphere"></canvas>
+
+    <!-- Hero Banner -->
+    <div class="game-hero-banner">
+        <img src="../assets/img/blue-prince-hero-banner.png" alt="Blue Prince" class="game-hero-img">
+        <div class="game-hero-fade"></div>
+    </div>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="../" class="logo">
+                <span class="logo-icon">🔍</span>
+                <span class="logo-text">Unsolved Puzzles</span>
+            </a>
+            <nav class="header-nav">
+                <a href="../">All Games</a>
+                <a href="./">Blue Prince</a>
+                <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/discussions" target="_blank">Discuss</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Puzzle Header -->
+    <section class="puzzle-header">
+        <p class="puzzle-breadcrumb"><a href="../">Home</a> / <a href="./">Blue Prince</a> / Music Room</p>
+        <h1 class="puzzle-title">The Music Room</h1>
+        <p class="puzzle-subtitle">"What is denoted in verse, not in prose?"</p>
+        <span class="puzzle-status unsolved">Layer 2: Unsolved</span>
+    </section>
+
+    <!-- Context -->
+    <section class="findings-section">
+        <h2 class="section-title">What We Know</h2>
+        <div style="max-width: 700px; margin: 0 auto var(--space-xl); color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8;">
+            <p><strong>Setup:</strong> Room 23 contains a piano with 8 music sheets. All 8 have identical musical notes but different lyrics. A plaque reads: <em>"What is denoted in verse, not in prose?"</em></p>
+            <p style="margin-top: var(--space-md);"><strong>Layer 1 (SOLVED):</strong> Bold words in each sheet's lyrics spell a message when read in order. This is the "prose" answer.</p>
+            <p style="margin-top: var(--space-md);"><strong>Layer 2 (UNSOLVED):</strong> The "verse" answer — derived from the musical notation itself. The piece is in B♭ Major (4/4 time, signature omitted). It's the same melody as "Her Ladyship's Theme" from the OST. The lyrics appear to contain 8 individual riddles, each potentially yielding a word. Herbert's note "denoted in verse" (an anagram of "does it never end") directly connects this puzzle to the estate-wide spiral mystery.</p>
+            <p style="margin-top: var(--space-md);"><strong>Key observations:</strong> The lyrics are attached to the <em>supporting</em> notes rather than the melody — this is musically unusual and must be intentional. There's an apparent misprint on the 4th staff's penultimate measure (present on all 8 sheets). The final line's left hand switches to treble clef without re-notating the key, implying a key change to C major. Sheet 5 is a Green Note.</p>
+        </div>
+
+        <!-- Filters -->
+        <div class="findings-filters">
+            <button class="filter-btn active" data-filter="all">All Findings</button>
+            <button class="filter-btn" data-filter="confirmed">Confirmed</button>
+            <button class="filter-btn" data-filter="testing">Testing</button>
+            <button class="filter-btn" data-filter="debunked">Debunked</button>
+        </div>
+
+        <!-- Findings Grid -->
+        <div class="findings-grid">
+
+            <div class="finding-card" data-status="confirmed">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>All 8 sheets share identical music in B♭ Major</h3>
+                <p>Every sheet contains the same melody and arrangement. The piece is in B♭ Major (Sib Maj), in 4/4 Common Time — though the time signature is omitted from notation. Only the last sheet has the correct ending notation. Verified by multiple transcriptions including a full MuseScore arrangement.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/flashmedallion, u/esuvii, u/richmachines</span>
+                    <span>Verified by 12+ players</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Bold lyrics spell a message (Layer 1 solved)</h3>
+                <p>Reading only the bold words in each sheet's lyrics produces: "Find Among The White Trees Under Two Stones." This is the "prose" answer referenced by the plaque — it tells you where to dig for the Conservatorium greenprint.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/flashmedallion</span>
+                    <span>Widely confirmed</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Melody is "Her Ladyship's Theme" from the OST</h3>
+                <p>The sheet music is the same melody as the official OST track "Her Ladyship's Theme," but at roughly double tempo and with a fuller arrangement. This connects the Music Room directly to Clara/Her Ladyship's Chambers and the Spiral of Stars.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/SeiryuuGR, u/esuvii</span>
+                    <span>Confirmed via OST comparison</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Sheet 5 is a Green Note</h3>
+                <p>Page 5 has a green tint, making it a Green Note (like other green-tinted puzzle documents in the game). Its lyrics about "trees found inside" and "gems that shine in night and rain" may follow different rules than the other 7 sheets.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/flashmedallion</span>
+                    <span>Visible in-game</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>"Denoted in verse" confirmed as cross-estate anagram</h3>
+                <p>The phrase appears in the Music Room (Herbert's note below a treble clef) and is a 14-letter anagram matching: "does it never end," "tended rose vine," and "investor needed" — all found in different rooms written by different characters across generations.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/Glitch29, u/Apprehensive-Leg9542</span>
+                    <span>Multiple in-game confirmations</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Misprint on 4th staff, penultimate measure</h3>
+                <p>An apparent misprint appears on the 4th staff's second-to-last measure — present identically on all 8 sheets, confirming it's intentional. The notes in that bar (treble): B, G, E, G, B, D, E, D. Bass: E, D, G. A line with perpendicular dashes means "foggy weather" in Realm & Rune.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/Kawafumi, u/Mugsi</span>
+                    <span>Present on all sheets</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Lyrics attach to supporting notes, not melody</h3>
+                <p>When transcribing, the lyrics align with the accompaniment/supporting notes rather than the main melody. This is musically abnormal — nobody would accidentally do this. The piece is also sung as a duet with two changeover points where a single singer physically can't hold both parts.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/gringer</span>
+                    <span>MuseScore transcription confirms</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Final line implies key change to C Major</h3>
+                <p>In the last line, the left hand switches to treble clef and back to bass clef without re-notating the key — implying a shift to C major for that passage. The right hand does NOT change key. The Jones Family Crest and Herbert's spiral note both feature a treble clef prominently.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/flashmedallion</span>
+                    <span>Musical notation analysis</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Green note: "there are 12 major keys"</h3>
+                <p>A separate green note in the Servant's Quarters states "there are 12 major keys." Combined with the 4×3 grids found in the tomb candle racks and possibly the music room chairs, this could be pointing to a 12-position cipher system.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/0Gitaxian0</span>
+                    <span>In-game green note</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="testing">
+                <span class="finding-card-status testing">Testing</span>
+                <h3>MINIM palindrome theory (ROT-7)</h3>
+                <p>The lyrics say "a half note held is quite the pun" — a half note is a MINIM, which is itself a palindrome (the pun). Applying ROT-7 to note names (A→H, B→I, etc.), MINIM maps to notes F-B-G-B-F. Because MINIM is a palindrome, its note sequence is also palindromic whether you apply ROT-7 alone or D-inversion + ROT-7. Palindromes all the way down.</p>
+                <div class="finding-card-meta">
+                    <span>Source: jewe</span>
+                    <span>Mechanism plausible, application unclear</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="testing">
+                <span class="finding-card-status testing">Testing</span>
+                <h3>Page 4 yields "endnote revised" from anagram clues</h3>
+                <p>Page 4 references "white pages lined with melodies" hiding words. The three white sheets with anagrams (Lost & Found, Music Room, Classroom) read "investor needed," "denoted in verse," "does it never end." The verse instructs picking "the loudest type" (endnote) and "ink that bleeds" (revised = red ink). Total: ENDNOTE REVISED — both 7-letter words.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/Glitch29</span>
+                    <span>Compelling derivation</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="testing">
+                <span class="finding-card-status testing">Testing</span>
+                <h3>Each page = one word in an 8×7 grid</h3>
+                <p>Theory that each of the 8 pages is an individual riddle yielding a 7-letter word, forming an 8×7 grid that encodes an instruction. Partial grid so far: row 3 = ENDNOTE, row 4 = REVISED, row 8 = BABBAGE(?). If correct, the game would show this grid somewhere physically (as with all other grid puzzles).</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/Glitch29</span>
+                    <span>3/8 rows tentatively filled</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="testing">
+                <span class="finding-card-status testing">Testing</span>
+                <h3>Words falling on D notes in the melody</h3>
+                <p>"D-note in verse" could literally mean: read the words that fall on D notes in the melody. Since the lyrics align to supporting notes (not melody), this would require mapping melody positions back to lyric positions — a non-trivial but testable approach.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/kkawabat</span>
+                    <span>Untested</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="testing">
+                <span class="finding-card-status testing">Testing</span>
+                <h3>Further anagrams of "DENOTED IN VERSE"</h3>
+                <p>Beyond the in-game matches, additional valid anagrams include: DIVERSE ENDNOTE, DEN DERIVES NOTE, I NOTED SEVEN RED (7 findable letters... the missing 8th?), ROT SEVEN IN DEED (apply ROT-7 to the Deed?). Read Maze-style: "D-NOTED INVERSE" hints at a D-axis inversion cipher on notes (A↔G, B↔F, C↔E, D↔D).</p>
+                <div class="finding-card-meta">
+                    <span>Source: jewe</span>
+                    <span>Multiple compelling candidates</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="testing">
+                <span class="finding-card-status testing">Testing</span>
+                <h3>Page 5 (Green Note) references the Treasure Map</h3>
+                <p>"The clue you hold can not be paid with gems nor coin, so toss away" — the Treasure Map is the only clue you physically hold in-game. Digging under the shade of an indoor tree won't yield gems/coins. The verse may instruct trading the Treasure Map at the Trading Post after getting a dig prompt.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/Glitch29</span>
+                    <span>Partially tested</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="testing">
+                <span class="finding-card-status testing">Testing</span>
+                <h3>Ballroom at midnight + dance connection</h3>
+                <p>Pages 6–7 describe a dance "under these stars," "clock strikes twelve," "two remain for one last dance and spin again around clock hands." Stars do become visible if you wait long enough in-game. The Ballroom's "two gems" trait + Blessing of the Dancer may enable a rotation puzzle. "You alone can't solve this tune" implies a partner is needed.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/ET-phonehome, u/PaMoGit</span>
+                    <span>Stars confirmed visible at night</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="testing">
+                <span class="finding-card-status testing">Testing</span>
+                <h3>Audio spectrogram of Simon's Theme</h3>
+                <p>Simon's Theme always plays on the piano when entering the Music Room. Games like Tunic and Fez hide visual data in audio spectrograms. Nobody has run the in-game Music Room audio (or the OST "Her Ladyship's Theme") through a spectrogram to check for hidden images or text.</p>
+                <div class="finding-card-meta">
+                    <span>Source: jewe</span>
+                    <span>Untested</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="testing">
+                <span class="finding-card-status testing">Testing</span>
+                <h3>Ballroom + Gymnasium rotation puzzle</h3>
+                <p>The Rotunda note says there are 4 methods to rotate rooms. Drafting Ballroom + Gymnasium (both "ball rooms") + Dovecote together from the Rotunda, with Ornate Compass on first draft, creates strict rotation conditions that are nearly impossible to achieve naturally — unless you use the Conservatorium (the reward from Layer 1).</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/PaMoGit</span>
+                    <span>Extremely complex to test</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="debunked">
+                <span class="finding-card-status debunked">Debunked</span>
+                <h3>Simple note-to-number mapping (A=1, B=2...)</h3>
+                <p>Direct note-to-number mapping produces sequences with no obvious meaning. Tried as ASCII offsets, grid coordinates, alphabet positions, frequency ratios. Without a specific transformation hint, this is just brute-forcing.</p>
+                <div class="finding-card-meta">
+                    <span>Source: jewe, u/richmachines</span>
+                    <span>Exhaustively tested</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="debunked">
+                <span class="finding-card-status debunked">Debunked</span>
+                <h3>Verse 3 is unsolvable alone (collaborative multiplayer)</h3>
+                <p>"The ones of you who oft assume that you alone can solve this tune" — some theorized this requires two players syncing games. More likely it means you need a "partner" in the puzzle sense: another room, item, or the Blessing of the Dancer. The game has no multiplayer functionality.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/ET-phonehome</span>
+                    <span>No multiplayer mechanism exists</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Theories -->
+    <section class="theories-section">
+        <h2 class="section-title">Theories (Ranked)</h2>
+
+        <div class="theory-item">
+            <span class="theory-rank high">High Priority</span>
+            <h3 class="theory-title">Each page is an individual riddle → 8×7 word grid</h3>
+            <p class="theory-desc">The 8 pages each solve to a 7-letter word. The game consistently uses letter grids as final puzzles (Art Gallery, Atelier). "Endnote revised" gives two rows. If the remaining 6 can be cracked from lyrical clues + musical knowledge, the grid forms an instruction. The Conservatorium (Layer 1's reward) may be needed to access wherever this grid is physically displayed.</p>
+        </div>
+
+        <div class="theory-item">
+            <span class="theory-rank high">High Priority</span>
+            <h3 class="theory-title">MINIM / ROT-7 is the core cipher mechanism</h3>
+            <p class="theory-desc">"A half note held is quite the pun" → MINIM (palindrome). ROT-7 maps MINIM → F-B-G-B-F (the melody's notes). This proves ROT-7 is relevant. The question is what to apply it TO: the melody notes forward? The misprint bar notes? Words spellable from A-G only (like FACADE, DEED, DEAD FACE)? "D-NOTED INVERSE" as an anagram reading suggests combining D-inversion with ROT-7.</p>
+        </div>
+
+        <div class="theory-item">
+            <span class="theory-rank high">High Priority</span>
+            <h3 class="theory-title">The misprint bar is the key data</h3>
+            <p class="theory-desc">The "funky" 4th staff penultimate measure is present on all 8 sheets identically. Its specific notes (B-G-E-G-B-D-E-D treble, E-D-G bass) are the actual puzzle input. These notes spell nothing directly, but through ROT-7, D-inversion, or interval extraction they may encode the answer. The perpendicular dashes connection to "foggy weather" in Realm & Rune is unexplored.</p>
+        </div>
+
+        <div class="theory-item">
+            <span class="theory-rank medium">Medium</span>
+            <h3 class="theory-title">The lyrics are sung to the wrong notes (supporting vs melody)</h3>
+            <p class="theory-desc">The lyrics align to accompaniment notes, not the melody. This is bizarre and intentional. Perhaps we need to "re-attach" lyrics to the melody — shifting each word to its correct melodic note position. This re-mapping might reveal which words fall on which musical letters, extracting a hidden message.</p>
+        </div>
+
+        <div class="theory-item">
+            <span class="theory-rank medium">Medium</span>
+            <h3 class="theory-title">The key change in the final line matters</h3>
+            <p class="theory-desc">The left hand's unnotated shift to C major in the last line — while the right hand stays in B♭ — creates a bitonality. Perhaps only the notes that change between the two keys are significant, or the key change marks which specific notes to extract from that passage. The treble clef appearing on the Jones Family Crest may connect this to the family mystery.</p>
+        </div>
+
+        <div class="theory-item">
+            <span class="theory-rank medium">Medium</span>
+            <h3 class="theory-title">Ballroom at midnight with Dancer blessing</h3>
+            <p class="theory-desc">Pages 6–7 describe two dancers spinning around clock hands under stars, with "a second chance to rise above the falling sands." The Ballroom has two gems, the Blessing of the Dancer inverts/rotates rooms, and stars become visible at night. Drafting a specific room configuration around the Ballroom and waiting until midnight may trigger something.</p>
+        </div>
+
+        <div class="theory-item">
+            <span class="theory-rank low">Lower Priority</span>
+            <h3 class="theory-title">Spectrogram hidden in the audio</h3>
+            <p class="theory-desc">Simon's Theme plays on the piano whenever you enter the Music Room. Multiple indie games (Tunic, Fez, Outer Wilds) hide visual puzzles in spectrograms. The in-game audio hasn't been analyzed this way. Lower priority because Blue Prince is primarily a logic/word game, but worth checking given "a message hidden beneath the keys."</p>
+        </div>
+    </section>
+
+    <!-- Discussion -->
+    <section class="discussion-section">
+        <h2 class="section-title">Discussion</h2>
+        <p style="text-align: center; color: var(--text-secondary); margin-bottom: var(--space-lg);">
+            Comments powered by <a href="https://giscus.app" target="_blank">giscus</a>. Uses GitHub Discussions.
+        </p>
+        <script src="https://giscus.app/client.js"
+            data-repo="unsolved-puzzles/unsolved-puzzles"
+            data-repo-id="R_kgDOSTBzlg"
+            data-category="Announcements"
+            data-category-id="DIC_kwDOSTBzls4C8Pva"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="dark_dimmed"
+            data-lang="en"
+            data-loading="lazy"
+            crossorigin="anonymous"
+            async>
+        </script>
+    </section>
+
+    <footer class="site-footer">
+        <p>Built by the community. <a href="https://github.com/unsolved-puzzles/unsolved-puzzles">View on GitHub</a></p>
+        <p class="footer-tagline">"The note is read, the letter is not."</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/blue-prince-bg.js"></script>
+</body>
+</html>

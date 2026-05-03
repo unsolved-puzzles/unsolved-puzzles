@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unsolved Puzzles | Community Investigation Board</title>
+    <meta name="description" content="A collaborative hub for tracking and solving hidden puzzles in games. Community-driven findings, theories, and breakthroughs.">
+
+    <!-- Open Graph for Discord/social previews -->
+    <meta property="og:title" content="Unsolved Puzzles | Community Investigation Board">
+    <meta property="og:description" content="Collaborative puzzle-solving across games. Track findings, test theories, crack codes.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/img/og-preview.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/lucide-static@latest/font/lucide.min.css" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Starfield background -->
+    <canvas id="starfield"></canvas>
+
+    <!-- Spoiler Banner -->
+    <div class="spoiler-banner">This site contains gameplay spoilers</div>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔍</span>
+                <span class="logo-text">Unsolved Puzzles</span>
+            </a>
+            <nav class="header-nav">
+                <a href="#games">Games</a>
+                <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/discussions" target="_blank">Discuss</a>
+                <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/issues/new/choose" target="_blank">Submit Finding</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">The Investigation Board</h1>
+            <p class="hero-subtitle">A community-driven archive of unsolved game puzzles.<br>Track findings. Test theories. Crack the code.</p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number" id="stat-games">2</span>
+                    <span class="stat-label">Games</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" id="stat-cases">11</span>
+                    <span class="stat-label">Open Cases</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" id="stat-contributors">0</span>
+                    <span class="stat-label">Contributors</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">0</span>
+                    <span class="stat-label">Solved</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Games Grid -->
+    <section id="games" class="games-section">
+        <h2 class="section-title">Active Investigations</h2>
+        <div class="games-grid">
+
+            <!-- Blue Prince -->
+            <a href="blue-prince/" class="game-card" data-game="blue-prince">
+                <div class="game-card-banner" style="background-image: url('assets/img/blue-prince-banner.jpg')">
+                    <div class="game-card-overlay"></div>
+                </div>
+                <div class="game-card-body">
+                    <h3 class="game-card-title">Blue Prince</h3>
+                    <p class="game-card-desc">Victorian manor of shifting rooms. Hidden ciphers in music, statues, keyboards, and candles. The note is read, the letter is not.</p>
+                    <div class="game-card-meta">
+                        <span class="badge badge-unsolved">10 Open Puzzles</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Noita -->
+            <a href="noita/" class="game-card" data-game="noita">
+                <div class="game-card-banner" style="background-image: url('assets/img/noita-banner.jpg')">
+                    <div class="game-card-overlay"></div>
+                </div>
+                <div class="game-card-body">
+                    <h3 class="game-card-title">Noita</h3>
+                    <p class="game-card-desc">Alchemical roguelike hiding layers of secrets. The Eyes watch, the Cauldron waits — and the world kills you before you can figure out why.</p>
+                    <div class="game-card-meta">
+                        <span class="badge badge-unsolved">1 Open Puzzle</span>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- How to Contribute -->
+    <section class="contribute-section">
+        <h2 class="section-title">How to Contribute</h2>
+        <div class="contribute-grid">
+            <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/issues/new/choose" target="_blank" class="contribute-item">
+                <span class="contribute-step">1</span>
+                <div>
+                    <h3>Submit a Finding</h3>
+                    <p>Open a GitHub Issue. Fill in the template. No git knowledge needed.</p>
+                </div>
+            </a>
+            <div class="contribute-item">
+                <span class="contribute-step">2</span>
+                <div>
+                    <h3>Discuss Theories</h3>
+                    <p>Comment on puzzle pages via <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/discussions" target="_blank">GitHub Discussions</a> or hop into Discord:</p>
+                    <div class="discord-links">
+                        <a href="https://discord.com/invite/BluePrince" target="_blank" class="discord-link">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.36-.698.772-1.362 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.12-.094.246-.194.372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+                            Blue Prince
+                        </a>
+                        <a href="https://discord.com/invite/SZtrP2r" target="_blank" class="discord-link">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.36-.698.772-1.362 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.12-.094.246-.194.372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+                            Noita
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="contribute-item">
+                <span class="contribute-step">3</span>
+                <div>
+                    <h3>Verify or Debunk</h3>
+                    <p>Test a theory in-game and report back. Every confirmation or debunk moves us forward.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>Built by the community. <a href="https://github.com/unsolved-puzzles/unsolved-puzzles">View on GitHub</a></p>
+        <p class="footer-scale">More games and puzzles welcome — open an issue to suggest one.</p>
+        <p class="footer-tagline">"Does it never end?"</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/starfield.js"></script>
+    <script>
+    // Auto-compute stats
+    (function() {
+        // Games: count game cards in the grid
+        const gameCards = document.querySelectorAll('#games .games-grid .game-card');
+        const gamesEl = document.getElementById('stat-games');
+        if (gamesEl) gamesEl.textContent = gameCards.length;
+
+        // Open Cases: sum the numbers from each game card's badge text (e.g. "10 Open Puzzles")
+        let totalCases = 0;
+        gameCards.forEach(card => {
+            const badge = card.querySelector('.badge-unsolved');
+            if (badge) {
+                const num = parseInt(badge.textContent);
+                if (!isNaN(num)) totalCases += num;
+            }
+        });
+        const casesEl = document.getElementById('stat-cases');
+        if (casesEl) casesEl.textContent = totalCases;
+
+        // Contributors: fetch unique issue authors from GitHub API
+        const contribEl = document.getElementById('stat-contributors');
+        if (contribEl) {
+            fetch('https://api.github.com/repos/unsolved-puzzles/unsolved-puzzles/issues?state=all&per_page=100')
+                .then(r => r.ok ? r.json() : [])
+                .then(issues => {
+                    const authors = new Set(issues.map(i => i.user && i.user.login).filter(Boolean));
+                    contribEl.textContent = authors.size;
+                })
+                .catch(() => { contribEl.textContent = '0'; });
+        }
+    })();
+    </script>
+</body>
+</html>

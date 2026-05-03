@@ -1,0 +1,37 @@
+name: ❌ Debunk
+description: Present evidence that disproves a theory or corrects a finding
+title: "[Debunk] "
+labels: ["debunk", "needs-review"]
+body:
+  - type: input
+    id: target
+    attributes:
+      label: What are you debunking?
+      description: Link to the issue/finding/theory, or describe it
+      placeholder: "#12 — ROT-7 cipher theory"
+    validations:
+      required: true
+
+  - type: textarea
+    id: counter-evidence
+    attributes:
+      label: Counter-evidence
+      description: Why is the original claim wrong? Provide specific evidence.
+      placeholder: |
+        The theory fails because...
+    validations:
+      required: true
+
+  - type: textarea
+    id: methodology
+    attributes:
+      label: How you tested
+      description: What steps did you take to verify this is wrong?
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternative
+    attributes:
+      label: Alternative explanation (optional)
+      description: If the original claim is wrong, what might the correct answer be?

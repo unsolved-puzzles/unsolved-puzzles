@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Cauldron Room | Noita | Unsolved Puzzles</title>
+    <meta name="description" content="The Cauldron Room: a hidden area in Noita behind Extremely Dense Rock. Void Liquid calendar, Cessation Cipher links, and 5+ years of unsolved mystery.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <canvas id="game-atmosphere"></canvas>
+
+    <!-- Hero Banner -->
+    <div class="game-hero-banner">
+        <img src="../assets/img/noita-hero-banner.jpg" alt="Noita" class="game-hero-img">
+        <div class="game-hero-fade"></div>
+    </div>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="../" class="logo">
+                <span class="logo-icon">🔍</span>
+                <span class="logo-text">Unsolved Puzzles</span>
+            </a>
+            <nav class="header-nav">
+                <a href="../">All Games</a>
+                <a href="./">Noita</a>
+                <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/discussions" target="_blank">Discuss</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Puzzle Header -->
+    <section class="puzzle-header">
+        <p class="puzzle-breadcrumb"><a href="../">Home</a> / <a href="./">Noita</a> / Cauldron Room</p>
+        <h1 class="puzzle-title">The Cauldron Room</h1>
+        <p class="puzzle-subtitle">Hidden behind Extremely Dense Rock. Discovered March 2021. Still unsolved.</p>
+        <span class="puzzle-status unsolved">Not Yet Implemented</span>
+    </section>
+
+    <!-- Context -->
+    <section class="findings-section">
+        <h2 class="section-title">What We Know</h2>
+        <div style="max-width: 700px; margin: 0 auto var(--space-xl); color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8;">
+            <p><strong>Location:</strong> East of the upper edge of Hiisi Base, beneath the chasm near the Sauvojen tuntija. Enclosed by Extremely Dense Rock with no apparent intended entry beyond excavation.</p>
+            <p style="margin-top: var(--space-md);"><strong>The Room:</strong> Contains a central pedestal with a large cauldron, flanked by two pillars with unique patterns found nowhere else in the game. Grey sand fills the room initially; clearing it reveals two additional pillars and a flat slate protruding from rock behind the cauldron.</p>
+            <p style="margin-top: var(--space-md);"><strong>Mod Restrictions:</strong> If mods are enabled before loading the area, the room doesn't spawn. Only Extremely Dense Rock remains. It's one of only three secrets protected this way, alongside the Eye Messages (the only confirmed unsolved mystery).</p>
+            <p style="margin-top: var(--space-md);"><strong>The Void Liquid Calendar:</strong> An internal schedule determines whether the Cauldron contains Void Liquid or air on any given day (UTC-based). The schedule repeats yearly, with a slightly different pattern on leap years. A bug causes unpredictable contents during December of leap years. Preview the schedule at <a href="https://sdlwdr.github.io/cauldron_forecast/" target="_blank">sdlwdr's forecast site</a>.</p>
+            <p style="margin-top: var(--space-md);"><strong>Cessation Cipher Connection:</strong> The cipher's decryption revealed a 30-bit binary key matching the first 30 digits of the Void Liquid calendar. Only those 30 bits have a known use; the rest of the data remains unexplained.</p>
+        </div>
+
+        <!-- Filters -->
+        <div class="findings-filters">
+            <button class="filter-btn active" data-filter="all">All Findings</button>
+            <button class="filter-btn" data-filter="confirmed">Confirmed</button>
+            <button class="filter-btn" data-filter="testing">Testing</button>
+            <button class="filter-btn" data-filter="debunked">Debunked</button>
+        </div>
+
+        <!-- Findings Grid -->
+        <div class="findings-grid">
+
+            <div class="finding-card" data-status="confirmed">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Void Calendar linked to Cessation Cipher</h3>
+                <p>The first 30 days of the Void Liquid calendar serve as the binary key for the Cessation Cipher, yielding: "SEEKING TRUTH, THE WISE FIND INSTEAD ITS PROFOUND ABSENCE".</p>
+                <div class="finding-card-meta">
+                    <span>Source: wiki.gg</span>
+                    <span>Epilogue 2 update</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Mod-restricted: same tier as Eye Messages</h3>
+                <p>The Cauldron is one of three areas protected by mod restrictions. Mods prevent the room from spawning. This classification puts it alongside the only confirmed unsolved mystery in the game.</p>
+                <div class="finding-card-meta">
+                    <span>Source: Kaliuresis</span>
+                    <span>Verified in code</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Void Calendar has unused data beyond 30 bits</h3>
+                <p>The data chunk from which the calendar is derived contains far more information than the 30 bits used by the Cessation Cipher. The purpose of the remaining data is completely unknown.</p>
+                <div class="finding-card-meta">
+                    <span>Source: Kaliuresis</span>
+                    <span>Ghidra decompilation</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>"Permanence Altar" string in translations</h3>
+                <p>The string <code>building_altar_always</code> → "Permanence Altar" exists in common.csv, added in the same update as the Cauldron. May be related to the Cauldron or to the Nullifying Altar.</p>
+                <div class="finding-card-meta">
+                    <span>Source: Kaliuresis</span>
+                    <span>Link uncertain</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="testing">
+                <span class="finding-card-status testing">Testing</span>
+                <h3>Leap year December bug: intentional?</h3>
+                <p>During December of leap years, the Cauldron contents vary unpredictably. Not dependent on date, time, seed, or any observable factor. Could be a bug or a deliberate hidden mechanic.</p>
+                <div class="finding-card-meta">
+                    <span>Source: Toboter</span>
+                    <span>Needs more data</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="debunked">
+                <span class="finding-card-status debunked">Debunked</span>
+                <h3>Material / entity interactions in the Cauldron</h3>
+                <p>Extensive testing: bosses, entities (Kummitus, Karl, Hiisi Chef), alchemy, wands, Orbs of True Knowledge, meat, liquids, fungus. Nothing has yielded results. Lid removal doesn't change behavior.</p>
+                <div class="finding-card-meta">
+                    <span>Source: wiki.gg</span>
+                    <span><a href="https://noita.wiki.gg/wiki/Cauldron_Room/Test_logs_and_notes" target="_blank">Full logs</a></span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Theories -->
+    <section class="theories-section">
+        <h2 class="section-title">Theories (Ranked)</h2>
+
+        <div class="theory-item">
+            <span class="theory-rank high">High Priority</span>
+            <h3 class="theory-title">Profound Absence: the Cauldron was the question, not the puzzle</h3>
+            <p class="theory-desc">The Cessation Cipher's decoded message ("SEEKING TRUTH, THE WISE FIND INSTEAD ITS PROFOUND ABSENCE") may be the developers' way of saying the Cauldron itself has no hidden function. The mystery was the point. Supporters note 5+ years of fruitless testing and the Epilogue 2 retroactively tying the calendar into the questline as a "closing of the book."</p>
+        </div>
+
+        <div class="theory-item">
+            <span class="theory-rank medium">Medium</span>
+            <h3 class="theory-title">Date-specific Cauldron interactions</h3>
+            <p class="theory-desc">Based on the Cessation Cipher connection, the Cauldron may respond differently on specific dates within the Void calendar. Certain days might trigger unique material reactions or reveal hidden content, but no date-specific behavior has been observed so far.</p>
+        </div>
+
+        <div class="theory-item">
+            <span class="theory-rank medium">Medium</span>
+            <h3 class="theory-title">Altar of Permanence: cross-run persistence</h3>
+            <p class="theory-desc">The "Permanence Altar" translation string (added alongside the Cauldron) suggests a mechanism for transferring objects or states between NG+ runs. However, the string may also relate to the Nullifying Altar, and no verifiable evidence supports a direct link.</p>
+        </div>
+
+        <div class="theory-item">
+            <span class="theory-rank low">Lower Priority</span>
+            <h3 class="theory-title">Portal / hidden entry theory</h3>
+            <p class="theory-desc">Unlike similar hidden rooms (Meditation Room, Ancient Eye Room), the Cauldron Room has no identifiable entrance or exit portal. Some theorize an undiscovered entry method exists that, if found, would alter or add functionality to the room.</p>
+        </div>
+    </section>
+
+    <!-- Community Resources -->
+    <section class="resources-section">
+        <h2 class="section-title">Community Resources</h2>
+        <p style="text-align: center; color: var(--text-secondary); max-width: 600px; margin: -1rem auto var(--space-xl); font-size: 0.9rem;">Key documents, tools, and channels maintained by the solving community.</p>
+
+        <!-- Documents -->
+        <div class="resource-category">
+            <div class="resource-category-header doc">
+                <span class="resource-category-icon">📄</span>
+                <h3>Documents</h3>
+            </div>
+            <div class="resource-category-items">
+                <a href="https://docs.google.com/document/d/1a6Li2ENd-2fKyJ8TBe4X8X89Py9aSTBO_4Oal_wm6A8/edit?tab=t.0" target="_blank" class="resource-link doc">
+                    <svg class="resource-link-icon" viewBox="0 0 24 24" fill="none" stroke="#4285f4" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    <h4>Cauldron Room - Origin Theories</h4>
+                    <p>Theories concerning the cauldron's origin and use.</p>
+                    <span class="resource-author"><strong>Carver</strong></span>
+                </a>
+                <a href="https://docs.google.com/document/d/1PmIPGm7fNZGYMWK7qIwXug4kPIovDKmhxwDCuHmMRz8/edit?tab=t.0" target="_blank" class="resource-link doc">
+                    <svg class="resource-link-icon" viewBox="0 0 24 24" fill="none" stroke="#4285f4" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    <h4>Cauldron Room - Test Log</h4>
+                    <p>A collection of theories that have been tested.</p>
+                    <span class="resource-author"><strong>Carver</strong></span>
+                </a>
+                <a href="https://pastebin.com/jgmrAcuT" target="_blank" class="resource-link doc">
+                    <svg class="resource-link-icon" viewBox="0 0 24 24" fill="none" stroke="#4285f4" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    <h4>Cauldron Contents</h4>
+                    <p>All the void liquid days using 2021 as an example.</p>
+                    <span class="resource-author"><strong>Liusad</strong></span>
+                </a>
+                <a href="https://miro.com/app/board/uXjVOAfeiDw=/" target="_blank" class="resource-link doc">
+                    <svg class="resource-link-icon" viewBox="0 0 24 24" fill="none" stroke="#4285f4" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    <h4>Cauldron Room Miro Board</h4>
+                    <p>Miro Board concerning cauldron room theories.</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- Community & Media -->
+        <div class="resource-category">
+            <div class="resource-category-header community">
+                <span class="resource-category-icon">💬</span>
+                <h3>Community & Media</h3>
+            </div>
+            <div class="resource-category-items">
+                <a href="https://www.youtube.com/watch?v=1yvFbiBRssA" target="_blank" class="resource-link video">
+                    <svg class="resource-link-icon" viewBox="0 0 24 24" fill="#FF0000" stroke="none"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    <h4>FuryForged: Cauldron Mystery</h4>
+                    <p>The unsolved mystery of the Cauldron Room — overview and current state.</p>
+                    <span class="resource-author"><strong>FuryForged</strong></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wiki References -->
+    <section class="findings-section" style="max-width: 700px;">
+        <h2 class="section-title">Further Reading</h2>
+        <div style="text-align: center; color: var(--text-secondary); font-size: 0.9rem; line-height: 2;">
+            <p>
+                <a href="https://noita.wiki.gg/wiki/Cauldron_Room" target="_blank">Cauldron Room (wiki.gg)</a> ·
+                <a href="https://noita.fandom.com/wiki/Cauldron_Room" target="_blank">Cauldron Room (Fandom)</a> ·
+                <a href="https://noita.wiki.gg/wiki/Cauldron_Room/Test_logs_and_notes" target="_blank">Test Logs & Notes</a>
+            </p>
+            <p>
+                <a href="https://noita.wiki.gg/wiki/Advanced_Guide:_Cessation_Cipher" target="_blank">Cessation Cipher Guide</a> ·
+                <a href="https://sdlwdr.github.io/cauldron_forecast/" target="_blank">Void Calendar Forecast</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- Discussion -->
+    <section class="discussion-section">
+        <h2 class="section-title">Discussion</h2>
+        <p style="text-align: center; color: var(--text-secondary); margin-bottom: var(--space-lg);">
+            Comments powered by <a href="https://giscus.app" target="_blank">giscus</a>. Uses GitHub Discussions.
+        </p>
+        <script src="https://giscus.app/client.js"
+            data-repo="unsolved-puzzles/unsolved-puzzles"
+            data-repo-id="R_kgDOSTBzlg"
+            data-category="Announcements"
+            data-category-id="DIC_kwDOSTBzls4C8Pva"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="dark_dimmed"
+            data-lang="en"
+            data-loading="lazy"
+            crossorigin="anonymous"
+            async>
+        </script>
+    </section>
+
+    <footer class="site-footer">
+        <p>Built by the community. <a href="https://github.com/unsolved-puzzles/unsolved-puzzles">View on GitHub</a></p>
+        <p class="footer-tagline">"Noita: the one who knows."</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/noita-bg.js"></script>
+</body>
+</html>

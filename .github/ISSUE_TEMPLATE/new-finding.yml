@@ -1,0 +1,74 @@
+name: 🔍 New Finding
+description: Report a new discovery or observation for a puzzle
+title: "[Finding] "
+labels: ["finding", "needs-verification"]
+body:
+  - type: dropdown
+    id: game
+    attributes:
+      label: Game
+      options:
+        - Blue Prince
+        - Noita
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: puzzle
+    attributes:
+      label: Puzzle
+      description: Which puzzle does this relate to?
+      options:
+        - "Blue Prince: Music Room"
+        - "Blue Prince: Does It Never End?"
+        - "Blue Prince: Hand Statues"
+        - "Blue Prince: Boiler Room"
+        - "Blue Prince: Tomb Candles"
+        - "Blue Prince: The Missing I"
+        - "Blue Prince: Castle Cloak Court"
+        - "Blue Prince: Garage Acronym"
+        - "Blue Prince: Hidden Letters"
+        - "Blue Prince: Bookshop Compartment"
+        - "Blue Prince: Dirigiblocks"
+        - "Noita: Eye Puzzle"
+        - "Noita: The Cauldron Room"
+        - "Other (specify below)"
+    validations:
+      required: true
+
+  - type: textarea
+    id: finding
+    attributes:
+      label: Describe your finding
+      description: Be as specific as possible. What did you discover?
+      placeholder: |
+        I noticed that if you...
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Screenshots, video links, code/scripts, or step-by-step reproduction.
+      placeholder: |
+        - Screenshot: [link]
+        - Steps to reproduce: ...
+
+  - type: textarea
+    id: interpretation
+    attributes:
+      label: Your interpretation (optional)
+      description: What do you think this means? Any theories?
+
+  - type: dropdown
+    id: confidence
+    attributes:
+      label: Confidence level
+      options:
+        - "High — I've verified this multiple times"
+        - "Medium — seems consistent but needs more testing"
+        - "Low — speculation based on limited data"
+    validations:
+      required: true

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hand Statues | Blue Prince | Unsolved Puzzles</title>
+    <meta name="description" content="Pointing hand statues appear in 4 rooms. Three have known secrets — but the Foyer hands remain unexplained after 1000+ hours of community investigation.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <canvas id="game-atmosphere"></canvas>
+
+    <!-- Hero Banner -->
+    <div class="game-hero-banner">
+        <img src="../assets/img/blue-prince-hero-banner.png" alt="Blue Prince" class="game-hero-img">
+        <div class="game-hero-fade"></div>
+    </div>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="../" class="logo">
+                <span class="logo-icon">🔍</span>
+                <span class="logo-text">Unsolved Puzzles</span>
+            </a>
+            <nav class="header-nav">
+                <a href="../">All Games</a>
+                <a href="./">Blue Prince</a>
+                <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/discussions" target="_blank">Discuss</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Puzzle Header -->
+    <section class="puzzle-header">
+        <p class="puzzle-breadcrumb"><a href="../">Home</a> / <a href="./">Blue Prince</a> / Hand Statues</p>
+        <h1 class="puzzle-title">Hand Statues</h1>
+        <p class="puzzle-subtitle">Pointing hands mark secrets in the Bedroom, Office, and Chamber of Mirrors. But the two hands in the Foyer — facing each other across the exit door — remain unexplained.</p>
+        <span class="puzzle-status unsolved">Unsolved</span>
+    </section>
+
+    <!-- Context -->
+    <section class="findings-section">
+        <h2 class="section-title">What We Know</h2>
+        <div style="max-width: 700px; margin: 0 auto var(--space-xl); color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8;">
+            <p><strong>The pattern:</strong> Pointing hand statues appear in exactly four rooms. In each of the first three, the hand points toward a discoverable secret:</p>
+            <ul style="margin-top: var(--space-sm); padding-left: var(--space-lg);">
+                <li><strong>Bedroom:</strong> Points down — toward the treasure map dig spot (draft Bedroom on the map's X with a shovel to find a word puzzle)</li>
+                <li><strong>Office:</strong> Points sideways — toward the hidden safe behind the painting</li>
+                <li><strong>Chamber of Mirrors:</strong> Points up — toward the upper cabinets (accessible via the moving platforms, contain duplicate floor plans)</li>
+            </ul>
+            <p style="margin-top: var(--space-md);"><strong>The Foyer mystery:</strong> The Foyer contains two hand statues facing each other across the exit door. Unlike the others, there's nothing obviously interactible in the Foyer — no safe, no dig spot, no upper area. The hands point inward at each other (or at the door between them). After 1000+ hours of community play, no one has found what they indicate.</p>
+            <p style="margin-top: var(--space-md);"><strong>The Foyer itself:</strong> The room features six busts on pedestals (with names relevant to lore), shares its lighting fixtures with the Ballroom and Throne Room, and appears in one of Alzara's visions. It functions as a hub room with doors on multiple sides, but this is its normal room functionality — if hand statues just pointed to room functions, every room would have them.</p>
+        </div>
+
+        <!-- Filters -->
+        <div class="findings-filters">
+            <button class="filter-btn active" data-filter="all">All Findings</button>
+            <button class="filter-btn" data-filter="confirmed">Confirmed</button>
+            <button class="filter-btn" data-filter="testing">Testing</button>
+            <button class="filter-btn" data-filter="debunked">Debunked</button>
+        </div>
+
+        <!-- Findings Grid -->
+        <div class="findings-grid">
+
+            <div class="finding-card" data-status="confirmed">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Hand statues mark discoverable secrets (3 of 4 solved)</h3>
+                <p>Three rooms with hand statues have confirmed secrets: Bedroom (treasure map dig spot below), Office (safe behind painting), Chamber of Mirrors (upper cabinets with floor plan duplicates). The pattern establishes that hands always point toward something actionable.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/SaucyJ4ck</span>
+                    <span>Three rooms confirmed</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Bedroom hand points to treasure map dig spot</h3>
+                <p>The downward-pointing hand in the Bedroom indicates you should dig. Draft the Bedroom on the treasure map's X location with a shovel to uncover a word puzzle. The puzzle produces a six-letter animal word. The treasure map retains its marked location in the coat check between runs.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/Choosingpoorlyftw</span>
+                    <span>Different rooms on the X give different rewards</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Chamber of Mirrors hand means "go up"</h3>
+                <p>The upward-pointing hand tells you to use the moving platforms to reach the second story. Each upper corner has a cupboard that spawns a duplicate of an adjacent room's floor plan (permanently added to draft pool), or coins/gems/keys if no room is adjacent.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/HappyHappyFunnyFunny</span>
+                    <span>Confirmed interaction</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Foyer appears in Alzara's visions</h3>
+                <p>One of Alzara's vision sequences shows the Foyer with its busts, suggesting the room has narrative/puzzle significance beyond its function as a hub. The vision doesn't provide an actionable clue on its own.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/You_Stole_My_Hot_Dog</span>
+                    <span>Vision confirmed</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Foyer shares lighting with Ballroom and Throne Room</h3>
+                <p>The lighting fixtures in the Foyer are identical to those in the Ballroom and Throne Room — a specific design choice that may indicate a thematic or mechanical connection between these three rooms.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/SaucyJ4ck</span>
+                    <span>Visual observation confirmed</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Bust names in the Foyer are lore-significant</h3>
+                <p>The six busts in the Foyer have names on their pedestals. The Office hand also points at a bust, which one player interprets as pointing toward the Foyer (full of busts). The names themselves may be important for a larger puzzle.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/HappyHappyFunnyFunny, u/BlazingGM</span>
+                    <span>Names documented</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Foyer cannot be drafted at the edge of the floor plan</h3>
+                <p>One player spent a week attempting to draft the Foyer at the edge of the estate map (so the exit door faces outside), using ink, dice, stars, rerolls, and prism keys. They concluded it cannot be done — the game prevents it.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/Nancy_Boo</span>
+                    <span>Edge placement appears impossible</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="testing">
+                <span class="finding-card-status testing">Testing</span>
+                <h3>Hands form a chain between rooms</h3>
+                <p>Theory that the hands point to each other across rooms: Mirror Room (up → top hat → Bedroom), Bedroom (down → dig/below → ?), Office (sideways → bust → Foyer), Foyer (inward → mirrors? → back to Mirror Room). The Gift Shop hand points north toward Room 46. This would form a puzzle-room loop.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/BlazingGM</span>
+                    <span>Logical but unconfirmed</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="testing">
+                <span class="finding-card-status testing">Testing</span>
+                <h3>Draft hand-statue rooms around the Foyer in correct positions</h3>
+                <p>Draft all four hand-statue rooms adjacent to the Foyer with correct directional alignment: Bedroom above (points down toward Foyer), Mirrors below (points up toward Foyer), Office to the right (points left toward Foyer). Might cause the Foyer door to lead somewhere new.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/JakeKongJr</span>
+                    <span>Attempted but not conclusively tested</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="testing">
+                <span class="finding-card-status testing">Testing</span>
+                <h3>Foyer → Antechamber connection</h3>
+                <p>Using the Foyer as a path into the Antechamber might trigger something. The Foyer's exit door is unusual — most rooms don't have a dedicated "front door" like this. Drafting the Antechamber adjacent might unlock a hidden interaction.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/shtty_analogy</span>
+                    <span>Tested by u/Humble_Shine_3813 — nothing unusual</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="testing">
+                <span class="finding-card-status testing">Testing</span>
+                <h3>Corridors on both sides of the Foyer</h3>
+                <p>Perhaps having corridors drafted on both sides of the Foyer (matching the two hands pointing in opposite directions) triggers a new behavior. The symmetry of the two hands suggests a symmetric room arrangement.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/GreyWolfesDinner-CTR</span>
+                    <span>Untested</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="testing">
+                <span class="finding-card-status testing">Testing</span>
+                <h3>Entering the Foyer from the "wrong" side</h3>
+                <p>The hands face the exit door. Perhaps entering through the exit side (like a Secret Passage) reveals something. The game may treat front-door vs back-door entry differently for this specific room.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/Superb-Heat-7689</span>
+                    <span>Untested</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="testing">
+                <span class="finding-card-status testing">Testing</span>
+                <h3>Foyer → Ballroom draft connection</h3>
+                <p>Given the shared lighting fixtures, drafting the Ballroom directly from the Foyer (or adjacent to it) might trigger an interaction. The visual link between these rooms could indicate a mechanical one.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/BenDawes</span>
+                    <span>Untested</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="debunked">
+                <span class="finding-card-status debunked">Debunked</span>
+                <h3>Blessing of the Monk reveals something</h3>
+                <p>Using the Blessing of the Monk in the Foyer (which reveals hidden elements in other contexts) produces no result. The hands don't respond to it and no hidden objects appear.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/tubalord8</span>
+                    <span>No effect</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="debunked">
+                <span class="finding-card-status debunked">Debunked</span>
+                <h3>Jackhammer or Power Hammer reveals something</h3>
+                <p>Neither the jackhammer nor the power hammer reveals any hidden interaction in the Foyer. No walls break, no floors open, no hidden areas are exposed.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/SaucyJ4ck, u/Mornar</span>
+                    <span>Extensively tested</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="debunked">
+                <span class="finding-card-status debunked">Debunked</span>
+                <h3>The hands simply indicate "door unlocking" functionality</h3>
+                <p>Some suggested the Foyer hands just mean "this room unlocks all its doors." But if hand statues indicated general room functionality, every room would have them. The three confirmed hands all point to hidden discoveries, not obvious mechanics.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/SaucyJ4ck</span>
+                    <span>Inconsistent with established pattern</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="debunked">
+                <span class="finding-card-status debunked">Debunked</span>
+                <h3>Foyer at edge of map opens the estate gate</h3>
+                <p>Theory that drafting the Foyer at the edge (exit door facing outward) would open the main gate. However, extensive testing shows the game prevents the Foyer from being placed at the map's edge at all.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/Nancy_Boo</span>
+                    <span>Placement impossible</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Theories -->
+    <section class="theories-section">
+        <h2 class="section-title">Theories (Ranked)</h2>
+
+        <div class="theory-item">
+            <span class="theory-rank high">High Priority</span>
+            <h3 class="theory-title">Hands form a cross-room puzzle chain</h3>
+            <p class="theory-desc">Each hand points toward the next room in a sequence: Office → Foyer (points at bust), Mirror Room → Bedroom (points up = top hat), Bedroom → ? (points down). The Foyer's mirrored hands could mean it's both an endpoint and a starting point. Solving the chain might require drafting all four rooms in specific relative positions and performing their actions in order.</p>
+        </div>
+
+        <div class="theory-item">
+            <span class="theory-rank high">High Priority</span>
+            <h3 class="theory-title">Specific adjacent room layout triggers Foyer secret</h3>
+            <p class="theory-desc">Since the other three hand rooms have position-dependent secrets (Bedroom needs to be on the treasure map X), the Foyer likely needs specific rooms drafted adjacent to it. The shared lighting with Ballroom and Throne Room, plus the Alzara vision, suggest these may be the required neighbors. Multiple players have this intuition but no one has tested all combinations systematically.</p>
+        </div>
+
+        <div class="theory-item">
+            <span class="theory-rank medium">Medium</span>
+            <h3 class="theory-title">The busts themselves are the puzzle</h3>
+            <p class="theory-desc">The six busts have names that may be an anagram, acrostic, or cipher. The hands don't point to a hidden object — they point at each other across the busts, saying "look at what's between us." If the bust names encode a message, it could be a clue for another puzzle elsewhere in the manor.</p>
+        </div>
+
+        <div class="theory-item">
+            <span class="theory-rank medium">Medium</span>
+            <h3 class="theory-title">Future update will add the Foyer interaction</h3>
+            <p class="theory-desc">Like the Bookshop compartment and Dirigiblocks, the Foyer secret may be content prepared for a future update. The hands establish that something exists, and the room is ready for it, but the trigger mechanism isn't in the current build. The "clickable" pattern from other unfinished rooms may apply here too.</p>
+        </div>
+
+        <div class="theory-item">
+            <span class="theory-rank low">Lower Priority</span>
+            <h3 class="theory-title">Decorative / atmospheric red herring</h3>
+            <p class="theory-desc">Some argue the Foyer hands are simply decorative — a grand entrance hall would have ornamental hand sculptures pointing guests toward the door. However, the established 3-for-3 pattern of hands = secrets makes a purely decorative explanation unsatisfying to most players.</p>
+        </div>
+
+    </section>
+
+    <!-- Discussion -->
+    <section class="discussion-section">
+        <h2 class="section-title">Discussion</h2>
+        <p style="text-align: center; color: var(--text-secondary); margin-bottom: var(--space-lg);">
+            Comments powered by <a href="https://giscus.app" target="_blank">giscus</a>. Uses GitHub Discussions.
+        </p>
+        <script src="https://giscus.app/client.js"
+            data-repo="unsolved-puzzles/unsolved-puzzles"
+            data-repo-id="R_kgDOSTBzlg"
+            data-category="Announcements"
+            data-category-id="DIC_kwDOSTBzls4C8Pva"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="dark_dimmed"
+            data-lang="en"
+            data-loading="lazy"
+            crossorigin="anonymous"
+            async>
+        </script>
+    </section>
+
+    <footer class="site-footer">
+        <p>Built by the community. <a href="https://github.com/unsolved-puzzles/unsolved-puzzles">View on GitHub</a></p>
+        <p class="footer-tagline">"I spent my last step entering it, sure I'd stumbled across secrets untold."</p>
+    </footer>
+
+    <script src="../assets/js/blue-prince-bg.js"></script>
+</body>
+</html>

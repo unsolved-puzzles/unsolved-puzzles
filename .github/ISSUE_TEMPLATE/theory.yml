@@ -1,0 +1,71 @@
+name: 💡 Theory
+description: Propose a theory about how a puzzle works or what it means
+title: "[Theory] "
+labels: ["theory", "discussion"]
+body:
+  - type: dropdown
+    id: game
+    attributes:
+      label: Game
+      options:
+        - Blue Prince
+        - Noita
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: puzzle
+    attributes:
+      label: Puzzle
+      options:
+        - "Blue Prince: Music Room"
+        - "Blue Prince: Does It Never End?"
+        - "Blue Prince: Hand Statues"
+        - "Blue Prince: Boiler Room"
+        - "Blue Prince: Tomb Candles"
+        - "Blue Prince: The Missing I"
+        - "Blue Prince: Castle Cloak Court"
+        - "Blue Prince: Garage Acronym"
+        - "Blue Prince: Hidden Letters"
+        - "Blue Prince: Bookshop Compartment"
+        - "Blue Prince: Dirigiblocks"
+        - "Noita: Eye Puzzle"
+        - "Noita: The Cauldron Room"
+        - "Other (specify below)"
+    validations:
+      required: true
+
+  - type: textarea
+    id: theory
+    attributes:
+      label: Theory description
+      description: Explain your theory clearly. What do you think is happening?
+      placeholder: |
+        I believe the cipher works by...
+    validations:
+      required: true
+
+  - type: textarea
+    id: supporting-evidence
+    attributes:
+      label: Supporting evidence
+      description: What findings or observations support this theory?
+    validations:
+      required: true
+
+  - type: textarea
+    id: predictions
+    attributes:
+      label: Testable predictions
+      description: If your theory is correct, what else should be true? What can we test?
+      placeholder: |
+        If this theory is correct, then:
+        - ...
+        - ...
+
+  - type: textarea
+    id: weaknesses
+    attributes:
+      label: Known weaknesses
+      description: What doesn't fit perfectly? What could disprove this?

@@ -1,0 +1,58 @@
+name: ✏️ Suggest an Edit
+description: Suggest a correction or addition to an existing puzzle page
+title: "[Edit] "
+labels: ["edit-suggestion"]
+body:
+  - type: dropdown
+    id: puzzle
+    attributes:
+      label: Which puzzle page?
+      options:
+        - "Blue Prince: Music Room"
+        - "Blue Prince: Does It Never End?"
+        - "Blue Prince: Hand Statues"
+        - "Blue Prince: Boiler Room"
+        - "Blue Prince: Tomb Candles"
+        - "Blue Prince: The Missing I"
+        - "Blue Prince: Garage Acronym"
+        - "Blue Prince: Hidden Letters"
+        - "Blue Prince: Bookshop Compartment"
+        - "Blue Prince: Dirigiblocks"
+        - "Noita: Eye Puzzle"
+        - "Noita: The Cauldron Room"
+        - "Other (specify below)"
+    validations:
+      required: true
+
+  - type: input
+    id: page-other
+    attributes:
+      label: Page URL or name (if "Other")
+      description: Only fill this if the page isn't in the list above.
+      placeholder: "https://unsolved-puzzles.github.io/unsolved-puzzles/..."
+
+  - type: textarea
+    id: what-to-change
+    attributes:
+      label: What should be changed?
+      description: Describe what's wrong or what should be added.
+      placeholder: |
+        The findings section is missing the Alzara quote about...
+    validations:
+      required: true
+
+  - type: textarea
+    id: why
+    attributes:
+      label: Why?
+      description: Why is this change needed? Link to a source if possible.
+      placeholder: |
+        Source: https://discord.com/channels/...
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots (optional)
+      description: Drag and drop images here to attach them.

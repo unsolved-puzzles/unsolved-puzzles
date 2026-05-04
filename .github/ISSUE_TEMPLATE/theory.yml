@@ -4,16 +4,6 @@ title: "[Theory] "
 labels: ["theory", "discussion"]
 body:
   - type: dropdown
-    id: game
-    attributes:
-      label: Game
-      options:
-        - Blue Prince
-        - Noita
-    validations:
-      required: true
-
-  - type: dropdown
     id: puzzle
     attributes:
       label: Puzzle
@@ -24,7 +14,6 @@ body:
         - "Blue Prince: Boiler Room"
         - "Blue Prince: Tomb Candles"
         - "Blue Prince: The Missing I"
-        - "Blue Prince: Castle Cloak Court"
         - "Blue Prince: Garage Acronym"
         - "Blue Prince: Hidden Letters"
         - "Blue Prince: Bookshop Compartment"
@@ -67,3 +56,9 @@ body:
     attributes:
       label: Known weaknesses
       description: What doesn't fit perfectly? What could disprove this?
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots (optional)
+      description: Drag and drop images here to attach them.

@@ -3,11 +3,11 @@ description: Present evidence that disproves a theory or corrects a finding
 title: "[Debunk] "
 labels: ["debunk", "needs-review"]
 body:
-  - type: input
+  - type: textarea
     id: target
     attributes:
       label: What are you debunking?
-      description: Link to the issue/finding/theory, or describe it
+      description: "Type # to search for an issue, or paste a link to the finding/theory."
       placeholder: "#12 — ROT-7 cipher theory"
     validations:
       required: true
@@ -36,3 +36,9 @@ body:
     attributes:
       label: Alternative explanation (optional)
       description: If the original claim is wrong, what might the correct answer be?
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots (optional)
+      description: Drag and drop images here to attach them.

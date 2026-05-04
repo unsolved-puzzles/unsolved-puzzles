@@ -10,15 +10,8 @@ body:
       options:
         - Blue Prince
         - Noita
-        - Other (specify below)
     validations:
       required: true
-
-  - type: input
-    id: game-other
-    attributes:
-      label: Game name (if "Other")
-      description: Only fill this if you selected "Other" above.
 
   - type: input
     id: puzzle-name
@@ -55,3 +48,9 @@ body:
     attributes:
       label: Known findings so far (optional)
       description: If the community has already found things related to this puzzle, list them here.
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots (optional)
+      description: Drag and drop images here to attach them.

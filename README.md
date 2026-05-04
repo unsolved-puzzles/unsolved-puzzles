@@ -25,6 +25,7 @@ Click **[New Issue](https://github.com/unsolved-puzzles/unsolved-puzzles/issues/
 | 🔍 **New Finding** | You observed something verifiable in the game (for a puzzle already on the board) |
 | 💡 **Theory** | You have a hypothesis about what a finding means, not proven yet |
 | ❌ **Debunk** | You have evidence that a finding or theory is wrong |
+| ✏️ **Suggest an Edit** | You want to correct or add something to an existing puzzle page |
 | 📚 **Community Resource** | You want to share a tool, guide, dataset, or video that helps |
 | 🧩 **New Puzzle** | You want to suggest an unsolved puzzle not yet tracked on the site |
 | 🎮 **New Game** | You know a game with unsolved puzzles that should be added |

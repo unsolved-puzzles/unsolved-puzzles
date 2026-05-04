@@ -167,6 +167,49 @@ function initSearch() {
     });
 }
 
+// ── Dynamic Puzzle Counters ───────────────────────────────────
+
+function initCounters() {
+    const statCases = document.getElementById('stat-cases');
+    if (!statCases) return; // Only runs on the homepage
+
+    const gameCards = document.querySelectorAll('.games-section .games-grid > a.game-card[href]');
+    let totalOpen = 0;
+    let pending = gameCards.length;
+
+    if (!pending) return;
+
+    gameCards.forEach(card => {
+        const href = card.getAttribute('href');
+        // Only fetch local game index pages (not external links)
+        if (!href || href.startsWith('http')) {
+            pending--;
+            return;
+        }
+
+        fetch(href)
+            .then(r => r.text())
+            .then(html => {
+                const doc = new DOMParser().parseFromString(html, 'text/html');
+                const unsolved = doc.querySelectorAll('.games-grid .badge-unsolved').length;
+                totalOpen += unsolved;
+
+                // Update this game card's badge
+                const badge = card.querySelector('.game-card-meta .badge-unsolved');
+                if (badge && unsolved > 0) {
+                    badge.textContent = unsolved + (unsolved === 1 ? ' Open Puzzle' : ' Open Puzzles');
+                }
+            })
+            .catch(() => {})
+            .finally(() => {
+                pending--;
+                if (pending <= 0) {
+                    statCases.textContent = totalOpen;
+                }
+            });
+    });
+}
+
 // ── Init ──────────────────────────────────────────────────────
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -175,4 +218,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initCardRotations();
     initFilters();
     initSearch();
+    initCounters();
 });

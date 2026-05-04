@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repeated Phrases | Blue Prince | Unsolved Puzzles</title>
+    <meta name="description" content="Multiple documents across the estate contain duplicated lines of text from different authors. Too many to be coincidence. Is there a hidden message in the repetitions?">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css?v=2">
+</head>
+<body>
+    <canvas id="game-atmosphere"></canvas>
+
+    <!-- Hero Banner -->
+    <div class="game-hero-banner">
+        <img src="../assets/img/blue-prince-hero-banner.png" alt="Blue Prince" class="game-hero-img">
+        <div class="game-hero-fade"></div>
+    </div>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="../" class="logo">
+                <span class="logo-icon">🔍</span>
+                <span class="logo-text">Unsolved Puzzles</span>
+            </a>
+            <nav class="header-nav">
+                <a href="../">All Games</a>
+                <a href="./">Blue Prince</a>
+                <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/discussions" target="_blank">Discuss</a>
+                <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/blob/main/README.md" target="_blank">Help</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Puzzle Header -->
+    <section class="puzzle-header">
+        <p class="puzzle-breadcrumb"><a href="../">Home</a> / <a href="./">Blue Prince</a> / Repeated Phrases</p>
+        <h1 class="puzzle-title">Repeated Phrases</h1>
+        <p class="puzzle-subtitle">Duplicated lines of text appear across documents from different authors. Too deliberate to be coincidence.</p>
+        <span class="puzzle-status unsolved">Unsolved</span>
+    </section>
+
+    <!-- Context -->
+    <section class="findings-section">
+        <h2 class="section-title">What We Know</h2>
+        <div style="max-width: 700px; margin: 0 auto var(--space-xl); color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8;">
+            <p><strong>Setup:</strong> Multiple in-game documents contain phrases that are repeated verbatim or near-verbatim, sometimes within the same document, sometimes across documents by different authors. One or two instances could be literary devices, but the sheer number and the egregious nature of some (entire sentences duplicated in the Curse of Blackbridge novel) suggests intentional encoding.</p>
+            <p style="margin-top: var(--space-md);"><strong>Cross-author pattern:</strong> The repetitions span Mary Jones (Red Letter 5), Herbert S. Sinclair (his will), and Redford Ewling (The Curse of Blackbridge). Three different fictional voices all exhibiting the same anomaly makes coincidence unlikely.</p>
+            <p style="margin-top: var(--space-md);"><strong>Possible purpose:</strong> Repeated lines may mark key text to extract (as bold words do in the music sheets), or the specific differences between near-duplicate phrases may encode information. The game has established that textual anomalies are always puzzles.</p>
+        </div>
+
+        <!-- Filters -->
+        <div class="findings-filters">
+            <button class="filter-btn active" data-filter="all">All Findings</button>
+            <button class="filter-btn" data-filter="confirmed">Confirmed</button>
+            <button class="filter-btn" data-filter="testing">Testing</button>
+            <button class="filter-btn" data-filter="debunked">Debunked</button>
+        </div>
+
+        <!-- Findings Grid -->
+        <div class="findings-grid">
+
+            <div class="finding-card" data-status="confirmed">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>The Curse of Blackbridge: "resistant to brute force"</h3>
+                <p>The novel contains two nearly identical sentences: "If there was ever a time when that lock had been resistant to brute force, it wasn't recent" and later "If there was ever a time when the old man had been resistant to brute force, it wasn't recent." The structure is identical, only "that lock" changes to "the old man." This is the most egregious example: no author would accidentally duplicate an entire complex sentence with one substitution. <a href="https://blue-prince.fandom.com/wiki/The_Curse_of_Black_Bridge" target="_blank" title="Read full transcript on Fandom Wiki">&#x1F4DC; Full text</a></p>
+                <div class="finding-card-meta">
+                    <span>Source: Capitalism, Ho!</span>
+                    <span>Confirmed</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Red Letter 5: "Holding hands and throwing stones"</h3>
+                <p>Mary's Red Letter 5 (November 8) contains the phrase "holding hands and throwing stones" twice within the same letter. First as part of a sentence: "The thin wire we stood upon, above the world, holding hands and throwing stones." Then immediately repeated as its own standalone line. This mirrors the Blackbridge pattern of deliberate textual repetition. <a href="https://blue-prince.fandom.com/wiki/Red_Letter_5" target="_blank" title="Read Red Letter 5 on Fandom Wiki">&#x1F4DC; Full text</a></p>
+                <div class="finding-card-meta">
+                    <span>Source: Capitalism, Ho!</span>
+                    <span>Confirmed</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Herbert S. Sinclair's will: spelling inconsistencies</h3>
+                <p>The will contains internal spelling contradictions: "lake house" (two words) then "lakehouse" (one word) within the same paragraph; "grandnephew" used three times then "grand-nephew" (hyphenated) in the final clause; and "timely manor" instead of "timely manner" (a homophone substitution referencing the house itself). In a game where every letter matters, these look deliberate rather than accidental. <a href="https://blue-prince.fandom.com/wiki/Will_of_Herbert_S._Sinclair" target="_blank" title="Read full will on Fandom Wiki">&#x1F4DC; Full text</a></p>
+                <div class="finding-card-meta">
+                    <span>Source: Capitalism, Ho!</span>
+                    <span>Confirmed</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Theories -->
+    <section class="theories-section">
+        <h2 class="section-title">Theories (Ranked)</h2>
+
+        <div class="theory-item">
+            <span class="theory-rank high">High Priority</span>
+            <h3 class="theory-title">Repeated lines mark text to extract</h3>
+            <p class="theory-desc">Like bold words in the music sheets spell a message, repeated phrases across documents may be the "key text" to collect. Reading only the duplicated lines in document order could form a coherent instruction or clue. The pattern mirrors how the music puzzle works: identify the anomaly, extract it, read in sequence.</p>
+        </div>
+
+        <div class="theory-item">
+            <span class="theory-rank medium">Medium</span>
+            <h3 class="theory-title">Differences between duplicates encode information</h3>
+            <p class="theory-desc">In the Blackbridge example, the only difference is "that lock" becoming "the old man." If each pair of duplicates has exactly one substitution, those changed words might spell something when collected. The substitutions could be the actual cipher: what changes between otherwise identical sentences.</p>
+        </div>
+
+        <div class="theory-item">
+            <span class="theory-rank medium">Medium</span>
+            <h3 class="theory-title">Connection to "endnote revised"</h3>
+            <p class="theory-desc">The Music Room's Layer 2 puzzle yields "endnote revised", suggesting a document has been altered. Repeated phrases could be the revision markers: the original text and the revised version sitting side by side. Identifying which version is "original" vs "revised" across all documents may reveal the intended reading.</p>
+        </div>
+
+    </section>
+
+    <!-- Discussion -->
+    <section class="discussion-section">
+        <h2 class="section-title">Discussion</h2>
+        <p style="text-align: center; color: var(--text-secondary); margin-bottom: var(--space-lg);">
+            Comments powered by <a href="https://giscus.app" target="_blank">giscus</a>. Uses GitHub Discussions.
+        </p>
+        <script src="https://giscus.app/client.js"
+            data-repo="unsolved-puzzles/unsolved-puzzles"
+            data-repo-id="R_kgDOSTBzlg"
+            data-category="Announcements"
+            data-category-id="DIC_kwDOSTBzls4C8Pva"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="dark_dimmed"
+            data-lang="en"
+            data-loading="lazy"
+            crossorigin="anonymous"
+            async>
+        </script>
+    </section>
+
+    <footer class="site-footer">
+        <p>Built by the community. <a href="https://github.com/unsolved-puzzles/unsolved-puzzles">View on GitHub</a></p>
+        <p class="footer-tagline">"If there was ever a time..."</p>
+    </footer>
+
+    <script src="../assets/js/blue-prince-bg.js"></script>
+    <script src="../assets/js/main.js?v=2"></script>
+    <script src="../assets/js/votes.js?v=2"></script>
+</body>
+</html>

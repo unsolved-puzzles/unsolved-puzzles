@@ -46,8 +46,8 @@
     <section class="findings-section">
         <h2 class="section-title">What We Know</h2>
         <div style="max-width: 700px; margin: 0 auto var(--space-xl); color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8;">
-            <p><strong>Setup:</strong> In the Boiler Room, 15 panels cycle upward on a vertical conveyor belt. Each panel is a 4×4 grid where tiles are either ON (warm/brown) or OFF (cool/blue-gray). The belt loops — grids 16-18 repeat grids 1-3. You can activate the conveyor to scroll through all panels.</p>
-            <p style="margin-top: var(--space-md);"><strong>Gap structure:</strong> Gaps of varying size (Small, Medium, Large) separate the panels. Using L as word breaks and M as sub-breaks, the message structure is: <code style="background: rgba(255,255,255,0.06); padding: 2px 6px; border-radius: 3px;">_ XXXXX XXXXXXX</code> — a single character, then a 5-character group, then a 7-character group. All 13 non-blank grids are unique (no repeats), suggesting an <strong>isogram</strong> — every letter appears exactly once.</p>
+            <p><strong>Setup:</strong> In the Boiler Room, 15 panels cycle upward on a vertical conveyor belt. Each panel is a 4×4 grid where tiles are either ON (warm/brown) or OFF (cool/blue-gray). The belt loops: grids 16-18 repeat grids 1-3. You can activate the conveyor to scroll through all panels.</p>
+            <p style="margin-top: var(--space-md);"><strong>Gap structure:</strong> Gaps of varying size (Small, Medium, Large) separate the panels. Using L as word breaks and M as sub-breaks, the message structure is: <code style="background: rgba(255,255,255,0.06); padding: 2px 6px; border-radius: 3px;">_ XXXXX XXXXXXX</code> (a single character, then a 5-character group, then a 7-character group). All 13 non-blank grids are unique (no repeats), suggesting an <strong>isogram</strong> where every letter appears exactly once.</p>
             <p style="margin-top: var(--space-md);"><strong>Grid 6 is special:</strong> It has two mini-rectangle decorations on its conveyor bars that no other panel has. This may mark the start or end of the sequence.</p>
             <p style="margin-top: var(--space-md);"><strong>Cell (0,0) is never lit:</strong> Across all 13 non-empty grids, the top-left cell is never ON. This is statistically significant and likely a structural constraint of the encoding system.</p>
             <p style="margin-top: var(--space-md);"><strong>Cross-location pattern:</strong> The same 4×4 grid format appears in 15+ locations: tomb candle racks (ternary: lit/unlit/absent), underpass hallway walls, sanctum tunnel floors, classroom chairs, garage gas tank, attic box, darkroom cabinet, Deny Revane's drawing (accurately depicted), and more. This is clearly a game-wide encoding system.</p>
@@ -89,7 +89,7 @@ Grid 15: [0,0,0,0] [1,0,0,0] [0,0,0,0] [0,0,1,1]  gap=M  ON=3</pre>
             <div class="finding-card" data-status="confirmed">
                 <span class="finding-card-status confirmed">Confirmed</span>
                 <h3>15 grids, 13 unique non-empty patterns</h3>
-                <p>The conveyor carries exactly 15 panels before looping. Grids 2 and 8 are completely blank (all OFF). The remaining 13 each have a unique pattern — no two are identical. This strongly suggests each grid encodes a distinct character.</p>
+                <p>The conveyor carries exactly 15 panels before looping. Grids 2 and 8 are completely blank (all OFF). The remaining 13 each have a unique pattern, no two identical. This strongly suggests each grid encodes a distinct character.</p>
                 <div class="finding-card-meta">
                     <span>Source: u/Shadowkiller00</span>
                     <span>Independently confirmed</span>
@@ -119,7 +119,7 @@ Grid 15: [0,0,0,0] [1,0,0,0] [0,0,0,0] [0,0,1,1]  gap=M  ON=3</pre>
             <div class="finding-card" data-status="confirmed">
                 <span class="finding-card-status confirmed">Confirmed</span>
                 <h3>Diagonal staircase in composite sum</h3>
-                <p>When all 10 grids between the two Large gaps (grids 5-14) are summed, the cells lit ≥2 times form a perfect descending staircase from top-right to bottom-left. This is too structured to be coincidence — it proves the data is correctly transcribed and has internal geometric structure.</p>
+                <p>When all 10 grids between the two Large gaps (grids 5-14) are summed, the cells lit ≥2 times form a perfect descending staircase from top-right to bottom-left. This is too structured to be coincidence and proves the data is correctly transcribed and has internal geometric structure.</p>
                 <div class="finding-card-meta">
                     <span>Source: jewe</span>
                     <span>Mathematical verification</span>
@@ -139,10 +139,10 @@ Grid 15: [0,0,0,0] [1,0,0,0] [0,0,0,0] [0,0,1,1]  gap=M  ON=3</pre>
             <div class="finding-card" data-status="testing">
                 <span class="finding-card-status testing">Testing</span>
                 <h3>Tomb candles as cipher key</h3>
-                <p>The tomb candle racks use the same 4×4 grid layout but with THREE states (lit/unlit/absent). If the boiler is the ciphertext and the tomb provides the key, combining them could unlock the decode. Community notes the candles "are in the same arrangement but can't be lit" — a possible cut input mechanism.</p>
+                <p>The tomb candle racks use the same 4×4 grid layout but with THREE states (lit/unlit/absent). If the boiler is the ciphertext and the tomb provides the key, combining them could unlock the decode. Community notes the candles "are in the same arrangement but can't be lit," a possible cut input mechanism.</p>
                 <div class="finding-card-meta">
                     <span>Source: u/tonydeez, Draaloff</span>
-                    <span>Highest priority lead — needs data collection</span>
+                    <span>Highest priority lead, needs data collection</span>
                 </div>
             </div>
 
@@ -182,7 +182,7 @@ Grid 15: [0,0,0,0] [1,0,0,0] [0,0,0,0] [0,0,1,1]  gap=M  ON=3</pre>
                 <p>The gate/grille behind the footbridge in the boiler room has black vertical bars of varying lengths. These could be an additional encoding layer (similar to a barcode) that provides the reading key for the panels.</p>
                 <div class="finding-card-meta">
                     <span>Source: u/SquirrelEmergency175</span>
-                    <span>Recently discovered — not yet decoded</span>
+                    <span>Recently discovered, not yet decoded</span>
                 </div>
             </div>
 
@@ -199,7 +199,7 @@ Grid 15: [0,0,0,0] [1,0,0,0] [0,0,0,0] [0,0,1,1]  gap=M  ON=3</pre>
             <div class="finding-card" data-status="testing">
                 <span class="finding-card-status testing">Testing</span>
                 <h3>Terry Pratchett's Clacks signaling system</h3>
-                <p>The panels bear a striking similarity to Pratchett's Clacks towers — 4×4 grids where lit/unlit bulbs transmit messages. If the game references this, the encoding may follow Clacks conventions (character-by-character semaphore with start/stop signals).</p>
+                <p>The panels bear a striking similarity to Pratchett's Clacks towers: 4×4 grids where lit/unlit bulbs transmit messages. If the game references this, the encoding may follow Clacks conventions (character-by-character semaphore with start/stop signals).</p>
                 <div class="finding-card-meta">
                     <span>Source: jewe</span>
                     <span>Thematic connection; encoding rules differ</span>
@@ -209,7 +209,7 @@ Grid 15: [0,0,0,0] [1,0,0,0] [0,0,0,0] [0,0,1,1]  gap=M  ON=3</pre>
             <div class="finding-card" data-status="debunked">
                 <span class="finding-card-status debunked">Debunked</span>
                 <h3>Standard Braille encoding (all variants)</h3>
-                <p>Every Braille variant tested — standard 6-dot, 8-dot, inverted, flipped, shifted, sub-region extraction, negative space — all produce gibberish or unrecognized characters. The 4×4 grid doesn't cleanly divide into Braille cells.</p>
+                <p>Every Braille variant tested (standard 6-dot, 8-dot, inverted, flipped, shifted, sub-region extraction, negative space) all produce gibberish or unrecognized characters. The 4×4 grid doesn't cleanly divide into Braille cells.</p>
                 <div class="finding-card-meta">
                     <span>Source: jewe</span>
                     <span>Exhaustively tested (12+ variants)</span>
@@ -239,7 +239,7 @@ Grid 15: [0,0,0,0] [1,0,0,0] [0,0,0,0] [0,0,1,1]  gap=M  ON=3</pre>
             <div class="finding-card" data-status="debunked">
                 <span class="finding-card-status debunked">Debunked</span>
                 <h3>Visual pixel font / composite image</h3>
-                <p>Arranging all 15 grids into strips (horizontal, vertical, grouped by word) and checking for recognizable letter shapes — nothing visible. The 4×4 resolution is too low for readable glyphs at any arrangement.</p>
+                <p>Arranging all 15 grids into strips (horizontal, vertical, grouped by word) and checking for recognizable letter shapes produces nothing visible. The 4×4 resolution is too low for readable glyphs at any arrangement.</p>
                 <div class="finding-card-meta">
                     <span>Source: jewe</span>
                     <span>No recognizable shapes</span>
@@ -249,7 +249,7 @@ Grid 15: [0,0,0,0] [1,0,0,0] [0,0,0,0] [0,0,1,1]  gap=M  ON=3</pre>
             <div class="finding-card" data-status="debunked">
                 <span class="finding-card-status debunked">Debunked</span>
                 <h3>Simple property mappings (count, sum, XOR)</h3>
-                <p>Mapping each grid to a letter via ON-count, position sum mod 26, XOR of positions, centroid direction, quadrant bits, connected components — all produce nonsense strings. No single mathematical property of the grid maps to English letters.</p>
+                <p>Mapping each grid to a letter via ON-count, position sum mod 26, XOR of positions, centroid direction, quadrant bits, connected components: all produce nonsense strings. No single mathematical property of the grid maps to English letters.</p>
                 <div class="finding-card-meta">
                     <span>Source: jewe</span>
                     <span>30+ property functions tested</span>
@@ -259,7 +259,7 @@ Grid 15: [0,0,0,0] [1,0,0,0] [0,0,0,0] [0,0,1,1]  gap=M  ON=3</pre>
             <div class="finding-card" data-status="debunked">
                 <span class="finding-card-status debunked">Debunked</span>
                 <h3>Blackbridge Grotto red dots = puzzle key</h3>
-                <p>One player mapped the red dots on server cabinets in Blackbridge Grotto to binary/hex — it decoded to the first 3 sentences of "Never Gonna Give You Up." Confirmed developer rickroll, not a cipher key.</p>
+                <p>One player mapped the red dots on server cabinets in Blackbridge Grotto to binary/hex. It decoded to the first 3 sentences of "Never Gonna Give You Up." Confirmed developer rickroll, not a cipher key.</p>
                 <div class="finding-card-meta">
                     <span>Source: u/sabrina-amsterdam-78</span>
                     <span>Intentional easter egg</span>
@@ -287,20 +287,20 @@ Grid 15: [0,0,0,0] [1,0,0,0] [0,0,0,0] [0,0,1,1]  gap=M  ON=3</pre>
 
         <div class="theory-item">
             <span class="theory-rank high">High Priority</span>
-            <h3 class="theory-title">Possibly cut/incomplete — awaiting v1.10 "definitive version"</h3>
+            <h3 class="theory-title">Possibly cut/incomplete, awaiting v1.10 "definitive version"</h3>
             <p class="theory-desc">The game is at v1.7 (April 2026). Prominent community member Draaloff states: "The panels could easily be another remnant of a cut puzzle." The Dirigiblocks update and v1.10 "definitive version" were promised to include unfinished items. The tomb candle input mechanism may be restored, finally making this solvable.</p>
         </div>
 
         <div class="theory-item">
             <span class="theory-rank medium">Medium</span>
             <h3 class="theory-title">Erajan alphabet: grid shapes ARE the letters</h3>
-            <p class="theory-desc">Blue Prince has a constructed in-game alphabet (Erajan). If its letter-forms happen to be defined on 4×4 grids, the panels could be directly readable without any cipher — just a font lookup. Nobody has yet mapped the full Erajan alphabet to verify this. The shape classification (L-shapes, lines, dots, diagonals) could be letter strokes.</p>
+            <p class="theory-desc">Blue Prince has a constructed in-game alphabet (Erajan). If its letter-forms happen to be defined on 4×4 grids, the panels could be directly readable without any cipher, just a font lookup. Nobody has yet mapped the full Erajan alphabet to verify this. The shape classification (L-shapes, lines, dots, diagonals) could be letter strokes.</p>
         </div>
 
         <div class="theory-item">
             <span class="theory-rank medium">Medium</span>
             <h3 class="theory-title">Underground Pass arches as Rosetta Stone</h3>
-            <p class="theory-desc">The underpass arches use a higher-base encoding (possibly base-4) of the same data. If three locations (boiler=binary, tomb=ternary, arches=base-4) all encode the same message differently, comparing them would crack the system — similar to how the actual Rosetta Stone worked. Requires systematic mapping of arch patterns.</p>
+            <p class="theory-desc">The underpass arches use a higher-base encoding (possibly base-4) of the same data. If three locations (boiler=binary, tomb=ternary, arches=base-4) all encode the same message differently, comparing them would crack the system, similar to how the actual Rosetta Stone worked. Requires systematic mapping of arch patterns.</p>
         </div>
 
         <div class="theory-item">

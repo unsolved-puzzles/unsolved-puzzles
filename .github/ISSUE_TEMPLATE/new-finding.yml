@@ -54,6 +54,14 @@ body:
       label: Your interpretation (optional)
       description: What do you think this means? Any theories?
 
+  - type: textarea
+    id: related-issues
+    attributes:
+      label: Related issues (optional)
+      description: "Link any existing findings or theories this relates to. Type # to search, or paste URLs."
+      placeholder: |
+        Related to #12 (the music sheet bold words finding)
+
   - type: dropdown
     id: confidence
     attributes:

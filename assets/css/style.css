@@ -193,6 +193,7 @@ a:hover {
     justify-content: center;
     text-align: center;
     padding: calc(var(--space-xl) * 2) var(--space-lg) var(--space-xl);
+    overflow: hidden;
 }
 
 .hero::before {
@@ -360,6 +361,37 @@ a:hover {
 .game-card-body {
     padding: var(--space-lg);
     padding-top: var(--space-md);
+}
+
+/* ── Game Card CTA (yellow-dotted submission link) ────────── */
+
+.game-card.game-card-cta {
+    border: 2px dashed rgba(212, 175, 55, 0.4);
+    background: rgba(212, 175, 55, 0.03);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    min-height: unset;
+}
+
+.game-card.game-card-cta:hover {
+    border-color: var(--accent-gold);
+    background: rgba(212, 175, 55, 0.08);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.15);
+}
+
+.game-card.game-card-cta .game-card-title {
+    color: var(--accent-gold);
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+}
+
+.game-card.game-card-cta .game-card-desc {
+    color: #888;
+    font-size: 0.85rem;
 }
 
 .game-card-title {
@@ -814,6 +846,11 @@ a:hover {
     color: white;
 }
 
+.finding-card-status.explained {
+    background: #2980b9;
+    color: white;
+}
+
 .finding-card h3 {
     font-family: var(--font-display);
     font-size: 1rem;
@@ -1134,7 +1171,7 @@ a:hover {
 .vote-count {
     font-size: 0.8rem;
     font-weight: 600;
-    color: #3a3a3a;
+    color: #e8e6e3;
 }
 
 .vote-discuss-link {
@@ -1148,4 +1185,154 @@ a:hover {
 .vote-discuss-link:hover {
     text-decoration: underline;
     color: #4a3d1a;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   Red Strings — Theory↔Finding Links
+   ═══════════════════════════════════════════════════════════════ */
+
+.theory-item[data-explains] {
+    cursor: pointer;
+    transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.theory-item[data-explains]:hover {
+    border-color: rgba(192, 57, 43, 0.3);
+}
+
+.theory-item.theory-active {
+    border-color: rgba(192, 57, 43, 0.6);
+    box-shadow: 0 0 12px rgba(192, 57, 43, 0.2), inset 0 0 8px rgba(192, 57, 43, 0.05);
+}
+
+.finding-card.finding-highlighted {
+    box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.5), 4px 4px 12px var(--paper-shadow);
+    transform: rotate(var(--rotation, 0deg)) scale(1.02);
+    z-index: 10;
+    transition: box-shadow 0.3s ease, transform 0.3s ease, opacity 0.3s ease, filter 0.3s ease;
+}
+
+.finding-card.finding-dimmed {
+    opacity: 0.3;
+    filter: grayscale(0.6);
+    transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+/* Red strings SVG overlay — must paint above all content sections */
+.red-strings-overlay {
+    z-index: 99999 !important;
+    isolation: isolate;
+}
+
+/* ── CTA Cards (Submit new finding/theory) ────────────────── */
+
+.finding-card.finding-card-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    border: 2px dashed rgba(212, 175, 55, 0.4);
+    background: rgba(212, 175, 55, 0.03);
+    transition: border-color var(--transition-base), background var(--transition-base);
+    height: auto;
+    min-height: unset;
+    align-self: start;
+    padding: var(--space-md) var(--space-lg);
+}
+
+.finding-card.finding-card-cta:hover {
+    border-color: var(--accent-gold);
+    background: rgba(212, 175, 55, 0.08);
+}
+
+.finding-card.finding-card-cta h3 {
+    color: var(--accent-gold);
+    padding-right: 0;
+}
+
+.finding-card.finding-card-cta p {
+    color: #888;
+    font-size: 0.85rem;
+}
+
+.theory-item.theory-item-cta {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    border: 2px dashed rgba(212, 175, 55, 0.4);
+    background: rgba(212, 175, 55, 0.03);
+    transition: border-color var(--transition-base), background var(--transition-base);
+}
+
+.theory-item.theory-item-cta:hover {
+    border-color: var(--accent-gold);
+    background: rgba(212, 175, 55, 0.08);
+}
+
+.theory-item.theory-item-cta .theory-title {
+    color: var(--accent-gold);
+}
+
+.theory-item.theory-item-cta .theory-desc {
+    color: var(--text-secondary);
+}
+
+/* Explains badge row inside theory items */
+.theory-explains-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.6rem;
+}
+
+.theory-explains-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.72rem;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 3px;
+    background: rgba(192, 57, 43, 0.1);
+    color: #c0392b;
+    border: 1px solid rgba(192, 57, 43, 0.2);
+    transition: background 0.2s ease;
+}
+
+.theory-explains-badge.badge-status-confirmed {
+    background: rgba(39, 174, 96, 0.15);
+    color: #27ae60;
+    border-color: rgba(39, 174, 96, 0.3);
+}
+
+.theory-explains-badge.badge-status-testing {
+    background: rgba(243, 156, 18, 0.15);
+    color: #f39c12;
+    border-color: rgba(243, 156, 18, 0.3);
+}
+
+.theory-explains-badge.badge-status-debunked {
+    background: rgba(127, 140, 141, 0.15);
+    color: #95a5a6;
+    border-color: rgba(127, 140, 141, 0.3);
+}
+
+.theory-explains-badge.badge-status-explained {
+    background: rgba(41, 128, 185, 0.15);
+    color: #3498db;
+    border-color: rgba(41, 128, 185, 0.3);
+}
+
+.theory-explains-badge::before {
+    content: "📌";
+    font-size: 0.65rem;
+}
+
+.theory-item.theory-dimmed {
+    opacity: 0.3;
+    filter: grayscale(0.6);
+    transition: opacity 0.3s ease, filter 0.3s ease;
 }

@@ -59,12 +59,13 @@
             <button class="filter-btn" data-filter="confirmed">Confirmed</button>
             <button class="filter-btn" data-filter="testing">Testing</button>
             <button class="filter-btn" data-filter="debunked">Debunked</button>
+            <button class="filter-btn" data-filter="explained">Explained</button>
         </div>
 
         <!-- Findings Grid -->
         <div class="findings-grid">
 
-            <div class="finding-card" data-status="confirmed">
+            <div class="finding-card" data-status="confirmed" id="finding-void-calendar-linked-to-cessation-cipher">
                 <span class="finding-card-status confirmed">Confirmed</span>
                 <h3>Void Calendar linked to Cessation Cipher</h3>
                 <p>The first 30 days of the Void Liquid calendar serve as the binary key for the Cessation Cipher, yielding: "SEEKING TRUTH, THE WISE FIND INSTEAD ITS PROFOUND ABSENCE".</p>
@@ -74,7 +75,7 @@
                 </div>
             </div>
 
-            <div class="finding-card" data-status="confirmed">
+            <div class="finding-card" data-status="confirmed" id="finding-mod-restricted-same-tier-as-eye-messages">
                 <span class="finding-card-status confirmed">Confirmed</span>
                 <h3>Mod-restricted: same tier as Eye Messages</h3>
                 <p>The Cauldron is one of three areas protected by mod restrictions. Mods prevent the room from spawning. This classification puts it alongside the only confirmed unsolved mystery in the game.</p>
@@ -84,7 +85,7 @@
                 </div>
             </div>
 
-            <div class="finding-card" data-status="confirmed">
+            <div class="finding-card" data-status="confirmed" id="finding-void-calendar-has-unused-data-beyond-30-bits">
                 <span class="finding-card-status confirmed">Confirmed</span>
                 <h3>Void Calendar has unused data beyond 30 bits</h3>
                 <p>The data chunk from which the calendar is derived contains far more information than the 30 bits used by the Cessation Cipher. The purpose of the remaining data is completely unknown.</p>
@@ -94,7 +95,7 @@
                 </div>
             </div>
 
-            <div class="finding-card" data-status="confirmed">
+            <div class="finding-card" data-status="confirmed" id="finding-permanence-altar-string-in-translations">
                 <span class="finding-card-status confirmed">Confirmed</span>
                 <h3>"Permanence Altar" string in translations</h3>
                 <p>The string <code>building_altar_always</code> → "Permanence Altar" exists in common.csv, added in the same update as the Cauldron. May be related to the Cauldron or to the Nullifying Altar.</p>
@@ -104,7 +105,7 @@
                 </div>
             </div>
 
-            <div class="finding-card" data-status="testing">
+            <div class="finding-card" data-status="testing" id="finding-leap-year-december-bug-intentional">
                 <span class="finding-card-status testing">Testing</span>
                 <h3>Leap year December bug: intentional?</h3>
                 <p>During December of leap years, the Cauldron contents vary unpredictably. Not dependent on date, time, seed, or any observable factor. Could be a bug or a deliberate hidden mechanic.</p>
@@ -114,15 +115,19 @@
                 </div>
             </div>
 
-            <div class="finding-card" data-status="debunked">
+            <div class="finding-card" data-status="debunked" id="finding-material-entity-interactions-in-the-cauldron">
                 <span class="finding-card-status debunked">Debunked</span>
                 <h3>Material / entity interactions in the Cauldron</h3>
                 <p>Extensive testing: bosses, entities (Kummitus, Karl, Hiisi Chef), alchemy, wands, Orbs of True Knowledge, meat, liquids, fungus. Nothing has yielded results. Lid removal doesn't change behavior.</p>
                 <div class="finding-card-meta">
                     <span>Source: wiki.gg</span>
                     <span><a href="https://noita.wiki.gg/wiki/Cauldron_Room/Test_logs_and_notes" target="_blank">Full logs</a></span>
-                </div>
-            </div>
+                </div></div>
+
+            <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/issues/new?template=new-finding.yml&puzzle=Noita%3A+The+Cauldron+Room" target="_blank" class="finding-card finding-card-cta">
+                <h3>+ Submit a New Finding</h3>
+                <p>Discovered something new about the Cauldron? Report it here.</p>
+            </a>
 
         </div>
     </section>
@@ -131,29 +136,33 @@
     <section class="theories-section">
         <h2 class="section-title">Theories (Ranked)</h2>
 
-        <div class="theory-item">
+        <div class="theory-item" data-explains="finding-void-calendar-linked-to-cessation-cipher">
             <span class="theory-rank high">High Priority</span>
             <h3 class="theory-title">Profound Absence: the Cauldron was the question, not the puzzle</h3>
             <p class="theory-desc">The Cessation Cipher's decoded message ("SEEKING TRUTH, THE WISE FIND INSTEAD ITS PROFOUND ABSENCE") may be the developers' way of saying the Cauldron itself has no hidden function. The mystery was the point. Supporters note 5+ years of fruitless testing and the Epilogue 2 retroactively tying the calendar into the questline as a "closing of the book."</p>
         </div>
 
-        <div class="theory-item">
+        <div class="theory-item" data-explains="finding-void-calendar-linked-to-cessation-cipher,finding-material-entity-interactions-in-the-cauldron">
             <span class="theory-rank medium">Medium</span>
             <h3 class="theory-title">Date-specific Cauldron interactions</h3>
             <p class="theory-desc">Based on the Cessation Cipher connection, the Cauldron may respond differently on specific dates within the Void calendar. Certain days might trigger unique material reactions or reveal hidden content, but no date-specific behavior has been observed so far.</p>
         </div>
 
-        <div class="theory-item">
+        <div class="theory-item" data-explains="finding-permanence-altar-string-in-translations">
             <span class="theory-rank medium">Medium</span>
             <h3 class="theory-title">Altar of Permanence: cross-run persistence</h3>
             <p class="theory-desc">The "Permanence Altar" translation string (added alongside the Cauldron) suggests a mechanism for transferring objects or states between NG+ runs. However, the string may also relate to the Nullifying Altar, and no verifiable evidence supports a direct link.</p>
         </div>
 
-        <div class="theory-item">
+        <div class="theory-item" data-explains="finding-void-calendar-linked-to-cessation-cipher,finding-mod-restricted-same-tier-as-eye-messages,finding-void-calendar-has-unused-data-beyond-30-bits">
             <span class="theory-rank low">Lower Priority</span>
             <h3 class="theory-title">Portal / hidden entry theory</h3>
             <p class="theory-desc">Unlike similar hidden rooms (Meditation Room, Ancient Eye Room), the Cauldron Room has no identifiable entrance or exit portal. Some theorize an undiscovered entry method exists that, if found, would alter or add functionality to the room.</p>
         </div>
+        <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/issues/new?template=new-theory.yml&puzzle=Noita%3A+The+Cauldron+Room" target="_blank" class="theory-item theory-item-cta">
+            <h3 class="theory-title">+ Submit a New Theory</h3>
+            <p class="theory-desc">Have a theory about the Cauldron's purpose? Share it.</p>
+        </a>
     </section>
 
     <!-- Community Resources -->
@@ -260,6 +269,7 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
     <script src="../assets/js/main.js?v=2"></script>
     <script src="../assets/js/votes.js?v=2"></script>
+    <script src="../assets/js/red-strings.js?v=2"></script>
     <script src="../assets/js/noita-bg.js"></script>
 </body>
 </html>

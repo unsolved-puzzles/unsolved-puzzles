@@ -1,3 +1,4 @@
 .env
 __pycache__/
 .github/copilot/
+create_issues.py

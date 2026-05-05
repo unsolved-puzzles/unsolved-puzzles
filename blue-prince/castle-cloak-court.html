@@ -58,12 +58,13 @@
             <button class="filter-btn" data-filter="confirmed">Confirmed</button>
             <button class="filter-btn" data-filter="testing">Testing</button>
             <button class="filter-btn" data-filter="debunked">Debunked</button>
+            <button class="filter-btn" data-filter="explained">Explained</button>
         </div>
 
         <!-- Findings Grid -->
         <div class="findings-grid">
 
-            <div class="finding-card" data-status="confirmed">
+            <div class="finding-card" data-status="confirmed" id="finding-binary-decodes-to-arie">
                 <span class="finding-card-status confirmed">Confirmed</span>
                 <h3>Binary decodes to ARIE</h3>
                 <p>The dots and lines between words are binary. Multiple players have independently verified: 01000001 01010010 01001001 01000101 = A, R, I, E. The pattern repeats on loop, each letter lasting roughly a quarter second.</p>
@@ -73,7 +74,7 @@
                 </div>
             </div>
 
-            <div class="finding-card" data-status="confirmed">
+            <div class="finding-card" data-status="confirmed" id="finding-three-words-appear-on-first-grotto-unlock">
                 <span class="finding-card-status confirmed">Confirmed</span>
                 <h3>Three words appear on first Grotto unlock</h3>
                 <p>Castle, Court, Cloak flash on the computer screen in sequence when the Grotto is first accessed. This is not a random event; it triggers consistently for every player on their first visit.</p>
@@ -83,7 +84,7 @@
                 </div>
             </div>
 
-            <div class="finding-card" data-status="confirmed">
+            <div class="finding-card" data-status="confirmed" id="finding-castle-connects-to-the-castle-puzzle-key-of-aries">
                 <span class="finding-card-status confirmed">Confirmed</span>
                 <h3>"Castle" connects to the Castle puzzle (Key of Aries)</h3>
                 <p>The castle puzzle leads to the Court of Aries and the tomb containing the Key of Aries. "Castle" and "Court" have clear in-game referents. The first statue's note in the court explicitly mentions you are in a court where the king now lays.</p>
@@ -93,7 +94,7 @@
                 </div>
             </div>
 
-            <div class="finding-card" data-status="testing">
+            <div class="finding-card" data-status="testing" id="finding-cloak-vs-clock-speed-anomaly">
                 <span class="finding-card-status testing">Testing</span>
                 <h3>"Cloak" vs "Clock" speed anomaly</h3>
                 <p>When the text scrolls quickly, the word reads as "clock" (matching the clock puzzle in the tomb). When slowed, it reads "cloak". One user reports this is reproducible. Could be a deliberate double-meaning.</p>
@@ -103,7 +104,7 @@
                 </div>
             </div>
 
-            <div class="finding-card" data-status="testing">
+            <div class="finding-card" data-status="testing" id="finding-arie-aries-minus-the-missing-letter">
                 <span class="finding-card-status testing">Testing</span>
                 <h3>ARIE = ARIES minus the missing letter</h3>
                 <p>If the game's keyboards are all missing the letter I, and ARIE is missing an S, perhaps the "missing letter" theme applies here too. ARIES with one letter missing = ARIE. Connects to the Key of Aries and the broader "missing letter" motif.</p>
@@ -113,7 +114,7 @@
                 </div>
             </div>
 
-            <div class="finding-card" data-status="testing">
+            <div class="finding-card" data-status="testing" id="finding-anagram-potential-with-missing-letters">
                 <span class="finding-card-status testing">Testing</span>
                 <h3>Anagram potential with missing letters</h3>
                 <p>Castle (missing a letter) can anagram to: Scarlet, Locates, Claret. Court can become Cuatro, Outcry. ARIE can become ARISE. The music/food connections (Celesta, Croute) are interesting but unconfirmed as meaningful.</p>
@@ -123,7 +124,7 @@
                 </div>
             </div>
 
-            <div class="finding-card" data-status="testing">
+            <div class="finding-card" data-status="testing" id="finding-cloak-as-cloakingobscuring">
                 <span class="finding-card-status testing">Testing</span>
                 <h3>"Cloak" as cloaking/obscuring</h3>
                 <p>Beyond the garment meaning, "cloak" implies concealment. One theory: Auravel built the house to mask/cloak the original ruins buried underground. The word may describe the manor's purpose rather than reference a physical object.</p>
@@ -133,7 +134,7 @@
                 </div>
             </div>
 
-            <div class="finding-card" data-status="testing">
+            <div class="finding-card" data-status="testing" id="finding-red-prince-manuscript-connection">
                 <span class="finding-card-status testing">Testing</span>
                 <h3>Red Prince manuscript connection</h3>
                 <p>The Red Prince is depicted on the throne wearing a cloak and holding items. "Castle" and "Court" are direct hints toward reclaiming the throne. "Cloak" might point you toward the prince's appearance in the manuscript for the third piece needed.</p>
@@ -143,7 +144,7 @@
                 </div>
             </div>
 
-            <div class="finding-card" data-status="confirmed">
+            <div class="finding-card" data-status="confirmed" id="finding-scrapped-demo-mechanic-datamined">
                 <span class="finding-card-status confirmed">Confirmed</span>
                 <h3>Scrapped demo mechanic (datamined)</h3>
                 <p>Datamining the demo's Computer System revealed Castle, Court, and Cloak were three programs that each opened one part of a three-piece door (top, left, right) to access the Orindian Ruins. The system was removed before the full game shipped, but the cutscene referencing them was kept. Each word triggered a different door segment: Castle = top, Cloak = left, Court = right.</p>
@@ -153,15 +154,19 @@
                 </div>
             </div>
 
-            <div class="finding-card" data-status="debunked">
+            <div class="finding-card" data-status="debunked" id="finding-simple-foreshadowing-of-game-progression">
                 <span class="finding-card-status debunked">Debunked</span>
                 <h3>Simple foreshadowing of game progression</h3>
                 <p>"Castle to get into the Court, then clock puzzle." This reading accounts for Castle and Court, but doesn't explain why it says "cloak" specifically, or why binary encodes ARIE. Too much deliberate encoding for simple foreshadowing.</p>
                 <div class="finding-card-meta">
                     <span>Source: u/pfcguy</span>
                     <span>Insufficient explanation</span>
-                </div>
-            </div>
+                </div></div>
+
+            <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/issues/new?template=new-finding.yml&puzzle=Blue+Prince%3A+Castle+Cloak+Court" target="_blank" class="finding-card finding-card-cta">
+                <h3>+ Submit a New Finding</h3>
+                <p>Found another connection to Castle, Cloak, or Court? Report it.</p>
+            </a>
 
         </div>
     </section>
@@ -170,17 +175,21 @@
     <section class="theories-section">
         <h2 class="section-title">Theories (Ranked)</h2>
 
-        <div class="theory-item">
+        <div class="theory-item" data-explains="finding-binary-decodes-to-arie,finding-three-words-appear-on-first-grotto-unlock,finding-castle-connects-to-the-castle-puzzle-key-of-aries">
             <span class="theory-rank high">High Priority, Confirmed</span>
             <h3 class="theory-title">Scrapped mechanic: three programs to open Blackbridge door</h3>
             <p class="theory-desc">Datamining by u/maserion confirmed that Castle, Court, and Cloak were originally three separate Synka programs in the demo. Each opened one segment of a door to access the Orindian Ruins. The system was cut, but the cutscene was already locked in and shipped with the final game. The words reference removed gameplay, not an active puzzle. <a href="https://www.reddit.com/r/BluePrince69/comments/1s4jsa9/blackbridge_demo/" target="_blank">Source thread →</a></p>
         </div>
 
-        <div class="theory-item">
+        <div class="theory-item" data-explains="finding-binary-decodes-to-arie,finding-scrapped-demo-mechanic-datamined">
             <span class="theory-rank low">Lower Priority</span>
             <h3 class="theory-title">Could still have a secondary meaning in final game</h3>
             <p class="theory-desc">While the primary explanation is now clear (scrapped mechanic), some argue the developers may have repurposed the words with a new meaning. The binary ARIE encoding and the Aries connections remain interesting. However, no evidence of active puzzle mechanics has been found tied to these words in the shipped game.</p>
         </div>
+        <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/issues/new?template=new-theory.yml&puzzle=Blue+Prince%3A+Castle+Cloak+Court" target="_blank" class="theory-item theory-item-cta">
+            <h3 class="theory-title">+ Submit a New Theory</h3>
+            <p class="theory-desc">Think these words still have meaning in the final game? Share your theory.</p>
+        </a>
     </section>
 
     <!-- Discussion -->
@@ -215,5 +224,6 @@
     <script src="../assets/js/blue-prince-bg.js"></script>
     <script src="../assets/js/main.js?v=2"></script>
     <script src="../assets/js/votes.js?v=2"></script>
+    <script src="../assets/js/red-strings.js?v=2"></script>
 </body>
 </html>

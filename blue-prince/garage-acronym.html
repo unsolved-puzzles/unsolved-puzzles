@@ -59,12 +59,13 @@
             <button class="filter-btn" data-filter="confirmed">Confirmed</button>
             <button class="filter-btn" data-filter="testing">Testing</button>
             <button class="filter-btn" data-filter="debunked">Debunked</button>
+            <button class="filter-btn" data-filter="explained">Explained</button>
         </div>
 
         <!-- Findings Grid -->
         <div class="findings-grid">
 
-            <div class="finding-card" data-status="confirmed">
+            <div class="finding-card" data-status="confirmed" id="finding-license-plate-reads-swnsng-confirmed-as-acronym">
                 <span class="finding-card-status confirmed">Confirmed</span>
                 <h3>License plate reads SWNSNG, confirmed as acronym</h3>
                 <p>The Garage car (8th rank only) displays plate SWNSNG. A Blue Tent memo explicitly states: "The license plate on this car is an acronym." This is a deliberate puzzle hint, not flavour text.</p>
@@ -74,7 +75,7 @@
                 </div>
             </div>
 
-            <div class="finding-card" data-status="confirmed">
+            <div class="finding-card" data-status="confirmed" id="finding-swnsng-is-also-the-security-terminal-password">
                 <span class="finding-card-status confirmed">Confirmed</span>
                 <h3>SWNSNG is also the security terminal password</h3>
                 <p>The same string SWNSNG serves as the password for the security terminal. This dual usage (license plate + password) suggests it's a key piece of information the game wants players to engage with from multiple angles.</p>
@@ -84,7 +85,7 @@
                 </div>
             </div>
 
-            <div class="finding-card" data-status="confirmed">
+            <div class="finding-card" data-status="confirmed" id="finding-missing-vowels-a-and-o-found-in-safehouse-and-attic">
                 <span class="finding-card-status confirmed">Confirmed</span>
                 <h3>Missing vowels A and O found in Safehouse and Attic</h3>
                 <p>To complete SWNSNG → SWANSONG, you need A and O. These exact letters appear as hints in the Safehouse and Attic respectively. This links the license plate to the broader security/password puzzle chain.</p>
@@ -94,7 +95,7 @@
                 </div>
             </div>
 
-            <div class="finding-card" data-status="confirmed">
+            <div class="finding-card" data-status="confirmed" id="finding-security-monitor-rooms-spell-out-related-letters">
                 <span class="finding-card-status confirmed">Confirmed</span>
                 <h3>Security monitor rooms spell out related letters</h3>
                 <p>The rooms shown on security monitors have first letters that correspond to SWNSNG: Spare Room, Walk-in Closet, Nook, Storeroom, Nursery, Gallery. With the Safehouse and Attic vowels added, the full sequence spells SWANSONGHSS or similar.</p>
@@ -104,7 +105,7 @@
                 </div>
             </div>
 
-            <div class="finding-card" data-status="confirmed">
+            <div class="finding-card" data-status="confirmed" id="finding-atelier-maze-route-spells-swansong-via-picture-clues">
                 <span class="finding-card-status confirmed">Confirmed</span>
                 <h3>Atelier maze route spells SWANSONG via picture clues</h3>
                 <p>The solution path through the Atelier maze passes through blue Mora Jai boxes. Their picture clues spell SWANSONG, while the Mora Jai text clues read "We seek what's in the shade of truth," the family motto completed by BLUE in Room 46.</p>
@@ -114,7 +115,7 @@
                 </div>
             </div>
 
-            <div class="finding-card" data-status="confirmed">
+            <div class="finding-card" data-status="confirmed" id="finding-car-trunk-contains-moonshine-still-water">
                 <span class="finding-card-status confirmed">Confirmed</span>
                 <h3>Car trunk contains moonshine (still water)</h3>
                 <p>The car was used for running moonshine, evidenced by what's found in the trunk. "Still Water" appears elsewhere in the game as a significant concept, potentially linking the first two letters (SW) to Still Water rather than cardinal directions.</p>
@@ -124,7 +125,7 @@
                 </div>
             </div>
 
-            <div class="finding-card" data-status="confirmed">
+            <div class="finding-card" data-status="confirmed" id="finding-swan-song-motif-appears-throughout-the-game">
                 <span class="finding-card-status confirmed">Confirmed</span>
                 <h3>"Swan Song" motif appears throughout the game</h3>
                 <p>The phrase Swan Song recurs in connection to the Epsen family, Mary's legacy, and the Clock Tower SACRED acrostic. The game embeds this phrase at multiple levels: thematic, puzzle-mechanical, and as a meta-clue.</p>
@@ -134,7 +135,7 @@
                 </div>
             </div>
 
-            <div class="finding-card" data-status="testing">
+            <div class="finding-card" data-status="testing" id="finding-cardinal-directions-s-w-n-s-n-g-path-to-open-gate">
                 <span class="finding-card-status testing">Testing</span>
                 <h3>Cardinal directions: S-W-N-S-N-G (path to open gate?)</h3>
                 <p>Reading as compass directions: South, West, North, South, North, then G = Gate/Garage/Garden. Could describe a path through rooms from the Entrance Hall to the Garage, or directions on the estate map. One player tried every weathervane combination without success.</p>
@@ -144,7 +145,7 @@
                 </div>
             </div>
 
-            <div class="finding-card" data-status="testing">
+            <div class="finding-card" data-status="testing" id="finding-seek-whats-n-shadow-new-game-theory">
                 <span class="finding-card-status testing">Testing</span>
                 <h3>"Seek What's N Shadow... New Game" theory</h3>
                 <p>SWNSNG as: Seek What('s) N (the) Shadow... N-G = "New Game." Theory suggests 100%ing the game in a new save (possibly Curse mode) might reveal something different where shade clues are used. Untested due to the extreme time investment required.</p>
@@ -154,7 +155,7 @@
                 </div>
             </div>
 
-            <div class="finding-card" data-status="testing">
+            <div class="finding-card" data-status="testing" id="finding-each-letter-maps-to-a-word-in-the-family-motto">
                 <span class="finding-card-status testing">Testing</span>
                 <h3>Each letter maps to a word in the family motto</h3>
                 <p>In the Atelier, each room has both a letter (spelling SWANSONG) and a word (forming the motto). If SWANSONG is a cipher key where each letter = a word, then SWNSNG (without vowels) might encode a subset of the motto. Controversial: many argue this isn't what "acronym" means.</p>
@@ -164,7 +165,7 @@
                 </div>
             </div>
 
-            <div class="finding-card" data-status="testing">
+            <div class="finding-card" data-status="testing" id="finding-still-water-connection-sw-still-water">
                 <span class="finding-card-status testing">Testing</span>
                 <h3>Still Water connection (SW = Still Water)</h3>
                 <p>Given the moonshine in the trunk, SW could mean "Still Water" rather than South-West. However, one player notes that Herbie never figured out Still Water in-game, making it unlikely the game would use it as a premise for another puzzle.</p>
@@ -174,7 +175,7 @@
                 </div>
             </div>
 
-            <div class="finding-card" data-status="testing">
+            <div class="finding-card" data-status="testing" id="finding-multiple-acronyms-chain-together-sacred-castle-swnsng">
                 <span class="finding-card-status testing">Testing</span>
                 <h3>Multiple acronyms chain together (SACRED + CASTLE + SWNSNG)</h3>
                 <p>The Clock Tower acrostic spells SACRED, CASTLE is another game acronym, and SWNSNG is a third. These might combine into a larger meta-puzzle. No one has found a unifying mechanism yet.</p>
@@ -184,7 +185,7 @@
                 </div>
             </div>
 
-            <div class="finding-card" data-status="debunked">
+            <div class="finding-card" data-status="debunked" id="finding-weathervane-directions-dont-work">
                 <span class="finding-card-status debunked">Debunked</span>
                 <h3>Weathervane directions don't work</h3>
                 <p>Reading SWNSNG as compass directions and trying them on the weathervane produced no results. One player tried "absolutely every weathervane combination" without success.</p>
@@ -194,15 +195,19 @@
                 </div>
             </div>
 
-            <div class="finding-card" data-status="debunked">
+            <div class="finding-card" data-status="debunked" id="finding-the-memo-simply-means-its-swansong-without-vowels">
                 <span class="finding-card-status debunked">Debunked</span>
                 <h3>The memo simply means "it's SWANSONG without vowels"</h3>
                 <p>If the answer were just "add vowels to get Swan Song," a Blue Tent memo wouldn't call it an acronym. It would say something about missing letters. The word "acronym" specifically means each letter represents a word, pointing to a deeper layer.</p>
                 <div class="finding-card-meta">
                     <span>Source: u/Lightborne</span>
                     <span>Too shallow for a Blue Tent hint</span>
-                </div>
-            </div>
+                </div></div>
+
+            <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/issues/new?template=new-finding.yml&puzzle=Blue+Prince%3A+Garage+Acronym" target="_blank" class="finding-card finding-card-cta">
+                <h3>+ Submit a New Finding</h3>
+                <p>Found another SWNSNG reference or acronym connection? Report it.</p>
+            </a>
 
         </div>
     </section>
@@ -211,42 +216,45 @@
     <section class="theories-section">
         <h2 class="section-title">Theories (Ranked)</h2>
 
-        <div class="theory-item">
+        <div class="theory-item" data-explains="finding-missing-vowels-a-and-o-found-in-safehouse-and-attic,finding-each-letter-maps-to-a-word-in-the-family-motto">
             <span class="theory-rank high">High Priority</span>
             <h3 class="theory-title">Security monitor room initials (acronym of room names)</h3>
             <p class="theory-desc">The most widely accepted theory: each letter of SWNSNG is the first letter of a room shown on the security monitors (Spare Room, Walk-in Closet, Nook, Storeroom, Nursery, Gallery). With the Safehouse A and Attic O, you get the full word SWANSONG. This satisfies the literal definition of acronym: each letter stands for a word. The remaining question is whether this is the complete answer or just one layer.</p>
         </div>
 
-        <div class="theory-item">
+        <div class="theory-item" data-explains="finding-swnsng-is-also-the-security-terminal-password,finding-each-letter-maps-to-a-word-in-the-family-motto,finding-still-water-connection-sw-still-water,finding-the-memo-simply-means-its-swansong-without-vowels">
             <span class="theory-rank high">High Priority</span>
             <h3 class="theory-title">Multi-layered hint pointing beyond itself</h3>
             <p class="theory-desc">SWNSNG may simultaneously be: (1) the security password, (2) an acronym of room names, (3) SWANSONG without vowels, and (4) a pointer to the Atelier maze solution. The Blue Tent memo exists to tell the player that all these connections are intentional and form part of a unified puzzle chain involving the family motto.</p>
         </div>
 
-        <div class="theory-item">
+        <div class="theory-item" data-explains="finding-cardinal-directions-s-w-n-s-n-g-path-to-open-gate,finding-weathervane-directions-dont-work">
             <span class="theory-rank medium">Medium</span>
             <h3 class="theory-title">Cardinal direction path through the estate</h3>
             <p class="theory-desc">S-W-N-S-N-G as movement directions from a starting room. G could be Gate, Garage, or Garden. Starting from the Entrance Hall and moving South-West-North-South-North then entering the Garage/Gate might trigger something. Weathervane has been ruled out, but physical room traversal hasn't been exhaustively tested.</p>
         </div>
 
-        <div class="theory-item">
+        <div class="theory-item" data-explains="finding-license-plate-reads-swnsng-confirmed-as-acronym,finding-atelier-maze-route-spells-swansong-via-picture-clues,finding-swan-song-motif-appears-throughout-the-game,finding-cardinal-directions-s-w-n-s-n-g-path-to-open-gate,finding-the-memo-simply-means-its-swansong-without-vowels">
             <span class="theory-rank medium">Medium</span>
             <h3 class="theory-title">Hint for the Atelier maze (SWANSONG = route marker)</h3>
             <p class="theory-desc">The license plate primes the player to look for SWANSONG in the endgame. In the Atelier, following only blue Mora Jai boxes whose pictures spell SWANSONG gives you the correct maze path. The memo isn't asking you to solve an acronym; it's telling you the word SWANSONG will be important later as a navigation key.</p>
         </div>
 
-        <div class="theory-item">
+        <div class="theory-item" data-explains="finding-seek-whats-n-shadow-new-game-theory">
             <span class="theory-rank low">Lower Priority</span>
             <h3 class="theory-title">New Game meta-puzzle (Seek What's N Shadow + NG)</h3>
             <p class="theory-desc">A creative reading: "Seek What's N (the) Shadow... New Game." Implies that after completing the game, starting fresh might reveal changed content where shade/truth clues appear. Extremely speculative and would require massive time investment to test. No precedent for this type of meta-puzzle in the game.</p>
         </div>
 
-        <div class="theory-item">
+        <div class="theory-item" data-explains="finding-the-memo-simply-means-its-swansong-without-vowels">
             <span class="theory-rank low">Lower Priority</span>
             <h3 class="theory-title">Developer misused the word "acronym"</h3>
             <p class="theory-desc">Some argue the solo developer simply meant "it's a word with vowels removed" and used "acronym" loosely. However, the game has been patched to fix other imprecise wording (TRUE→CLUE, moon→sun chest), suggesting deliberate language choices. If it were wrong, it likely would have been patched by now.</p>
         </div>
-
+        <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/issues/new?template=new-theory.yml&puzzle=Blue+Prince%3A+Garage+Acronym" target="_blank" class="theory-item theory-item-cta">
+            <h3 class="theory-title">+ Submit a New Theory</h3>
+            <p class="theory-desc">Have a theory about where SWNSNG leads? Share it.</p>
+        </a>
     </section>
 
     <!-- Discussion -->
@@ -281,5 +289,6 @@
     <script src="../assets/js/blue-prince-bg.js"></script>
     <script src="../assets/js/main.js?v=2"></script>
     <script src="../assets/js/votes.js?v=2"></script>
+    <script src="../assets/js/red-strings.js?v=2"></script>
 </body>
 </html>

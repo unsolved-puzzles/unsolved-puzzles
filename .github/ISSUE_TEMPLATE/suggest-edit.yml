@@ -1,5 +1,5 @@
 name: ✏️ Suggest an Edit
-description: Suggest a correction or addition to an existing puzzle page
+description: Suggest a correction, debunk, status change, or addition to an existing puzzle page
 title: "[Edit] "
 labels: ["edit-suggestion"]
 body:
@@ -26,6 +26,20 @@ body:
     validations:
       required: true
 
+  - type: dropdown
+    id: edit-type
+    attributes:
+      label: Type of edit
+      description: What kind of change are you suggesting?
+      options:
+        - "Debunk — disprove a finding or theory"
+        - "Status change — mark as explained, confirmed, etc."
+        - "Correction — fix an error in existing text"
+        - "Addition — add missing information"
+        - "Other"
+    validations:
+      required: true
+
   - type: input
     id: page-other
     attributes:
@@ -34,22 +48,31 @@ body:
       placeholder: "https://unsolved-puzzles.github.io/unsolved-puzzles/..."
 
   - type: textarea
+    id: related-issues
+    attributes:
+      label: Related issues
+      description: "Link the finding or theory issue this edit targets. Type # to search, or paste URLs."
+      placeholder: |
+        #42 (the finding about brute force repetition)
+
+  - type: textarea
     id: what-to-change
     attributes:
       label: What should be changed?
-      description: Describe what's wrong or what should be added.
+      description: Describe what's wrong or what should be added/corrected.
       placeholder: |
-        The findings section is missing the Alzara quote about...
+        The "brute force" finding should be marked as "explained" because...
     validations:
       required: true
 
   - type: textarea
     id: why
     attributes:
-      label: Why?
-      description: Why is this change needed? Link to a source if possible.
+      label: Evidence / Why?
+      description: Why is this change needed? Link to a source if possible. For debunks, explain your counter-evidence.
       placeholder: |
         Source: https://discord.com/channels/...
+        This is explained by the sledgehammer mechanic because...
     validations:
       required: true
 

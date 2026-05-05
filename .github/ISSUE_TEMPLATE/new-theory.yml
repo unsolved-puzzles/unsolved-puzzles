@@ -1,4 +1,4 @@
-name: 💡 Theory
+name: 💡 New Theory
 description: Propose a theory about how a puzzle works or what it means
 title: "[Theory] "
 labels: ["theory", "discussion"]
@@ -34,6 +34,16 @@ body:
         I believe the cipher works by...
     validations:
       required: true
+
+  - type: textarea
+    id: related-issues
+    attributes:
+      label: Related findings or theories
+      description: "Link existing issues this theory relates to. Type # to search, or paste URLs."
+      placeholder: |
+        This theory explains:
+        - #42 (brute force repetition)
+        - #43 (holding hands repetition)
 
   - type: textarea
     id: supporting-evidence

@@ -57,12 +57,13 @@
             <button class="filter-btn" data-filter="confirmed">Confirmed</button>
             <button class="filter-btn" data-filter="testing">Testing</button>
             <button class="filter-btn" data-filter="debunked">Debunked</button>
+            <button class="filter-btn" data-filter="explained">Explained</button>
         </div>
 
         <!-- Findings Grid -->
         <div class="findings-grid">
 
-            <div class="finding-card" data-status="confirmed">
+            <div class="finding-card" data-status="confirmed" id="finding-resistant-to-brute-force">
                 <span class="finding-card-status confirmed">Confirmed</span>
                 <h3>The Curse of Blackbridge: "resistant to brute force"</h3>
                 <p>The novel contains two nearly identical sentences: "If there was ever a time when that lock had been resistant to brute force, it wasn't recent" and later "If there was ever a time when the old man had been resistant to brute force, it wasn't recent." The structure is identical, only "that lock" changes to "the old man." This is the most egregious example: no author would accidentally duplicate an entire complex sentence with one substitution. <a href="https://blue-prince.fandom.com/wiki/The_Curse_of_Black_Bridge" target="_blank" title="Read full transcript on Fandom Wiki">&#x1F4DC; Full text</a></p>
@@ -72,7 +73,7 @@
                 </div>
             </div>
 
-            <div class="finding-card" data-status="confirmed">
+            <div class="finding-card" data-status="confirmed" id="finding-holding-hands-throwing-stones">
                 <span class="finding-card-status confirmed">Confirmed</span>
                 <h3>Red Letter 5: "Holding hands and throwing stones"</h3>
                 <p>Mary's Red Letter 5 (November 8) contains the phrase "holding hands and throwing stones" twice within the same letter. First as part of a sentence: "The thin wire we stood upon, above the world, holding hands and throwing stones." Then immediately repeated as its own standalone line. This mirrors the Blackbridge pattern of deliberate textual repetition. <a href="https://blue-prince.fandom.com/wiki/Red_Letter_5" target="_blank" title="Read Red Letter 5 on Fandom Wiki">&#x1F4DC; Full text</a></p>
@@ -82,7 +83,7 @@
                 </div>
             </div>
 
-            <div class="finding-card" data-status="confirmed">
+            <div class="finding-card" data-status="confirmed" id="finding-spelling-inconsistencies">
                 <span class="finding-card-status confirmed">Confirmed</span>
                 <h3>Herbert S. Sinclair's will: spelling inconsistencies</h3>
                 <p>The will contains internal spelling contradictions: "lake house" (two words) then "lakehouse" (one word) within the same paragraph; "grandnephew" used three times then "grand-nephew" (hyphenated) in the final clause; and "timely manor" instead of "timely manner" (a homophone substitution referencing the house itself). In a game where every letter matters, these look deliberate rather than accidental. <a href="https://blue-prince.fandom.com/wiki/Will_of_Herbert_S._Sinclair" target="_blank" title="Read full will on Fandom Wiki">&#x1F4DC; Full text</a></p>
@@ -92,6 +93,11 @@
                 </div>
             </div>
 
+            <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/issues/new?template=new-finding.yml&puzzle=Blue+Prince%3A+Repeated+Phrases" target="_blank" class="finding-card finding-card-cta">
+                <h3>+ Submit a New Finding</h3>
+                <p>Spotted a repeated phrase we haven't listed? Help the community by reporting it.</p>
+            </a>
+
         </div>
     </section>
 
@@ -99,23 +105,28 @@
     <section class="theories-section">
         <h2 class="section-title">Theories (Ranked)</h2>
 
-        <div class="theory-item">
+        <div class="theory-item" data-explains="finding-resistant-to-brute-force,finding-holding-hands-throwing-stones,finding-spelling-inconsistencies">
             <span class="theory-rank high">High Priority</span>
             <h3 class="theory-title">Repeated lines mark text to extract</h3>
             <p class="theory-desc">Like bold words in the music sheets spell a message, repeated phrases across documents may be the "key text" to collect. Reading only the duplicated lines in document order could form a coherent instruction or clue. The pattern mirrors how the music puzzle works: identify the anomaly, extract it, read in sequence.</p>
         </div>
 
-        <div class="theory-item">
+        <div class="theory-item" data-explains="finding-resistant-to-brute-force">
             <span class="theory-rank medium">Medium</span>
             <h3 class="theory-title">Differences between duplicates encode information</h3>
             <p class="theory-desc">In the Blackbridge example, the only difference is "that lock" becoming "the old man." If each pair of duplicates has exactly one substitution, those changed words might spell something when collected. The substitutions could be the actual cipher: what changes between otherwise identical sentences.</p>
         </div>
 
-        <div class="theory-item">
+        <div class="theory-item" data-explains="finding-resistant-to-brute-force,finding-holding-hands-throwing-stones">
             <span class="theory-rank medium">Medium</span>
             <h3 class="theory-title">Connection to "endnote revised"</h3>
             <p class="theory-desc">The Music Room's Layer 2 puzzle yields "endnote revised", suggesting a document has been altered. Repeated phrases could be the revision markers: the original text and the revised version sitting side by side. Identifying which version is "original" vs "revised" across all documents may reveal the intended reading.</p>
         </div>
+
+        <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/issues/new?template=new-theory.yml&puzzle=Blue+Prince%3A+Repeated+Phrases" target="_blank" class="theory-item theory-item-cta">
+            <h3 class="theory-title">+ Submit a New Theory</h3>
+            <p class="theory-desc">Have an idea about what these repetitions mean? Share your theory with the community.</p>
+        </a>
 
     </section>
 
@@ -151,5 +162,6 @@
     <script src="../assets/js/blue-prince-bg.js"></script>
     <script src="../assets/js/main.js?v=2"></script>
     <script src="../assets/js/votes.js?v=2"></script>
+    <script src="../assets/js/red-strings.js?v=2"></script>
 </body>
 </html>

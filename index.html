@@ -187,18 +187,6 @@
         });
         const casesEl = document.getElementById('stat-cases');
         if (casesEl) casesEl.textContent = totalCases;
-
-        // Contributors: fetch unique issue authors from GitHub API
-        const contribEl = document.getElementById('stat-contributors');
-        if (contribEl) {
-            fetch('https://api.github.com/repos/unsolved-puzzles/unsolved-puzzles/issues?state=all&per_page=100')
-                .then(r => r.ok ? r.json() : [])
-                .then(issues => {
-                    const authors = new Set(issues.map(i => i.user && i.user.login).filter(Boolean));
-                    contribEl.textContent = authors.size;
-                })
-                .catch(() => { contribEl.textContent = '0'; });
-        }
     })();
     </script>
 </body>

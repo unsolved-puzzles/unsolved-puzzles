@@ -78,6 +78,7 @@ function initScrollAnimations() {
             rotation: (Math.random() - 0.5) * 4,
             duration: 0.4,
             delay: i * 0.08,
+            clearProps: "opacity",
             scrollTrigger: {
                 trigger: card,
                 start: "top 90%",
@@ -93,6 +94,7 @@ function initScrollAnimations() {
             opacity: 0,
             duration: 0.5,
             delay: i * 0.1,
+            clearProps: "opacity",
             scrollTrigger: {
                 trigger: item,
                 start: "top 85%",

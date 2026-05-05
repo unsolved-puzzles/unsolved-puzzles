@@ -1214,8 +1214,8 @@ a:hover {
 }
 
 .finding-card.finding-dimmed {
-    opacity: 0.3;
-    filter: grayscale(0.6);
+    opacity: 0.3 !important;
+    filter: grayscale(0.6) !important;
     transition: opacity 0.3s ease, filter 0.3s ease;
 }
 
@@ -1332,7 +1332,7 @@ a:hover {
 }
 
 .theory-item.theory-dimmed {
-    opacity: 0.3;
-    filter: grayscale(0.6);
+    opacity: 0.3 !important;
+    filter: grayscale(0.6) !important;
     transition: opacity 0.3s ease, filter 0.3s ease;
 }

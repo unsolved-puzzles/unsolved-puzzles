@@ -437,7 +437,7 @@ a:hover {
     border: 1px solid rgba(39, 174, 96, 0.3);
 }
 
-.badge-testing {
+.badge-tentative {
     background: rgba(142, 68, 173, 0.15);
     color: #a855f7;
     border: 1px solid rgba(142, 68, 173, 0.3);
@@ -780,6 +780,13 @@ a:hover {
     color: var(--accent-gold);
 }
 
+.filter-btn[data-filter="tentative"]:hover,
+.filter-btn[data-filter="tentative"].active {
+    background: rgba(243, 156, 18, 0.1);
+    border-color: #f39c12;
+    color: #f39c12;
+}
+
 .findings-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -836,7 +843,7 @@ a:hover {
     color: white;
 }
 
-.finding-card-status.testing {
+.finding-card-status.tentative {
     background: #f39c12;
     color: white;
 }
@@ -1308,7 +1315,7 @@ a:hover {
     border-color: rgba(39, 174, 96, 0.3);
 }
 
-.theory-explains-badge.badge-status-testing {
+.theory-explains-badge.badge-status-tentative {
     background: rgba(243, 156, 18, 0.15);
     color: #f39c12;
     border-color: rgba(243, 156, 18, 0.3);

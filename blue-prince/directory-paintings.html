@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Directory Paintings | Blue Prince | Unsolved Puzzles</title>
+    <meta name="description" content="Room Directory paintings may form word pairs, mirroring the Picture Puzzle. Each room's top-view painting pair yields a missing letter. Community decryption in progress.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css?v=3">
+    <style>
+        /* ── Picture Puzzle Position Grid ───────────────────── */
+        .directory-grid-wrapper {
+            max-width: 1000px;
+            margin: 0 auto var(--space-xl);
+        }
+        .directory-progress-bar {
+            background: rgba(255,255,255,0.08);
+            border-radius: 999px;
+            height: 28px;
+            margin: 0 auto var(--space-md);
+            max-width: 600px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .directory-progress-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            border-radius: 999px;
+            transition: width 0.6s ease;
+            background: linear-gradient(90deg, #c0392b, #d4af37);
+            min-width: 2%;
+            box-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+        }
+        .directory-progress-label {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            white-space: nowrap;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+            z-index: 1;
+        }
+        .directory-stats {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-lg);
+            margin-bottom: var(--space-lg);
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            flex-wrap: wrap;
+        }
+        .directory-stats span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .stat-dot {
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .stat-dot.confirmed { background: #27ae60; }
+        .stat-dot.tentative { background: #f39c12; }
+        .stat-dot.to-check { background: #17a2b8; }
+        .stat-dot.no-paintings { background: rgba(255,255,255,0.25); }
+
+        .directory-grid {
+            display: grid;
+            grid-template-columns: 36px repeat(5, 1fr);
+            gap: 3px;
+            background: rgba(100, 160, 220, 0.15);
+            border-radius: var(--radius-sm);
+            padding: 4px;
+            border: 2px solid rgba(100, 160, 220, 0.25);
+        }
+
+        /* Column headers and rank labels */
+        .grid-col-header {
+            font-family: 'Special Elite', serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--gold);
+            text-align: center;
+            padding: 6px 4px;
+        }
+        .grid-corner { /* empty top-left corner */ }
+        .rank-label {
+            font-family: 'Special Elite', serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Room cells */
+        .room-cell {
+            background: rgba(100, 160, 220, 0.10);
+            border: 1px solid rgba(100, 160, 220, 0.2);
+            border-radius: 4px;
+            padding: 8px 5px;
+            text-align: center;
+            line-height: 1.3;
+            position: relative;
+            min-height: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .room-cell:hover {
+            transform: scale(1.05);
+            z-index: 2;
+            box-shadow: 0 0 12px rgba(100, 160, 220, 0.3);
+        }
+
+        .room-cell .cell-rooms {
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.25;
+            max-width: 100%;
+            word-wrap: break-word;
+        }
+        .room-cell .cell-pair {
+            font-size: 0.54rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+            letter-spacing: 0.01em;
+        }
+
+        /* States */
+        .room-cell.solved {
+            background: rgba(39, 174, 96, 0.22);
+            border-color: rgba(39, 174, 96, 0.35);
+        }
+        .room-cell.solved .cell-rooms {
+            color: var(--gold);
+        }
+        .room-cell.solved .cell-pair {
+            color: rgba(255, 255, 255, 0.55);
+        }
+
+        .room-cell.testing {
+            background: rgba(230, 180, 50, 0.10);
+            border-color: rgba(230, 180, 50, 0.25);
+        }
+        .room-cell.testing .cell-rooms {
+            color: rgba(212, 175, 55, 0.8);
+            font-style: italic;
+        }
+        .room-cell.testing .cell-pair {
+            color: rgba(212, 175, 55, 0.5);
+        }
+
+        .room-cell.pending .cell-rooms {
+            color: var(--accent-red);
+            opacity: 0.65;
+            font-family: 'Special Elite', serif;
+            font-size: 1.2rem;
+        }
+        .room-cell.pending {
+            background: rgba(0, 0, 0, 0.35);
+            border-color: rgba(192, 57, 43, 0.28);
+        }
+        .room-cell.pending .cell-pair {
+            color: rgba(192, 57, 43, 0.6);
+        }
+
+        .room-cell.blank {
+            background: rgba(255, 255, 255, 0.02);
+            border-color: rgba(255, 255, 255, 0.05);
+        }
+        .room-cell.blank .cell-pair {
+            color: rgba(255,255,255,0.15);
+        }
+
+        /* Cell links */
+        .room-cell a {
+            color: inherit;
+            text-decoration: none;
+        }
+        .room-cell a:hover {
+            text-decoration: underline;
+        }
+        .room-cell.cell-highlighted {
+            box-shadow: 0 0 16px rgba(192, 57, 43, 0.5);
+            border-color: rgba(192, 57, 43, 0.6);
+            transform: scale(1.08);
+            z-index: 3;
+        }
+        .finding-card.finding-dimmed {
+            opacity: 0.25;
+            filter: grayscale(0.5);
+            pointer-events: none;
+            transition: opacity 0.3s ease, filter 0.3s ease;
+        }
+
+        /* Category titles in expandable sections */
+        .expandable-section div > strong {
+            font-size: 0.85rem !important;
+        }
+
+        /* Expandable sections */
+        .expandable-section {
+            max-width: 700px;
+            margin: 0 auto var(--space-xl);
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+        .expandable-section summary {
+            cursor: pointer;
+            color: var(--text-primary);
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: var(--space-md);
+        }
+        .expandable-section a.gold-link {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .directory-grid {
+                gap: 2px;
+                padding: 2px;
+                grid-template-columns: 24px repeat(5, 1fr);
+            }
+            .room-cell {
+                padding: 4px 2px;
+                min-height: 55px;
+            }
+            .room-cell .cell-rooms {
+                font-size: 0.55rem;
+            }
+            .room-cell .cell-pair {
+                display: none;
+            }
+            .rank-label {
+                font-size: 0.6rem;
+            }
+            .grid-col-header {
+                font-size: 0.6rem;
+            }
+            .directory-stats {
+                gap: var(--space-md);
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="game-atmosphere"></canvas>
+
+    <!-- Hero Banner -->
+    <div class="game-hero-banner">
+        <img src="../assets/img/blue-prince-hero-banner.png" alt="Blue Prince" class="game-hero-img">
+        <div class="game-hero-fade"></div>
+    </div>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="../" class="logo">
+                <span class="logo-icon">🔍</span>
+                <span class="logo-text">Unsolved Puzzles</span>
+            </a>
+            <nav class="header-nav">
+                <a href="../">All Games</a>
+                <a href="./">Blue Prince</a>
+                <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/discussions" target="_blank">Discuss</a>
+                <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/blob/main/README.md" target="_blank">Help</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Puzzle Header -->
+    <section class="puzzle-header">
+        <p class="puzzle-breadcrumb"><a href="../">Home</a> / <a href="./">Blue Prince</a> / Directory Paintings</p>
+        <h1 class="puzzle-title">Directory Paintings</h1>
+        <p class="puzzle-subtitle">The Room Directory's top-down views contain paintings that match <a href="https://blue-prince.fandom.com/wiki/Picture_Puzzle" target="_blank" style="color: var(--gold);">Picture Puzzle</a> pairs. Each pair yields a letter and a grid position. Where do the rooms go?</p>
+        <span class="puzzle-status unsolved">Unsolved</span>
+    </section>
+
+    <!-- Context -->
+    <section class="findings-section">
+        <h2 class="section-title">What We Know</h2>
+        <div style="max-width: 700px; margin: 0 auto var(--space-xl); color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8;">
+            <p><strong>Setup:</strong> The Room Directory shows a top-down view of every room in the estate. Many rooms contain tiny paintings visible on their walls. The game's <a href="https://blue-prince.fandom.com/wiki/Picture_Puzzle" target="_blank">Picture Puzzle</a> established that painting pairs represent two words differing by one letter, and the missing letter is the answer. Both versions of "A New Clue" point to the Room Directory as significant.</p>
+            <p style="margin-top: var(--space-md);"><strong>The key insight:</strong> Each painting pair from the Room Directory matches an entry in the Picture Puzzle's 9x5 grid. That entry has a specific position (e.g. E3, C1). The hypothesis is: place each room at the grid position corresponding to its painting pair. This creates a drafting pattern that may need to be replicated in-game, or read in some way (first letters, room properties, etc.).</p>
+            <p style="margin-top: var(--space-md);"><strong>Same painting, multiple rooms:</strong> Several rooms share the same painting pair (e.g., Peak/Pea appears in 3+ rooms). This may indicate choices at each grid position, or that only one room per position matters.</p>
+            <p style="margin-top: var(--space-md);"><strong>Open question (Flan/Flank):</strong> The Flan/Flank pair (missing letter K) appears in 6+ rooms (<a href="https://blueprince.wiki.gg/images/Storeroom.png?d30740=&format=original" target="_blank">Storeroom</a>, <a href="https://blueprince.wiki.gg/images/Study.png?d30740=&format=original" target="_blank">Study</a>, <a href="https://blueprince.wiki.gg/images/Library.png?d30740=&format=original" target="_blank">Library</a>, <a href="https://blueprince.wiki.gg/images/ChamberofMirrors.png?d30740=&format=original" target="_blank">Chamber of Mirrors</a>, <a href="https://blueprince.wiki.gg/images/Laboratory.png?d30740=&format=original" target="_blank">Laboratory</a>, <a href="https://blueprince.wiki.gg/images/MailRoom.png?d30740=&format=original" target="_blank">Mail Room</a>), but it does not match any known Picture Puzzle entry. The closest is Flan/Fan = L at D7. These rooms cannot currently be placed on the grid. They may serve as templates or be a red herring.</p>
+            <p style="margin-top: var(--space-md);"><strong>Method:</strong> For each room, identify the painting pair in the directory view, match it to a <a href="https://blue-prince.fandom.com/wiki/Picture_Puzzle" target="_blank">Picture Puzzle</a> entry, note the position, and place the room on the 9x5 grid.</p>
+            <p style="margin-top: var(--space-md);"><strong>Resources:</strong> <a href="https://holly.estate/room/0/" target="_blank">Holly Estate</a> provides 500% zoom of each room. <a href="https://blueprince.wiki.gg/images/Garage.png" target="_blank">Wiki images</a> allow 250-500% zoom (replace "Garage" with any room name in the URL).</p>
+        </div>
+
+        <!-- Findings Grid -->
+        <div class="findings-filters">
+            <button class="filter-btn active" data-filter="all">All Findings</button>
+            <button class="filter-btn" data-filter="confirmed">Confirmed</button>
+            <button class="filter-btn" data-filter="tentative">Tentative</button>
+            <button class="filter-btn" data-filter="debunked">Debunked</button>
+            <button class="filter-btn" data-filter="explained">Explained</button>
+        </div>
+
+        <div class="findings-grid">
+
+            <div class="finding-card" data-status="confirmed" id="finding-e3">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Peak / Pea = K (E3)</h3>
+                <p>The Peak/Pea painting pair appears in the <a href="https://blueprince.wiki.gg/images/SecretPassage.png?d30740=&format=original" target="_blank">Secret Passage</a>, <a href="https://blueprince.wiki.gg/images/Office.png?d30740=&format=original" target="_blank">Office</a>, <a href="https://blueprince.wiki.gg/images/WineCellar.png?d30740=&format=original" target="_blank">Wine Cellar</a>, and <a href="https://blueprince.wiki.gg/images/Foyer.png?d30740=&format=original" target="_blank">Foyer</a> directory views. Missing letter: <strong>K</strong>. Position: E3.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/hashabadi</span>
+                    <span>Confirmed</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Flan / Flank = K (no grid match)</h3>
+                <p>The Flan/Flank painting pair appears in <a href="https://blueprince.wiki.gg/images/Storeroom.png?d30740=&format=original" target="_blank">Storeroom</a>, <a href="https://blueprince.wiki.gg/images/Study.png?d30740=&format=original" target="_blank">Study</a>, <a href="https://blueprince.wiki.gg/images/Library.png?d30740=&format=original" target="_blank">Library</a>, <a href="https://blueprince.wiki.gg/images/ChamberofMirrors.png?d30740=&format=original" target="_blank">Chamber of Mirrors</a>, <a href="https://blueprince.wiki.gg/images/Laboratory.png?d30740=&format=original" target="_blank">Laboratory</a>, and <a href="https://blueprince.wiki.gg/images/MailRoom.png?d30740=&format=original" target="_blank">Mail Room</a>. Missing letter: <strong>K</strong>. This pair does not match any Picture Puzzle entry (closest is Flan/Fan = L). Cannot be placed on the grid.</p>
+                <div class="finding-card-meta">
+                    <span>Source: pedroff_1</span>
+                    <span>Confirmed</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed" id="finding-c1">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Face / Ace = F (C1)</h3>
+                <p>The Face/Ace painting pair appears in the <a href="https://blueprince.wiki.gg/images/EntranceHall.png?d30740=&format=original" target="_blank">Entrance Hall</a> and <a href="https://blueprince.wiki.gg/images/DiningRoom.png?d30740=&format=original" target="_blank">Dining Room</a> directory views. Missing letter: <strong>F</strong>. Position: C1.</p>
+                <div class="finding-card-meta">
+                    <span>Source: pedroff_1, jewe</span>
+                    <span>Confirmed</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed" id="finding-d6">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Stage / Stag = E (D6)</h3>
+                <p>The Stage/Stag painting pair appears in the <a href="https://blueprince.wiki.gg/images/Den.png?d30740=&format=original" target="_blank">Den</a> directory view. Missing letter: <strong>E</strong>. Position: D6.</p>
+                <div class="finding-card-meta">
+                    <span>Source: pedroff_1</span>
+                    <span>Confirmed</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed" id="finding-b1">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Pray / Pry = A (B1)</h3>
+                <p>The Pray/Pry painting pair appears in the <a href="https://blueprince.wiki.gg/images/ConferenceRoom.png?d30740=&format=original" target="_blank">Conference Room</a> directory view. Missing letter: <strong>A</strong>. Position: B1.</p>
+                <div class="finding-card-meta">
+                    <span>Source: pedroff_1</span>
+                    <span>Confirmed</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed" id="finding-d2">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Bath / Bat = H (D2)</h3>
+                <p>The Bath/Bat painting pair appears in the <a href="https://blueprince.wiki.gg/images/Attic.png?d30740=&format=original" target="_blank">Attic</a> directory view. Missing letter: <strong>H</strong>. Position: D2.</p>
+                <div class="finding-card-meta">
+                    <span>Source: pedroff_1</span>
+                    <span>Confirmed</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed" id="finding-c3">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Road / Rod = A (C3)</h3>
+                <p>The Road/Rod painting pair appears in the <a href="https://blueprince.wiki.gg/images/BilliardRoom.png?d30740=&format=original" target="_blank">Billiard Room</a> directory view. Missing letter: <strong>A</strong>. Position: C3.</p>
+                <div class="finding-card-meta">
+                    <span>Source: pedroff_1</span>
+                    <span>Confirmed</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="tentative" id="finding-a1">
+                <span class="finding-card-status tentative">Tentative</span>
+                <h3>Dessert / Desert = S? (A1)</h3>
+                <p><a href="https://blueprince.wiki.gg/images/Room8.png?d30740=&format=original" target="_blank">Room 8</a> and <a href="https://blueprince.wiki.gg/images/GuestBedroom.png?d30740=&format=original" target="_blank">Guest Bedroom</a> directory views may show the Dessert/Desert painting pair. Missing letter: <strong>S</strong>. Position: A1.</p>
+                <div class="finding-card-meta">
+                    <span>Source: pedroff_1, jewe</span>
+                    <span>Low confidence</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="tentative" id="finding-c5">
+                <span class="finding-card-status tentative">Tentative</span>
+                <h3>Tiger / Tier = G (C5)</h3>
+                <p><a href="https://blueprince.wiki.gg/images/Parlor.png?d30740=&format=original" target="_blank">Parlor</a>'s directory view may show the Tiger/Tier painting pair. Missing letter: <strong>G</strong>. Position: C5.</p>
+                <div class="finding-card-meta">
+                    <span>Source: jewe</span>
+                    <span>Low confidence</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="tentative" id="finding-c8">
+                <span class="finding-card-status tentative">Tentative</span>
+                <h3>House / Hose = U (C8)</h3>
+                <p><a href="https://blueprince.wiki.gg/images/UtilityCloset.png?d30740=&format=original" target="_blank">Utility Closet</a>'s directory view may show the House/Hose painting pair. Missing letter: <strong>U</strong>. Position: C8.</p>
+                <div class="finding-card-meta">
+                    <span>Source: jewe</span>
+                    <span>Low confidence</span>
+                </div>
+            </div>
+
+            <a href="bookshop-compartment.html" class="finding-card" data-status="confirmed" id="finding-bookshop">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Room Directory Shows Open Compartment</h3>
+                <p>The Bookshop's Room Directory view shows the compartment in an open state, potentially revealing how it opens in-game. See the <strong>Bookshop Compartment</strong> puzzle page for full details.</p>
+                <div class="finding-card-meta">
+                    <span>Source: jewe</span>
+                    <span>Confirmed</span>
+                </div>
+            </a>
+
+            <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/issues/253" target="_blank" class="finding-card finding-card-cta">
+                <h3>+ Help Identify Paintings</h3>
+                <p>Check the Room Directory views and report which painting pairs you can identify. Every room helps!</p>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- Theories -->
+    <section class="theories-section">
+        <h2 class="section-title">Theories (Ranked)</h2>
+
+        <div class="theory-item">
+            <span class="theory-rank high">High Priority</span>
+            <h3 class="theory-title">Paintings encode a drafting pattern: place rooms on the Picture Puzzle grid</h3>
+            <p class="theory-desc">Each room's paintings correspond to a specific position on the Picture Puzzle grid. Placing rooms at those positions creates a drafting pattern that could be replicated in-game: draft specific rooms into specific positions on the estate grid. The result might reveal a hidden message (first letters, room properties, colour, italic text, or something else). Originally proposed by u/Familiar-Object9912.</p>
+        </div>
+
+        <div class="theory-item">
+            <span class="theory-rank medium">Medium</span>
+            <h3 class="theory-title">Reading the grid letters directly spells a message</h3>
+            <p class="theory-desc">Rather than placing rooms, the extracted letters themselves (read in directory grid order or Picture Puzzle grid order) may spell a message.</p>
+        </div>
+
+        <div class="theory-item">
+            <span class="theory-rank medium">Medium</span>
+            <h3 class="theory-title">Multiple rooms per painting = choices at each grid position</h3>
+            <p class="theory-desc">Peak/Pea appears in 3+ rooms. If each painting pair maps to one grid position, having multiple rooms at one position implies a choice: you pick which room to draft there. The "correct" selection might depend on room mechanics, colours, or other in-game properties.</p>
+        </div>
+
+        <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/issues/new?template=new-theory.yml" target="_blank" class="theory-item theory-item-cta">
+            <h3 class="theory-title">+ Submit a New Theory</h3>
+            <p class="theory-desc">Have a theory about the Directory Paintings pattern? Share it.</p>
+        </a>
+    </section>
+
+    <!-- Picture Puzzle Position Grid -->
+    <section class="theories-section">
+        <h2 class="section-title">Picture Puzzle Grid: Room Mapping</h2>
+        <p style="text-align: center; color: var(--text-secondary); max-width: 700px; margin: -1rem auto var(--space-lg); font-size: 0.9rem;">
+            Each cell is a Picture Puzzle position. Gold = room(s) confirmed. Red = no rooms identified yet.
+        </p>
+
+        <div class="directory-grid-wrapper" data-deciphered="7" data-total="24">
+            <!-- Progress Bar -->
+            <div class="directory-progress-bar">
+                <div class="directory-progress-fill" id="progress-fill"></div>
+                <span class="directory-progress-label" id="progress-label"></span>
+            </div>
+
+            <!-- Stats -->
+            <div class="directory-stats">
+                <span><span class="stat-dot confirmed"></span> <span id="stat-confirmed">7</span> confirmed</span>
+                <span><span class="stat-dot tentative"></span> 3 tentative</span>
+                <span><span class="stat-dot to-check"></span> <span id="stat-to-check">17</span> room paintings to decipher</span>
+                <span><span class="stat-dot no-paintings"></span> <span id="stat-no-paintings">57</span> rooms have no paintings</span>
+            </div>
+
+            <!-- The Grid (9 ranks x 5 cols, matching the Picture Puzzle layout) -->
+            <!-- Positions use Column Letter + Rank Number: A=Col1 B=Col2 C=Col3 D=Col4 E=Col5 -->
+            <div class="directory-grid" id="directory-grid">
+                <!-- Column Headers -->
+                <div class="grid-corner"></div>
+                <div class="grid-col-header">A</div>
+                <div class="grid-col-header">B</div>
+                <div class="grid-col-header">C</div>
+                <div class="grid-col-header">D</div>
+                <div class="grid-col-header">E</div>
+
+                <!-- Rank 9 -->
+                <div class="rank-label">9</div>
+                <div class="room-cell pending">
+                    <span class="cell-rooms">?</span>
+                    <span class="cell-pair">Chief/Chef = I</span>
+                </div>
+                <div class="room-cell pending">
+                    <span class="cell-rooms">?</span>
+                    <span class="cell-pair">Flight/Light = F</span>
+                </div>
+                <div class="room-cell blank">
+                    <span class="cell-pair">(blank)</span>
+                </div>
+                <div class="room-cell pending">
+                    <span class="cell-rooms">?</span>
+                    <span class="cell-pair">Wheat/Heat = W</span>
+                </div>
+                <div class="room-cell pending">
+                    <span class="cell-rooms">?</span>
+                    <span class="cell-pair">Create/Crate = E</span>
+                </div>
+
+                <!-- Rank 8 -->
+                <div class="rank-label">8</div>
+                <div class="room-cell pending">
+                    <span class="cell-rooms">?</span>
+                    <span class="cell-pair">Crate/Rate = C</span>
+                </div>
+                <div class="room-cell pending">
+                    <span class="cell-rooms">?</span>
+                    <span class="cell-pair">Boat/Bat = O</span>
+                </div>
+                <div class="room-cell testing">
+                    <span class="cell-rooms"><a href="#finding-c8">Utility Closet?</a></span>
+                    <span class="cell-pair">House/Hose = U</span>
+                </div>
+                <div class="room-cell pending">
+                    <span class="cell-rooms">?</span>
+                    <span class="cell-pair">Crown/Crow = N</span>
+                </div>
+                <div class="room-cell pending">
+                    <span class="cell-rooms">?</span>
+                    <span class="cell-pair">Plant/Plan = T</span>
+                </div>
+
+                <!-- Rank 7 -->
+                <div class="rank-label">7</div>
+                <div class="room-cell pending">
+                    <span class="cell-rooms">?</span>
+                    <span class="cell-pair">Spine/Pine = S</span>
+                </div>
+                <div class="room-cell pending">
+                    <span class="cell-rooms">?</span>
+                    <span class="cell-pair">Time/Tie = M</span>
+                </div>
+                <div class="room-cell pending">
+                    <span class="cell-rooms">?</span>
+                    <span class="cell-pair">Paint/Pint = A</span>
+                </div>
+                <div class="room-cell pending">
+                    <span class="cell-rooms">?</span>
+                    <span class="cell-pair">Flan/Fan = L</span>
+                </div>
+                <div class="room-cell pending">
+                    <span class="cell-rooms">?</span>
+                    <span class="cell-pair">Plane/Pane = L</span>
+                </div>
+
+                <!-- Rank 6 -->
+                <div class="rank-label">6</div>
+                <div class="room-cell pending">
+                    <span class="cell-rooms">?</span>
+                    <span class="cell-pair">Grain/Rain = G</span>
+                </div>
+                <div class="room-cell pending">
+                    <span class="cell-rooms">?</span>
+                    <span class="cell-pair">Coast/Cost = A</span>
+                </div>
+                <div class="room-cell pending">
+                    <span class="cell-rooms">?</span>
+                    <span class="cell-pair">Planet/Plane = T</span>
+                </div>
+                <div class="room-cell solved">
+                    <span class="cell-rooms"><a href="#finding-d6">Den</a></span>
+                    <span class="cell-pair">Stage/Stag = E</span>
+                </div>
+                <div class="room-cell pending">
+                    <span class="cell-rooms">?</span>
+                    <span class="cell-pair">Coast/Coat = S</span>
+                </div>
+
+                <!-- Rank 5 -->
+                <div class="rank-label">5</div>
+                <div class="room-cell pending">
+                    <span class="cell-rooms">?</span>
+                    <span class="cell-pair">Tube/Tub = E</span>
+                </div>
+                <div class="room-cell pending">
+                    <span class="cell-rooms">?</span>
+                    <span class="cell-pair">Pilot/Plot = I</span>
+                </div>
+                <div class="room-cell testing">
+                    <span class="cell-rooms"><a href="#finding-c5">Parlor?</a></span>
+                    <span class="cell-pair">Tiger/Tier = G</span>
+                </div>
+                <div class="room-cell pending">
+                    <span class="cell-rooms">?</span>
+                    <span class="cell-pair">Chart/Cart = H</span>
+                </div>
+                <div class="room-cell pending">
+                    <span class="cell-rooms">?</span>
+                    <span class="cell-pair">Tent/Ten = T</span>
+                </div>
+
+                <!-- Rank 4 -->
+                <div class="rank-label">4</div>
+                <div class="room-cell pending">
+                    <span class="cell-rooms">?</span>
+                    <span class="cell-pair">Card/Car = D</span>
+                </div>
+                <div class="room-cell pending">
+                    <span class="cell-rooms">?</span>
+                    <span class="cell-pair">Coat/Cot = A</span>
+                </div>
+                <div class="room-cell pending">
+                    <span class="cell-rooms">?</span>
+                    <span class="cell-pair">Stage/Sage = T</span>
+                </div>
+                <div class="room-cell pending">
+                    <span class="cell-rooms">?</span>
+                    <span class="cell-pair">Fire/Fir = E</span>
+                </div>
+                <div class="room-cell pending">
+                    <span class="cell-rooms">?</span>
+                    <span class="cell-pair">Sand/And = S</span>
+                </div>
+
+                <!-- Rank 3 -->
+                <div class="rank-label">3</div>
+                <div class="room-cell pending">
+                    <span class="cell-rooms">?</span>
+                    <span class="cell-pair">Crow/Row = C</span>
+                </div>
+                <div class="room-cell pending">
+                    <span class="cell-rooms">?</span>
+                    <span class="cell-pair">Tier/Tie = R</span>
+                </div>
+                <div class="room-cell solved">
+                    <span class="cell-rooms"><a href="#finding-c3">Billiard Room</a></span>
+                    <span class="cell-pair">Road/Rod = A</span>
+                </div>
+                <div class="room-cell pending">
+                    <span class="cell-rooms">?</span>
+                    <span class="cell-pair">Clock/Lock = C</span>
+                </div>
+                <div class="room-cell solved">
+                    <span class="cell-rooms"><a href="#finding-e3">Secret Passage, Office, Wine Cellar, Foyer</a></span>
+                    <span class="cell-pair">Peak/Pea = K</span>
+                </div>
+
+                <!-- Rank 2 -->
+                <div class="rank-label">2</div>
+                <div class="room-cell pending">
+                    <span class="cell-rooms">?</span>
+                    <span class="cell-pair">Plane/Plan = E</span>
+                </div>
+                <div class="room-cell pending">
+                    <span class="cell-rooms">?</span>
+                    <span class="cell-pair">Stair/Star = I</span>
+                </div>
+                <div class="room-cell pending">
+                    <span class="cell-rooms">?</span>
+                    <span class="cell-pair">Bridge/Bride = G</span>
+                </div>
+                <div class="room-cell solved">
+                    <span class="cell-rooms"><a href="#finding-d2">Attic</a></span>
+                    <span class="cell-pair">Bath/Bat = H</span>
+                </div>
+                <div class="room-cell pending">
+                    <span class="cell-rooms">?</span>
+                    <span class="cell-pair">Cart/Car = T</span>
+                </div>
+
+                <!-- Rank 1 -->
+                <div class="rank-label">1</div>
+                <div class="room-cell testing">
+                    <span class="cell-rooms"><a href="#finding-a1">Room 8, Guest Bedroom?</a></span>
+                    <span class="cell-pair">Dessert/Desert = S</span>
+                </div>
+                <div class="room-cell solved">
+                    <span class="cell-rooms"><a href="#finding-b1">Conference Room</a></span>
+                    <span class="cell-pair">Pray/Pry = A</span>
+                </div>
+                <div class="room-cell solved">
+                    <span class="cell-rooms"><a href="#finding-c1">Entrance Hall, Dining Room</a></span>
+                    <span class="cell-pair">Face/Ace = F</span>
+                </div>
+                <div class="room-cell pending">
+                    <span class="cell-rooms">?</span>
+                    <span class="cell-pair">Pine/Pin = E</span>
+                </div>
+                <div class="room-cell pending">
+                    <span class="cell-rooms">?</span>
+                    <span class="cell-pair">Stag/Tag = S</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Undeciphered Rooms (expandable) -->
+        <details class="expandable-section" open>
+            <summary>🔎 Undeciphered Rooms</summary>
+
+            <div style="margin-bottom: var(--space-md);">
+                <strong style="color: #f39c12; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em;">Tentative</strong>
+                <div style="line-height: 2.2; font-size: 0.85rem; margin-top: 4px;">
+                    <a href="https://blueprince.wiki.gg/images/Room8.png?d30740=&format=original" target="_blank">Room 8</a> / <a href="https://blueprince.wiki.gg/images/GuestBedroom.png?d30740=&format=original" target="_blank">Guest Bedroom</a> — Dessert/Desert = S? (A1)<br>
+                    <a href="https://blueprince.wiki.gg/images/Parlor.png?d30740=&format=original" target="_blank">Parlor</a> — Tiger/Tier = G? (C5)<br>
+                    <a href="https://blueprince.wiki.gg/images/UtilityCloset.png?d30740=&format=original" target="_blank">Utility Closet</a> — House/Hose = U? (C8)
+                </div>
+            </div>
+
+            <div>
+                <strong style="color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em;">Unidentified</strong>
+                <div style="columns: 3; column-gap: var(--space-lg); line-height: 2.2; font-size: 0.85rem; margin-top: 4px;">
+                    <a href="https://blueprince.wiki.gg/images/WalkinCloset.png?d30740=&format=original" target="_blank">Walk-in Closet</a> (barely visible)<br>
+                    <a href="https://blueprince.wiki.gg/images/Garage.png?d30740=&format=original" target="_blank">Garage</a> (map, car?)<br>
+                    <a href="https://blueprince.wiki.gg/images/MusicRoom.png?d30740=&format=original" target="_blank">Music Room</a><br>
+                    <a href="https://blueprince.wiki.gg/images/LockerRoom.png?d30740=&format=original" target="_blank">Locker Room</a><br>
+                    <a href="https://blueprince.wiki.gg/images/TrophyRoom.png?d30740=&format=original" target="_blank">Trophy Room</a><br>
+                    <a href="https://blueprince.wiki.gg/images/RumpusRoom.png?d30740=&format=original" target="_blank">Rumpus Room</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Vault.png?d30740=&format=original" target="_blank">Vault</a><br>
+                    <a href="https://blueprince.wiki.gg/images/DrawingRoom.png?d30740=&format=original" target="_blank">Drawing Room</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Security.png?d30740=&format=original" target="_blank">Security</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Bedroom.png?d30740=&format=original" target="_blank">Bedroom</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Nursery.png?d30740=&format=original" target="_blank">Nursery</a><br>
+                    <a href="https://blueprince.wiki.gg/images/BunkRoom.png?d30740=&format=original" target="_blank">Bunk Room</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Gymnasium.png?d30740=&format=original" target="_blank">Gymnasium</a><br>
+                    <a href="https://blueprince.wiki.gg/images/ServantsQuarters.png?d30740=&format=original" target="_blank">Servant's Quarters</a><br>
+                    <a href="https://blueprince.wiki.gg/images/HerLadyshipsChamber.png?d30740=&format=original" target="_blank">Her Ladyship's Chamber</a><br>
+                    <a href="https://blueprince.wiki.gg/images/MasterBedroom.png?d30740=&format=original" target="_blank">Master Bedroom</a> (boat/bat in B8?)<br>
+                    <a href="https://blueprince.wiki.gg/images/Corridor.png?d30740=&format=original" target="_blank">Corridor</a> (only a Flan)
+                </div>
+            </div>
+        </details>
+
+        <!-- Rooms with No Paintings (expandable, collapsed by default) -->
+        <details class="expandable-section">
+            <summary>🚫 Rooms with No Paintings <span style="font-weight: 400; font-size: 0.8em; color: var(--text-muted);">(click to expand)</span></summary>
+            <div style="columns: 3; column-gap: var(--space-lg); line-height: 2.2; font-size: 0.85rem;">
+                <div style="break-inside: avoid; margin-bottom: var(--space-sm);"><strong style="color: var(--text-muted); font-size: 0.72rem; text-transform: uppercase;">Blue Rooms</strong><br>
+                    <a href="https://blueprince.wiki.gg/images/TheFoundation.png?d30740=&format=original" target="_blank">The Foundation</a><br>
+                    <a href="https://blueprince.wiki.gg/images/SpareRoom.png?d30740=&format=original" target="_blank">Spare Room</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Rotunda.png?d30740=&format=original" target="_blank">Rotunda</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Closet.png?d30740=&format=original" target="_blank">Closet</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Nook.png?d30740=&format=original" target="_blank">Nook</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Ballroom.png?d30740=&format=original" target="_blank">Ballroom</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Pantry.png?d30740=&format=original" target="_blank">Pantry</a><br>
+                    <a href="https://blueprince.wiki.gg/images/ThePool.png?d30740=&format=original" target="_blank">The Pool</a><br>
+                    <a href="https://blueprince.wiki.gg/images/DraftingStudio.png?d30740=&format=original" target="_blank">Drafting Studio</a><br>
+                    <a href="https://blueprince.wiki.gg/images/BoilerRoom.png?d30740=&format=original" target="_blank">Boiler Room</a><br>
+                    <a href="https://blueprince.wiki.gg/images/PumpRoom.png?d30740=&format=original" target="_blank">Pump Room</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Workshop.png?d30740=&format=original" target="_blank">Workshop</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Gallery.png?d30740=&format=original" target="_blank">Gallery</a> (no image pair, but painting names)<br>
+                    <a href="https://blueprince.wiki.gg/images/Sauna.png?d30740=&format=original" target="_blank">Sauna</a><br>
+                    <a href="https://blueprince.wiki.gg/images/CoatCheck.png?d30740=&format=original" target="_blank">Coat Check</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Freezer.png?d30740=&format=original" target="_blank">Freezer</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Observatory.png?d30740=&format=original" target="_blank">Observatory</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Aquarium.png?d30740=&format=original" target="_blank">Aquarium</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Antechamber.png?d30740=&format=original" target="_blank">Antechamber</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Room46.png?d30740=&format=original" target="_blank">Room 46</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Boudoir.png?d30740=&format=original" target="_blank">Boudoir</a>
+                </div>
+                <div style="break-inside: avoid; margin-bottom: var(--space-sm);"><strong style="color: var(--text-muted); font-size: 0.72rem; text-transform: uppercase;">Hallways</strong><br>
+                    <a href="https://blueprince.wiki.gg/images/Hallway.png?d30740=&format=original" target="_blank">Hallway</a><br>
+                    <a href="https://blueprince.wiki.gg/images/WestWingHall.png?d30740=&format=original" target="_blank">West Wing Hall</a><br>
+                    <a href="https://blueprince.wiki.gg/images/EastWingHall.png?d30740=&format=original" target="_blank">East Wing Hall</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Passageway.png?d30740=&format=original" target="_blank">Passageway</a><br>
+                    <a href="https://blueprince.wiki.gg/images/GreatHall.png?d30740=&format=original" target="_blank">Great Hall</a>
+                </div>
+                <div style="break-inside: avoid; margin-bottom: var(--space-sm);"><strong style="color: var(--text-muted); font-size: 0.72rem; text-transform: uppercase;">Green Rooms</strong><br>
+                    <a href="https://blueprince.wiki.gg/images/Terrace.png?d30740=&format=original" target="_blank">Terrace</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Patio.png?d30740=&format=original" target="_blank">Patio</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Courtyard.png?d30740=&format=original" target="_blank">Courtyard</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Cloister.png?d30740=&format=original" target="_blank">Cloister</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Veranda.png?d30740=&format=original" target="_blank">Veranda</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Greenhouse.png?d30740=&format=original" target="_blank">Greenhouse</a><br>
+                    <a href="https://blueprince.wiki.gg/images/MorningRoom.png?d30740=&format=original" target="_blank">Morning Room</a><br>
+                    <a href="https://blueprince.wiki.gg/images/SecretGarden.png?d30740=&format=original" target="_blank">Secret Garden</a>
+                </div>
+                <div style="break-inside: avoid; margin-bottom: var(--space-sm);"><strong style="color: var(--text-muted); font-size: 0.72rem; text-transform: uppercase;">Shops</strong><br>
+                    <a href="https://blueprince.wiki.gg/images/Commissary.png?d30740=&format=original" target="_blank">Commissary</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Kitchen.png?d30740=&format=original" target="_blank">Kitchen</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Locksmith.png?d30740=&format=original" target="_blank">Locksmith</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Showroom.png?d30740=&format=original" target="_blank">Showroom</a><br>
+                    <a href="https://blueprince.wiki.gg/images/LaundryRoom.png?d30740=&format=original" target="_blank">Laundry Room</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Bookshop.png?d30740=&format=original" target="_blank">Bookshop</a><br>
+                    <a href="https://blueprince.wiki.gg/images/TheArmory.png?d30740=&format=original" target="_blank">The Armory</a><br>
+                    <a href="https://blueprince.wiki.gg/images/GiftShop.png?d30740=&format=original" target="_blank">Gift Shop</a>
+                </div>
+                <div style="break-inside: avoid; margin-bottom: var(--space-sm);"><strong style="color: var(--text-muted); font-size: 0.72rem; text-transform: uppercase;">Red Rooms</strong><br>
+                    <a href="https://blueprince.wiki.gg/images/Lavatory.png?d30740=&format=original" target="_blank">Lavatory</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Chapel.png?d30740=&format=original" target="_blank">Chapel</a><br>
+                    <a href="https://blueprince.wiki.gg/images/MaidsChamber.png?d30740=&format=original" target="_blank">Maid's Chamber</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Archives.png?d30740=&format=original" target="_blank">Archives</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Darkroom.png?d30740=&format=original" target="_blank">Darkroom</a><br>
+                    <a href="https://blueprince.wiki.gg/images/WeightRoom.png?d30740=&format=original" target="_blank">Weight Room</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Furnace.png?d30740=&format=original" target="_blank">Furnace</a>
+                </div>
+                <div style="break-inside: avoid; margin-bottom: var(--space-sm);"><strong style="color: var(--text-muted); font-size: 0.72rem; text-transform: uppercase;">Outer Rooms</strong><br>
+                    <a href="https://blueprince.wiki.gg/images/Shelter.png?d30740=&format=original" target="_blank">Shelter</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Shrine.png?d30740=&format=original" target="_blank">Shrine</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Toolshed.png?d30740=&format=original" target="_blank">Toolshed</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Schoolhouse.png?d30740=&format=original" target="_blank">Schoolhouse</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Hovel.png?d30740=&format=original" target="_blank">Hovel</a><br>
+                    <a href="https://blueprince.wiki.gg/images/RootCellar.png?d30740=&format=original" target="_blank">Root Cellar</a><br>
+                    <a href="https://blueprince.wiki.gg/images/TradingPost.png?d30740=&format=original" target="_blank">Trading Post</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Tomb.png?d30740=&format=original" target="_blank">Tomb</a>
+                </div>
+            </div>
+        </details>
+
+        <!-- Picture Puzzle Reference (collapsible, collapsed by default) -->
+        <details class="expandable-section">
+            <summary>🎨 <a href="https://blue-prince.fandom.com/wiki/Picture_Puzzle" target="_blank" class="gold-link">Picture Puzzle</a> Reference Tables <span style="font-weight: 400; font-size: 0.8em; color: var(--text-muted);">(click to expand)</span></summary>
+            <h4 style="color: var(--gold); margin: var(--space-md) 0 var(--space-sm); font-family: 'Special Elite', serif;">Estate</h4>
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; font-size: 0.75rem; margin-top: var(--space-sm);">
+                    <thead>
+                        <tr style="border-bottom: 2px solid rgba(255,255,255,0.1);">
+                            <th style="padding: 6px 8px; text-align: left; color: var(--text-muted);">Rank</th>
+                            <th style="padding: 6px 8px; text-align: center;">A</th>
+                            <th style="padding: 6px 8px; text-align: center;">B</th>
+                            <th style="padding: 6px 8px; text-align: center;">C</th>
+                            <th style="padding: 6px 8px; text-align: center;">D</th>
+                            <th style="padding: 6px 8px; text-align: center;">E</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <td style="padding: 6px 8px; font-weight: 600;">9</td>
+                            <td style="padding: 6px 8px; text-align: center;">Chief-Chef = <strong>I</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Flight-Light = <strong>F</strong></td>
+                            <td style="padding: 6px 8px; text-align: center; color: var(--text-muted);">(blank)</td>
+                            <td style="padding: 6px 8px; text-align: center;">Wheat-Heat = <strong>W</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Create-Crate = <strong>E</strong></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <td style="padding: 6px 8px; font-weight: 600;">8</td>
+                            <td style="padding: 6px 8px; text-align: center;">Crate-Rate = <strong>C</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Boat-Bat = <strong>O</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">House-Hose = <strong>U</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Crown-Crow = <strong>N</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Plant-Plan = <strong>T</strong></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <td style="padding: 6px 8px; font-weight: 600;">7</td>
+                            <td style="padding: 6px 8px; text-align: center;">Spine-Pine = <strong>S</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Time-Tie = <strong>M</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Paint-Pint = <strong>A</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Flan-Fan = <strong>L</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Plane-Pane = <strong>L</strong></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <td style="padding: 6px 8px; font-weight: 600;">6</td>
+                            <td style="padding: 6px 8px; text-align: center;">Grain-Rain = <strong>G</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Coast-Cost = <strong>A</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Planet-Plane = <strong>T</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Stage-Stag = <strong>E</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Coast-Coat = <strong>S</strong></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <td style="padding: 6px 8px; font-weight: 600;">5</td>
+                            <td style="padding: 6px 8px; text-align: center;">Tube-Tub = <strong>E</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Pilot-Plot = <strong>I</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Tiger-Tier = <strong>G</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Chart-Cart = <strong>H</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Tent-Ten = <strong>T</strong></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <td style="padding: 6px 8px; font-weight: 600;">4</td>
+                            <td style="padding: 6px 8px; text-align: center;">Card-Car = <strong>D</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Coat-Cot = <strong>A</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Stage-Sage = <strong>T</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Fire-Fir = <strong>E</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Sand-And = <strong>S</strong></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <td style="padding: 6px 8px; font-weight: 600;">3</td>
+                            <td style="padding: 6px 8px; text-align: center;">Crow-Row = <strong>C</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Tier-Tie = <strong>R</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Road-Rod = <strong>A</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Clock-Lock = <strong>C</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Peak-Pea = <strong>K</strong></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <td style="padding: 6px 8px; font-weight: 600;">2</td>
+                            <td style="padding: 6px 8px; text-align: center;">Plane-Plan = <strong>E</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Stair-Star = <strong>I</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Bridge-Bride = <strong>G</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Bath-Bat = <strong>H</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Cart-Car = <strong>T</strong></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 6px 8px; font-weight: 600;">1</td>
+                            <td style="padding: 6px 8px; text-align: center;">Dessert-Desert = <strong>S</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Pray-Pry = <strong>A</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Face-Ace = <strong>F</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Pine-Pin = <strong>E</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Stag-Tag = <strong>S</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h4 style="color: var(--gold); margin: var(--space-lg) 0 var(--space-sm); font-family: 'Special Elite', serif;">Atelier</h4>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: var(--space-sm);">Source: Shadow Games. Each room in the Atelier labyrinth also has a painting pair mapped to the same 9x5 grid.</p>
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; font-size: 0.75rem; margin-top: var(--space-sm);">
+                    <thead>
+                        <tr style="border-bottom: 2px solid rgba(255,255,255,0.1);">
+                            <th style="padding: 6px 8px; text-align: left; color: var(--text-muted);">Rank</th>
+                            <th style="padding: 6px 8px; text-align: center;">A</th>
+                            <th style="padding: 6px 8px; text-align: center;">B</th>
+                            <th style="padding: 6px 8px; text-align: center;">C</th>
+                            <th style="padding: 6px 8px; text-align: center;">D</th>
+                            <th style="padding: 6px 8px; text-align: center;">E</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <td style="padding: 6px 8px; font-weight: 600;">9</td>
+                            <td style="padding: 6px 8px; text-align: center;">Trot-Rot = <strong>T</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Three-Tree = <strong>H</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Wine-Win = <strong>E</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Spear-Pear = <strong>S</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Leash-Lash = <strong>E</strong></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <td style="padding: 6px 8px; font-weight: 600;">8</td>
+                            <td style="padding: 6px 8px; text-align: center;">Novel-Noel = <strong>V</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Year-Ear = <strong>Y</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Bait-Bat = <strong>I</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Pin-Pi = <strong>N</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Globe-Lobe = <strong>G</strong></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <td style="padding: 6px 8px; font-weight: 600;">7</td>
+                            <td style="padding: 6px 8px; text-align: center;">Place-Lace = <strong>P</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Plea-Pea = <strong>L</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Steam-Stem = <strong>A</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Barn-Bar = <strong>N</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Spike-Pike = <strong>S</strong></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <td style="padding: 6px 8px; font-weight: 600;">6</td>
+                            <td style="padding: 6px 8px; text-align: center;">Farm-Arm = <strong>F</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Open-Pen = <strong>O</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Brook-Book = <strong>R</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Pig-Pi = <strong>G</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Rate-Rat = <strong>E</strong></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <td style="padding: 6px 8px; font-weight: 600;">5</td>
+                            <td style="padding: 6px 8px; text-align: center;">Bone-One = <strong>B</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Launch-Lunch = <strong>A</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Stream-Steam = <strong>R</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Boar-Bar = <strong>O</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Snail-Sail = <strong>N</strong></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <td style="padding: 6px 8px; font-weight: 600;">4</td>
+                            <td style="padding: 6px 8px; text-align: center;">Crock-Rock = <strong>C</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Pier-Pie = <strong>R</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Spear-Spar = <strong>E</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Post-Pot = <strong>S</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Steed-Seed = <strong>T</strong></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <td style="padding: 6px 8px; font-weight: 600;">3</td>
+                            <td style="padding: 6px 8px; text-align: center;">Tarot-Trot = <strong>A</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Lamb-Lab = <strong>M</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Orange-Range = <strong>O</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Lance-Lace = <strong>N</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Gear-Ear = <strong>G</strong></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <td style="padding: 6px 8px; font-weight: 600;">2</td>
+                            <td style="padding: 6px 8px; text-align: center;">Harbour-Arbour = <strong>H</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Pie-Pi = <strong>E</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Weight-Eight = <strong>W</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Bead-Bed = <strong>A</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Comb-Cob = <strong>M</strong></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 6px 8px; font-weight: 600;">1</td>
+                            <td style="padding: 6px 8px; text-align: center;">Bear-Ear = <strong>B</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Clog-Cog = <strong>L</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Cane-Can = <strong>E</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Sharp-Harp = <strong>S</strong></td>
+                            <td style="padding: 6px 8px; text-align: center;">Thorn-Horn = <strong>T</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </details>
+    </section>
+
+    <!-- Discussion -->
+    <section class="discussion-section">
+        <h2 class="section-title">Discussion</h2>
+        <p style="text-align: center; color: var(--text-secondary); margin-bottom: var(--space-lg);">
+            Comments powered by <a href="https://giscus.app" target="_blank">giscus</a>. Uses GitHub Discussions.
+        </p>
+        <script src="https://giscus.app/client.js"
+            data-repo="unsolved-puzzles/unsolved-puzzles"
+            data-repo-id="R_kgDOSTBzlg"
+            data-category="Announcements"
+            data-category-id="DIC_kwDOSTBzls4C8Pva"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="dark_dimmed"
+            data-lang="en"
+            data-loading="lazy"
+            crossorigin="anonymous"
+            async>
+        </script>
+    </section>
+
+    <footer class="site-footer">
+        <p>Built by the community. <a href="https://github.com/unsolved-puzzles/unsolved-puzzles">View on GitHub</a></p>
+        <p class="footer-tagline">"Does it never end?"</p>
+    </footer>
+
+    <script src="../assets/js/blue-prince-bg.js"></script>
+    <script src="../assets/js/main.js?v=3"></script>
+    <script src="../assets/js/red-strings.js?v=2"></script>
+
+    <!-- Red string linking: grid cells ↔ finding cards -->
+    <script>
+    (function() {
+      var STRING_COLOR = '#c0392b';
+      var STRING_WIDTH = 2.5;
+      var PIN_RADIUS = 6;
+      var GRAVITY = 0.55;
+      var SPRING_STIFFNESS = 0.10;
+      var SPRING_DAMPING = 0.72;
+
+      var svgOverlay = null;
+      var activeCell = null;
+      var activeFinding = null;
+      var strings = [];
+      var animFrame = null;
+      var mouse = { x: -9999, y: -9999, active: false };
+
+      document.addEventListener('DOMContentLoaded', function() {
+        // Create dedicated SVG overlay for cell strings
+        svgOverlay = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svgOverlay.style.cssText =
+          'position:absolute;top:0;left:0;width:100%;height:' + document.documentElement.scrollHeight + 'px;' +
+          'pointer-events:none;z-index:99998;overflow:visible;';
+        document.body.appendChild(svgOverlay);
+
+        // Grid cells with links to findings
+        document.querySelectorAll('.room-cell a[href^="#finding-"]').forEach(function(link) {
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+            var cell = link.closest('.room-cell');
+            var findingId = link.getAttribute('href').substring(1);
+            var finding = document.getElementById(findingId);
+            if (!finding) return;
+            if (activeCell === cell) { dismissCellStrings(); return; }
+            dismissCellStrings(true);
+            activeCell = cell;
+            activeFinding = finding;
+            cell.classList.add('cell-highlighted');
+            finding.classList.add('finding-highlighted');
+            // Dim other finding cards
+            document.querySelectorAll('.finding-card').forEach(function(c) {
+              if (c !== finding) c.classList.add('finding-dimmed');
+            });
+            finding.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setTimeout(function() {
+              svgOverlay.style.height = document.documentElement.scrollHeight + 'px';
+              strings.push(createCellString(cell, finding));
+              animateCellStrings();
+            }, 400);
+          });
+        });
+
+        // Finding cards linking back to grid cells
+        document.querySelectorAll('.finding-card[id^="finding-"]').forEach(function(card) {
+          if (card.classList.contains('finding-card-cta')) return;
+          var cellId = card.id; // e.g. "finding-e3"
+          var pos = cellId.replace('finding-', ''); // e.g. "e3"
+          // Find the grid cell that links to this finding
+          var cellLink = document.querySelector('.room-cell a[href="#' + cellId + '"]');
+          if (!cellLink) return;
+          var cell = cellLink.closest('.room-cell');
+
+          card.addEventListener('click', function(e) {
+            if (e.target.closest('a')) return;
+            if (activeFinding === card) { dismissCellStrings(); return; }
+            dismissCellStrings(true);
+            activeCell = cell;
+            activeFinding = card;
+            cell.classList.add('cell-highlighted');
+            card.classList.add('finding-highlighted');
+            // Dim other finding cards
+            document.querySelectorAll('.finding-card').forEach(function(c) {
+              if (c !== card) c.classList.add('finding-dimmed');
+            });
+            cell.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setTimeout(function() {
+              svgOverlay.style.height = document.documentElement.scrollHeight + 'px';
+              strings.push(createCellString(cell, card));
+              animateCellStrings();
+            }, 400);
+          });
+        });
+
+        // Click outside dismisses
+        document.addEventListener('click', function(e) {
+          if (!activeCell) return;
+          if (!e.target.closest('.room-cell') && !e.target.closest('.finding-card')) {
+            dismissCellStrings();
+          }
+        });
+
+        window.addEventListener('resize', function() {
+          if (!strings.length) return;
+          svgOverlay.style.height = document.documentElement.scrollHeight + 'px';
+          strings.forEach(function(s) { updateEndpoints(s); });
+          renderCellStrings();
+        });
+
+        document.addEventListener('mousemove', function(e) {
+          mouse.x = e.pageX; mouse.y = e.pageY; mouse.active = true;
+        });
+      });
+
+      function dismissCellStrings(instant) {
+        if (activeCell) activeCell.classList.remove('cell-highlighted');
+        if (activeFinding) activeFinding.classList.remove('finding-highlighted');
+        // Remove dimming from all finding cards
+        document.querySelectorAll('.finding-card.finding-dimmed').forEach(function(c) {
+          c.classList.remove('finding-dimmed');
+        });
+        activeCell = null;
+        activeFinding = null;
+        if (instant) { clearCellStrings(); return; }
+        svgOverlay.style.transition = 'opacity 0.3s ease';
+        svgOverlay.style.opacity = '0';
+        setTimeout(function() {
+          clearCellStrings();
+          svgOverlay.style.transition = '';
+          svgOverlay.style.opacity = '1';
+        }, 300);
+      }
+
+      function clearCellStrings() {
+        if (animFrame) { cancelAnimationFrame(animFrame); animFrame = null; }
+        while (svgOverlay.firstChild) svgOverlay.removeChild(svgOverlay.firstChild);
+        strings = [];
+      }
+
+      function createCellString(elA, elB) {
+        var rA = elA.getBoundingClientRect();
+        var rB = elB.getBoundingClientRect();
+        var sx = window.scrollX, sy = window.scrollY;
+        var start = { x: rA.left + sx + rA.width / 2, y: rA.top + sy + rA.height / 2 };
+        var end = { x: rB.left + sx + rB.width / 2, y: rB.top + sy + rB.height / 2 };
+
+        var g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+        var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path.setAttribute('fill', 'none');
+        path.setAttribute('stroke', STRING_COLOR);
+        path.setAttribute('stroke-width', STRING_WIDTH);
+        path.setAttribute('stroke-linecap', 'round');
+        path.setAttribute('opacity', '0.85');
+        g.appendChild(path);
+        g.appendChild(makePin(start.x, start.y));
+        g.appendChild(makePin(end.x, end.y));
+        svgOverlay.appendChild(g);
+
+        var midX = (start.x + end.x) / 2;
+        var midY = (start.y + end.y) / 2;
+        var dist = Math.hypot(end.x - start.x, end.y - start.y);
+        var sag = dist * GRAVITY;
+
+        return {
+          elA: elA, elB: elB, group: g, path: path,
+          pinA: g.children[1], pinB: g.children[2],
+          start: start, end: end,
+          controlTarget: { x: midX, y: midY + sag },
+          controlCurrent: { x: midX, y: midY - sag * 0.5 },
+          controlVelocity: { x: 0, y: 0 },
+          mouseDisp: { x: 0, y: 0 },
+          mouseVel: { x: 0, y: 0 }
+        };
+      }
+
+      function makePin(x, y) {
+        var g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+        var c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        c.setAttribute('cx', x); c.setAttribute('cy', y);
+        c.setAttribute('r', PIN_RADIUS); c.setAttribute('fill', STRING_COLOR);
+        c.setAttribute('opacity', '0.9');
+        var s = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        s.setAttribute('cx', x - 1.5); s.setAttribute('cy', y - 1.5);
+        s.setAttribute('r', 2); s.setAttribute('fill', 'rgba(255,255,255,0.4)');
+        g.appendChild(c); g.appendChild(s);
+        return g;
+      }
+
+      function updateEndpoints(s) {
+        var rA = s.elA.getBoundingClientRect();
+        var rB = s.elB.getBoundingClientRect();
+        var sx = window.scrollX, sy = window.scrollY;
+        s.start.x = rA.left + sx + rA.width / 2; s.start.y = rA.top + sy + rA.height / 2;
+        s.end.x = rB.left + sx + rB.width / 2; s.end.y = rB.top + sy + rB.height / 2;
+        var midX = (s.start.x + s.end.x) / 2;
+        var midY = (s.start.y + s.end.y) / 2;
+        var dist = Math.hypot(s.end.x - s.start.x, s.end.y - s.start.y);
+        s.controlTarget.x = midX; s.controlTarget.y = midY + dist * GRAVITY;
+        s.controlCurrent.x = midX; s.controlCurrent.y = midY + dist * GRAVITY;
+        var pA = s.pinA.children[0], sA = s.pinA.children[1];
+        pA.setAttribute('cx', s.start.x); pA.setAttribute('cy', s.start.y);
+        sA.setAttribute('cx', s.start.x - 1.5); sA.setAttribute('cy', s.start.y - 1.5);
+        var pB = s.pinB.children[0], sB = s.pinB.children[1];
+        pB.setAttribute('cx', s.end.x); pB.setAttribute('cy', s.end.y);
+        sB.setAttribute('cx', s.end.x - 1.5); sB.setAttribute('cy', s.end.y - 1.5);
+      }
+
+      function animateCellStrings() {
+        function tick() {
+          if (!strings.length) return;
+          strings.forEach(function(s) {
+            var dx = s.controlTarget.x - s.controlCurrent.x;
+            var dy = s.controlTarget.y - s.controlCurrent.y;
+            s.controlVelocity.x += dx * SPRING_STIFFNESS;
+            s.controlVelocity.y += dy * SPRING_STIFFNESS;
+            s.controlVelocity.x *= SPRING_DAMPING;
+            s.controlVelocity.y *= SPRING_DAMPING;
+            s.controlCurrent.x += s.controlVelocity.x;
+            s.controlCurrent.y += s.controlVelocity.y;
+
+            if (mouse.active) {
+              var cx = s.controlCurrent.x + s.mouseDisp.x;
+              var cy = s.controlCurrent.y + s.mouseDisp.y;
+              var minDist = Infinity;
+              for (var i = 0; i <= 10; i++) {
+                var t = i / 10, it = 1 - t;
+                var px = it*it*s.start.x + 2*it*t*cx + t*t*s.end.x;
+                var py = it*it*s.start.y + 2*it*t*cy + t*t*s.end.y;
+                var d = Math.hypot(px - mouse.x, py - mouse.y);
+                if (d < minDist) minDist = d;
+              }
+              if (minDist < 100) {
+                var mdx = cx - mouse.x, mdy = cy - mouse.y;
+                var mDist = Math.sqrt(mdx*mdx + mdy*mdy) || 1;
+                var force = (100 - minDist) / 100;
+                s.mouseVel.x += (mdx/mDist) * force * 7;
+                s.mouseVel.y += (mdy/mDist) * force * 7;
+              }
+            }
+            s.mouseVel.x += -s.mouseDisp.x * 0.04;
+            s.mouseVel.y += -s.mouseDisp.y * 0.04;
+            s.mouseVel.x *= 0.88; s.mouseVel.y *= 0.88;
+            s.mouseDisp.x += s.mouseVel.x; s.mouseDisp.y += s.mouseVel.y;
+          });
+          renderCellStrings();
+          animFrame = requestAnimationFrame(tick);
+        }
+        animFrame = requestAnimationFrame(tick);
+      }
+
+      function renderCellStrings() {
+        strings.forEach(function(s) {
+          var cx = s.controlCurrent.x + s.mouseDisp.x;
+          var cy = s.controlCurrent.y + s.mouseDisp.y;
+          s.path.setAttribute('d',
+            'M ' + s.start.x + ' ' + s.start.y +
+            ' Q ' + cx + ' ' + cy +
+            ' ' + s.end.x + ' ' + s.end.y);
+        });
+      }
+    })();
+    </script>
+
+    <!-- Progress bar calculation -->
+    <script>
+    (function() {
+        var wrapper = document.querySelector('.directory-grid-wrapper');
+        var deciphered = parseInt(wrapper.dataset.deciphered) || 0;
+        var total = parseInt(wrapper.dataset.total) || 86;
+        var pct = Math.round((deciphered / total) * 100);
+
+        var fill = document.getElementById('progress-fill');
+        if (fill) fill.style.width = Math.max(pct, 2) + '%';
+        var label = document.getElementById('progress-label');
+        if (label) label.textContent = deciphered + ' / ' + total + ' identified (' + pct + '%)';
+    })();
+    </script>
+</body>
+</html>

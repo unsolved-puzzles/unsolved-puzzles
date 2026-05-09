@@ -22,7 +22,7 @@
     <header class="site-header">
         <div class="header-inner">
             <a href="../" class="logo">
-                <span class="logo-icon">🔍</span>
+                <span class="logo-icon">ðŸ”</span>
                 <span class="logo-text">Unsolved Puzzles</span>
             </a>
             <nav class="header-nav">
@@ -47,7 +47,7 @@
         <h2 class="section-title">What We Know</h2>
         <div style="max-width: 700px; margin: 0 auto var(--space-xl); color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8;">
             <p><strong>Setup:</strong> The Bookshop drafts exclusively from the Library. Looking above the left bookcase, there's clearly no wall behind it: a gap is visible. The room map confirms the left side isn't shaded yellow. Crown molding traces the outline of the hidden compartment.</p>
-            <p style="margin-top: var(--space-md);"><strong>The table:</strong> A table in the center of the room holds books arranged in a pattern that matches a Mora Jai puzzle box layout, a 3×3 grid with colored books. The table model is in a separate layer called "clickable" in the game files, but no click interaction has been found.</p>
+            <p style="margin-top: var(--space-md);"><strong>The table:</strong> A table in the center of the room holds books arranged in a pattern that matches a Mora Jai puzzle box layout, a 3Ã—3 grid with colored books. The table model is in a separate layer called "clickable" in the game files, but no click interaction has been found.</p>
             <p style="margin-top: var(--space-md);"><strong>Behind the shelves:</strong> Data miners have confirmed a modeled section exists behind the bookcase, but it appears empty. This is similar to how the Clock Tower secret room, Rough Drafts location, and Trading Post still all appear empty until triggered correctly.</p>
             <p style="margin-top: var(--space-md);"><strong>The newspaper clue:</strong> A newspaper found elsewhere in the estate shows a picture of the Bookshop with the shelves arranged differently, implying the current configuration is not permanent.</p>
             <p style="margin-top: var(--space-md);"><strong>Library connection:</strong> A hidden blue memo in the Library states: "If you have a hall pass, bookshop will be more likely to be drawn while drafting in the library." This suggests a deliberate link between the two rooms, though the hall pass alone doesn't unlock anything in the Bookshop.</p>
@@ -57,7 +57,7 @@
         <div class="findings-filters">
             <button class="filter-btn active" data-filter="all">All Findings</button>
             <button class="filter-btn" data-filter="confirmed">Confirmed</button>
-            <button class="filter-btn" data-filter="testing">Testing</button>
+            <button class="filter-btn" data-filter="tentative">Tentative</button>
             <button class="filter-btn" data-filter="debunked">Debunked</button>
             <button class="filter-btn" data-filter="explained">Explained</button>
         </div>
@@ -88,7 +88,7 @@
             <div class="finding-card" data-status="confirmed" id="finding-books-on-table-match-mora-jai-puzzle-layout">
                 <span class="finding-card-status confirmed">Confirmed</span>
                 <h3>Books on table match Mora Jai puzzle layout</h3>
-                <p>The books on the table are arranged in a pattern consistent with a Mora Jai puzzle box: a 3×3 grid of colored elements. The puzzle can be solved with purple corners, black corners, or most colors except blue and orange (blue copies the center cell).</p>
+                <p>The books on the table are arranged in a pattern consistent with a Mora Jai puzzle box: a 3Ã—3 grid of colored elements. The puzzle can be solved with purple corners, black corners, or most colors except blue and orange (blue copies the center cell).</p>
                 <div class="finding-card-meta">
                     <span>Source: u/JoefishTheGreat, u/piapiou</span>
                     <span>Puzzle solvable in theory</span>
@@ -115,6 +115,20 @@
                 </div>
             </div>
 
+            <div class="finding-card" data-status="confirmed" id="finding-room-directory-shows-open-compartment">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Room Directory Shows Open Compartment</h3>
+                <p>The <a href="https://blueprince.wiki.gg/images/Bookshop.png?d30740=&format=original" target="_blank">Bookshop</a>'s Room Directory view shows the compartment in an open state, potentially revealing how it opens in-game. This is the only room where the directory view shows a different state than what players normally see.</p>
+                <details style="margin-top: var(--space-sm);">
+                    <summary style="cursor: pointer; color: var(--text-muted); font-size: 0.8rem;">Room Directory (click to expand)</summary>
+                    <img src="https://blueprince.wiki.gg/images/Bookshop.png?d30740=&format=original" alt="Bookshop Room Directory view" style="width: 100%; border-radius: var(--radius-sm); margin-top: var(--space-sm); border: 1px solid rgba(255,255,255,0.1);">
+                </details>
+                <div class="finding-card-meta">
+                    <span>Source: jewe</span>
+                    <span>Visible in Room Directory</span>
+                </div>
+            </div>
+
             <div class="finding-card" data-status="confirmed" id="finding-secret-areas-appear-empty-until-triggered">
                 <span class="finding-card-status confirmed">Confirmed</span>
                 <h3>Secret areas appear empty until triggered</h3>
@@ -135,18 +149,18 @@
                 </div>
             </div>
 
-            <div class="finding-card" data-status="testing" id="finding-drafting-a-33-room-square-may-trigger-something">
-                <span class="finding-card-status testing">Testing</span>
-                <h3>Drafting a 3×3 room square may trigger something</h3>
-                <p>The books represent room colors in a 3×3 Mora Jai grid. If you draft rooms matching those exact colors in a 3×3 square on the estate map, something might happen in the Bookshop. Problem: there are no greyprints to match the grey book, making a perfect match impossible with current room types.</p>
+            <div class="finding-card" data-status="tentative" id="finding-drafting-a-33-room-square-may-trigger-something">
+                <span class="finding-card-status tentative">Tentative</span>
+                <h3>Drafting a 3Ã—3 room square may trigger something</h3>
+                <p>The books represent room colors in a 3Ã—3 Mora Jai grid. If you draft rooms matching those exact colors in a 3Ã—3 square on the estate map, something might happen in the Bookshop. Problem: there are no greyprints to match the grey book, making a perfect match impossible with current room types.</p>
                 <div class="finding-card-meta">
                     <span>Source: u/j-internet</span>
                     <span>Blocked by missing grey room type</span>
                 </div>
             </div>
 
-            <div class="finding-card" data-status="testing" id="finding-mora-jai-solution-applied-elsewhere-mirror-room">
-                <span class="finding-card-status testing">Testing</span>
+            <div class="finding-card" data-status="tentative" id="finding-mora-jai-solution-applied-elsewhere-mirror-room">
+                <span class="finding-card-status tentative">Tentative</span>
                 <h3>Mora Jai solution applied elsewhere (Mirror Room?)</h3>
                 <p>If the table encodes a Mora Jai solution, where do you input it? The Mirror Room lets you press buttons; if pressed in the order needed to solve this specific Mora Jai layout, it might trigger something. Extremely tedious due to room constraints on corner access.</p>
                 <div class="finding-card-meta">
@@ -155,8 +169,8 @@
                 </div>
             </div>
 
-            <div class="finding-card" data-status="testing" id="finding-drafting-adjacent-rooms-to-open-the-corner">
-                <span class="finding-card-status testing">Testing</span>
+            <div class="finding-card" data-status="tentative" id="finding-drafting-adjacent-rooms-to-open-the-corner">
+                <span class="finding-card-status tentative">Tentative</span>
                 <h3>Drafting adjacent rooms to "open" the corner</h3>
                 <p>Some rooms have inaccessible corners that become reachable when specific adjacent rooms are drafted. The 7-door locked passage (Hallway) or a Mechanarium door placed adjacent to the Bookshop's hidden corner might provide access, similar to how Foundation works.</p>
                 <div class="finding-card-meta">
@@ -165,18 +179,18 @@
                 </div>
             </div>
 
-            <div class="finding-card" data-status="testing" id="finding-utility-box-vac-connection">
-                <span class="finding-card-status testing">Testing</span>
+            <div class="finding-card" data-status="tentative" id="finding-utility-box-vac-connection">
+                <span class="finding-card-status tentative">Tentative</span>
                 <h3>Utility box / VAC connection</h3>
-                <p>The Utility box is described as "inspired by the Mora Jai." Could the Bookshop's Mora Jai layout provide a second solution to the VAC? However, the VAC has only 6 lights, not 9, making a direct 3×3 mapping unclear. Perhaps 6 steps to solve it if we knew which color.</p>
+                <p>The Utility box is described as "inspired by the Mora Jai." Could the Bookshop's Mora Jai layout provide a second solution to the VAC? However, the VAC has only 6 lights, not 9, making a direct 3Ã—3 mapping unclear. Perhaps 6 steps to solve it if we knew which color.</p>
                 <div class="finding-card-meta">
                     <span>Source: u/eldernikolatesla, u/UMUmmd</span>
                     <span>Speculative connection</span>
                 </div>
             </div>
 
-            <div class="finding-card" data-status="testing" id="finding-room-corners-forming-a-shared-room-4-corner-theory">
-                <span class="finding-card-status testing">Testing</span>
+            <div class="finding-card" data-status="tentative" id="finding-room-corners-forming-a-shared-room-4-corner-theory">
+                <span class="finding-card-status tentative">Tentative</span>
                 <h3>Room corners forming a shared room (4-corner theory)</h3>
                 <p>Draft Bookshop, Pantry, Nook, and a fourth room such that their corners form a shared accessible space. Several rooms have inaccessible corners; placing them together might create a room-within-rooms accessible from one of them.</p>
                 <div class="finding-card-meta">
@@ -251,7 +265,7 @@
         <div class="theory-item" data-explains="finding-hidden-space-exists-behind-the-left-bookcase,finding-table-model-is-in-a-clickable-layer,finding-books-on-table-match-mora-jai-puzzle-layout">
             <span class="theory-rank medium">Medium</span>
             <h3 class="theory-title">Library scripting hides the trigger</h3>
-            <p class="theory-desc">Since the Bookshop only drafts from the Library, a room already entwined with deep Auravei lore, the trigger mechanism could be hidden in the Library's code rather than the Bookshop's. This would explain why data miners find nothing in the Bookshop files specifically. A multi-room chain (Library action → Bookshop effect) would be novel for the game.</p>
+            <p class="theory-desc">Since the Bookshop only drafts from the Library, a room already entwined with deep Auravei lore, the trigger mechanism could be hidden in the Library's code rather than the Bookshop's. This would explain why data miners find nothing in the Bookshop files specifically. A multi-room chain (Library action â†’ Bookshop effect) would be novel for the game.</p>
         </div>
 
         <div class="theory-item" data-explains="finding-drafting-adjacent-rooms-to-open-the-corner">

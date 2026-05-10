@@ -1,0 +1,57 @@
+name: Ship Notification
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  issues: write
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Post shipped comment on referenced issues
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const commits = context.payload.commits || [];
+            const issueRefs = new Set();
+
+            for (const commit of commits) {
+              // Match #NNN references in commit messages
+              const matches = commit.message.match(/#(\d+)/g);
+              if (matches) {
+                for (const m of matches) {
+                  issueRefs.add(parseInt(m.slice(1)));
+                }
+              }
+            }
+
+            for (const issueNumber of issueRefs) {
+              try {
+                // Verify the issue exists and is open
+                const { data: issue } = await github.rest.issues.get({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issueNumber,
+                });
+
+                if (issue.pull_request) continue; // skip PRs
+
+                const actor = context.actor;
+                const sha = context.sha.slice(0, 7);
+                const compareUrl = context.payload.compare;
+
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issueNumber,
+                  body: `🚀 **Shipped** by @${actor} in [\`${sha}\`](${compareUrl})`,
+                });
+
+                core.info(`Commented on #${issueNumber}`);
+              } catch (err) {
+                core.warning(`Skipped #${issueNumber}: ${err.message}`);
+              }
+            }

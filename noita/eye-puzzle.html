@@ -59,7 +59,6 @@
             <button class="filter-btn" data-filter="confirmed">Confirmed</button>
             <button class="filter-btn" data-filter="tentative">Tentative</button>
             <button class="filter-btn" data-filter="debunked">Debunked</button>
-            <button class="filter-btn" data-filter="explained">Explained</button>
         </div>
 
         <!-- Findings Grid -->
@@ -71,7 +70,7 @@
                 <p>Full Ghidra decompilation of Noita's code confirms there is no interaction, trigger, spell, or boss mechanic tied to the eyes. Every single function has been assigned. If it isn't in the LUA, it's not there.</p>
                 <div class="finding-card-meta">
                     <span>Source: Kaliuresis</span>
-                    <span>Verified via NSA Ghidra</span>
+                    <span>Verified via Ghidra</span>
                 </div>
             </div>
 
@@ -98,9 +97,9 @@
             <div class="finding-card" data-status="confirmed" id="finding-cipher-is-polyalphabetic">
                 <span class="finding-card-status confirmed">Confirmed</span>
                 <h3>Cipher is polyalphabetic</h3>
-                <p>Flat frequency distribution proves it's not a simple substitution cipher. Each ciphertext character depends on something beyond just the plaintext character. The cipher has no fewer than 20 internal states, likely 83.</p>
+                <p>Flat frequency distribution proves it's not a simple substitution cipher. Each ciphertext character depends on something beyond just the plaintext character. The cipher has hidden internal states far exceeding 83, with the state space likely being S&#x2088;&#x2083; (all permutations of 83 symbols).</p>
                 <div class="finding-card-meta">
-                    <span>Source: Toboter, CodeWarrior0</span>
+                    <span>Source: Toboter, CodeWarrior0, Lymm</span>
                     <span>Confirmed via frequency analysis</span>
                 </div>
             </div>
@@ -108,9 +107,9 @@
             <div class="finding-card" data-status="confirmed" id="finding-no-double-trigrams-exist">
                 <span class="finding-card-status confirmed">Confirmed</span>
                 <h3>No double trigrams exist</h3>
-                <p>The same trigram never appears twice in a row in any message. This is a fundamental property of the cipher: each ciphertext character is conditionally dependent on the previous ciphertext character.</p>
+                <p>The same trigram never appears twice in a row in any message. In a deck cipher, this is automatic: each plaintext letter shuffles the deck, so the top card always changes. The no-doubles property constrains the cipher to mechanisms where the state transition is never the identity.</p>
                 <div class="finding-card-meta">
-                    <span>Source: Pyry</span>
+                    <span>Source: Pyry, Lymm</span>
                     <span>Verified across all messages</span>
                 </div>
             </div>
@@ -125,13 +124,43 @@
                 </div>
             </div>
 
-            <div class="finding-card" data-status="tentative" id="finding-autokey-alberti-cipher-model">
-                <span class="finding-card-status tentative">Tentative</span>
-                <h3>Autokey Alberti cipher model</h3>
-                <p>Pyry constructed a demonstration showing isomorphs using an autokey Alberti cipher on English plaintext, where rings rotate by an amount dependent on the previous plaintext character. Matches many observed properties but not fully proven.</p>
+            <div class="finding-card" data-status="confirmed" id="finding-chaining-conflicts-observed">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Chaining conflicts observed</h3>
+                <p>Alphabet chaining on isomorphs produces conflicts (commutativity conflicts, order conflicts, arrow overlaps) that are impossible in cyclic-group ciphers (CTAK). This rules out all classical ciphertext-autokey mechanisms, including Alberti, and requires a non-commutative group.</p>
                 <div class="finding-card-meta">
-                    <span>Source: Pyry</span>
-                    <span>Best candidate model</span>
+                    <span>Source: Lymm</span>
+                    <span>Confirmed via chaining graph analysis</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed" id="finding-hidden-states-required">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Hidden states far exceed 83</h3>
+                <p>The cipher's internal state space is not just 83 values. In a deck cipher model (GAK with S&#x2088;&#x2083;), the hidden state is the order of 82 unseen cards beneath the top card, giving 82! possible hidden states. This "delayed hidden state effect" explains how messages with different first characters can share subsequent sections.</p>
+                <div class="finding-card-meta">
+                    <span>Source: Lymm</span>
+                    <span>Derived from GAK/deck cipher framework</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed" id="finding-isomorphic-cipher-hierarchy-classified">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Isomorphic cipher hierarchy classified</h3>
+                <p>All ciphers producing isomorphs form a strict hierarchy: CTAK &lt; GCTAK &lt; GAK &lt; Perfectly Isomorphic. CTAK (cyclic) is ruled out by chaining conflicts. GCTAK is ruled out because 83 is prime (the only group of order 83 is cyclic). The cipher must be at least GAK-class.</p>
+                <div class="finding-card-meta">
+                    <span>Source: Lymm</span>
+                    <span>Mathematically proven</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed" id="finding-only-2-of-6-possible-groups-remain">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Only 2 of 6 possible groups remain</h3>
+                <p>Because 83 is prime, only 6 transitive permutation groups exist for GAK. Cyclic and dihedral are ruled out. The two AGL subgroups have not been fully eliminated but struggle with shared sections after differing first characters. The alternating (A&#x2088;&#x2083;) and symmetric (S&#x2088;&#x2083;) groups remain as primary candidates, equivalent to a deck cipher.</p>
+                <div class="finding-card-meta">
+                    <span>Source: Lymm</span>
+                    <span>Derived from transitivity restriction</span>
                 </div>
             </div>
 
@@ -162,6 +191,16 @@
                 <div class="finding-card-meta">
                     <span>Source: CodeWarrior0</span>
                     <span>Statistically significant</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="debunked" id="finding-autokey-alberti-cipher-model">
+                <span class="finding-card-status debunked">Debunked</span>
+                <h3>Autokey Alberti cipher model</h3>
+                <p>Pyry's original demonstration used an autokey Alberti cipher to show how isomorphs could arise. However, alphabet chaining reveals chaining conflicts in the eye data that are impossible for any cyclic-group cipher (including Alberti). The Alberti model was an important stepping stone but is now ruled out.</p>
+                <div class="finding-card-meta">
+                    <span>Source: Pyry (original), Lymm (disproof)</span>
+                    <span>Ruled out by chaining conflicts</span>
                 </div>
             </div>
 
@@ -196,10 +235,10 @@
     <section class="theories-section">
         <h2 class="section-title">Theories (Ranked)</h2>
 
-        <div class="theory-item" data-explains="finding-83-symbol-alphabet-with-unbroken-range,finding-autokey-alberti-cipher-model">
+        <div class="theory-item" data-explains="finding-83-symbol-alphabet-with-unbroken-range,finding-chaining-conflicts-observed,finding-isomorphic-cipher-hierarchy-classified,finding-only-2-of-6-possible-groups-remain">
             <span class="theory-rank high">High Priority</span>
-            <h3 class="theory-title">Novel polyalphabetic cipher with ciphertext autokey</h3>
-            <p class="theory-desc">The cipher uses the previous ciphertext character as part of its state transition. 83 internal states match the 83-symbol alphabet. The Alberti cipher with autokey mechanism satisfies most of Pyry's Conditions. Finding the key/tabula recta is the remaining challenge.</p>
+            <h3 class="theory-title">Deck cipher (GAK with S&#x2088;&#x2083;)</h3>
+            <p class="theory-desc">The leading candidate: a deck of 83 cards where each plaintext letter triggers a specific shuffle. The top card after shuffling is the ciphertext output. Equivalent to a Group Autokey cipher with the symmetric group S&#x2088;&#x2083;. Evidence suggests the shuffles have relatively simple structure (few swaps from a shared base permutation), which constrains the key space.</p>
         </div>
 
         <div class="theory-item" data-explains="finding-messages-share-sections-alignments">
@@ -208,16 +247,10 @@
             <p class="theory-desc">First character differs across all 9 messages (numbering). Shared sections near the start suggest a common header or repeated phrase. The plaintext likely follows a structured format, possibly instructions or a narrative with variations.</p>
         </div>
 
-        <div class="theory-item" data-explains="finding-cipher-is-polyalphabetic">
+        <div class="theory-item" data-explains="finding-isomorphic-cipher-hierarchy-classified,finding-only-2-of-6-possible-groups-remain">
             <span class="theory-rank medium">Medium</span>
-            <h3 class="theory-title">Finnish Vigenere / WW2-era cipher connection</h3>
-            <p class="theory-desc">Noita's developers are Finnish. "Wormbox cipher" (a nearly-lost Finnish WW2 Vigenere variant) has been proposed. The game has many Finnish cultural elements. However, attempts using keyword "nolla" (Finnish for zero/Noita) have not been independently verified.</p>
-        </div>
-
-        <div class="theory-item" data-explains="finding-no-in-game-trigger-exists">
-            <span class="theory-rank medium">Medium</span>
-            <h3 class="theory-title">In-game lore provides the decryption key</h3>
-            <p class="theory-desc">While no in-game trigger exists, the key to decrypt might be hidden in game lore, emerald tablets, or other solved puzzles. The "second level of encoding" could reference game elements as cipher components.</p>
+            <h3 class="theory-title">Permutation similarity narrows key space</h3>
+            <p class="theory-desc">Shared sections after differing first characters suggest the deck shuffles for each plaintext letter are "not too far apart" from each other (a few swaps from a shared base permutation). If confirmed, this dramatically reduces the search space from arbitrary S&#x2088;&#x2083; permutations to a tractable family of structurally simple shuffles.</p>
         </div>
 
         <div class="theory-item" data-explains="finding-no-in-game-trigger-exists">
@@ -225,6 +258,10 @@
             <h3 class="theory-title">Library of Babel reference / meta-commentary</h3>
             <p class="theory-desc">The eye message "Seeking truth, the wise only find its profound absence" strongly echoes Borges' Library of Babel (scholars searching infinite random text for truth). Could be thematic framing rather than a cipher clue, but the Babel website has been proposed as a potential tool.</p>
         </div>
+        <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/issues/new?template=new-theory.yml" target="_blank" class="theory-item theory-item-cta">
+            <h3 class="theory-title">+ Submit a New Theory</h3>
+            <p class="theory-desc">Have a cipher theory or decryption approach? Share it.</p>
+        </a>
     </section>
 
     <!-- Resources -->
@@ -243,25 +280,19 @@
                     <svg class="resource-link-icon" viewBox="0 0 24 24" fill="none" stroke="#4285f4" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
                     <h4>Progress Document</h4>
                     <p>Primary tracker of all community progress on decoding the messages.</p>
-                    <span class="resource-author"><strong>Toboter</strong></span>
+                    <span class="resource-author"><strong>Toboter</strong> · December 2025</span>
                 </a>
                 <a href="https://docs.google.com/document/d/1QeagH8TklJsd8iribMtT5LIRL91laOUU_tFcVl7OOqA" target="_blank" class="resource-link doc">
                     <svg class="resource-link-icon" viewBox="0 0 24 24" fill="none" stroke="#4285f4" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
                     <h4>Analytical Overview</h4>
                     <p>Cryptographic research: frequency, period, and positional analysis.</p>
-                    <span class="resource-author"><strong>CodeWarrior0</strong></span>
+                    <span class="resource-author"><strong>CodeWarrior0</strong> · November 2021</span>
                 </a>
                 <a href="https://docs.google.com/document/d/12sCi3OrTuy4PPcu3zUykue7suHvAPyK-uFKcm8Rp4Go" target="_blank" class="resource-link doc">
                     <svg class="resource-link-icon" viewBox="0 0 24 24" fill="none" stroke="#4285f4" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
                     <h4>Alignments & Gap Patterns</h4>
                     <p>Color-coded visualization of shared sections and isomorphs.</p>
-                    <span class="resource-author"><strong>Lymm</strong></span>
-                </a>
-                <a href="https://docs.google.com/document/d/1a4uOf7SkXEPCROEi1iHzU5Lbr3zMbtOqSq_J5c4kyOw" target="_blank" class="resource-link doc">
-                    <svg class="resource-link-icon" viewBox="0 0 24 24" fill="none" stroke="#4285f4" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-                    <h4>Isomorphism in Classical Ciphers</h4>
-                    <p>Educational primer on isomorphs and their role in cipher-breaking.</p>
-                    <span class="resource-author"><strong>CodeWarrior0</strong></span>
+                    <span class="resource-author"><strong>Lymm</strong> · September 2021</span>
                 </a>
             </div>
         </div>
@@ -277,7 +308,11 @@
                     <svg class="resource-link-icon" viewBox="0 0 24 24" fill="none" stroke="#34a853" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
                     <h4>Emerald Tablet (Master Index)</h4>
                     <p>Index of all documents on Eye Messages, Cauldron, and other mysteries.</p>
-                    <span class="resource-author"><strong>Gonzo</strong></span>
+                    <span class="resource-author"><strong>Gonzo</strong> · June 2025</span>
+                </a>
+                <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/issues/new?template=community-resource.yml" target="_blank" class="resource-link resource-link-cta">
+                    <h4>+ Share a Community Resource</h4>
+                    <p>Know a tool, guide, dataset, or reference that helps? Submit it.</p>
                 </a>
             </div>
         </div>
@@ -290,16 +325,62 @@
             </div>
             <div class="resource-category-items">
                 <a href="https://docs.google.com/document/d/1kbAj0zoD8Q9MXuCsqIKCf_G6E4mpA7y8s13creelBUY" target="_blank" class="resource-link tool">
-                    <svg class="resource-link-icon" viewBox="0 0 24 24" fill="none" stroke="#fb923c" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    <svg class="resource-link-icon" viewBox="0 0 24 24" fill="none" stroke="#fb923c" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg>
                     <h4>Noita Decompilation Guide</h4>
                     <p>Ghidra guide proving no in-game eye triggers exist.</p>
-                    <span class="resource-author"><strong>Kaliuresis</strong></span>
+                    <span class="resource-author"><strong>Kaliuresis</strong> · June 2026</span>
+                </a>
+                <a href="https://docs.google.com/document/d/1oSY46-WCmytHvI-BtD0X2UkGX6jg9DFJ9oeFGsMKd1g/edit?tab=t.0" target="_blank" class="resource-link tool">
+                    <svg class="resource-link-icon" viewBox="0 0 24 24" fill="none" stroke="#fb923c" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
+                    <h4>Community Tools</h4>
+                    <p>Curated list of community-built tools and resources for the eye puzzle.</p>
+                    <span class="resource-author"><strong>Defektu</strong> · November 2024</span>
                 </a>
                 <a href="https://chillie-ilya.github.io/lymms-binoculars-web/" target="_blank" class="resource-link tool">
-                    <svg class="resource-link-icon" viewBox="0 0 24 24" fill="none" stroke="#fb923c" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <svg class="resource-link-icon" viewBox="0 0 24 24" fill="none" stroke="#fb923c" stroke-width="2"><circle cx="8" cy="10" r="5"/><circle cx="16" cy="10" r="5"/><line x1="3" y1="10" x2="1" y2="14"/><line x1="21" y1="10" x2="23" y2="14"/><line x1="11" y1="8" x2="13" y2="8"/></svg>
                     <h4>Lymm's Binoculars (Eye Finder)</h4>
                     <p>Web tool to find eye message spawn locations in your world seed.</p>
-                    <span class="resource-author"><strong>Lymm</strong></span>
+                    <span class="resource-author"><strong>Lymm</strong> · September 2024</span>
+                </a>
+                <a href="https://saltyoutcome.github.io/Eye_Gap_D-D/" target="_blank" class="resource-link tool">
+                    <svg class="resource-link-icon" viewBox="0 0 24 24" fill="none" stroke="#fb923c" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    <h4>Eye Gap Difference</h4>
+                    <p>Interactive visualization of gap differences between eye message isomorphs.</p>
+                    <span class="resource-author"><strong>Salty Outcome</strong> · August 2024</span>
+                </a>
+                <a href="https://saltyoutcome.github.io/EyeFrequencyGroups-/" target="_blank" class="resource-link tool">
+                    <svg class="resource-link-icon" viewBox="0 0 24 24" fill="none" stroke="#fb923c" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    <h4>Eye Frequency Groups</h4>
+                    <p>Frequency grouping analysis tool for eye message symbols.</p>
+                    <span class="resource-author"><strong>Salty Outcome</strong> · May 2024</span>
+                </a>
+                <a href="https://defektu.github.io/Noita-EyeDiffs/" target="_blank" class="resource-link tool">
+                    <svg class="resource-link-icon" viewBox="0 0 24 24" fill="none" stroke="#fb923c" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    <h4>Eye Diffs Visualiser</h4>
+                    <p>Visual comparison tool for differences between eye messages.</p>
+                    <span class="resource-author"><strong>Defektu</strong> · April 2024</span>
+                </a>
+                <a href="https://tomster12.github.io/web-analysis/" target="_blank" class="resource-link tool">
+                    <svg class="resource-link-icon" viewBox="0 0 24 24" fill="none" stroke="#fb923c" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    <h4>Eye Analysis Webtool</h4>
+                    <p>Interactive web-based analysis tool for eye message data.</p>
+                    <span class="resource-author"><strong>tomster12</strong> · April 2024</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Wikis -->
+        <div class="resource-category">
+            <div class="resource-category-header doc">
+                <span class="resource-category-icon">📋</span>
+                <h3>Wikis</h3>
+            </div>
+            <div class="resource-category-items">
+                <a href="https://github.com/Lymm37/eye-messages/wiki" target="_blank" class="resource-link doc">
+                    <svg class="resource-link-icon" viewBox="0 0 24 24" fill="none" stroke="#4285f4" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                    <h4>Eye Messages Wiki</h4>
+                    <p>Comprehensive wiki covering isomorphic cipher hierarchy, GAK/deck ciphers, chaining conflicts, transitivity restriction, and all key concepts.</p>
+                    <span class="resource-author"><strong>Lymm</strong> · November 2025</span>
                 </a>
             </div>
         </div>
@@ -311,17 +392,17 @@
                 <h3>Community & Media</h3>
             </div>
             <div class="resource-category-items">
-                <a href="https://www.youtube.com/watch?v=4lSPZWmmoS8" target="_blank" class="resource-link video">
-                    <svg class="resource-link-icon" viewBox="0 0 24 24" fill="#FF0000" stroke="none"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                    <h4>We need help solving Noita's biggest mystery!</h4>
-                    <p>The biggest unsolved mystery in Noita — and a call for the community to work together to crack it.</p>
-                    <span class="resource-author"><strong>FuryForged</strong> · March 2021</span>
-                </a>
                 <a href="https://www.youtube.com/watch?v=ctmmguuF1e8" target="_blank" class="resource-link video">
                     <svg class="resource-link-icon" viewBox="0 0 24 24" fill="#FF0000" stroke="none"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                     <h4>The Unsolved Noita Eye Mystery: An Update</h4>
                     <p>Progress update featuring breakthroughs by Lymm, Gonzo, and Chillie.</p>
                     <span class="resource-author"><strong>FuryForged</strong> · February 2024</span>
+                </a>
+                <a href="https://www.youtube.com/watch?v=4lSPZWmmoS8" target="_blank" class="resource-link video">
+                    <svg class="resource-link-icon" viewBox="0 0 24 24" fill="#FF0000" stroke="none"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    <h4>We need help solving Noita's biggest mystery!</h4>
+                    <p>The biggest unsolved mystery in Noita — and a call for the community to work together to crack it.</p>
+                    <span class="resource-author"><strong>FuryForged</strong> · March 2021</span>
                 </a>
             </div>
         </div>
@@ -386,10 +467,6 @@
             <h3 class="theory-title">Non-shared isomorphs have unique sequences</h3>
             <p class="theory-desc">All isomorphs that aren't part of shared sections have different trigram sequences and never share the same trigram value at the same relative position.</p>
         </div>
-        <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/issues/new?template=new-theory.yml" target="_blank" class="theory-item theory-item-cta">
-            <h3 class="theory-title">+ Submit a New Theory</h3>
-            <p class="theory-desc">Have a cipher theory or decryption approach? Share it.</p>
-        </a>
     </section>
 
     <!-- Discussion -->

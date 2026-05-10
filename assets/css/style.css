@@ -1028,6 +1028,36 @@ a:hover {
     display: none;
 }
 
+/* ── Resource CTA (gold-dashed submission card) ────────── */
+
+.resource-link.resource-link-cta {
+    text-align: center;
+    border: 2px dashed rgba(212, 175, 55, 0.4);
+    background: rgba(212, 175, 55, 0.03);
+    transform: none;
+    justify-content: center;
+    box-shadow: none;
+}
+
+.resource-link.resource-link-cta::before {
+    display: none;
+}
+
+.resource-link.resource-link-cta:hover {
+    border-color: var(--accent-gold);
+    background: rgba(212, 175, 55, 0.08);
+    transform: translateY(-3px);
+}
+
+.resource-link.resource-link-cta h4 {
+    color: var(--accent-gold);
+    padding-right: 0;
+}
+
+.resource-link.resource-link-cta p {
+    color: var(--text-secondary);
+}
+
 .theory-item {
     background: var(--bg-secondary);
     border: 1px solid rgba(255, 255, 255, 0.06);

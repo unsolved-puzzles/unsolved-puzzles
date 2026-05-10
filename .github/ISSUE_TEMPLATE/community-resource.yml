@@ -19,10 +19,10 @@ body:
     attributes:
       label: Resource type
       options:
+        - Document or guide
+        - Spreadsheet or dataset
         - Tool or script
-        - Guide or writeup
-        - Dataset or extracted data
-        - Video or stream
+        - Video or media
         - Other
     validations:
       required: true

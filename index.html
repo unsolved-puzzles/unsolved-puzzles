@@ -61,7 +61,7 @@
                     <span class="stat-label">Open Cases</span>
                 </div>
                 <div class="stat">
-                    <span class="stat-number" id="stat-contributors">4</span>
+                    <span class="stat-number" id="stat-contributors">3</span>
                     <span class="stat-label">Contributors</span>
                 </div>
                 <div class="stat">
@@ -187,21 +187,6 @@
         });
         const casesEl = document.getElementById('stat-cases');
         if (casesEl) casesEl.textContent = totalCases;
-
-        // Contributors: fetch CONTRIBUTORS file, count non-bot entries
-        const contribEl = document.getElementById('stat-contributors');
-        if (contribEl) {
-            fetch('https://raw.githubusercontent.com/unsolved-puzzles/unsolved-puzzles/main/CONTRIBUTORS')
-                .then(r => r.ok ? r.text() : '')
-                .then(text => {
-                    const count = text.split('\n')
-                        .map(l => l.trim())
-                        .filter(l => l && l !== 'github-actions')
-                        .length;
-                    if (count > 0) contribEl.textContent = count;
-                })
-                .catch(() => {});
-        }
     })();
     </script>
 </body>

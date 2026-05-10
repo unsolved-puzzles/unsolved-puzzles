@@ -456,7 +456,7 @@
             Each cell is a Picture Puzzle position. Gold = room(s) confirmed. Red = no rooms identified yet.
         </p>
 
-        <div class="directory-grid-wrapper" data-deciphered="7" data-total="24">
+        <div class="directory-grid-wrapper">
             <!-- Progress Bar -->
             <div class="directory-progress-bar">
                 <div class="directory-progress-fill" id="progress-fill"></div>
@@ -465,10 +465,10 @@
 
             <!-- Stats -->
             <div class="directory-stats">
-                <span><span class="stat-dot confirmed"></span> <span id="stat-confirmed">7</span> confirmed</span>
-                <span><span class="stat-dot tentative"></span> 3 tentative</span>
-                <span><span class="stat-dot to-check"></span> <span id="stat-to-check">17</span> room paintings to decipher</span>
-                <span><span class="stat-dot no-paintings"></span> <span id="stat-no-paintings">57</span> rooms have no paintings</span>
+                <span><span class="stat-dot confirmed"></span> <span id="stat-confirmed">0</span> confirmed</span>
+                <span><span class="stat-dot tentative"></span> <span id="stat-tentative">0</span> tentative</span>
+                <span><span class="stat-dot to-check"></span> <span id="stat-to-check">0</span> room paintings to decipher</span>
+                <span><span class="stat-dot no-paintings"></span> <span id="stat-no-paintings">0</span> rooms have no paintings</span>
             </div>
 
             <!-- The Grid (9 ranks x 5 cols, matching the Picture Puzzle layout) -->
@@ -702,7 +702,7 @@
                 </div>
             </div>
 
-            <div>
+            <div id="unidentified-rooms">
                 <strong style="color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em;">Unidentified</strong>
                 <div style="columns: 3; column-gap: var(--space-lg); line-height: 2.2; font-size: 0.85rem; margin-top: 4px;">
                     <a href="https://blueprince.wiki.gg/images/WalkinCloset.png?d30740=&format=original" target="_blank">Walk-in Closet</a> (barely visible)<br>
@@ -1273,18 +1273,50 @@
     })();
     </script>
 
-    <!-- Progress bar calculation -->
+    <!-- Progress bar calculation (computed from DOM) -->
     <script>
     (function() {
-        var wrapper = document.querySelector('.directory-grid-wrapper');
-        var deciphered = parseInt(wrapper.dataset.deciphered) || 0;
-        var total = parseInt(wrapper.dataset.total) || 86;
-        var pct = Math.round((deciphered / total) * 100);
+        var TOTAL_ROOMS = 86;
 
+        // Count grid cells by status
+        var solved = document.querySelectorAll('.room-cell.solved').length;
+        var testing = document.querySelectorAll('.room-cell.testing').length;
+
+        // Count rooms to decipher from the Unidentified subsection only
+        var unidentifiedDiv = document.getElementById('unidentified-rooms');
+        var roomLinks = unidentifiedDiv ? unidentifiedDiv.querySelectorAll('a[target="_blank"]') : [];
+        var roomNames = new Set();
+        roomLinks.forEach(function(a) { roomNames.add(a.textContent.trim()); });
+        var toDecipher = roomNames.size;
+
+        // Some solved cells map to multiple rooms — count rooms from cell text
+        var confirmedRooms = 0;
+        document.querySelectorAll('.room-cell.solved .cell-rooms').forEach(function(el) {
+            // Count comma-separated rooms (e.g. "Entrance Hall, Dining Room" = 2)
+            confirmedRooms += el.textContent.split(',').length;
+        });
+        var tentativeRooms = 0;
+        document.querySelectorAll('.room-cell.testing .cell-rooms').forEach(function(el) {
+            tentativeRooms += el.textContent.split(',').length;
+        });
+
+        var identified = confirmedRooms + tentativeRooms;
+        var withPaintings = identified + toDecipher;
+        var noPaintings = TOTAL_ROOMS - withPaintings;
+        var pct = Math.round((identified / withPaintings) * 100);
+
+        // Update progress bar
         var fill = document.getElementById('progress-fill');
         if (fill) fill.style.width = Math.max(pct, 2) + '%';
         var label = document.getElementById('progress-label');
-        if (label) label.textContent = deciphered + ' / ' + total + ' identified (' + pct + '%)';
+        if (label) label.textContent = identified + ' / ' + withPaintings + ' identified (' + pct + '%)';
+
+        // Update stats
+        var el;
+        el = document.getElementById('stat-confirmed'); if (el) el.textContent = confirmedRooms;
+        el = document.getElementById('stat-tentative'); if (el) el.textContent = tentativeRooms;
+        el = document.getElementById('stat-to-check'); if (el) el.textContent = toDecipher;
+        el = document.getElementById('stat-no-paintings'); if (el) el.textContent = noPaintings;
     })();
     </script>
 </body>

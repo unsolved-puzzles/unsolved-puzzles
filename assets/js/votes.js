@@ -1,10 +1,10 @@
 /**
  * Unsolved Puzzles - Voting via GitHub Issues Reactions
  *
- * Each finding card and theory item maps to a GitHub Issue (by title match).
- * All GitHub reaction types are supported — only reactions with
- * count > 0 are displayed.
- * A "Discuss" link takes users to the issue to vote/comment.
+ * Each finding card, theory item, and puzzle card maps to a GitHub Issue
+ * (by title match). All GitHub reaction types are supported — only
+ * reactions with count > 0 are displayed.
+ * A "Discuss" / "Vote" link takes users to the issue.
  *
  * Zero backend required — uses the public GitHub API.
  */
@@ -33,7 +33,8 @@
   async function init() {
     const findingCards = document.querySelectorAll(".finding-card");
     const theoryItems = document.querySelectorAll(".theory-item");
-    if (!findingCards.length && !theoryItems.length) return;
+    const puzzleCards = document.querySelectorAll(".game-card:not(.game-card-cta)");
+    if (!findingCards.length && !theoryItems.length && !puzzleCards.length) return;
 
     // Inject empty vote widgets into all finding cards
     findingCards.forEach((card) => {
@@ -53,10 +54,20 @@
       desc.parentNode.insertBefore(widget, desc.nextSibling);
     });
 
-    // Fetch issues for both labels in parallel
-    const [findingIssues, theoryIssues] = await Promise.all([
+    // Inject empty vote widgets into puzzle cards
+    puzzleCards.forEach((card) => {
+      const meta = card.querySelector(".game-card-meta");
+      if (!meta) return;
+      const widget = document.createElement("div");
+      widget.className = "vote-widget";
+      meta.parentNode.insertBefore(widget, meta.nextSibling);
+    });
+
+    // Fetch issues for all labels in parallel
+    const [findingIssues, theoryIssues, puzzleIssues] = await Promise.all([
       findingCards.length ? fetchIssues("finding") : Promise.resolve([]),
       theoryItems.length ? fetchIssues("theory") : Promise.resolve([]),
+      puzzleCards.length ? fetchIssues("puzzle") : Promise.resolve([]),
     ]);
 
     // Map finding cards to issues
@@ -72,9 +83,16 @@
         mapIssueToElement(item, ".theory-title", theoryIssues);
       });
     }
+
+    // Map puzzle cards to issues
+    if (puzzleIssues) {
+      puzzleCards.forEach((card) => {
+        mapIssueToElement(card, ".game-card-title", puzzleIssues, true);
+      });
+    }
   }
 
-  function mapIssueToElement(el, titleSelector, issues) {
+  function mapIssueToElement(el, titleSelector, issues, isPuzzle) {
     const titleEl = el.querySelector(titleSelector);
     const title = titleEl?.textContent?.trim();
     if (!title) return;
@@ -99,11 +117,14 @@
           "</span>"
       );
 
+    var linkText = isPuzzle ? "Rank this Puzzle" : "Discuss on GitHub";
+    var stopProp = isPuzzle ? ' onclick="event.stopPropagation()"' : '';
+
     widget.innerHTML =
       (reactionSpans.length
         ? '<span class="vote-reactions">' + reactionSpans.join("") + "</span>"
         : "") +
-      '<a class="vote-discuss-link" href="' + issue.html_url + '" target="_blank" rel="noopener">Discuss on GitHub</a>';
+      '<a class="vote-discuss-link" href="' + issue.html_url + '" target="_blank" rel="noopener"' + stopProp + '>' + linkText + '</a>';
   }
 
   async function fetchIssues(label) {

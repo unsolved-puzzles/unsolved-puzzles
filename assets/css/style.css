@@ -315,7 +315,8 @@ a:hover {
 }
 
 .game-card {
-    display: block;
+    display: flex;
+    flex-direction: column;
     background: var(--bg-card);
     border-radius: var(--radius-lg);
     overflow: hidden;
@@ -361,6 +362,14 @@ a:hover {
 .game-card-body {
     padding: var(--space-lg);
     padding-top: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.game-card-body .vote-widget {
+    margin-top: auto;
+    padding-top: var(--space-sm);
 }
 
 /* ── Game Card CTA (yellow-dotted submission link) ────────── */

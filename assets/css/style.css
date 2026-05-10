@@ -383,6 +383,7 @@ a:hover {
     text-align: center;
     text-decoration: none;
     min-height: unset;
+    align-self: start;
 }
 
 .game-card.game-card-cta:hover {

@@ -187,6 +187,21 @@
         });
         const casesEl = document.getElementById('stat-cases');
         if (casesEl) casesEl.textContent = totalCases;
+
+        // Contributors: fetch CONTRIBUTORS file, count non-bot entries
+        const contribEl = document.getElementById('stat-contributors');
+        if (contribEl) {
+            fetch('https://raw.githubusercontent.com/unsolved-puzzles/unsolved-puzzles/main/CONTRIBUTORS')
+                .then(r => r.ok ? r.text() : '')
+                .then(text => {
+                    const count = text.split('\n')
+                        .map(l => l.trim())
+                        .filter(l => l && l !== 'github-actions')
+                        .length;
+                    if (count > 0) contribEl.textContent = count;
+                })
+                .catch(() => {});
+        }
     })();
     </script>
 </body>

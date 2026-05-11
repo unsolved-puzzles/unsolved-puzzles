@@ -952,6 +952,32 @@ body.votes-loading .theories-section {
     justify-content: space-between;
 }
 
+.finding-card details {
+    margin-top: 0.6rem;
+}
+
+.finding-card details summary {
+    font-size: 0.8rem;
+    color: #888;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.2s;
+}
+
+.finding-card details summary:hover {
+    color: #555;
+}
+
+.finding-card details[open] summary {
+    margin-bottom: 0.5rem;
+}
+
+.finding-card details img {
+    width: 100%;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+}
+
 /* ── Theories Section ─────────────────────────────────────── */
 
 .theories-section {

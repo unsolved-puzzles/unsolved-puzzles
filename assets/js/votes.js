@@ -63,6 +63,13 @@
       meta.parentNode.insertBefore(widget, meta.nextSibling);
     });
 
+    // Hide containers that will be reordered to prevent layout shift
+    var rankedContainers = document.querySelectorAll(".games-grid, .findings-grid, .theories-section");
+    rankedContainers.forEach(function (el) {
+      el.style.opacity = "0";
+      el.style.transition = "opacity 0.3s ease";
+    });
+
     // Fetch issues for all labels in parallel
     const [findingIssues, theoryIssues, puzzleIssues] = await Promise.all([
       findingCards.length ? fetchIssues("finding") : Promise.resolve([]),
@@ -93,6 +100,9 @@
       });
       rankPuzzles();
     }
+
+    // Reveal containers after ranking
+    rankedContainers.forEach(function (el) { el.style.opacity = "1"; });
   }
 
   function mapIssueToElement(el, titleSelector, issues, isPuzzle) {

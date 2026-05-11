@@ -91,6 +91,7 @@
       puzzleCards.forEach((card) => {
         mapIssueToElement(card, ".game-card-title", puzzleIssues, true);
       });
+      rankPuzzles();
     }
   }
 
@@ -210,6 +211,54 @@
       const cta = section.querySelector(".theory-item-cta");
       items.forEach((item) => section.appendChild(item));
       if (cta) section.appendChild(cta);
+    });
+  }
+
+  // Puzzle status priority: Unsolved > Solved > Not Yet Implemented > Likely Red Herring
+  const PUZZLE_STATUS_ORDER = { unsolved: 0, solved: 1, "not yet implemented": 2, "likely red herring": 3 };
+
+  function rankPuzzles() {
+    const grids = document.querySelectorAll(".games-grid");
+    grids.forEach((grid) => {
+      const cards = Array.from(grid.querySelectorAll(".game-card:not(.game-card-cta)"));
+      if (cards.length < 2) return;
+
+      cards.forEach((card) => {
+        // Determine status from badge text
+        const badge = card.querySelector(".badge");
+        const badgeText = (badge?.textContent?.trim() || "unsolved").toLowerCase();
+        card._sortStatus = PUZZLE_STATUS_ORDER[badgeText] ?? 0;
+
+        // Extract votes from widget
+        const widget = card.querySelector(".vote-widget");
+        let ups = 0, downs = 0, maxOther = 0;
+        if (widget) {
+          const reactions = widget.querySelectorAll(".vote-reaction");
+          reactions.forEach((r) => {
+            const text = r.textContent.trim();
+            const count = parseInt(r.querySelector(".vote-count")?.textContent) || 0;
+            if (text.startsWith("\uD83D\uDC4D")) ups = count;
+            else if (text.startsWith("\uD83D\uDC4E")) downs = count;
+            else if (!text.startsWith("\uD83D\uDCAC")) {
+              // Non-comment, non-vote reaction: track max
+              if (count > maxOther) maxOther = count;
+            }
+          });
+        }
+        card._sortScore = ups - downs;
+        card._sortMaxOther = maxOther;
+      });
+
+      cards.sort((a, b) => {
+        if (a._sortStatus !== b._sortStatus) return a._sortStatus - b._sortStatus;
+        if (a._sortScore !== b._sortScore) return b._sortScore - a._sortScore;
+        return b._sortMaxOther - a._sortMaxOther;
+      });
+
+      // Re-append in sorted order (CTA stays at end)
+      const cta = grid.querySelector(".game-card-cta");
+      cards.forEach((card) => grid.appendChild(card));
+      if (cta) grid.appendChild(cta);
     });
   }
 

@@ -62,7 +62,14 @@
         </div>
 
         <!-- Findings Grid -->
-        <div class="findings-grid">
+
+        <!-- Puzzle Fundamentals -->
+        <div class="findings-category">
+            <div class="findings-category-header">
+                <span class="findings-category-icon">🔑</span>
+                <h3>Puzzle Fundamentals</h3>
+            </div>
+            <div class="findings-grid">
 
             <div class="finding-card" data-status="confirmed" id="finding-no-in-game-trigger-exists">
                 <span class="finding-card-status confirmed">Confirmed</span>
@@ -71,136 +78,6 @@
                 <div class="finding-card-meta">
                     <span>Source: Kaliuresis</span>
                     <span>Verified via Ghidra</span>
-                </div>
-            </div>
-
-            <div class="finding-card" data-status="confirmed" id="finding-83-symbol-alphabet-with-unbroken-range">
-                <span class="finding-card-status confirmed">Confirmed</span>
-                <h3>83-symbol alphabet with unbroken range</h3>
-                <p>The orthodox trigram reading order produces values 0-82 with no gaps, out of a possible 0-124 range. Toboter's script tested ~86,000 reading orders and found no other with comparable statistical significance.</p>
-                <div class="finding-card-meta">
-                    <span>Source: Toboter</span>
-                    <span>Mathematically proven</span>
-                </div>
-            </div>
-
-            <div class="finding-card" data-status="confirmed" id="finding-messages-share-sections-alignments">
-                <span class="finding-card-status confirmed">Confirmed</span>
-                <h3>Messages share sections (alignments)</h3>
-                <p>Groups of characters appear at the same position across different messages, particularly near the beginning. The first character differs between all messages, suggesting numbered entries (1., 2., 3., etc). Shared sections indicate identical plaintext passages.</p>
-                <div class="finding-card-meta">
-                    <span>Source: Lymm</span>
-                    <span>Confirmed across all 9 messages</span>
-                </div>
-            </div>
-
-            <div class="finding-card" data-status="confirmed" id="finding-cipher-is-polyalphabetic">
-                <span class="finding-card-status confirmed">Confirmed</span>
-                <h3>Cipher is polyalphabetic</h3>
-                <p>Flat frequency distribution proves it's not a simple substitution cipher. Each ciphertext character depends on something beyond just the plaintext character. The cipher has hidden internal states far exceeding 83, with the state space likely being S&#x2088;&#x2083; (all permutations of 83 symbols).</p>
-                <div class="finding-card-meta">
-                    <span>Source: Toboter, CodeWarrior0, Lymm</span>
-                    <span>Confirmed via frequency analysis</span>
-                </div>
-            </div>
-
-            <div class="finding-card" data-status="confirmed" id="finding-no-double-trigrams-exist">
-                <span class="finding-card-status confirmed">Confirmed</span>
-                <h3>No double trigrams exist</h3>
-                <p>The same trigram never appears twice in a row in any message. In a deck cipher, this is automatic: each plaintext letter shuffles the deck, so the top card always changes. The no-doubles property constrains the cipher to mechanisms where the state transition is never the identity.</p>
-                <div class="finding-card-meta">
-                    <span>Source: Pyry, Lymm</span>
-                    <span>Verified across all messages</span>
-                </div>
-            </div>
-
-            <div class="finding-card" data-status="confirmed" id="finding-isomorphs-lymms-patterns-found">
-                <span class="finding-card-status confirmed">Confirmed</span>
-                <h3>Isomorphs (Lymm's Patterns) found</h3>
-                <p>Gap patterns between repeated characters match across messages at different positions. These isomorphs can form when the same word/phrase occurs at different locations. Indicates the cipher key is consistent across all messages.</p>
-                <div class="finding-card-meta">
-                    <span>Source: Lymm, CodeWarrior0</span>
-                    <span>Multiple instances documented</span>
-                </div>
-            </div>
-
-            <div class="finding-card" data-status="confirmed" id="finding-chaining-conflicts-observed">
-                <span class="finding-card-status confirmed">Confirmed</span>
-                <h3>Chaining conflicts observed</h3>
-                <p>Alphabet chaining on isomorphs produces conflicts (commutativity conflicts, order conflicts, arrow overlaps) that are impossible in cyclic-group ciphers (CTAK). This rules out all classical ciphertext-autokey mechanisms, including Alberti, and requires a non-commutative group.</p>
-                <div class="finding-card-meta">
-                    <span>Source: Lymm</span>
-                    <span>Confirmed via chaining graph analysis</span>
-                </div>
-            </div>
-
-            <div class="finding-card" data-status="confirmed" id="finding-hidden-states-required">
-                <span class="finding-card-status confirmed">Confirmed</span>
-                <h3>Hidden states far exceed 83</h3>
-                <p>The cipher's internal state space is not just 83 values. In a deck cipher model (GAK with S&#x2088;&#x2083;), the hidden state is the order of 82 unseen cards beneath the top card, giving 82! possible hidden states. This "delayed hidden state effect" explains how messages with different first characters can share subsequent sections.</p>
-                <div class="finding-card-meta">
-                    <span>Source: Lymm</span>
-                    <span>Derived from GAK/deck cipher framework</span>
-                </div>
-            </div>
-
-            <div class="finding-card" data-status="confirmed" id="finding-isomorphic-cipher-hierarchy-classified">
-                <span class="finding-card-status confirmed">Confirmed</span>
-                <h3>Isomorphic cipher hierarchy classified</h3>
-                <p>All ciphers producing isomorphs form a strict hierarchy: CTAK &lt; GCTAK &lt; GAK &lt; Perfectly Isomorphic. CTAK (cyclic) is ruled out by chaining conflicts. GCTAK is ruled out because 83 is prime (the only group of order 83 is cyclic). The cipher must be at least GAK-class.</p>
-                <div class="finding-card-meta">
-                    <span>Source: Lymm</span>
-                    <span>Mathematically proven</span>
-                </div>
-            </div>
-
-            <div class="finding-card" data-status="confirmed" id="finding-only-2-of-6-possible-groups-remain">
-                <span class="finding-card-status confirmed">Confirmed</span>
-                <h3>Only 2 of 6 possible groups remain</h3>
-                <p>Because 83 is prime, only 6 transitive permutation groups exist for GAK. Cyclic and dihedral are ruled out. The two AGL subgroups have not been fully eliminated but struggle with shared sections after differing first characters. The alternating (A&#x2088;&#x2083;) and symmetric (S&#x2088;&#x2083;) groups remain as primary candidates, equivalent to a deck cipher.</p>
-                <div class="finding-card-meta">
-                    <span>Source: Lymm</span>
-                    <span>Derived from transitivity restriction</span>
-                </div>
-            </div>
-
-            <div class="finding-card" data-status="tentative" id="finding-oddeven-character-frequency-differs">
-                <span class="finding-card-status tentative">Tentative</span>
-                <h3>Odd/even character frequency differs</h3>
-                <p>Frequency analysis looks less flat when analyzing only odd-positioned or only even-positioned characters. This suggests the cipher may have a period-2 component or alternating behavior.</p>
-                <div class="finding-card-meta">
-                    <span>Source: u/Alien-Fox-4</span>
-                    <span>Needs deeper investigation</span>
-                </div>
-            </div>
-
-            <div class="finding-card" data-status="tentative" id="finding-eye-directions-as-wheel-reading-instructions">
-                <span class="finding-card-status tentative">Tentative</span>
-                <h3>Eye directions as wheel-reading instructions</h3>
-                <p>Recent theory: eyes aren't encoded triplets but directions for reading a wheel/disc cipher. Eye looking left = read wheel center-to-left. Straight eyes indicate special operations (rotation?). Produced 891 bits from East 1 message.</p>
-                <div class="finding-card-meta">
-                    <span>Source: u/vollmondum</span>
-                    <span>Unverified, novel approach</span>
-                </div>
-            </div>
-
-            <div class="finding-card" data-status="tentative" id="finding-ciphertext-distance-4-repeats-at-2x-expected-rate">
-                <span class="finding-card-status tentative">Tentative</span>
-                <h3>Ciphertext distance-4 repeats at 2x expected rate</h3>
-                <p>Ciphertext letters appear twice at a distance of exactly 4 at nearly double the expected rate. No repeats of three or more characters exist. Fewer repeats of two characters than expected by chance overall.</p>
-                <div class="finding-card-meta">
-                    <span>Source: CodeWarrior0</span>
-                    <span>Statistically significant</span>
-                </div>
-            </div>
-
-            <div class="finding-card" data-status="debunked" id="finding-autokey-alberti-cipher-model">
-                <span class="finding-card-status debunked">Debunked</span>
-                <h3>Autokey Alberti cipher model</h3>
-                <p>Pyry's original demonstration used an autokey Alberti cipher to show how isomorphs could arise. However, alphabet chaining reveals chaining conflicts in the eye data that are impossible for any cyclic-group cipher (including Alberti). The Alberti model was an important stepping stone but is now ruled out.</p>
-                <div class="finding-card-meta">
-                    <span>Source: Pyry (original), Lymm (disproof)</span>
-                    <span>Ruled out by chaining conflicts</span>
                 </div>
             </div>
 
@@ -214,19 +91,193 @@
                 </div>
             </div>
 
-            <div class="finding-card" data-status="debunked" id="finding-simple-substitution-cipher">
-                <span class="finding-card-status debunked">Debunked</span>
-                <h3>Simple substitution cipher</h3>
-                <p>Flat character distribution across all messages eliminates any form of monoalphabetic substitution. Period analysis confirms it's not periodic either. The cipher is significantly more complex.</p>
-                <div class="finding-card-meta">
-                    <span>Source: Toboter, CodeWarrior0</span>
-                    <span>Exhaustively tested</span>
-                </div></div>
+            </div>
+        </div>
 
-            <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/issues/new?template=new-finding.yml" target="_blank" class="finding-card finding-card-cta">
-                <h3>+ Submit a New Finding</h3>
-                <p>Found a new pattern in the eye messages? Report it here.</p>
-            </a>
+        <!-- Cryptanalysis -->
+        <div class="findings-category">
+            <div class="findings-category-header">
+                <span class="findings-category-icon">🧬</span>
+                <h3>Cryptanalysis</h3>
+            </div>
+
+            <!-- Encoding & Alphabet -->
+            <div class="findings-subcategory">
+                <div class="findings-subcategory-header">
+                    <span class="findings-category-icon">📐</span>
+                    <h4>Encoding &amp; Alphabet</h4>
+                </div>
+                <div class="findings-grid">
+
+                <div class="finding-card" data-status="confirmed" id="finding-83-symbol-alphabet-with-unbroken-range">
+                    <span class="finding-card-status confirmed">Confirmed</span>
+                    <h3>83-symbol alphabet with unbroken range</h3>
+                    <p>The orthodox trigram reading order produces values 0-82 with no gaps, out of a possible 0-124 range. Toboter's script tested ~86,000 reading orders and found no other with comparable statistical significance.</p>
+                    <div class="finding-card-meta">
+                        <span>Source: Toboter</span>
+                        <span>Mathematically proven</span>
+                    </div>
+                </div>
+
+                <div class="finding-card" data-status="tentative" id="finding-eye-directions-as-wheel-reading-instructions">
+                    <span class="finding-card-status tentative">Tentative</span>
+                    <h3>Eye directions as wheel-reading instructions</h3>
+                    <p>Recent theory: eyes aren't encoded triplets but directions for reading a wheel/disc cipher. Eye looking left = read wheel center-to-left. Straight eyes indicate special operations (rotation?). Produced 891 bits from East 1 message. <a href="https://www.reddit.com/r/noita/comments/1mt9hm2/comment/ofq0p30/" target="_blank">Reddit thread</a></p>
+                    <div class="finding-card-meta">
+                        <span>Source: u/vollmondum</span>
+                        <span>Unverified, novel approach</span>
+                    </div>
+                </div>
+
+                </div>
+            </div>
+
+            <!-- Pattern Analysis -->
+            <div class="findings-subcategory">
+                <div class="findings-subcategory-header">
+                    <span class="findings-category-icon">📊</span>
+                    <h4>Pattern Analysis</h4>
+                </div>
+                <div class="findings-grid">
+
+                <div class="finding-card" data-status="confirmed" id="finding-messages-share-sections-alignments">
+                    <span class="finding-card-status confirmed">Confirmed</span>
+                    <h3>Messages share sections (alignments)</h3>
+                    <p>Groups of characters appear at the same position across different messages, particularly near the beginning. The first character differs between all messages, suggesting numbered entries (1., 2., 3., etc). Shared sections indicate identical plaintext passages.</p>
+                    <div class="finding-card-meta">
+                        <span>Source: Lymm</span>
+                        <span>Confirmed across all 9 messages</span>
+                    </div>
+                </div>
+
+                <div class="finding-card" data-status="confirmed" id="finding-no-double-trigrams-exist">
+                    <span class="finding-card-status confirmed">Confirmed</span>
+                    <h3>No double trigrams exist</h3>
+                    <p>The same trigram never appears twice in a row in any message. In a deck cipher, this is automatic: each plaintext letter shuffles the deck, so the top card always changes. The no-doubles property constrains the cipher to mechanisms where the state transition is never the identity.</p>
+                    <div class="finding-card-meta">
+                        <span>Source: Pyry, Lymm</span>
+                        <span>Verified across all messages</span>
+                    </div>
+                </div>
+
+                <div class="finding-card" data-status="confirmed" id="finding-isomorphs-lymms-patterns-found">
+                    <span class="finding-card-status confirmed">Confirmed</span>
+                    <h3>Isomorphs (Lymm's Patterns) found</h3>
+                    <p>Gap patterns between repeated characters match across messages at different positions. These isomorphs can form when the same word/phrase occurs at different locations. Indicates the cipher key is consistent across all messages.</p>
+                    <div class="finding-card-meta">
+                        <span>Source: Lymm, CodeWarrior0</span>
+                        <span>Multiple instances documented</span>
+                    </div>
+                </div>
+
+                <div class="finding-card" data-status="tentative" id="finding-oddeven-character-frequency-differs">
+                    <span class="finding-card-status tentative">Tentative</span>
+                    <h3>Odd/even character frequency differs</h3>
+                    <p>Frequency analysis looks less flat when analyzing only odd-positioned or only even-positioned characters. This suggests the cipher may have a period-2 component or alternating behavior.</p>
+                    <div class="finding-card-meta">
+                        <span>Source: u/Alien-Fox-4</span>
+                        <span>Needs deeper investigation</span>
+                    </div>
+                </div>
+
+                <div class="finding-card" data-status="tentative" id="finding-ciphertext-distance-4-repeats-at-2x-expected-rate">
+                    <span class="finding-card-status tentative">Tentative</span>
+                    <h3>Ciphertext distance-4 repeats at 2x expected rate</h3>
+                    <p>Ciphertext letters appear twice at a distance of exactly 4 at nearly double the expected rate. No repeats of three or more characters exist. Fewer repeats of two characters than expected by chance overall.</p>
+                    <div class="finding-card-meta">
+                        <span>Source: CodeWarrior0</span>
+                        <span>Statistically significant</span>
+                    </div>
+                </div>
+
+                </div>
+            </div>
+
+            <!-- Cipher Classification -->
+            <div class="findings-subcategory">
+                <div class="findings-subcategory-header">
+                    <span class="findings-category-icon">🔐</span>
+                    <h4>Cipher Classification</h4>
+                </div>
+                <div class="findings-grid">
+
+                <div class="finding-card" data-status="confirmed" id="finding-cipher-is-polyalphabetic">
+                    <span class="finding-card-status confirmed">Confirmed</span>
+                    <h3>Cipher is polyalphabetic</h3>
+                    <p>Flat frequency distribution proves it's not a simple substitution cipher. Each ciphertext character depends on something beyond just the plaintext character. The cipher has hidden internal states far exceeding 83, with the state space likely being S&#x2088;&#x2083; (all permutations of 83 symbols).</p>
+                    <div class="finding-card-meta">
+                        <span>Source: Toboter, CodeWarrior0, Lymm</span>
+                        <span>Confirmed via frequency analysis</span>
+                    </div>
+                </div>
+
+                <div class="finding-card" data-status="confirmed" id="finding-hidden-states-required">
+                    <span class="finding-card-status confirmed">Confirmed</span>
+                    <h3>Hidden states far exceed 83</h3>
+                    <p>The cipher's internal state space is not just 83 values. In a deck cipher model (GAK with S&#x2088;&#x2083;), the hidden state is the order of 82 unseen cards beneath the top card, giving 82! possible hidden states. This "delayed hidden state effect" explains how messages with different first characters can share subsequent sections.</p>
+                    <div class="finding-card-meta">
+                        <span>Source: Lymm</span>
+                        <span>Derived from GAK/deck cipher framework</span>
+                    </div>
+                </div>
+
+                <div class="finding-card" data-status="confirmed" id="finding-chaining-conflicts-observed">
+                    <span class="finding-card-status confirmed">Confirmed</span>
+                    <h3>Chaining conflicts observed</h3>
+                    <p>Alphabet chaining on isomorphs produces conflicts (commutativity conflicts, order conflicts, arrow overlaps) that are impossible in cyclic-group ciphers (CTAK). This rules out all classical ciphertext-autokey mechanisms, including Alberti, and requires a non-commutative group.</p>
+                    <div class="finding-card-meta">
+                        <span>Source: Lymm</span>
+                        <span>Confirmed via chaining graph analysis</span>
+                    </div>
+                </div>
+
+                <div class="finding-card" data-status="confirmed" id="finding-isomorphic-cipher-hierarchy-classified">
+                    <span class="finding-card-status confirmed">Confirmed</span>
+                    <h3>Isomorphic cipher hierarchy classified</h3>
+                    <p>All ciphers producing isomorphs form a strict hierarchy: CTAK &lt; GCTAK &lt; GAK &lt; Perfectly Isomorphic. CTAK (cyclic) is ruled out by chaining conflicts. GCTAK is ruled out because 83 is prime (the only group of order 83 is cyclic). The cipher must be at least GAK-class.</p>
+                    <div class="finding-card-meta">
+                        <span>Source: Lymm</span>
+                        <span>Mathematically proven</span>
+                    </div>
+                </div>
+
+                <div class="finding-card" data-status="confirmed" id="finding-only-2-of-6-possible-groups-remain">
+                    <span class="finding-card-status confirmed">Confirmed</span>
+                    <h3>Only 2 of 6 possible groups remain</h3>
+                    <p>Because 83 is prime, only 6 transitive permutation groups exist for GAK. Cyclic and dihedral are ruled out. The two AGL subgroups have not been fully eliminated but struggle with shared sections after differing first characters. The alternating (A&#x2088;&#x2083;) and symmetric (S&#x2088;&#x2083;) groups remain as primary candidates, equivalent to a deck cipher.</p>
+                    <div class="finding-card-meta">
+                        <span>Source: Lymm</span>
+                        <span>Derived from transitivity restriction</span>
+                    </div>
+                </div>
+
+                <div class="finding-card" data-status="debunked" id="finding-autokey-alberti-cipher-model">
+                    <span class="finding-card-status debunked">Debunked</span>
+                    <h3>Autokey Alberti cipher model</h3>
+                    <p>Pyry's original demonstration used an autokey Alberti cipher to show how isomorphs could arise. However, alphabet chaining reveals chaining conflicts in the eye data that are impossible for any cyclic-group cipher (including Alberti). The Alberti model was an important stepping stone but is now ruled out.</p>
+                    <div class="finding-card-meta">
+                        <span>Source: Pyry (original), Lymm (disproof)</span>
+                        <span>Ruled out by chaining conflicts</span>
+                    </div>
+                </div>
+
+                <div class="finding-card" data-status="debunked" id="finding-simple-substitution-cipher">
+                    <span class="finding-card-status debunked">Debunked</span>
+                    <h3>Simple substitution cipher</h3>
+                    <p>Flat character distribution across all messages eliminates any form of monoalphabetic substitution. Period analysis confirms it's not periodic either. The cipher is significantly more complex.</p>
+                    <div class="finding-card-meta">
+                        <span>Source: Toboter, CodeWarrior0</span>
+                        <span>Exhaustively tested</span>
+                    </div>
+                </div>
+
+                <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/issues/new?template=new-finding.yml" target="_blank" class="finding-card finding-card-cta">
+                    <h3>+ Submit a New Finding</h3>
+                    <p>Found a new pattern in the eye messages? Report it here.</p>
+                </a>
+
+                </div>
+            </div>
 
         </div>
     </section>
@@ -236,28 +287,23 @@
         <h2 class="section-title">Theories (Ranked)</h2>
 
         <div class="theory-item" data-explains="finding-83-symbol-alphabet-with-unbroken-range,finding-chaining-conflicts-observed,finding-isomorphic-cipher-hierarchy-classified,finding-only-2-of-6-possible-groups-remain">
-            <span class="theory-rank high">High Priority</span>
+            <span class="theory-rank high">Established</span>
             <h3 class="theory-title">Deck cipher (GAK with S&#x2088;&#x2083;)</h3>
             <p class="theory-desc">The leading candidate: a deck of 83 cards where each plaintext letter triggers a specific shuffle. The top card after shuffling is the ciphertext output. Equivalent to a Group Autokey cipher with the symmetric group S&#x2088;&#x2083;. Evidence suggests the shuffles have relatively simple structure (few swaps from a shared base permutation), which constrains the key space.</p>
         </div>
 
         <div class="theory-item" data-explains="finding-messages-share-sections-alignments">
-            <span class="theory-rank high">High Priority</span>
+            <span class="theory-rank high">Established</span>
             <h3 class="theory-title">Messages are numbered list entries sharing a template</h3>
             <p class="theory-desc">First character differs across all 9 messages (numbering). Shared sections near the start suggest a common header or repeated phrase. The plaintext likely follows a structured format, possibly instructions or a narrative with variations.</p>
         </div>
 
         <div class="theory-item" data-explains="finding-isomorphic-cipher-hierarchy-classified,finding-only-2-of-6-possible-groups-remain">
-            <span class="theory-rank medium">Medium</span>
+            <span class="theory-rank medium">Promising</span>
             <h3 class="theory-title">Permutation similarity narrows key space</h3>
             <p class="theory-desc">Shared sections after differing first characters suggest the deck shuffles for each plaintext letter are "not too far apart" from each other (a few swaps from a shared base permutation). If confirmed, this dramatically reduces the search space from arbitrary S&#x2088;&#x2083; permutations to a tractable family of structurally simple shuffles.</p>
         </div>
 
-        <div class="theory-item" data-explains="finding-no-in-game-trigger-exists">
-            <span class="theory-rank low">Lower Priority</span>
-            <h3 class="theory-title">Library of Babel reference / meta-commentary</h3>
-            <p class="theory-desc">The eye message "Seeking truth, the wise only find its profound absence" strongly echoes Borges' Library of Babel (scholars searching infinite random text for truth). Could be thematic framing rather than a cipher clue, but the Babel website has been proposed as a potential tool.</p>
-        </div>
         <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/issues/new?template=new-theory.yml" target="_blank" class="theory-item theory-item-cta">
             <h3 class="theory-title">+ Submit a New Theory</h3>
             <p class="theory-desc">Have a cipher theory or decryption approach? Share it.</p>

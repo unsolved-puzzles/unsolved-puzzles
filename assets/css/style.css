@@ -797,6 +797,55 @@ a:hover {
     color: #f39c12;
 }
 
+.findings-category {
+    margin-bottom: var(--space-xl);
+}
+
+.findings-category-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding-bottom: var(--space-sm);
+    margin-bottom: var(--space-md);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.findings-category-header h3 {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-secondary);
+}
+
+.findings-category-icon {
+    font-size: 1rem;
+}
+
+.findings-subcategory {
+    margin-bottom: var(--space-lg);
+    padding-left: var(--space-md);
+}
+
+.findings-subcategory-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding-bottom: var(--space-xs);
+    margin-bottom: var(--space-md);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.findings-subcategory-header h4 {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-tertiary, rgba(255, 255, 255, 0.45));
+}
+
 .findings-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));

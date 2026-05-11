@@ -118,6 +118,8 @@ function initCardRotations() {
 function initFilters() {
     const buttons = document.querySelectorAll('.filter-btn');
     const cards = document.querySelectorAll('.finding-card');
+    const categories = document.querySelectorAll('.findings-category');
+    const subcategories = document.querySelectorAll('.findings-subcategory');
 
     if (!buttons.length || !cards.length) return;
 
@@ -137,6 +139,18 @@ function initFilters() {
                 } else {
                     card.style.display = 'none';
                 }
+            });
+
+            // Hide subcategory containers with no visible cards
+            subcategories.forEach(sub => {
+                const visibleCards = sub.querySelectorAll('.finding-card:not([style*="display: none"])');
+                sub.style.display = visibleCards.length ? '' : 'none';
+            });
+
+            // Hide category containers with no visible cards
+            categories.forEach(cat => {
+                const visibleCards = cat.querySelectorAll('.finding-card:not([style*="display: none"])');
+                cat.style.display = visibleCards.length ? '' : 'none';
             });
         });
     });

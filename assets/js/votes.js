@@ -28,13 +28,19 @@
   // Cache fetched issues in sessionStorage to reduce API calls
   const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
 
+  // Fallback: reveal containers even if API fails (class is set in HTML)
+  setTimeout(function () { document.body.classList.remove("votes-loading"); }, 4000);
+
   document.addEventListener("DOMContentLoaded", init);
 
   async function init() {
     const findingCards = document.querySelectorAll(".finding-card");
     const theoryItems = document.querySelectorAll(".theory-item");
     const puzzleCards = document.querySelectorAll(".game-card:not(.game-card-cta)");
-    if (!findingCards.length && !theoryItems.length && !puzzleCards.length) return;
+    if (!findingCards.length && !theoryItems.length && !puzzleCards.length) {
+      document.body.classList.remove("votes-loading");
+      return;
+    }
 
     // Inject empty vote widgets into all finding cards
     findingCards.forEach((card) => {
@@ -61,13 +67,6 @@
       const widget = document.createElement("div");
       widget.className = "vote-widget";
       meta.parentNode.insertBefore(widget, meta.nextSibling);
-    });
-
-    // Hide containers that will be reordered to prevent layout shift
-    var rankedContainers = document.querySelectorAll(".games-grid, .findings-grid, .theories-section");
-    rankedContainers.forEach(function (el) {
-      el.style.opacity = "0";
-      el.style.transition = "opacity 0.3s ease";
     });
 
     // Fetch issues for all labels in parallel
@@ -101,8 +100,16 @@
       rankPuzzles();
     }
 
+    // Kill GSAP animations and clear inline styles so ranked order shows instantly
+    if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
+      ScrollTrigger.getAll().forEach(function (st) { st.kill(); });
+      document.querySelectorAll(".game-card, .finding-card, .theory-item, .contribute-card").forEach(function (el) {
+        gsap.set(el, { clearProps: "all" });
+      });
+    }
+
     // Reveal containers after ranking
-    rankedContainers.forEach(function (el) { el.style.opacity = "1"; });
+    document.body.classList.remove("votes-loading");
   }
 
   function mapIssueToElement(el, titleSelector, issues, isPuzzle) {

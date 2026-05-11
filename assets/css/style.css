@@ -308,6 +308,13 @@ a:hover {
     padding: var(--space-xl) var(--space-lg);
 }
 
+/* Hidden while votes.js fetches and ranks (prevents layout shift) */
+body.votes-loading .games-grid,
+body.votes-loading .findings-grid,
+body.votes-loading .theories-section {
+    visibility: hidden;
+}
+
 .games-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));

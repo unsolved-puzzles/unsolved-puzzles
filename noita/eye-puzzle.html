@@ -170,13 +170,13 @@
                     </div>
                 </div>
 
-                <div class="finding-card" data-status="tentative" id="finding-oddeven-character-frequency-differs">
-                    <span class="finding-card-status tentative">Tentative</span>
-                    <h3>Odd/even character frequency differs</h3>
-                    <p>Frequency analysis looks less flat when analyzing only odd-positioned or only even-positioned characters. This suggests the cipher may have a period-2 component or alternating behavior.</p>
+                <div class="finding-card" data-status="debunked" id="finding-oddeven-character-frequency-differs">
+                    <span class="finding-card-status debunked">Debunked</span>
+                    <h3>Odd/even trigram frequency differs</h3>
+                    <p>Splitting ciphertext into odd- and even-positioned trigram values and comparing frequency distributions shows no significant difference (Monte Carlo p=0.539, 13k trials). With only ~6 samples per bin across 83 symbols, the apparent variation is noise.</p>
                     <div class="finding-card-meta">
                         <span>Source: u/Alien-Fox-4</span>
-                        <span>Needs deeper investigation</span>
+                        <span>Debunked via Monte Carlo (p=0.539)</span>
                     </div>
                 </div>
 

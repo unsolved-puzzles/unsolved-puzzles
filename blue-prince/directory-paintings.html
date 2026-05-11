@@ -326,9 +326,9 @@
             <div class="finding-card" data-status="confirmed">
                 <span class="finding-card-status confirmed">Confirmed</span>
                 <h3>Flan / Flank = K (no grid match)</h3>
-                <p>The Flan/Flank painting pair appears in <a href="https://blueprince.wiki.gg/images/Storeroom.png?d30740=&format=original" target="_blank">Storeroom</a>, <a href="https://blueprince.wiki.gg/images/Study.png?d30740=&format=original" target="_blank">Study</a>, <a href="https://blueprince.wiki.gg/images/Library.png?d30740=&format=original" target="_blank">Library</a>, <a href="https://blueprince.wiki.gg/images/ChamberofMirrors.png?d30740=&format=original" target="_blank">Chamber of Mirrors</a>, <a href="https://blueprince.wiki.gg/images/Laboratory.png?d30740=&format=original" target="_blank">Laboratory</a>, <a href="https://blueprince.wiki.gg/images/MailRoom.png?d30740=&format=original" target="_blank">Mail Room</a>, and <a href="https://blueprince.wiki.gg/images/Room8.png?d30740=&format=original" target="_blank">Room 8</a>. Missing letter: <strong>K</strong>. This pair does not match any Picture Puzzle entry (closest is Flan/Fan = L). Cannot be placed on the grid.</p>
+                <p>The Flan/Flank painting pair appears across <a href="#flan-flank-rooms">13 rooms</a>. Missing letter: <strong>K</strong>. This pair does not match any Picture Puzzle entry (closest is Flan/Fan = L at D7). Cannot be placed on the grid. Could the pair be a default placeholder?</p>
                 <div class="finding-card-meta">
-                    <span>Source: pedroff_1</span>
+                    <span>Source: pedroff_1, FlamingFurball</span>
                     <span>Confirmed</span>
                 </div>
             </div>
@@ -468,6 +468,7 @@
                 <span><span class="stat-dot confirmed"></span> <span id="stat-confirmed">0</span> confirmed</span>
                 <span><span class="stat-dot tentative"></span> <span id="stat-tentative">0</span> tentative</span>
                 <span><span class="stat-dot to-check"></span> <span id="stat-to-check">0</span> room paintings to decipher</span>
+                <span><span class="stat-dot" style="background: #9b59b6;"></span> <span id="stat-flan-flank">0</span> Flan/Flank (off-grid)</span>
                 <span><span class="stat-dot no-paintings"></span> <span id="stat-no-paintings">0</span> rooms have no paintings</span>
             </div>
 
@@ -697,32 +698,47 @@
             <div style="margin-bottom: var(--space-md);">
                 <strong style="color: #f39c12; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em;">Tentative</strong>
                 <div style="line-height: 2.2; font-size: 0.85rem; margin-top: 4px;">
-                    <a href="https://blueprince.wiki.gg/images/Parlor.png?d30740=&format=original" target="_blank">Parlor</a> — Tiger/Tier = G? (C5)<br>
-                    <a href="https://blueprince.wiki.gg/images/UtilityCloset.png?d30740=&format=original" target="_blank">Utility Closet</a> — House/Hose = U? (C8)
+                    <a href="https://blueprince.wiki.gg/images/Parlor.png?d30740=&format=original" target="_blank">Parlor</a>: Tiger/Tier = G? (C5)<br>
+                    <a href="https://blueprince.wiki.gg/images/UtilityCloset.png?d30740=&format=original" target="_blank">Utility Closet</a>: House/Hose = U? (C8)
                 </div>
             </div>
 
             <div id="unidentified-rooms">
                 <strong style="color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em;">Unidentified</strong>
                 <div style="columns: 3; column-gap: var(--space-lg); line-height: 2.2; font-size: 0.85rem; margin-top: 4px;">
-                    <a href="https://blueprince.wiki.gg/images/WalkinCloset.png?d30740=&format=original" target="_blank">Walk-in Closet</a> (barely visible)<br>
-                    <a href="https://blueprince.wiki.gg/images/Garage.png?d30740=&format=original" target="_blank">Garage</a> (map, car?)<br>
-                    <a href="https://blueprince.wiki.gg/images/MusicRoom.png?d30740=&format=original" target="_blank">Music Room</a><br>
-                    <a href="https://blueprince.wiki.gg/images/LockerRoom.png?d30740=&format=original" target="_blank">Locker Room</a><br>
-                    <a href="https://blueprince.wiki.gg/images/TrophyRoom.png?d30740=&format=original" target="_blank">Trophy Room</a><br>
-                    <a href="https://blueprince.wiki.gg/images/RumpusRoom.png?d30740=&format=original" target="_blank">Rumpus Room</a><br>
-                    <a href="https://blueprince.wiki.gg/images/Vault.png?d30740=&format=original" target="_blank">Vault</a><br>
-                    <a href="https://blueprince.wiki.gg/images/DrawingRoom.png?d30740=&format=original" target="_blank">Drawing Room</a><br>
-                    <a href="https://blueprince.wiki.gg/images/Security.png?d30740=&format=original" target="_blank">Security</a><br>
                     <a href="https://blueprince.wiki.gg/images/Bedroom.png?d30740=&format=original" target="_blank">Bedroom</a><br>
-                    <a href="https://blueprince.wiki.gg/images/Nursery.png?d30740=&format=original" target="_blank">Nursery</a><br>
-                    <a href="https://blueprince.wiki.gg/images/BunkRoom.png?d30740=&format=original" target="_blank">Bunk Room</a><br>
-                    <a href="https://blueprince.wiki.gg/images/Gymnasium.png?d30740=&format=original" target="_blank">Gymnasium</a><br>
-                    <a href="https://blueprince.wiki.gg/images/ServantsQuarters.png?d30740=&format=original" target="_blank">Servant's Quarters</a><br>
+                    <a href="https://blueprince.wiki.gg/images/DrawingRoom.png?d30740=&format=original" target="_blank">Drawing Room</a><br>
                     <a href="https://blueprince.wiki.gg/images/HerLadyshipsChamber.png?d30740=&format=original" target="_blank">Her Ladyship's Chamber</a><br>
+                    <a href="https://blueprince.wiki.gg/images/LockerRoom.png?d30740=&format=original" target="_blank">Locker Room</a><br>
                     <a href="https://blueprince.wiki.gg/images/MasterBedroom.png?d30740=&format=original" target="_blank">Master Bedroom</a> (boat/bat in B8?)<br>
-                    <a href="https://blueprince.wiki.gg/images/Corridor.png?d30740=&format=original" target="_blank">Corridor</a> (only a Flan)
+                    <a href="https://blueprince.wiki.gg/images/RumpusRoom.png?d30740=&format=original" target="_blank">Rumpus Room</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Security.png?d30740=&format=original" target="_blank">Security</a><br>
+                    <a href="https://blueprince.wiki.gg/images/ServantsQuarters.png?d30740=&format=original" target="_blank">Servant's Quarters</a><br>
+                    <a href="https://blueprince.wiki.gg/images/TrophyRoom.png?d30740=&format=original" target="_blank">Trophy Room</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Vault.png?d30740=&format=original" target="_blank">Vault</a><br>
+                    <a href="https://blueprince.wiki.gg/images/WalkinCloset.png?d30740=&format=original" target="_blank">Walk-in Closet</a> (barely visible)
                 </div>
+            </div>
+        </details>
+
+        <!-- Rooms with Flan/Flank Paintings (expandable, collapsed by default) -->
+        <details class="expandable-section" id="flan-flank-rooms">
+            <summary>🥧 Rooms with Flan/Flank Paintings <span style="font-weight: 400; font-size: 0.8em; color: var(--text-muted);">(click to expand)</span></summary>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: var(--space-md);">These 13 rooms share the same Flan/Flank painting pair (missing letter: K). The pair does not match any Picture Puzzle grid entry (closest is Flan/Fan = L at D7), so these rooms cannot be placed on the grid.</p>
+            <div style="columns: 3; column-gap: var(--space-lg); line-height: 2.2; font-size: 0.85rem;">
+                <a href="https://blueprince.wiki.gg/images/BunkRoom.png?d30740=&format=original" target="_blank">Bunk Room</a><br>
+                <a href="https://blueprince.wiki.gg/images/ChamberofMirrors.png?d30740=&format=original" target="_blank">Chamber of Mirrors</a><br>
+                <a href="https://blueprince.wiki.gg/images/Corridor.png?d30740=&format=original" target="_blank">Corridor</a> (assumed, only Flan)<br>
+                <a href="https://blueprince.wiki.gg/images/Garage.png?d30740=&format=original" target="_blank">Garage</a><br>
+                <a href="https://blueprince.wiki.gg/images/Gymnasium.png?d30740=&format=original" target="_blank">Gymnasium</a><br>
+                <a href="https://blueprince.wiki.gg/images/Laboratory.png?d30740=&format=original" target="_blank">Laboratory</a><br>
+                <a href="https://blueprince.wiki.gg/images/Library.png?d30740=&format=original" target="_blank">Library</a><br>
+                <a href="https://blueprince.wiki.gg/images/MailRoom.png?d30740=&format=original" target="_blank">Mail Room</a><br>
+                <a href="https://blueprince.wiki.gg/images/MusicRoom.png?d30740=&format=original" target="_blank">Music Room</a><br>
+                <a href="https://blueprince.wiki.gg/images/Nursery.png?d30740=&format=original" target="_blank">Nursery</a><br>
+                <a href="https://blueprince.wiki.gg/images/Room8.png?d30740=&format=original" target="_blank">Room 8</a><br>
+                <a href="https://blueprince.wiki.gg/images/Storeroom.png?d30740=&format=original" target="_blank">Storeroom</a><br>
+                <a href="https://blueprince.wiki.gg/images/Study.png?d30740=&format=original" target="_blank">Study</a>
             </div>
         </details>
 
@@ -731,73 +747,73 @@
             <summary>🚫 Rooms with No Paintings <span style="font-weight: 400; font-size: 0.8em; color: var(--text-muted);">(click to expand)</span></summary>
             <div style="columns: 3; column-gap: var(--space-lg); line-height: 2.2; font-size: 0.85rem;">
                 <div style="break-inside: avoid; margin-bottom: var(--space-sm);"><strong style="color: var(--text-muted); font-size: 0.72rem; text-transform: uppercase;">Blue Rooms</strong><br>
-                    <a href="https://blueprince.wiki.gg/images/TheFoundation.png?d30740=&format=original" target="_blank">The Foundation</a><br>
-                    <a href="https://blueprince.wiki.gg/images/SpareRoom.png?d30740=&format=original" target="_blank">Spare Room</a><br>
-                    <a href="https://blueprince.wiki.gg/images/Rotunda.png?d30740=&format=original" target="_blank">Rotunda</a><br>
-                    <a href="https://blueprince.wiki.gg/images/Closet.png?d30740=&format=original" target="_blank">Closet</a><br>
-                    <a href="https://blueprince.wiki.gg/images/Nook.png?d30740=&format=original" target="_blank">Nook</a><br>
-                    <a href="https://blueprince.wiki.gg/images/Ballroom.png?d30740=&format=original" target="_blank">Ballroom</a><br>
-                    <a href="https://blueprince.wiki.gg/images/Pantry.png?d30740=&format=original" target="_blank">Pantry</a><br>
-                    <a href="https://blueprince.wiki.gg/images/ThePool.png?d30740=&format=original" target="_blank">The Pool</a><br>
-                    <a href="https://blueprince.wiki.gg/images/DraftingStudio.png?d30740=&format=original" target="_blank">Drafting Studio</a><br>
-                    <a href="https://blueprince.wiki.gg/images/BoilerRoom.png?d30740=&format=original" target="_blank">Boiler Room</a><br>
-                    <a href="https://blueprince.wiki.gg/images/PumpRoom.png?d30740=&format=original" target="_blank">Pump Room</a><br>
-                    <a href="https://blueprince.wiki.gg/images/Workshop.png?d30740=&format=original" target="_blank">Workshop</a><br>
-                    <a href="https://blueprince.wiki.gg/images/Gallery.png?d30740=&format=original" target="_blank">Gallery</a> (no image pair, but painting names)<br>
-                    <a href="https://blueprince.wiki.gg/images/Sauna.png?d30740=&format=original" target="_blank">Sauna</a><br>
-                    <a href="https://blueprince.wiki.gg/images/CoatCheck.png?d30740=&format=original" target="_blank">Coat Check</a><br>
-                    <a href="https://blueprince.wiki.gg/images/Freezer.png?d30740=&format=original" target="_blank">Freezer</a><br>
-                    <a href="https://blueprince.wiki.gg/images/Observatory.png?d30740=&format=original" target="_blank">Observatory</a><br>
-                    <a href="https://blueprince.wiki.gg/images/Aquarium.png?d30740=&format=original" target="_blank">Aquarium</a><br>
                     <a href="https://blueprince.wiki.gg/images/Antechamber.png?d30740=&format=original" target="_blank">Antechamber</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Aquarium.png?d30740=&format=original" target="_blank">Aquarium</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Ballroom.png?d30740=&format=original" target="_blank">Ballroom</a><br>
+                    <a href="https://blueprince.wiki.gg/images/BoilerRoom.png?d30740=&format=original" target="_blank">Boiler Room</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Boudoir.png?d30740=&format=original" target="_blank">Boudoir</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Closet.png?d30740=&format=original" target="_blank">Closet</a><br>
+                    <a href="https://blueprince.wiki.gg/images/CoatCheck.png?d30740=&format=original" target="_blank">Coat Check</a><br>
+                    <a href="https://blueprince.wiki.gg/images/DraftingStudio.png?d30740=&format=original" target="_blank">Drafting Studio</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Freezer.png?d30740=&format=original" target="_blank">Freezer</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Gallery.png?d30740=&format=original" target="_blank">Gallery</a> (no image pair, but painting names)<br>
+                    <a href="https://blueprince.wiki.gg/images/Nook.png?d30740=&format=original" target="_blank">Nook</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Observatory.png?d30740=&format=original" target="_blank">Observatory</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Pantry.png?d30740=&format=original" target="_blank">Pantry</a><br>
+                    <a href="https://blueprince.wiki.gg/images/PumpRoom.png?d30740=&format=original" target="_blank">Pump Room</a><br>
                     <a href="https://blueprince.wiki.gg/images/Room46.png?d30740=&format=original" target="_blank">Room 46</a><br>
-                    <a href="https://blueprince.wiki.gg/images/Boudoir.png?d30740=&format=original" target="_blank">Boudoir</a>
-                </div>
-                <div style="break-inside: avoid; margin-bottom: var(--space-sm);"><strong style="color: var(--text-muted); font-size: 0.72rem; text-transform: uppercase;">Hallways</strong><br>
-                    <a href="https://blueprince.wiki.gg/images/Hallway.png?d30740=&format=original" target="_blank">Hallway</a><br>
-                    <a href="https://blueprince.wiki.gg/images/WestWingHall.png?d30740=&format=original" target="_blank">West Wing Hall</a><br>
-                    <a href="https://blueprince.wiki.gg/images/EastWingHall.png?d30740=&format=original" target="_blank">East Wing Hall</a><br>
-                    <a href="https://blueprince.wiki.gg/images/Passageway.png?d30740=&format=original" target="_blank">Passageway</a><br>
-                    <a href="https://blueprince.wiki.gg/images/GreatHall.png?d30740=&format=original" target="_blank">Great Hall</a>
+                    <a href="https://blueprince.wiki.gg/images/Rotunda.png?d30740=&format=original" target="_blank">Rotunda</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Sauna.png?d30740=&format=original" target="_blank">Sauna</a><br>
+                    <a href="https://blueprince.wiki.gg/images/SpareRoom.png?d30740=&format=original" target="_blank">Spare Room</a><br>
+                    <a href="https://blueprince.wiki.gg/images/TheFoundation.png?d30740=&format=original" target="_blank">The Foundation</a><br>
+                    <a href="https://blueprince.wiki.gg/images/ThePool.png?d30740=&format=original" target="_blank">The Pool</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Workshop.png?d30740=&format=original" target="_blank">Workshop</a>
                 </div>
                 <div style="break-inside: avoid; margin-bottom: var(--space-sm);"><strong style="color: var(--text-muted); font-size: 0.72rem; text-transform: uppercase;">Green Rooms</strong><br>
-                    <a href="https://blueprince.wiki.gg/images/Terrace.png?d30740=&format=original" target="_blank">Terrace</a><br>
-                    <a href="https://blueprince.wiki.gg/images/Patio.png?d30740=&format=original" target="_blank">Patio</a><br>
-                    <a href="https://blueprince.wiki.gg/images/Courtyard.png?d30740=&format=original" target="_blank">Courtyard</a><br>
                     <a href="https://blueprince.wiki.gg/images/Cloister.png?d30740=&format=original" target="_blank">Cloister</a><br>
-                    <a href="https://blueprince.wiki.gg/images/Veranda.png?d30740=&format=original" target="_blank">Veranda</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Courtyard.png?d30740=&format=original" target="_blank">Courtyard</a><br>
                     <a href="https://blueprince.wiki.gg/images/Greenhouse.png?d30740=&format=original" target="_blank">Greenhouse</a><br>
                     <a href="https://blueprince.wiki.gg/images/MorningRoom.png?d30740=&format=original" target="_blank">Morning Room</a><br>
-                    <a href="https://blueprince.wiki.gg/images/SecretGarden.png?d30740=&format=original" target="_blank">Secret Garden</a>
+                    <a href="https://blueprince.wiki.gg/images/Patio.png?d30740=&format=original" target="_blank">Patio</a><br>
+                    <a href="https://blueprince.wiki.gg/images/SecretGarden.png?d30740=&format=original" target="_blank">Secret Garden</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Terrace.png?d30740=&format=original" target="_blank">Terrace</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Veranda.png?d30740=&format=original" target="_blank">Veranda</a>
                 </div>
-                <div style="break-inside: avoid; margin-bottom: var(--space-sm);"><strong style="color: var(--text-muted); font-size: 0.72rem; text-transform: uppercase;">Shops</strong><br>
-                    <a href="https://blueprince.wiki.gg/images/Commissary.png?d30740=&format=original" target="_blank">Commissary</a><br>
-                    <a href="https://blueprince.wiki.gg/images/Kitchen.png?d30740=&format=original" target="_blank">Kitchen</a><br>
-                    <a href="https://blueprince.wiki.gg/images/Locksmith.png?d30740=&format=original" target="_blank">Locksmith</a><br>
-                    <a href="https://blueprince.wiki.gg/images/Showroom.png?d30740=&format=original" target="_blank">Showroom</a><br>
-                    <a href="https://blueprince.wiki.gg/images/LaundryRoom.png?d30740=&format=original" target="_blank">Laundry Room</a><br>
-                    <a href="https://blueprince.wiki.gg/images/Bookshop.png?d30740=&format=original" target="_blank">Bookshop</a><br>
-                    <a href="https://blueprince.wiki.gg/images/TheArmory.png?d30740=&format=original" target="_blank">The Armory</a><br>
-                    <a href="https://blueprince.wiki.gg/images/GiftShop.png?d30740=&format=original" target="_blank">Gift Shop</a>
-                </div>
-                <div style="break-inside: avoid; margin-bottom: var(--space-sm);"><strong style="color: var(--text-muted); font-size: 0.72rem; text-transform: uppercase;">Red Rooms</strong><br>
-                    <a href="https://blueprince.wiki.gg/images/Lavatory.png?d30740=&format=original" target="_blank">Lavatory</a><br>
-                    <a href="https://blueprince.wiki.gg/images/Chapel.png?d30740=&format=original" target="_blank">Chapel</a><br>
-                    <a href="https://blueprince.wiki.gg/images/MaidsChamber.png?d30740=&format=original" target="_blank">Maid's Chamber</a><br>
-                    <a href="https://blueprince.wiki.gg/images/Archives.png?d30740=&format=original" target="_blank">Archives</a><br>
-                    <a href="https://blueprince.wiki.gg/images/Darkroom.png?d30740=&format=original" target="_blank">Darkroom</a><br>
-                    <a href="https://blueprince.wiki.gg/images/WeightRoom.png?d30740=&format=original" target="_blank">Weight Room</a><br>
-                    <a href="https://blueprince.wiki.gg/images/Furnace.png?d30740=&format=original" target="_blank">Furnace</a>
+                <div style="break-inside: avoid; margin-bottom: var(--space-sm);"><strong style="color: var(--text-muted); font-size: 0.72rem; text-transform: uppercase;">Hallways</strong><br>
+                    <a href="https://blueprince.wiki.gg/images/EastWingHall.png?d30740=&format=original" target="_blank">East Wing Hall</a><br>
+                    <a href="https://blueprince.wiki.gg/images/GreatHall.png?d30740=&format=original" target="_blank">Great Hall</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Hallway.png?d30740=&format=original" target="_blank">Hallway</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Passageway.png?d30740=&format=original" target="_blank">Passageway</a><br>
+                    <a href="https://blueprince.wiki.gg/images/WestWingHall.png?d30740=&format=original" target="_blank">West Wing Hall</a>
                 </div>
                 <div style="break-inside: avoid; margin-bottom: var(--space-sm);"><strong style="color: var(--text-muted); font-size: 0.72rem; text-transform: uppercase;">Outer Rooms</strong><br>
-                    <a href="https://blueprince.wiki.gg/images/Shelter.png?d30740=&format=original" target="_blank">Shelter</a><br>
-                    <a href="https://blueprince.wiki.gg/images/Shrine.png?d30740=&format=original" target="_blank">Shrine</a><br>
-                    <a href="https://blueprince.wiki.gg/images/Toolshed.png?d30740=&format=original" target="_blank">Toolshed</a><br>
-                    <a href="https://blueprince.wiki.gg/images/Schoolhouse.png?d30740=&format=original" target="_blank">Schoolhouse</a><br>
                     <a href="https://blueprince.wiki.gg/images/Hovel.png?d30740=&format=original" target="_blank">Hovel</a><br>
                     <a href="https://blueprince.wiki.gg/images/RootCellar.png?d30740=&format=original" target="_blank">Root Cellar</a><br>
-                    <a href="https://blueprince.wiki.gg/images/TradingPost.png?d30740=&format=original" target="_blank">Trading Post</a><br>
-                    <a href="https://blueprince.wiki.gg/images/Tomb.png?d30740=&format=original" target="_blank">Tomb</a>
+                    <a href="https://blueprince.wiki.gg/images/Schoolhouse.png?d30740=&format=original" target="_blank">Schoolhouse</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Shelter.png?d30740=&format=original" target="_blank">Shelter</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Shrine.png?d30740=&format=original" target="_blank">Shrine</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Tomb.png?d30740=&format=original" target="_blank">Tomb</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Toolshed.png?d30740=&format=original" target="_blank">Toolshed</a><br>
+                    <a href="https://blueprince.wiki.gg/images/TradingPost.png?d30740=&format=original" target="_blank">Trading Post</a>
+                </div>
+                <div style="break-inside: avoid; margin-bottom: var(--space-sm);"><strong style="color: var(--text-muted); font-size: 0.72rem; text-transform: uppercase;">Red Rooms</strong><br>
+                    <a href="https://blueprince.wiki.gg/images/Archives.png?d30740=&format=original" target="_blank">Archives</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Chapel.png?d30740=&format=original" target="_blank">Chapel</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Darkroom.png?d30740=&format=original" target="_blank">Darkroom</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Furnace.png?d30740=&format=original" target="_blank">Furnace</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Lavatory.png?d30740=&format=original" target="_blank">Lavatory</a><br>
+                    <a href="https://blueprince.wiki.gg/images/MaidsChamber.png?d30740=&format=original" target="_blank">Maid's Chamber</a><br>
+                    <a href="https://blueprince.wiki.gg/images/WeightRoom.png?d30740=&format=original" target="_blank">Weight Room</a>
+                </div>
+                <div style="break-inside: avoid; margin-bottom: var(--space-sm);"><strong style="color: var(--text-muted); font-size: 0.72rem; text-transform: uppercase;">Shops</strong><br>
+                    <a href="https://blueprince.wiki.gg/images/Bookshop.png?d30740=&format=original" target="_blank">Bookshop</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Commissary.png?d30740=&format=original" target="_blank">Commissary</a><br>
+                    <a href="https://blueprince.wiki.gg/images/GiftShop.png?d30740=&format=original" target="_blank">Gift Shop</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Kitchen.png?d30740=&format=original" target="_blank">Kitchen</a><br>
+                    <a href="https://blueprince.wiki.gg/images/LaundryRoom.png?d30740=&format=original" target="_blank">Laundry Room</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Locksmith.png?d30740=&format=original" target="_blank">Locksmith</a><br>
+                    <a href="https://blueprince.wiki.gg/images/Showroom.png?d30740=&format=original" target="_blank">Showroom</a><br>
+                    <a href="https://blueprince.wiki.gg/images/TheArmory.png?d30740=&format=original" target="_blank">The Armory</a>
                 </div>
             </div>
         </details>
@@ -1300,7 +1316,14 @@
             tentativeRooms += el.textContent.split(',').length;
         });
 
-        var identified = confirmedRooms + tentativeRooms;
+        // Count Flan/Flank rooms (off-grid: identified but no grid position)
+        var flanFlankDiv = document.getElementById('flan-flank-rooms');
+        var flanFlankLinks = flanFlankDiv ? flanFlankDiv.querySelectorAll('a[target="_blank"]') : [];
+        var flanFlankNames = new Set();
+        flanFlankLinks.forEach(function(a) { flanFlankNames.add(a.textContent.trim()); });
+        var flanFlankCount = flanFlankNames.size;
+
+        var identified = confirmedRooms + tentativeRooms + flanFlankCount;
         var withPaintings = identified + toDecipher;
         var noPaintings = TOTAL_ROOMS - withPaintings;
         var pct = Math.round((identified / withPaintings) * 100);
@@ -1316,6 +1339,7 @@
         el = document.getElementById('stat-confirmed'); if (el) el.textContent = confirmedRooms;
         el = document.getElementById('stat-tentative'); if (el) el.textContent = tentativeRooms;
         el = document.getElementById('stat-to-check'); if (el) el.textContent = toDecipher;
+        el = document.getElementById('stat-flan-flank'); if (el) el.textContent = flanFlankCount;
         el = document.getElementById('stat-no-paintings'); if (el) el.textContent = noPaintings;
     })();
     </script>

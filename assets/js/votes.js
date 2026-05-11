@@ -75,6 +75,7 @@
       findingCards.forEach((card) => {
         mapIssueToElement(card, "h3", findingIssues);
       });
+      rankFindings();
     }
 
     // Map theory items to issues
@@ -82,6 +83,7 @@
       theoryItems.forEach((item) => {
         mapIssueToElement(item, ".theory-title", theoryIssues);
       });
+      rankTheories();
     }
 
     // Map puzzle cards to issues
@@ -119,12 +121,96 @@
 
     var linkText = isPuzzle ? "Rank this Puzzle" : "Discuss on GitHub";
     var stopProp = isPuzzle ? ' onclick="event.stopPropagation()"' : '';
+    var commentBadge = '';
+    if (issue.comments > 0) {
+      commentBadge = '<span class="vote-reaction" title="' + issue.comments + ' comment' + (issue.comments === 1 ? '' : 's') + ' on GitHub">' +
+        '💬<span class="vote-count">' + issue.comments + '</span></span>';
+    }
 
     widget.innerHTML =
-      (reactionSpans.length
-        ? '<span class="vote-reactions">' + reactionSpans.join("") + "</span>"
+      (reactionSpans.length || commentBadge
+        ? '<span class="vote-reactions">' + reactionSpans.join("") + commentBadge + "</span>"
         : "") +
       '<a class="vote-discuss-link" href="' + issue.html_url + '" target="_blank" rel="noopener"' + stopProp + '>' + linkText + '</a>';
+  }
+
+  // Status priority: confirmed > tentative > explained > debunked
+  const STATUS_ORDER = { confirmed: 0, tentative: 1, explained: 2, debunked: 3 };
+
+  // Theory rank priority: Established > Promising > Speculative
+  const RANK_ORDER = { established: 0, promising: 1, speculative: 2 };
+
+  function extractVoteStats(el) {
+    const widget = el.querySelector(".vote-widget");
+    let ups = 0, downs = 0, comments = 0;
+    if (widget) {
+      const reactions = widget.querySelectorAll(".vote-reaction");
+      reactions.forEach((r) => {
+        const text = r.textContent.trim();
+        const count = parseInt(r.querySelector(".vote-count")?.textContent) || 0;
+        if (text.startsWith("\uD83D\uDC4D")) ups = count;
+        else if (text.startsWith("\uD83D\uDC4E")) downs = count;
+        else if (text.startsWith("\uD83D\uDCAC")) comments = count;
+      });
+    }
+    return { ups, downs, comments, score: ups - downs };
+  }
+
+  function rankFindings() {
+    const grids = document.querySelectorAll(".findings-grid");
+    grids.forEach((grid) => {
+      const cards = Array.from(grid.querySelectorAll(".finding-card"));
+      if (cards.length < 2) return;
+
+      cards.forEach((card) => {
+        const status = card.dataset.status || "tentative";
+        const stats = extractVoteStats(card);
+        card._sortStatus = STATUS_ORDER[status] ?? 1;
+        card._sortScore = stats.score;
+        card._sortComments = stats.comments;
+      });
+
+      cards.sort((a, b) => {
+        if (a._sortStatus !== b._sortStatus) return a._sortStatus - b._sortStatus;
+        if (a._sortScore !== b._sortScore) return b._sortScore - a._sortScore;
+        return b._sortComments - a._sortComments;
+      });
+
+      // Re-append in sorted order (CTA card stays at end)
+      const cta = grid.querySelector(".finding-card-cta");
+      cards.forEach((card) => {
+        if (!card.classList.contains("finding-card-cta")) grid.appendChild(card);
+      });
+      if (cta) grid.appendChild(cta);
+    });
+  }
+
+  function rankTheories() {
+    const sections = document.querySelectorAll(".theories-section");
+    sections.forEach((section) => {
+      const items = Array.from(section.querySelectorAll(".theory-item:not(.theory-item-cta)"));
+      if (items.length < 2) return;
+
+      items.forEach((item) => {
+        const rankEl = item.querySelector(".theory-rank");
+        const rankText = (rankEl?.textContent?.trim() || "speculative").toLowerCase();
+        const stats = extractVoteStats(item);
+        item._sortRank = RANK_ORDER[rankText] ?? 2;
+        item._sortScore = stats.score;
+        item._sortComments = stats.comments;
+      });
+
+      items.sort((a, b) => {
+        if (a._sortRank !== b._sortRank) return a._sortRank - b._sortRank;
+        if (a._sortScore !== b._sortScore) return b._sortScore - a._sortScore;
+        return b._sortComments - a._sortComments;
+      });
+
+      // Re-append in sorted order (CTA stays at end)
+      const cta = section.querySelector(".theory-item-cta");
+      items.forEach((item) => section.appendChild(item));
+      if (cta) section.appendChild(cta);
+    });
   }
 
   async function fetchIssues(label) {

@@ -638,6 +638,7 @@ body.votes-loading .theories-section {
 
 .contribute-links {
     display: flex;
+    flex-wrap: wrap;
     gap: 0.6rem;
     margin-top: auto;
     padding-top: 0.75rem;

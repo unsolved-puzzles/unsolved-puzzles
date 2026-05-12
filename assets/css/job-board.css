@@ -1,0 +1,288 @@
+/* =====================================================================
+   Job Board - Wooden Notice Board Style
+   ===================================================================== */
+
+/* -- Base Layout ---------------------------------------------------- */
+
+.job-board-section {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: var(--space-xl) var(--space-lg);
+}
+
+.jb-intro {
+    text-align: center;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-lg);
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.jb-footnote {
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: var(--space-md);
+    font-style: italic;
+}
+
+/* -- Board Container ------------------------------------------------ */
+
+.job-board {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    position: relative;
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent 0px, transparent 56px,
+            rgba(0,0,0,0.12) 56px, rgba(0,0,0,0.06) 58px,
+            transparent 60px
+        ),
+        repeating-linear-gradient(
+            88deg,
+            transparent 0px, rgba(0,0,0,0.025) 1px,
+            transparent 3px, rgba(0,0,0,0.015) 5px,
+            transparent 8px
+        ),
+        repeating-linear-gradient(
+            91deg,
+            transparent 0px, rgba(139,105,20,0.07) 2px,
+            transparent 5px, rgba(139,105,20,0.04) 9px,
+            transparent 13px
+        ),
+        linear-gradient(0deg, #6a4a28 0%, #7a5a32 20%, #6d4e2c 40%, #7a5a32 60%, #6a4a28 80%, #7a5a32 100%);
+    border: 8px solid #4a3018;
+    box-shadow:
+        inset 0 2px 10px rgba(0,0,0,0.2),
+        inset 0 -2px 10px rgba(0,0,0,0.15),
+        0 10px 40px rgba(0,0,0,0.5);
+}
+
+.jb-board-inner {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 0;
+    padding: var(--space-xl);
+}
+
+/* -- Columns -------------------------------------------------------- */
+
+.jb-column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.jb-col-header {
+    text-align: center;
+    position: relative;
+}
+
+.jb-col-banner {
+    width: 100%;
+    aspect-ratio: 460 / 215;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--space-sm);
+    border: 2px solid #4a3018;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.35);
+    transition: all 0.4s ease;
+}
+
+.jb-col-title {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    color: var(--paper);
+    text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+}
+
+/* -- Cards ---------------------------------------------------------- */
+
+.jb-cards {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.jb-card {
+    padding: var(--space-lg);
+    padding-top: calc(var(--space-lg) + 4px);
+    border-radius: var(--radius-md);
+    position: relative;
+    background: linear-gradient(135deg, #f5e6c8 0%, #efe0b8 100%);
+    color: #2a2016;
+    border: none;
+    box-shadow: 2px 3px 10px rgba(0,0,0,0.3);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.jb-card:nth-child(odd) { transform: rotate(-0.6deg); }
+.jb-card:nth-child(even) { transform: rotate(0.5deg); }
+
+.jb-card:hover {
+    transform: translateY(-4px) rotate(0deg) !important;
+    box-shadow: 3px 6px 18px rgba(0,0,0,0.4);
+}
+
+/* -- Pushpins ------------------------------------------------------- */
+
+.jb-pin {
+    display: block;
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    top: -7px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    z-index: 2;
+}
+
+.jb-column[data-game="blue-prince"] .jb-card:nth-child(1) .jb-pin {
+    background: radial-gradient(circle at 35% 35%, #6b8cff, #2c3e8a);
+}
+.jb-column[data-game="blue-prince"] .jb-card:nth-child(2) .jb-pin {
+    background: radial-gradient(circle at 35% 35%, #ffd700, #b8960c);
+}
+.jb-column[data-game="noita"] .jb-card:nth-child(1) .jb-pin {
+    background: radial-gradient(circle at 35% 35%, #a855f7, #6b21a8);
+}
+.jb-column[data-game="noita"] .jb-card:nth-child(2) .jb-pin {
+    background: radial-gradient(circle at 35% 35%, #4ade80, #16a34a);
+}
+
+/* -- Status Badge --------------------------------------------------- */
+
+.jb-status {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-bottom: var(--space-sm);
+    background: rgba(34,120,50,0.12);
+    color: #2d7a32;
+    border: 1px solid rgba(34,120,50,0.25);
+}
+
+/* -- Card Content --------------------------------------------------- */
+
+.jb-role {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    margin-bottom: var(--space-sm);
+    line-height: 1.3;
+    color: #3a2a14;
+}
+
+.jb-desc {
+    font-size: 0.82rem;
+    line-height: 1.65;
+    margin-bottom: var(--space-md);
+    color: #5a4a34;
+}
+
+.jb-desc a,
+.jb-tasks a {
+    color: #6a4a28;
+    text-decoration: underline;
+    text-decoration-color: rgba(139,105,20,0.4);
+    text-underline-offset: 2px;
+}
+
+.jb-desc a:hover,
+.jb-tasks a:hover {
+    color: #3a2a14;
+    text-decoration-color: #3a2a14;
+}
+
+.jb-tasks {
+    list-style: none;
+    padding: 0;
+    margin-bottom: var(--space-md);
+    font-size: 0.78rem;
+}
+
+.jb-tasks li {
+    padding: 0.3rem 0;
+    padding-left: 1.1rem;
+    position: relative;
+    line-height: 1.5;
+    color: #5a4a34;
+    border-bottom: 1px dashed rgba(139,105,20,0.15);
+}
+
+.jb-tasks li:last-child { border-bottom: none; }
+
+.jb-tasks li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55rem;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #8B6914;
+}
+
+.jb-apply {
+    display: inline-block;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    margin-top: auto;
+    color: #7a3e10;
+    border-bottom: 2px solid #7a3e10;
+    padding-bottom: 2px;
+    transition: all var(--transition-base);
+}
+
+.jb-apply:hover {
+    color: #5a2e0a;
+    border-bottom-color: #5a2e0a;
+}
+
+/* -- Divider -------------------------------------------------------- */
+
+.jb-divider {
+    width: 3px;
+    margin: 0 var(--space-lg);
+    background: linear-gradient(180deg, #3a2010, #4a3018, #3a2010);
+    box-shadow: 1px 0 4px rgba(0,0,0,0.3);
+    border-radius: 2px;
+}
+
+/* -- Responsive ----------------------------------------------------- */
+
+@media (max-width: 820px) {
+    .jb-board-inner {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+    }
+
+    .jb-divider {
+        width: 100% !important;
+        height: 2px !important;
+        margin: 0 !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .jb-board-inner {
+        padding: var(--space-lg) var(--space-md);
+    }
+
+    .jb-card {
+        padding: var(--space-md);
+    }
+}

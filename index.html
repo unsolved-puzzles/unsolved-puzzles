@@ -174,7 +174,7 @@
                         <h3 class="jb-col-title">Blue Prince</h3>
                     </div>
                     <div class="jb-cards">
-                        <div class="jb-card">
+                        <div class="jb-card" data-role="case-file-curator">
                             <span class="jb-pin"></span>
                             <span class="jb-status">Open</span>
                             <h4 class="jb-role">Case File Curator</h4>
@@ -186,7 +186,7 @@
                             </ul>
                             <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/discussions/288" class="jb-apply" target="_blank">Claim this role &rarr;</a>
                         </div>
-                        <div class="jb-card">
+                        <div class="jb-card" data-role="room-detective">
                             <span class="jb-pin"></span>
                             <span class="jb-status">Open</span>
                             <h4 class="jb-role">Room Detective</h4>
@@ -211,7 +211,7 @@
                         <h3 class="jb-col-title">Noita</h3>
                     </div>
                     <div class="jb-cards">
-                        <div class="jb-card">
+                        <div class="jb-card" data-role="cryptanalyst">
                             <span class="jb-pin"></span>
                             <span class="jb-status">Open</span>
                             <h4 class="jb-role">Cryptanalyst &#128065;</h4>
@@ -222,7 +222,7 @@
                             </ul>
                             <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/discussions/290" class="jb-apply" target="_blank">Claim this role &rarr;</a>
                         </div>
-                        <div class="jb-card">
+                        <div class="jb-card" data-role="theory-hunter">
                             <span class="jb-pin"></span>
                             <span class="jb-status">Open</span>
                             <h4 class="jb-role">Theory Hunter</h4>
@@ -254,6 +254,28 @@
     <script src="assets/js/main.js?v=3"></script>
     <script src="assets/js/starfield.js"></script>
     <script src="assets/js/hero-string.js"></script>
+    <script>
+    // Job Board: populate assignees from roles.json
+    fetch('roles.json')
+      .then(r => r.json())
+      .then(data => {
+        data.roles.forEach(role => {
+          if (!role.assignee) return;
+          const card = document.querySelector(`.jb-card[data-role="${role.id}"]`);
+          if (!card) return;
+          const status = card.querySelector('.jb-status');
+          status.textContent = 'Claimed';
+          status.classList.add('jb-claimed');
+          const assigneeEl = document.createElement('p');
+          assigneeEl.className = 'jb-assignee';
+          assigneeEl.innerHTML = `<a href="https://github.com/${role.assignee}" target="_blank">@${role.assignee}</a>`;
+          card.querySelector('.jb-role').after(assigneeEl);
+          const applyLink = card.querySelector('.jb-apply');
+          if (applyLink) applyLink.remove();
+        });
+      })
+      .catch(() => {});
+    </script>
     <script>
     // Auto-compute stats
     (function() {

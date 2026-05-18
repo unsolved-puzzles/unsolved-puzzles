@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>These Vying Plans | Blue Prince | Unsolved Puzzles</title>
+    <meta name="description" content="The blue path through the Atelier is solved. The open layer is the full painting-pair sentence: THESE VYING PLANS FORGE BARON CREST AMONG HEWAM BLEST. What is it still telling us to do?">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css?v=4">
+    <style>
+        .phrase-board {
+            max-width: 920px;
+            margin: 0 auto var(--space-xl);
+            padding: clamp(1.25rem, 3vw, 2rem);
+            border-radius: 20px;
+            border: 1px solid rgba(74, 108, 247, 0.22);
+            background:
+                linear-gradient(135deg, rgba(74, 108, 247, 0.12), rgba(212, 175, 55, 0.06)),
+                rgba(16, 20, 38, 0.88);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .phrase-board-title {
+            text-align: center;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            font-size: 0.78rem;
+            margin-bottom: var(--space-md);
+        }
+
+        .phrase-board-words {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.7rem;
+        }
+
+        .phrase-word {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 2.8rem;
+            padding: 0.55rem 0.95rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text-primary);
+            font-family: var(--font-display);
+            font-size: clamp(0.95rem, 2vw, 1.2rem);
+            letter-spacing: 0.06em;
+            text-align: center;
+        }
+
+        .phrase-word-main {
+            display: block;
+        }
+
+        .phrase-word-subnote {
+            display: block;
+            margin-top: 0.28rem;
+            color: var(--text-secondary);
+            font-family: var(--font-body);
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: 0;
+            line-height: 1.35;
+        }
+
+        .phrase-board-note {
+            max-width: 760px;
+            margin: var(--space-md) auto 0;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            line-height: 1.7;
+        }
+
+        .path-grid {
+            max-width: 920px;
+            margin: 0 auto var(--space-xl);
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: var(--space-md);
+        }
+
+        .path-card {
+            padding: 1rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(26, 26, 46, 0.82);
+            text-align: center;
+        }
+
+        .path-card-label {
+            display: block;
+            margin-bottom: 0.45rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .path-card-value {
+            font-family: var(--font-display);
+            font-size: clamp(1rem, 2vw, 1.35rem);
+            letter-spacing: 0.08em;
+            color: var(--text-primary);
+        }
+
+        .path-card-note {
+            margin-top: 0.35rem;
+            color: var(--text-secondary);
+            font-size: 0.82rem;
+        }
+
+        .path-card.red .path-card-label,
+        .path-card.red .path-card-value {
+            color: #ff6b6b;
+        }
+
+        .path-card.orange .path-card-label,
+        .path-card.orange .path-card-value {
+            color: #f39c12;
+        }
+
+        .path-card.violet .path-card-label,
+        .path-card.violet .path-card-value {
+            color: #c770ff;
+        }
+
+        .path-card.blue .path-card-label,
+        .path-card.blue .path-card-value {
+            color: #4a6cf7;
+        }
+
+        .video-embed-card {
+            grid-column: 1 / -1;
+            padding: 1rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(26, 26, 46, 0.82);
+        }
+
+        .video-embed-frame {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border: 0;
+            border-radius: 12px;
+            background: #000;
+            display: block;
+            margin-bottom: 0.9rem;
+        }
+
+        .video-embed-meta h4 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            margin-bottom: 0.35rem;
+            color: var(--text-primary);
+        }
+
+        .video-embed-meta p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 0.35rem;
+        }
+
+        .video-embed-meta .resource-author {
+            display: inline-block;
+        }
+
+        @media (max-width: 900px) {
+            .phrase-board-words,
+            .path-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 560px) {
+            .phrase-board-words,
+            .path-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="votes-loading">
+    <div class="spoiler-banner">Late-game spoilers: Atelier, Room 46, and the Blue Will</div>
+    <canvas id="game-atmosphere"></canvas>
+
+    <div class="game-hero-banner">
+        <img src="../assets/img/blue-prince-these-vying-plans.jpg" alt="These Vying Plans" class="game-hero-img" style="object-position: center 28%;">
+        <div class="game-hero-fade"></div>
+    </div>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="../" class="logo">
+                <span class="logo-icon">🔍</span>
+                <span class="logo-text">Unsolved Puzzles</span>
+            </a>
+            <nav class="header-nav">
+                <a href="../">All Games</a>
+                <a href="./">Blue Prince</a>
+                <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/discussions" target="_blank">Discuss</a>
+                <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/blob/main/README.md" target="_blank">Help</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="puzzle-header">
+        <p class="puzzle-breadcrumb"><a href="../">Home</a> / <a href="./">Blue Prince</a> / These Vying Plans</p>
+        <h1 class="puzzle-title">These Vying Plans</h1>
+        <p class="puzzle-subtitle">The blue path already reaches the Blue Will. The unresolved layer is the full-room sentence left behind by the Atelier's painting pairs.</p>
+        <span class="puzzle-status unsolved">Unsolved</span>
+    </section>
+
+    <section class="findings-section">
+        <h2 class="section-title">What We Know</h2>
+
+        <div class="phrase-board">
+            <p class="phrase-board-title">Open Layer Sentence</p>
+            <div class="phrase-board-words">
+                <span class="phrase-word"><span class="phrase-word-main">THESE</span></span>
+                <span class="phrase-word"><span class="phrase-word-main">VYING</span></span>
+                <span class="phrase-word"><span class="phrase-word-main">PLANS</span></span>
+                <span class="phrase-word"><span class="phrase-word-main">FORGE</span></span>
+                <span class="phrase-word"><span class="phrase-word-main">BARON</span></span>
+                <span class="phrase-word"><span class="phrase-word-main">CREST</span></span>
+                <span class="phrase-word"><span class="phrase-word-main">AMONG</span></span>
+                <span class="phrase-word">
+                    <span class="phrase-word-main">HEWAM</span>
+                    <span class="phrase-word-subnote">Erajan: hew = house, -am = large; likely the manor</span>
+                </span>
+                <span class="phrase-word">
+                    <span class="phrase-word-main">BLEST</span>
+                    <span class="phrase-word-subnote">Archaic spelling of “blessed”</span>
+                </span>
+            </div>
+            <p class="phrase-board-note">This is the part the community still argues about. The route itself is already solved; the unresolved question is what this whole-map sentence does beyond describing the area.</p>
+        </div>
+
+        <div class="path-grid">
+            <div class="path-card red">
+                <span class="path-card-label">Red Path</span>
+                <div class="path-card-value">MPTYE</div>
+                <p class="path-card-note">Anagram of EMPTY</p>
+            </div>
+            <div class="path-card orange">
+                <span class="path-card-label">Orange Path</span>
+                <div class="path-card-value">MORTHE</div>
+                <p class="path-card-note">Anagram of MOTHER</p>
+            </div>
+            <div class="path-card violet">
+                <span class="path-card-label">Violet Path</span>
+                <div class="path-card-value">LEFOSNE</div>
+                <p class="path-card-note">Anagram of ONESELF</p>
+            </div>
+            <div class="path-card blue">
+                <span class="path-card-label">Blue Path</span>
+                <div class="path-card-value">SWANSONG</div>
+                <p class="path-card-note">Already readable, no unscramble needed</p>
+            </div>
+        </div>
+
+        <div style="max-width: 760px; margin: 0 auto var(--space-xl); color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8;">
+            <p><strong>The open layer:</strong> Using the manor's one-letter-difference picture rule across the Atelier's first-draft rooms yields the sentence above. Unlike the colored-path outputs, it does not have a settled purpose.</p>
+            <p style="margin-top: var(--space-md);"><strong>The solved layer:</strong> The same area already resolves four route outputs: MPTYE, MORTHE, LEFOSNE, and SWANSONG, which read as EMPTY, MOTHER, ONESELF, and SWANSONG. The blue route is the one that actually takes you to the Blue Will of Auravei.</p>
+            <p style="margin-top: var(--space-md);"><strong>The real question:</strong> Is THESE VYING PLANS FORGE BARON CREST AMONG HEWAM BLEST just the Atelier's ceremonial summary, or does it still describe an action to perform inside the rough-draft maze itself?</p>
+        </div>
+
+        <div class="findings-filters">
+            <button class="filter-btn active" data-filter="all">All Findings</button>
+            <button class="filter-btn" data-filter="confirmed">Confirmed</button>
+            <button class="filter-btn" data-filter="tentative">Tentative</button>
+            <button class="filter-btn" data-filter="debunked">Debunked</button>
+        </div>
+
+        <div class="findings-grid">
+
+            <div class="finding-card" data-status="confirmed" id="finding-full-atelier-scan-spells-the-nine-word-sentence">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Full Atelier scan spells the nine-word sentence</h3>
+                <p>Solving the rough-draft room picture pairs as one-letter-difference clues produces THESE VYING PLANS FORGE BARON CREST AMONG HEWAM BLEST. This is a whole-map extraction, not the result of following only the correct blue route.</p>
+                <div class="finding-card-meta">
+                    <span>Source: Blue Prince wiki</span>
+                    <span>Whole-area extraction confirmed</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed" id="finding-colored-routes-resolve-to-empty-mother-oneself-swansong">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Colored routes resolve to EMPTY, MOTHER, ONESELF, SWANSONG</h3>
+                <p>Reading only the rooms touched by the red, orange, violet, and blue routes yields MPTYE, MORTHE, LEFOSNE, and SWANSONG, which resolve to EMPTY, MOTHER, ONESELF, and SWANSONG. The blue path does not need unscrambling.</p>
+                <div class="finding-card-meta">
+                    <span>Source: Blue Prince wiki</span>
+                    <span>Route outputs independently reproduced</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed" id="finding-hewam-and-blest-are-meaningful-not-noise">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>HEWAM and BLEST are meaningful, not noise</h3>
+                <p>Community notes and the wiki agree that HEWAM is Erajan for a large house, pointing back to Mount Holly itself. BLEST is an archaic spelling of blessed, which makes the sentence feel intentionally old-fashioned rather than garbled.</p>
+                <div class="finding-card-meta">
+                    <span>Source: Blue Prince wiki, u/tordana</span>
+                    <span>Mixed Erajan + archaic English</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed" id="finding-baron-crest-hewam-align-with-the-blue-will-reveal">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>BARON / CREST / HEWAM align with the Blue Will reveal</h3>
+                <p>The sentence names a baron, a crest, and the house itself. The confirmed reward at the end of the blue path is Auravei's Blue Will, which declares the discoverer the true inheritor of Mount Holly. The wording overlaps directly with the inheritance reveal.</p>
+                <div class="finding-card-meta">
+                    <span>Source: Blue Prince wiki, in-game Blue Will</span>
+                    <span>Vocabulary matches the reward state</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="debunked" id="finding-furnace-barren-blessing-test-did-not-trigger-extra-result">
+                <span class="finding-card-status debunked">Debunked</span>
+                <h3>Literal forge / barren / blessing recipe does not trigger a secret</h3>
+                <p>One community test tried to literalize the sentence in a single run: place Furnace on a barren spot, make it the last room for a full HEWAM, add Shrine and Chapel with Dancer's Blessing for BLEST, and inspect the outside-facing back wall. Result: only a regular key and no extra visible interaction.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/scriptskitty</span>
+                    <span>Specific reading tested and failed</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="tentative" id="finding-room-46-crest-may-literally-read-swan-song">
+                <span class="finding-card-status tentative">Tentative</span>
+                <h3>Room 46 crest may literally read SWAN + SONG</h3>
+                <p>One community interpretation notes that Simon's crest in Room 46 shows a swan on one side and musical notation on the other, effectively turning SWANSONG into a literal crest image. If true, it would connect the blue route word directly to "forge baron crest."</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/KnaveErrant, u/scriptskitty</span>
+                    <span>Persuasive observation, still informal</span>
+                </div>
+            </div>
+
+            <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/issues/new?template=new-finding.yml" target="_blank" class="finding-card finding-card-cta">
+                <h3>+ Submit a New Finding</h3>
+                <p>Found another use for the sentence, crest imagery, or room layout? Add it here.</p>
+            </a>
+
+        </div>
+    </section>
+
+    <section class="theories-section">
+        <h2 class="section-title">Theories (Ranked)</h2>
+
+        <div class="theory-item" data-explains="finding-full-atelier-scan-spells-the-nine-word-sentence,finding-hewam-and-blest-are-meaningful-not-noise,finding-baron-crest-hewam-align-with-the-blue-will-reveal">
+            <span class="theory-rank high">Established</span>
+            <h3 class="theory-title">The sentence is the Atelier's purpose statement</h3>
+            <p class="theory-desc">The dominant reading is that the phrase explains what the area does: these competing plans or blueprints determine the rightful baron and crest of the blessed house. That fits the Blue Will reveal cleanly and requires no hidden extra mechanism.</p>
+        </div>
+
+        <div class="theory-item" data-explains="finding-full-atelier-scan-spells-the-nine-word-sentence,finding-colored-routes-resolve-to-empty-mother-oneself-swansong">
+            <span class="theory-rank medium">Promising</span>
+            <h3 class="theory-title">The sentence must be re-read spatially on the map or door</h3>
+            <p class="theory-desc">Because the words come from room positions, prose order may not be the final read order. "Forge baron crest" could be an instruction to arrange rooms, trace a crest-like route, or project the sentence back onto the Atelier door layout.</p>
+        </div>
+
+        <div class="theory-item" data-explains="finding-full-atelier-scan-spells-the-nine-word-sentence,finding-colored-routes-resolve-to-empty-mother-oneself-swansong,finding-furnace-barren-blessing-test-did-not-trigger-extra-result">
+            <span class="theory-rank medium">Promising</span>
+            <h3 class="theory-title">The instruction applies inside the blueprint house, not Mount Holly</h3>
+            <p class="theory-desc">A strong reading from the second Reddit thread is that, if the sentence does anything, it should be solved within the Atelier's rough-draft version of the house rather than the real manor. That fits the local wording and explains why literal real-house tests such as Furnace plus blessing have not produced anything new.</p>
+        </div>
+
+        <div class="theory-item" data-explains="finding-colored-routes-resolve-to-empty-mother-oneself-swansong,finding-room-46-crest-may-literally-read-swan-song,finding-baron-crest-hewam-align-with-the-blue-will-reveal">
+            <span class="theory-rank medium">Promising</span>
+            <h3 class="theory-title">SWANSONG is the key that bridges route, crest, and reward</h3>
+            <p class="theory-desc">The blue route already gives SWANSONG, and one player reads Room 46's crest as a literal swan plus song. If that observation is right, the sentence may not point to a new destination at all. It may be telling you how the baron's crest is encoded inside the path solution.</p>
+        </div>
+
+        <div class="theory-item" data-explains="finding-full-atelier-scan-spells-the-nine-word-sentence,finding-hewam-and-blest-are-meaningful-not-noise">
+            <span class="theory-rank low">Speculative</span>
+            <h3 class="theory-title">The wording needs a second textual extraction pass</h3>
+            <p class="theory-desc">Blue Prince repeatedly uses awkward wording, mixed diction, and textual anomalies as clue containers. On that reading, the sentence is real but incomplete: an acrostic, word-position readout, or substitution layer still needs to be applied.</p>
+        </div>
+
+        <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/issues/new?template=new-theory.yml" target="_blank" class="theory-item theory-item-cta">
+            <h3 class="theory-title">+ Submit a New Theory</h3>
+            <p class="theory-desc">Have a better read on the sentence, the crest, or the room layout? Share it.</p>
+        </a>
+    </section>
+
+    <section class="resources-section">
+        <h2 class="section-title">Connected Threads</h2>
+        <p style="text-align: center; color: var(--text-secondary); max-width: 680px; margin: -1rem auto var(--space-xl); font-size: 0.9rem;">Other Blue Prince pages and source trails that likely matter if this sentence has one more layer.</p>
+
+        <div class="resource-category">
+            <div class="resource-category-header community">
+                <span class="resource-category-icon">🧵</span>
+                <h3>Related Puzzles</h3>
+            </div>
+            <div class="resource-category-items">
+                <a href="does-it-never-end.html" class="resource-link community">
+                    <svg class="resource-link-icon" viewBox="0 0 24 24" fill="none" stroke="#c084fc" stroke-width="2"><path d="M12 2v4"/><path d="M12 18v4"/><path d="M4.93 4.93l2.83 2.83"/><path d="M16.24 16.24l2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="M4.93 19.07l2.83-2.83"/><path d="M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="3"/></svg>
+                    <h4>Does It Never End?</h4>
+                    <p>Tracks ROSEWARY, TENDED ROSE VINE, gallery words, and the rest of the Atelier's leftover clue bank. If this puzzle has a sibling mystery, it is probably there.</p>
+                    <span class="resource-author"><strong>Shared cluster</strong> · Spiral / Atelier leftovers</span>
+                </a>
+
+                <a href="garage-acronym.html" class="resource-link tool">
+                    <svg class="resource-link-icon" viewBox="0 0 24 24" fill="none" stroke="#fb923c" stroke-width="2"><path d="M3 16.5V19a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-2.5"/><path d="M5 16.5l1.3-7.1A2 2 0 0 1 8.27 8h7.46a2 2 0 0 1 1.97 1.4L19 16.5"/><circle cx="7.5" cy="17.5" r="1.5"/><circle cx="16.5" cy="17.5" r="1.5"/></svg>
+                    <h4>Garage Acronym</h4>
+                    <p>SWANSONG already acts like a route marker in the Atelier and may also describe Room 46's crest. That makes this page the strongest existing precedent for a reused endgame output.</p>
+                    <span class="resource-author"><strong>Likely overlap</strong> · SWANSONG / crest logic</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="resource-category">
+            <div class="resource-category-header tool">
+                <span class="resource-category-icon">🔎</span>
+                <h3>Source Trail</h3>
+            </div>
+            <div class="resource-category-items">
+                <a href="https://www.reddit.com/r/BluePrince/comments/1kfcb7i/massive_endgamepostgame_spoilers_discussion_of/" target="_blank" class="resource-link community">
+                    <svg class="resource-link-icon" viewBox="0 0 24 24" fill="none" stroke="#c084fc" stroke-width="2"><path d="M21 15a4 4 0 0 1-4 4H7l-4 3v-7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/><path d="M8 13h.01"/><path d="M12 13h.01"/><path d="M16 13h.01"/></svg>
+                    <h4>u/echolog's Atelier retrospective</h4>
+                    <p>A long endgame writeup arguing that the sentence may already be used up as the Atelier's purpose statement, with comments debating whether that reading is too tidy to be the last word.</p>
+                    <span class="resource-author"><strong>u/echolog</strong> · 2025</span>
+                </a>
+
+                <a href="https://www.reddit.com/r/BluePrince/comments/1k2ws99/comment/mny4mis/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button" target="_blank" class="resource-link community">
+                    <svg class="resource-link-icon" viewBox="0 0 24 24" fill="none" stroke="#c084fc" stroke-width="2"><path d="M7 7h10"/><path d="M7 12h7"/><path d="M7 17h5"/><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                    <h4>u/throwaway070690's final-secrets hub</h4>
+                    <p>A broader postgame lead thread whose comments generated the main open-layer alternatives: BARON as BARREN, forge-via-Furnace readings, blueprint-local routing, and Auravei crest interpretations.</p>
+                    <span class="resource-author"><strong>u/throwaway070690</strong> · 2025</span>
+                </a>
+
+                <div class="video-embed-card">
+                    <iframe class="video-embed-frame" src="https://www.youtube.com/embed/cm5q8jNvUNo?start=1920" title="FuryForged Blue Prince breakdown starting at 32:00" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <div class="video-embed-meta">
+                        <h4>FuryForged video breakdown</h4>
+                        <p>Embedded at 32:00, where the video moves into the Atelier route outputs and the whole-map sentence. It is the cleanest quick summary of the solved layer versus the still-open one.</p>
+                        <p><a href="https://youtu.be/cm5q8jNvUNo?si=vXqLHI-2MdPC1TT_&amp;t=1920" target="_blank">Open the timestamped video on YouTube</a></p>
+                        <span class="resource-author"><strong>FuryForged</strong> · video walkthrough</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="discussion-section">
+        <h2 class="section-title">Discussion</h2>
+        <p style="text-align: center; color: var(--text-secondary); margin-bottom: var(--space-lg);">
+            Comments powered by <a href="https://giscus.app" target="_blank">giscus</a>. Uses GitHub Discussions.
+        </p>
+        <script src="https://giscus.app/client.js"
+            data-repo="unsolved-puzzles/unsolved-puzzles"
+            data-repo-id="R_kgDOSTBzlg"
+            data-category="Announcements"
+            data-category-id="DIC_kwDOSTBzls4C8Pva"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="dark_dimmed"
+            data-lang="en"
+            data-loading="lazy"
+            crossorigin="anonymous"
+            async>
+        </script>
+    </section>
+
+    <footer class="site-footer">
+        <p>Built by the community. <a href="https://github.com/unsolved-puzzles/unsolved-puzzles">View on GitHub</a></p>
+        <p class="footer-tagline">"These vying plans..."</p>
+    </footer>
+
+    <script src="../assets/js/blue-prince-bg.js"></script>
+    <script src="../assets/js/main.js?v=3"></script>
+    <script src="../assets/js/votes.js?v=3"></script>
+    <script src="../assets/js/red-strings.js?v=2"></script>
+</body>
+</html>

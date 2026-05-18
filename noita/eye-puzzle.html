@@ -214,7 +214,7 @@
                 <div class="finding-card" data-status="confirmed" id="finding-hidden-states-required">
                     <span class="finding-card-status confirmed">Confirmed</span>
                     <h3>Hidden states far exceed 83</h3>
-                    <p>The cipher's internal state space is not just 83 values. In a deck cipher model (GAK with S&#x2088;&#x2083;), the hidden state is the order of 82 unseen cards beneath the top card, giving 82! possible hidden states. This "delayed hidden state effect" explains how messages with different first characters can share subsequent sections.</p>
+                    <p>The cipher's internal state space is not just 83 values. In a deck cipher model (GAK with S83), the hidden state is the order of 82 unseen cards beneath the top card, giving 82! possible hidden states. This "delayed hidden state effect" explains how messages with different first characters can share subsequent sections.</p>
                     <div class="finding-card-meta">
                         <span>Source: Lymm</span>
                         <span>Derived from GAK/deck cipher framework</span>
@@ -288,7 +288,7 @@
 
         <div class="theory-item" data-explains="finding-83-symbol-alphabet-with-unbroken-range,finding-chaining-conflicts-observed,finding-isomorphic-cipher-hierarchy-classified,finding-only-2-of-6-possible-groups-remain">
             <span class="theory-rank high">Established</span>
-            <h3 class="theory-title">Deck cipher (GAK with S&#x2088;&#x2083;)</h3>
+            <h3 class="theory-title">Deck cipher (GAK with S83)</h3>
             <p class="theory-desc">The leading candidate: a deck of 83 cards where each plaintext letter triggers a specific shuffle. The top card after shuffling is the ciphertext output. Equivalent to a Group Autokey cipher with the symmetric group S&#x2088;&#x2083;. Evidence suggests the shuffles have relatively simple structure (few swaps from a shared base permutation), which constrains the key space.</p>
         </div>
 

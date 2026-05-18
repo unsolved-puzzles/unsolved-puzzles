@@ -260,18 +260,47 @@
       .then(r => r.json())
       .then(data => {
         data.roles.forEach(role => {
-          if (!role.assignee) return;
           const card = document.querySelector(`.jb-card[data-role="${role.id}"]`);
           if (!card) return;
-          const status = card.querySelector('.jb-status');
-          status.textContent = 'Claimed';
-          status.classList.add('jb-claimed');
-          const assigneeEl = document.createElement('p');
-          assigneeEl.className = 'jb-assignee';
-          assigneeEl.innerHTML = `<a href="https://github.com/${role.assignee}" target="_blank">@${role.assignee}</a>`;
-          card.querySelector('.jb-role').after(assigneeEl);
-          const applyLink = card.querySelector('.jb-apply');
-          if (applyLink) applyLink.remove();
+
+          // New format: multiple assignees with "active" status (role stays open)
+          if (role.assignees && role.assignees.length > 0) {
+            const status = card.querySelector('.jb-status');
+            if (role.status === 'claimed') {
+              status.textContent = 'Claimed';
+              status.classList.add('jb-claimed');
+              const applyLink = card.querySelector('.jb-apply');
+              if (applyLink) applyLink.remove();
+            } else {
+              // "active" — someone is on it but others can still join
+              status.textContent = 'Active';
+              status.classList.add('jb-active');
+              const applyLink = card.querySelector('.jb-apply');
+              if (applyLink) applyLink.textContent = 'Join the team →';
+            }
+            const crewEl = document.createElement('div');
+            crewEl.className = 'jb-crew';
+            role.assignees.forEach(a => {
+              crewEl.innerHTML += `
+                <a class="jb-crew-member" href="https://github.com/${a.username}" target="_blank">
+                  <img src="https://github.com/${a.username}.png?size=32" alt="${a.username}" class="jb-avatar"/>
+                  <span>@${a.username}</span>
+                </a>`;
+            });
+            card.querySelector('.jb-role').after(crewEl);
+          }
+          // Legacy format: single assignee
+          else if (role.assignee) {
+            const status = card.querySelector('.jb-status');
+            status.textContent = 'Claimed';
+            status.classList.add('jb-claimed');
+            const assigneeEl = document.createElement('p');
+            assigneeEl.className = 'jb-assignee';
+            assigneeEl.innerHTML = `<a href="https://github.com/${role.assignee}" target="_blank">@${role.assignee}</a>`;
+            card.querySelector('.jb-role').after(assigneeEl);
+            const applyLink = card.querySelector('.jb-apply');
+            if (applyLink) applyLink.remove();
+          }
         });
       })
       .catch(() => {});

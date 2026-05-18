@@ -252,6 +252,56 @@
     border-bottom-color: #5a2e0a;
 }
 
+/* -- Active / Claimed states ---------------------------------------- */
+
+.jb-status.jb-claimed {
+    background: rgba(120,40,40,0.12);
+    color: #7a2828;
+    border-color: rgba(120,40,40,0.25);
+}
+
+.jb-status.jb-active {
+    background: rgba(34,100,180,0.12);
+    color: #1d5fa0;
+    border-color: rgba(34,100,180,0.25);
+}
+
+/* -- Crew (assigned members) ---------------------------------------- */
+
+.jb-crew {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: var(--space-sm);
+}
+
+.jb-crew-member {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #3a5a2a;
+    text-decoration: none;
+    background: rgba(60,130,60,0.08);
+    border: 1px solid rgba(60,130,60,0.2);
+    border-radius: 20px;
+    padding: 3px 10px 3px 3px;
+    transition: all 0.2s ease;
+}
+
+.jb-crew-member:hover {
+    background: rgba(60,130,60,0.16);
+    border-color: rgba(60,130,60,0.4);
+}
+
+.jb-avatar {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
 /* -- Divider -------------------------------------------------------- */
 
 .jb-divider {

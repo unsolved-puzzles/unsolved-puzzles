@@ -1,0 +1,11 @@
+{
+  "roles": [
+    {
+      "id": "room-detective",
+      "status": "active",
+      "assignees": [
+        { "username": "pedroff1", "name": "Marcy" }
+      ]
+    }
+  ]
+}

@@ -188,7 +188,6 @@
     </style>
 </head>
 <body class="votes-loading">
-    <div class="spoiler-banner">Late-game spoilers: Atelier, Room 46, and the Blue Will</div>
     <canvas id="game-atmosphere"></canvas>
 
     <div class="game-hero-banner">
@@ -216,6 +215,7 @@
         <h1 class="puzzle-title">These Vying Plans</h1>
         <p class="puzzle-subtitle">The blue path already reaches the Blue Will. The unresolved layer is the full-room sentence left behind by the Atelier's painting pairs.</p>
         <span class="puzzle-status unsolved">Unsolved</span>
+        <p style="margin-top: 0.9rem; text-align: center;"><a href="https://github.com/unsolved-puzzles/unsolved-puzzles/issues/292" target="_blank">Original puzzle issue #292</a></p>
     </section>
 
     <section class="findings-section">
@@ -301,13 +301,23 @@
                 </div>
             </div>
 
-            <div class="finding-card" data-status="confirmed" id="finding-hewam-and-blest-are-meaningful-not-noise">
+            <div class="finding-card" data-status="confirmed" id="finding-blue-route-words-read-we-seek-whats-in-the-shade-of-truth">
                 <span class="finding-card-status confirmed">Confirmed</span>
-                <h3>HEWAM and BLEST are meaningful, not noise</h3>
-                <p>Community notes and the wiki agree that HEWAM is Erajan for a large house, pointing back to Mount Holly itself. BLEST is an archaic spelling of blessed, which makes the sentence feel intentionally old-fashioned rather than garbled.</p>
+                <h3>The hidden blue route reproduces Mary's Safehouse whiteboard sentence</h3>
+                <p>Reading the hidden blue path in traversal order yields WE SEEK WHATS IN THE SHADE OF TRUTH from Pantry through Furnace. The same exact sentence is written on Mary's Safehouse whiteboard, which makes the path output and the Safehouse clue a direct match rather than a loose thematic echo.</p>
                 <div class="finding-card-meta">
-                    <span>Source: Blue Prince wiki, u/tordana</span>
-                    <span>Mixed Erajan + archaic English</span>
+                    <span>Source: <a href="https://www.reddit.com/r/BluePrince/comments/1m7bark/some_thoughts_about_the_lore/" target="_blank">u/zeroxm9999</a></span>
+                    <span>Atelier output matches Mary's Safehouse whiteboard</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed" id="finding-twelve-blue-rooms-leave-a-four-room-gems-residue">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Only 12 rooms have blue Mora Jai Boxes; the 4 unused ones spell GEMS</h3>
+                <p>Within Mount Holly Blueprints, only 12 of the 45 rooms contain blue Mora Jai Boxes. Every room on the hidden path is one of those blue-box rooms, and together they yield WE SEEK WHATS IN THE SHADE OF TRUTH in traversal order. In our current reconstruction, the 4 remaining blue-box rooms are Coat Check, Corridor, Hallway, and East Wing Hall; their letters form GEMS, while the extra Mora Jai Box in Room 46 replaces TRUTH with BLUE.</p>
+                <div class="finding-card-meta">
+                    <span>Source: <a href="https://blueprince.wiki.gg/wiki/Spoilers:Atelier_Path_Puzzle" target="_blank">Blue Prince wiki</a>, jewe6889</span>
+                    <span>12 blue boxes, 8 on the path, 4 leftover</span>
                 </div>
             </div>
 
@@ -318,6 +328,16 @@
                 <div class="finding-card-meta">
                     <span>Source: Blue Prince wiki, in-game Blue Will</span>
                     <span>Vocabulary matches the reward state</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="tentative" id="finding-a-hidden-hue-still-leaves-green-yellow-and-sum-of-18-unresolved">
+                <span class="finding-card-status tentative">Tentative</span>
+                <h3>A Hidden Hue still leaves green/yellow and &quot;sum of 18&quot; unresolved</h3>
+                <p>In the earliest public Room 46 thread, players noted that even after reaching the Blue Will and extracting WE SEEK WHATS IN THE SHADE OF TRUTH, A Hidden Hue still seemed to leave two clue surfaces unused: the green/yellow lights and the &quot;sum of 18&quot; instruction. That does not prove another route exists, but it remains one of the clearest reasons to suspect the Atelier has a second pass.</p>
+                <div class="finding-card-meta">
+                    <span>Source: <a href="https://www.reddit.com/r/BluePrince/comments/1k0ppmt/anyone_else_find_additional_solutions_inside_of/" target="_blank">u/daymeeuhn</a></span>
+                    <span>Open clue surface, not a solved mechanic</span>
                 </div>
             </div>
 
@@ -336,7 +356,7 @@
                 <h3>Room 46 crest may literally read SWAN + SONG</h3>
                 <p>One community interpretation notes that Simon's crest in Room 46 shows a swan on one side and musical notation on the other, effectively turning SWANSONG into a literal crest image. If true, it would connect the blue route word directly to "forge baron crest."</p>
                 <div class="finding-card-meta">
-                    <span>Source: u/KnaveErrant, u/scriptskitty</span>
+                    <span>Source: <a href="https://www.reddit.com/r/BluePrince/comments/1kfcb7i/massive_endgamepostgame_spoilers_discussion_of/" target="_blank">u/KnaveErrant</a>, <a href="https://www.reddit.com/r/BluePrince/comments/1k2ws99/final_secrets_and_potential_leads_discussion_hub/" target="_blank">u/scriptskitty</a></span>
                     <span>Persuasive observation, still informal</span>
                 </div>
             </div>
@@ -352,7 +372,7 @@
     <section class="theories-section">
         <h2 class="section-title">Theories (Ranked)</h2>
 
-        <div class="theory-item" data-explains="finding-full-atelier-scan-spells-the-nine-word-sentence,finding-hewam-and-blest-are-meaningful-not-noise,finding-baron-crest-hewam-align-with-the-blue-will-reveal">
+        <div class="theory-item" data-explains="finding-full-atelier-scan-spells-the-nine-word-sentence,finding-baron-crest-hewam-align-with-the-blue-will-reveal">
             <span class="theory-rank high">Established</span>
             <h3 class="theory-title">The sentence is the Atelier's purpose statement</h3>
             <p class="theory-desc">The dominant reading is that the phrase explains what the area does: these competing plans or blueprints determine the rightful baron and crest of the blessed house. That fits the Blue Will reveal cleanly and requires no hidden extra mechanism.</p>
@@ -376,7 +396,13 @@
             <p class="theory-desc">The blue route already gives SWANSONG, and one player reads Room 46's crest as a literal swan plus song. If that observation is right, the sentence may not point to a new destination at all. It may be telling you how the baron's crest is encoded inside the path solution.</p>
         </div>
 
-        <div class="theory-item" data-explains="finding-full-atelier-scan-spells-the-nine-word-sentence,finding-hewam-and-blest-are-meaningful-not-noise">
+        <div class="theory-item" data-explains="finding-colored-routes-resolve-to-empty-mother-oneself-swansong,finding-a-hidden-hue-still-leaves-green-yellow-and-sum-of-18-unresolved">
+            <span class="theory-rank medium">Promising</span>
+            <h3 class="theory-title">Green/yellow lights plus the spiral may define a second traversal rule</h3>
+            <p class="theory-desc">The strongest lead from the original Room 46 thread is that the first blue solve appears to leave A Hidden Hue partially unused. If green/yellow lights encode extra directions and the recurring spiral's 18 thorns correspond to the &quot;sum of 18&quot; clue, the missing layer could be an 18-step route rather than another sentence extraction.</p>
+        </div>
+
+        <div class="theory-item" data-explains="finding-full-atelier-scan-spells-the-nine-word-sentence,finding-blue-route-words-read-we-seek-whats-in-the-shade-of-truth">
             <span class="theory-rank low">Speculative</span>
             <h3 class="theory-title">The wording needs a second textual extraction pass</h3>
             <p class="theory-desc">Blue Prince repeatedly uses awkward wording, mixed diction, and textual anomalies as clue containers. On that reading, the sentence is real but incomplete: an acrostic, word-position readout, or substitution layer still needs to be applied.</p>
@@ -389,8 +415,8 @@
     </section>
 
     <section class="resources-section">
-        <h2 class="section-title">Connected Threads</h2>
-        <p style="text-align: center; color: var(--text-secondary); max-width: 680px; margin: -1rem auto var(--space-xl); font-size: 0.9rem;">Other Blue Prince pages and source trails that likely matter if this sentence has one more layer.</p>
+        <h2 class="section-title">Related Resources</h2>
+        <p style="text-align: center; color: var(--text-secondary); max-width: 680px; margin: -1rem auto var(--space-xl); font-size: 0.9rem;">Other Blue Prince pages and community coverage that likely matter if this sentence has one more layer.</p>
 
         <div class="resource-category">
             <div class="resource-category-header community">
@@ -415,34 +441,17 @@
         </div>
 
         <div class="resource-category">
-            <div class="resource-category-header tool">
-                <span class="resource-category-icon">🔎</span>
-                <h3>Source Trail</h3>
+            <div class="resource-category-header community">
+                <span class="resource-category-icon">💬</span>
+                <h3>Community &amp; Media</h3>
             </div>
             <div class="resource-category-items">
-                <a href="https://www.reddit.com/r/BluePrince/comments/1kfcb7i/massive_endgamepostgame_spoilers_discussion_of/" target="_blank" class="resource-link community">
-                    <svg class="resource-link-icon" viewBox="0 0 24 24" fill="none" stroke="#c084fc" stroke-width="2"><path d="M21 15a4 4 0 0 1-4 4H7l-4 3v-7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/><path d="M8 13h.01"/><path d="M12 13h.01"/><path d="M16 13h.01"/></svg>
-                    <h4>u/echolog's Atelier retrospective</h4>
-                    <p>A long endgame writeup arguing that the sentence may already be used up as the Atelier's purpose statement, with comments debating whether that reading is too tidy to be the last word.</p>
-                    <span class="resource-author"><strong>u/echolog</strong> · 2025</span>
+                <a href="https://youtu.be/cm5q8jNvUNo?si=vXqLHI-2MdPC1TT_&amp;t=1920" target="_blank" class="resource-link video">
+                    <svg class="resource-link-icon" viewBox="0 0 24 24" fill="#FF0000" stroke="none"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    <h4>FuryForged video breakdown</h4>
+                    <p>At 32:00, FuryForged walks through the Atelier route outputs and the whole-map sentence. It remains the quickest public summary of the solved layer versus the open one.</p>
+                    <span class="resource-author"><strong>FuryForged</strong> · March 2026</span>
                 </a>
-
-                <a href="https://www.reddit.com/r/BluePrince/comments/1k2ws99/comment/mny4mis/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button" target="_blank" class="resource-link community">
-                    <svg class="resource-link-icon" viewBox="0 0 24 24" fill="none" stroke="#c084fc" stroke-width="2"><path d="M7 7h10"/><path d="M7 12h7"/><path d="M7 17h5"/><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
-                    <h4>u/throwaway070690's final-secrets hub</h4>
-                    <p>A broader postgame lead thread whose comments generated the main open-layer alternatives: BARON as BARREN, forge-via-Furnace readings, blueprint-local routing, and Auravei crest interpretations.</p>
-                    <span class="resource-author"><strong>u/throwaway070690</strong> · 2025</span>
-                </a>
-
-                <div class="video-embed-card">
-                    <iframe class="video-embed-frame" src="https://www.youtube.com/embed/cm5q8jNvUNo?start=1920" title="FuryForged Blue Prince breakdown starting at 32:00" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    <div class="video-embed-meta">
-                        <h4>FuryForged video breakdown</h4>
-                        <p>Embedded at 32:00, where the video moves into the Atelier route outputs and the whole-map sentence. It is the cleanest quick summary of the solved layer versus the still-open one.</p>
-                        <p><a href="https://youtu.be/cm5q8jNvUNo?si=vXqLHI-2MdPC1TT_&amp;t=1920" target="_blank">Open the timestamped video on YouTube</a></p>
-                        <span class="resource-author"><strong>FuryForged</strong> · video walkthrough</span>
-                    </div>
-                </div>
             </div>
         </div>
     </section>

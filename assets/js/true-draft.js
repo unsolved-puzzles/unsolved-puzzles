@@ -186,6 +186,29 @@
       },
     },
     {
+      id: "idea-soil-survey-baron",
+      title: "Soil Survey hints at a Baron room on A2",
+      source: '<a href="https://www.reddit.com/r/BluePrince/comments/1ks3u93/comment/mtj7op9/" target="_blank">u/vanillagod</a>',
+      description:
+        "The Soil Survey marks A2 as 'barren ground' (homophone for Baron). The Master Bedroom cannot spawn in the west wing, and the Secret Garden requires ranks 3-8, making both illegal at A2.",
+      targets: [
+        { coord: "A2", allowedRooms: ["Master Bedroom", "Secret Garden"], label: "Baron room" },
+      ],
+    },
+    {
+      id: "idea-vinyl-record-layout",
+      title: "Vinyl record art encodes a manor configuration",
+      source: "Xetaas",
+      description:
+        "The official vinyl record shows Drafting Studio at B1, Courtyard at C2, Archives at A1, and West Wing Hall at C3. Archives at A1 and West Wing Hall at C3 are both illegal.",
+      targets: [
+        { coord: "B1", room: "Drafting Studio" },
+        { coord: "C2", room: "Courtyard" },
+        { coord: "A1", room: "Archives" },
+        { coord: "C3", room: "West Wing Hall" },
+      ],
+    },
+    {
       id: "finding-entrance-hall-doorways-have-distinct-frames",
       title: "Entrance Hall doorways have distinct frames",
       source: "dummyn00b",

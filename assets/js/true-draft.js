@@ -555,7 +555,7 @@
     if (!state.lookup) {
       dom.selectedHint.textContent = "Load the coordinate lookup first.";
       dom.roomSelect.innerHTML = '<option value="">Lookup unavailable</option>';
-      dom.legalRoomCount.textContent = "Serve this page from c:/Users/jewe/Documents/Github so it can reach the sibling Blue Prince rules files.";
+      dom.legalRoomCount.textContent = "The room-coordinate lookup failed to load.";
       return;
     }
 
@@ -664,6 +664,12 @@
     const status = state.lookup.room_status[room];
     if (status === "special_source_only") {
       return `${room} (source-only)`;
+    }
+    if (status === "rank_restricted") {
+      return `${room} (rank 8 only)`;
+    }
+    if (status === "key_restricted") {
+      return `${room} (key-only)`;
     }
     return room;
   }

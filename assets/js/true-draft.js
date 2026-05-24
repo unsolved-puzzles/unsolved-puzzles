@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  const LOOKUP_URL = "../../BLUE%20PRINCE/drafting-rules/room-coordinate-lookup.v1.json";
+  const LOOKUP_URL = "../assets/data/room-coordinate-lookup.v1.json";
   const FIXED_PLACEMENTS = new Map([
     ["C1", "Entrance Hall"],
     ["C9", "Antechamber"],
@@ -719,7 +719,6 @@
   function showLookupError(error) {
     const message = [
       "The drafting lookup could not be loaded.",
-      "Serve from c:/Users/jewe/Documents/Github so this page can fetch ../../BLUE PRINCE/drafting-rules/room-coordinate-lookup.v1.json.",
       `Error: ${error.message}`,
     ].join(" ");
     dom.lookupError.hidden = false;

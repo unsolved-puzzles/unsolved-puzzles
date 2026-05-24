@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>True Draft | Unsolved Puzzles</title>
+    <meta name="description" content="Blue Prince True Draft workbench: interactive manor layout, rule-restricted room testing, and current community ideas translated onto real manor coordinates.">
+    <meta property="og:title" content="True Draft | Unsolved Puzzles">
+    <meta property="og:description" content="Test Blue Prince True Draft ideas against the room-coordinate lookup with a local manor builder.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css?v=4">
+    <style>
+        .true-draft-overview,
+        .true-draft-ideas,
+        .true-draft-theories {
+            position: relative;
+            max-width: 1240px;
+            margin: 0 auto var(--space-xl);
+            padding: var(--space-xl) var(--space-lg);
+            border-radius: 28px;
+            background:
+                linear-gradient(180deg, rgba(7, 14, 27, 0.92), rgba(10, 19, 36, 0.9)),
+                radial-gradient(circle at top right, rgba(73, 122, 255, 0.12), transparent 32%),
+                radial-gradient(circle at bottom left, rgba(255, 205, 88, 0.08), transparent 28%);
+            border: 1px solid rgba(122, 162, 255, 0.14);
+            box-shadow: 0 28px 80px rgba(0, 0, 0, 0.34);
+            overflow: hidden;
+        }
+
+        .true-draft-overview::before,
+        .true-draft-ideas::before,
+        .true-draft-theories::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent 22%);
+        }
+
+        .true-draft-overview > *,
+        .true-draft-ideas > *,
+        .true-draft-theories > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .true-draft-intro {
+            max-width: 760px;
+            margin: 0 auto var(--space-xl);
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.85;
+        }
+
+        .true-draft-intro p + p {
+            margin-top: var(--space-md);
+        }
+
+        .true-draft-shell {
+            max-width: 1240px;
+            margin: 0 auto;
+        }
+
+        .load-warning {
+            margin: 0 auto var(--space-lg);
+            max-width: 1100px;
+            padding: 0.95rem 1.1rem;
+            border-radius: 14px;
+            border: 1px solid rgba(220, 170, 60, 0.35);
+            background: rgba(220, 170, 60, 0.12);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+
+        .manor-workbench {
+            display: grid;
+            grid-template-columns: minmax(0, 1.7fr) minmax(300px, 0.9fr);
+            gap: var(--space-lg);
+            align-items: start;
+        }
+
+        .manor-board-card,
+        .control-card {
+            background:
+                linear-gradient(180deg, rgba(15, 25, 43, 0.98), rgba(11, 18, 32, 0.94)),
+                radial-gradient(circle at top left, rgba(105, 146, 255, 0.12), transparent 36%);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 20px;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.34);
+            backdrop-filter: blur(12px);
+        }
+
+        .manor-board-card {
+            padding: var(--space-lg);
+        }
+
+        .workbench-topline {
+            display: flex;
+            justify-content: space-between;
+            gap: var(--space-md);
+            align-items: center;
+            margin-bottom: var(--space-md);
+        }
+
+        .workbench-title {
+            font-family: 'Special Elite', cursive;
+            font-size: 1rem;
+            letter-spacing: 0.04em;
+            color: var(--gold);
+            text-transform: uppercase;
+        }
+
+        .workbench-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.45rem 0.8rem;
+            border-radius: 999px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--text-primary);
+            background: rgba(192, 57, 43, 0.16);
+            border: 1px solid rgba(192, 57, 43, 0.32);
+        }
+
+        .manor-board {
+            display: grid;
+            grid-template-columns: 40px repeat(5, minmax(0, 1fr));
+            gap: 0.55rem;
+        }
+
+        .manor-grid-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .manor-cell {
+            position: relative;
+            min-height: 108px;
+            padding: 0.8rem 0.75rem 0.7rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.14);
+            background:
+                linear-gradient(180deg, rgba(28, 39, 58, 0.98), rgba(17, 24, 39, 0.96)),
+                radial-gradient(circle at top left, rgba(212,175,55,0.16), transparent 56%);
+            color: var(--text-primary);
+            text-align: left;
+            cursor: pointer;
+            transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+        }
+
+        .manor-cell:hover {
+            transform: translateY(-2px);
+            border-color: rgba(212,175,55,0.3);
+            box-shadow: 0 18px 28px rgba(0, 0, 0, 0.22);
+        }
+
+        .manor-cell.selected {
+            border-color: rgba(212,175,55,0.75);
+            box-shadow: 0 0 0 1px rgba(212,175,55,0.45), 0 24px 36px rgba(0,0,0,0.28);
+        }
+
+        .manor-cell.fixed {
+            cursor: default;
+            background:
+                linear-gradient(180deg, rgba(34, 139, 92, 0.56), rgba(21, 88, 61, 0.26)),
+                linear-gradient(180deg, rgba(26, 48, 41, 0.85), rgba(14, 28, 24, 0.82));
+            border-color: rgba(84, 220, 148, 0.42);
+        }
+
+        .manor-cell.user-filled {
+            border-color: rgba(96, 174, 255, 0.58);
+            background:
+                linear-gradient(180deg, rgba(34, 74, 133, 0.45), rgba(17, 34, 63, 0.9)),
+                radial-gradient(circle at top left, rgba(126, 196, 255, 0.16), transparent 58%);
+        }
+
+        .manor-cell.idea-target {
+            background:
+                linear-gradient(180deg, rgba(177, 97, 24, 0.52), rgba(77, 44, 12, 0.88)),
+                radial-gradient(circle at top left, rgba(255, 215, 128, 0.22), transparent 56%);
+            border-color: rgba(241, 184, 78, 0.55);
+        }
+
+        .manor-cell.idea-match {
+            background:
+                linear-gradient(180deg, rgba(41, 173, 102, 0.58), rgba(18, 94, 54, 0.92)),
+                radial-gradient(circle at top left, rgba(145, 255, 187, 0.2), transparent 58%);
+            border-color: rgba(98, 232, 156, 0.7);
+        }
+
+        .manor-cell.idea-mismatch {
+            border-color: rgba(255, 117, 110, 0.68);
+            background:
+                linear-gradient(180deg, rgba(146, 39, 34, 0.48), rgba(50, 14, 15, 0.94)),
+                radial-gradient(circle at top left, rgba(255, 143, 139, 0.14), transparent 58%);
+        }
+
+        .manor-cell.pattern-locked {
+            pointer-events: none;
+            cursor: default;
+        }
+
+        .manor-cell.pattern-green {
+            background: rgba(34, 139, 34, 0.55);
+            border-color: rgba(34, 180, 34, 0.7);
+        }
+
+        .manor-cell.pattern-violet {
+            background: rgba(128, 0, 180, 0.5);
+            border-color: rgba(170, 60, 220, 0.7);
+        }
+
+        .manor-cell.pattern-blue {
+            background: rgba(30, 90, 210, 0.5);
+            border-color: rgba(70, 130, 255, 0.7);
+        }
+
+        .manor-cell.pattern-grey {
+            background: rgba(120, 120, 130, 0.5);
+            border-color: rgba(160, 160, 170, 0.7);
+        }
+
+        .manor-cell.pattern-orange {
+            background: rgba(210, 120, 20, 0.55);
+            border-color: rgba(240, 160, 50, 0.7);
+        }
+
+        .manor-cell.pattern-black {
+            background: rgba(20, 20, 25, 0.8);
+            border-color: rgba(60, 60, 70, 0.7);
+        }
+
+        .manor-coord {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .manor-room-name {
+            display: block;
+            font-size: 0.92rem;
+            font-weight: 700;
+            line-height: 1.35;
+            min-height: 2.5em;
+        }
+
+        .manor-room-note {
+            display: block;
+            margin-top: 0.35rem;
+            color: var(--text-secondary);
+            font-size: 0.72rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .manor-target {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 0.6rem;
+            padding: 0.28rem 0.48rem;
+            border-radius: 999px;
+            background: rgba(8, 12, 20, 0.34);
+            border: 1px solid rgba(255,255,255,0.12);
+            color: var(--text-primary);
+            font-size: 0.66rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            line-height: 1.35;
+        }
+
+        .workbench-sidebar {
+            display: grid;
+            gap: var(--space-md);
+        }
+
+        .control-card {
+            padding: var(--space-lg);
+        }
+
+        .eyebrow {
+            margin: 0 0 0.55rem;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+
+        .control-card h3 {
+            margin: 0 0 0.6rem;
+            font-size: 1.15rem;
+        }
+
+        .control-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .idea-stat-row {
+            display: flex;
+            justify-content: space-between;
+            gap: var(--space-sm);
+            align-items: center;
+            padding-top: 0.8rem;
+            margin-top: 0.8rem;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            color: var(--text-secondary);
+            font-size: 0.84rem;
+        }
+
+        .idea-stat-row[hidden] {
+            display: none;
+        }
+
+        .idea-stat-row strong {
+            color: var(--text-primary);
+            font-size: 0.96rem;
+        }
+
+        .idea-source {
+            margin-top: 0.85rem;
+            font-size: 0.84rem;
+        }
+
+        .control-label {
+            display: block;
+            margin: 0.9rem 0 0.45rem;
+            color: var(--text-primary);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .room-select {
+            width: 100%;
+            padding: 0.8rem 0.95rem;
+            border-radius: 14px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(12, 18, 24, 0.8);
+            color: var(--text-primary);
+            font-size: 0.94rem;
+        }
+
+        .control-actions {
+            display: flex;
+            gap: 0.65rem;
+            margin-top: 0.9rem;
+        }
+
+        .control-btn {
+            flex: 1;
+            padding: 0.72rem 0.85rem;
+            border-radius: 12px;
+            border: 1px solid rgba(212,175,55,0.3);
+            background: rgba(212,175,55,0.12);
+            color: var(--text-primary);
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.18s ease, transform 0.18s ease;
+        }
+
+        .control-btn.secondary {
+            border-color: rgba(255,255,255,0.12);
+            background: rgba(255,255,255,0.06);
+        }
+
+        .control-btn:hover:not(:disabled) {
+            transform: translateY(-1px);
+            background: rgba(212,175,55,0.18);
+        }
+
+        .control-btn.secondary:hover:not(:disabled) {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .control-btn:disabled {
+            cursor: not-allowed;
+            opacity: 0.45;
+        }
+
+        .legal-room-count {
+            margin-top: 0.8rem;
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+        }
+
+        .control-footnote {
+            margin-top: 0.75rem;
+            color: var(--text-muted);
+            font-size: 0.76rem;
+            line-height: 1.6;
+        }
+
+        .legend-list {
+            display: grid;
+            gap: 0.7rem;
+            margin-top: 0.5rem;
+        }
+
+        .legend-item {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+            color: var(--text-secondary);
+            font-size: 0.84rem;
+            line-height: 1.55;
+        }
+
+        .legend-swatch {
+            width: 18px;
+            height: 18px;
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.1);
+            flex: 0 0 auto;
+        }
+
+        .legend-swatch.fixed {
+            background: rgba(39,174,96,0.32);
+        }
+
+        .legend-swatch.target {
+            background: rgba(192,57,43,0.24);
+        }
+
+        .legend-swatch.match {
+            background: rgba(39,174,96,0.32);
+            border-color: rgba(39,174,96,0.45);
+        }
+
+        .legend-swatch.user {
+            background: rgba(52,152,219,0.22);
+        }
+
+        .finding-card.idea-selected {
+            border-color: rgba(212,175,55,0.55);
+            box-shadow: 0 0 0 1px rgba(212,175,55,0.35), 0 26px 42px rgba(0,0,0,0.32);
+        }
+
+        .true-draft-ideas .findings-filters {
+            margin-bottom: var(--space-lg);
+        }
+
+        .true-draft-ideas .finding-card {
+            background:
+                linear-gradient(180deg, rgba(250, 242, 214, 0.98), rgba(232, 216, 171, 0.98)),
+                radial-gradient(circle at top left, rgba(255,255,255,0.34), transparent 36%);
+            border: 1px solid rgba(115, 91, 38, 0.18);
+            box-shadow: 0 16px 28px rgba(0, 0, 0, 0.26), 4px 4px 12px rgba(79, 63, 31, 0.16);
+        }
+
+        .true-draft-ideas .finding-card h3 {
+            color: #2e2313;
+        }
+
+        .true-draft-ideas .finding-card p,
+        .true-draft-ideas .finding-card-meta,
+        .true-draft-ideas .finding-metric {
+            color: rgba(46, 35, 19, 0.82);
+        }
+
+        .true-draft-ideas .finding-metric strong {
+            color: #241b0f;
+        }
+
+        .true-draft-ideas .finding-card.idea-selected {
+            box-shadow: 0 0 0 1px rgba(212,175,55,0.4), 0 24px 46px rgba(0,0,0,0.28);
+        }
+
+        .true-draft-theories .theory-item {
+            background:
+                linear-gradient(180deg, rgba(17, 27, 45, 0.96), rgba(11, 18, 31, 0.94)),
+                radial-gradient(circle at top left, rgba(122, 162, 255, 0.1), transparent 42%);
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 18px 36px rgba(0, 0, 0, 0.24);
+        }
+
+        .true-draft-theories .theory-item:hover {
+            border-color: rgba(212,175,55,0.28);
+        }
+
+        .true-draft-theories .theory-item.theory-item-cta {
+            background: linear-gradient(180deg, rgba(33, 44, 63, 0.94), rgba(19, 25, 36, 0.94));
+        }
+
+        .finding-metric {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-top: var(--space-md);
+            padding-top: var(--space-sm);
+            border-top: 1px solid rgba(255,255,255,0.08);
+            color: var(--text-secondary);
+            font-size: 0.82rem;
+        }
+
+        .finding-metric strong {
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+
+        .theory-note {
+            text-align: center;
+            color: var(--text-secondary);
+            max-width: 760px;
+            margin: -0.9rem auto var(--space-lg);
+            font-size: 0.9rem;
+            line-height: 1.75;
+        }
+
+        @media (max-width: 1080px) {
+            .manor-workbench {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .manor-board-card,
+            .control-card {
+                padding: var(--space-md);
+            }
+
+            .manor-board {
+                gap: 0.38rem;
+                grid-template-columns: 30px repeat(5, minmax(0, 1fr));
+            }
+
+            .manor-cell {
+                min-height: 84px;
+                padding: 0.65rem 0.55rem 0.55rem;
+            }
+
+            .manor-room-name {
+                font-size: 0.74rem;
+                min-height: 2.9em;
+            }
+
+            .manor-target {
+                font-size: 0.58rem;
+                padding: 0.22rem 0.38rem;
+            }
+
+            .control-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="game-atmosphere"></canvas>
+
+    <div class="game-hero-banner">
+        <img src="../assets/img/blue-prince-true-draft.jpg" alt="Blue Prince True Draft" class="game-hero-img">
+        <div class="game-hero-fade"></div>
+    </div>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="../" class="logo">
+                <span class="logo-icon">🔍</span>
+                <span class="logo-text">Unsolved Puzzles</span>
+            </a>
+            <nav class="header-nav">
+                <a href="../">All Games</a>
+                <a href="./">Blue Prince</a>
+                <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/discussions" target="_blank">Discuss</a>
+                <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/blob/main/README.md" target="_blank">Help</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="puzzle-header">
+        <p class="puzzle-breadcrumb"><a href="../">Home</a> / <a href="./">Blue Prince</a> / True Draft</p>
+        <h1 class="puzzle-title">True Draft</h1>
+        <p class="puzzle-subtitle">If the Atelier is encoding room positions and the drafting rules constrain which rooms can sit where, there may be exactly one legal layout. This workbench tests that hypothesis.</p>
+        <span class="puzzle-status unsolved">Open Investigation</span>
+    </section>
+
+    <section class="findings-section true-draft-overview">
+        <h2 class="section-title">What We Know</h2>
+        <div class="true-draft-intro">
+            <p><strong>The premise:</strong> the hidden blue route through the Atelier spells SWANSONG and maps eight named rooms to eight manor coordinates. Four additional blue-box rooms map to four more coordinates. Together with the bedroom-corner clue and the normal drafting rules, these anchors may define a single intended manor layout: the True Draft.</p>
+            <p><strong>How this page works:</strong> each Idea Card below pins a set of target rooms onto the manor grid. The workbench restricts every cell's picker to rooms that are legal under the extracted drafting rules. Entrance Hall (C1) and Antechamber (C9) are always fixed. Click any idea to test it against the board, then place rooms to explore whether the constraints converge.</p>
+            <p><strong>Target layout counts:</strong> for each pinned idea, the page computes the exact number of distinct ways its target rooms can be arranged in their highlighted cells, respecting both legality and the no-duplicate-room rule. A count of zero means the idea is provably impossible under the current rule model.</p>
+        </div>
+
+        <div id="lookup-error" class="load-warning" hidden></div>
+
+        <div class="true-draft-shell">
+            <div class="manor-workbench">
+                <div class="manor-board-card">
+                    <div class="workbench-topline">
+                        <div>
+                            <div class="workbench-title">Mount Holly Test Layout</div>
+                            <p style="margin: 0.4rem 0 0; color: var(--text-secondary); line-height: 1.7;">Click an idea card below to pin its target on the board. Then click any cell to test legal room placements against that idea.</p>
+                        </div>
+                        <span id="active-idea-pill" class="workbench-pill">Pinned idea</span>
+                    </div>
+                    <div id="manor-board" class="manor-board"></div>
+                </div>
+
+                <aside class="workbench-sidebar">
+                    <div class="control-card">
+                        <p class="eyebrow">Pinned Idea</p>
+                        <h3 id="active-idea-title">Loading idea...</h3>
+                        <p id="active-idea-desc">The active idea summary will update once the room-coordinate lookup is loaded.</p>
+                        <div class="idea-stat-row" id="anchor-picker-row" hidden>
+                            <label for="anchor-select">Black room location</label>
+                            <select id="anchor-select" class="room-select"></select>
+                        </div>
+                        <div class="idea-stat-row">
+                            <span>Current matches on board</span>
+                            <strong id="active-idea-progress">0 / 0</strong>
+                        </div>
+                        <p id="active-idea-source" class="idea-source"></p>
+                    </div>
+
+                    <div class="control-card">
+                        <p class="eyebrow">Selected Cell</p>
+                        <h3 id="selected-coord">C2</h3>
+                        <p id="selected-hint">Choose a cell to inspect its legal room list.</p>
+                        <label class="control-label" for="room-select">Legal rooms here</label>
+                        <select id="room-select" class="room-select"></select>
+                        <div class="control-actions">
+                            <button id="clear-selected" class="control-btn">Clear Cell</button>
+                            <button id="clear-layout" class="control-btn secondary">Reset Test Layout</button>
+                        </div>
+                        <p id="legal-room-count" class="legal-room-count"></p>
+                        <p class="control-footnote">Built from the current normal in-house rules model. If a room is missing here, it is being treated conservatively until that edge case is better confirmed.</p>
+                    </div>
+
+                    <div class="control-card">
+                        <p class="eyebrow">Legend</p>
+                        <div class="legend-list">
+                            <div class="legend-item"><span class="legend-swatch fixed"></span> Fixed rooms from the real manor.</div>
+                            <div class="legend-item"><span class="legend-swatch target"></span> Cells highlighted by the pinned idea.</div>
+                            <div class="legend-item"><span class="legend-swatch match"></span> Current board placement matches the pinned idea.</div>
+                            <div class="legend-item"><span class="legend-swatch user"></span> A user-tested room placement that survives the lookup rules.</div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <section class="findings-section true-draft-ideas">
+        <h2 class="section-title">Idea Cards</h2>
+        <p class="theory-note">Click any card to pin its target rooms on the manor and compute exact layout counts against the drafting rules.</p>
+
+        <div class="findings-filters">
+            <button class="filter-btn active" data-filter="all">All Ideas</button>
+            <button class="filter-btn" data-filter="confirmed">Confirmed</button>
+            <button class="filter-btn" data-filter="tentative">Tentative</button>
+            <button class="filter-btn" data-filter="debunked">Debunked</button>
+        </div>
+
+        <div class="findings-grid">
+            <div class="finding-card" data-status="tentative" id="idea-bedroom-corners" data-idea-id="idea-bedroom-corners">
+                <span class="finding-card-status tentative">Tentative</span>
+                <h3>Bedroom-family rooms on all four corners</h3>
+                <p>The Mora Jai puzzle on the bookshop table is solved by making all four corners the same color. That winning color is purple, which corresponds to bedrooms. If this encodes a drafting constraint, placing bedroom-family rooms on all four manor corners would trigger an unknown but noticeable event, possibly opening the Bookshop compartment.</p>
+                <div class="finding-card-meta">
+                    <span>Source: pedroff1</span>
+                    <span>4-cell anchor (corners)</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="tentative" id="idea-blue-route-cells" data-idea-id="idea-blue-route-cells">
+                <span class="finding-card-status tentative">Tentative</span>
+                <h3>SWANSONG route rooms stay in their Atelier cells</h3>
+                <p>The hidden blue route translates cleanly onto the real manor as D1 Pantry, C2 Gallery, D2 Library, D3 Observatory, D4 Music Room, D5 Ballroom, E5 Spare Room, and E8 Furnace. If the Atelier is seeding a draft, this is the cleanest direct subset to test first.</p>
+                <div class="finding-card-meta">
+                    <span>Source: daymeeuhn</span>
+                    <span>8-cell anchor</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="tentative" id="idea-extra-blue-cells" data-idea-id="idea-extra-blue-cells">
+                <span class="finding-card-status tentative">Tentative</span>
+                <h3>The four unused blue-box rooms are the real anchors</h3>
+                <p>The local Atelier transcription isolates four blue-box rooms that are not part of the solved SWANSONG path: Coat Check (S), Corridor (E), Hallway (M), and East Wing Hall (G). Their single-letter codes anagram to GEMS. Pinned to the translated Atelier coordinates, they make a second, smaller target worth testing independently.</p>
+                <div class="finding-card-meta">
+                    <span>Source: unknown</span>
+                    <span>4-cell anchor</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="tentative" id="idea-all-blue-cells" data-idea-id="idea-all-blue-cells">
+                <span class="finding-card-status tentative">Tentative</span>
+                <h3>All 12 blue-solution rooms hold their translated positions</h3>
+                <p>If the blue route and the extra blue-box rooms are two halves of the same clue, the obvious merged test is to keep all 12 blue-solution rooms in their translated Atelier cells and only let the rest of the manor flex around them.</p>
+                <div class="finding-card-meta">
+                    <span>Source: daymeeuhn</span>
+                    <span>12-cell anchor</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="debunked" id="idea-all-blue-manor" data-idea-id="idea-all-blue-manor">
+                <span class="finding-card-status debunked">Debunked</span>
+                <h3>Fill the whole manor with blue rooms</h3>
+                <p><a href="https://www.reddit.com/r/BluePrince/comments/1kesh57/blue_prince_drafting_the_full_manor_in_blue/" target="_blank">u/ModZen-R</a> proposed that a full-manor blue draft might trigger something after the blue-throne / blue-seal trail. Follow-up testing from <a href="https://www.reddit.com/r/BluePrince/comments/1kesh57/blue_prince_drafting_the_full_manor_in_blue/mqmcdy1/" target="_blank">u/Ize402</a> and <a href="https://www.reddit.com/r/BluePrince/comments/1kesh57/blue_prince_drafting_the_full_manor_in_blue/mqllflx/" target="_blank">u/HappyHappyFunnyFunny</a> points the other way: players report blue-only or duplicate-blue clears reaching late-game states with nothing special happening.</p>
+                <div class="finding-metric">
+                    <span>Community test result</span>
+                    <strong>Reached Room 46, nothing triggered</strong>
+                </div>
+                <div class="finding-card-meta">
+                    <span>Source: u/ModZen-R</span>
+                    <span>Testing: u/Ize402 + u/HappyHappyFunnyFunny</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="debunked" id="idea-exact-atelier-copy" data-idea-id="idea-exact-atelier-copy">
+                <span class="finding-card-status debunked">Debunked</span>
+                <h3>Copy the full Atelier room-for-room</h3>
+                <p>A literal one-to-one Atelier copy fails immediately under normal drafting rules: C9 would need to be Vestibule instead of the fixed Antechamber, and several other edge placements are also illegal. The target layout count is zero.</p>
+                <div class="finding-card-meta">
+                    <span>Source: valentindckrs</span>
+                    <span>Rule conflict — provably impossible</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="debunked" data-issue="28" id="idea-bookshop-3x3" data-idea-id="idea-bookshop-3x3">
+                <span class="finding-card-status debunked">Debunked</span>
+                <h3>Drafting a 3×3 room square may trigger something</h3>
+                <p>The books represent room colors in a 3×3 Mora Jai grid. If you draft rooms matching those exact colors in a 3×3 square on the estate map, something might happen in the Bookshop. Problem: there are no greyprints to match the grey book, making a perfect match impossible with current room types.</p>
+                <details class="finding-expand">
+                    <summary>Click to expand — Bookshop colour layout</summary>
+                    <img src="../assets/img/blue-prince-bookshop-colors.jpg" alt="Bookshop colour layout showing the 3×3 Mora Jai book grid" loading="lazy">
+                </details>
+                <div class="finding-metric">
+                    <span>Test result</span>
+                    <strong>Tested with empty grey cell &amp; Aquarium as grey — nothing triggered</strong>
+                </div>
+                <div class="finding-card-meta">
+                    <span>Source: u/j-internet</span>
+                    <span>Testing: jewe6889</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="theories-section true-draft-theories">
+        <h2 class="section-title">Working Theories</h2>
+
+        <div class="theory-item" data-explains="idea-blue-route-cells,idea-extra-blue-cells,idea-all-blue-cells,idea-exact-atelier-copy">
+            <span class="theory-rank medium">Speculative</span>
+            <h3 class="theory-title">The Atelier is giving coordinate-level hints toward the True Draft</h3>
+            <p class="theory-desc">The translated blue-route cells and blue-box anchors may be less about copying the Atelier itself and more about learning the coordinate language it uses. The Atelier is pointing toward the final manor arrangement in pieces rather than giving a single room-for-room copy.</p>
+        </div>
+
+        <div class="theory-item" data-explains="idea-blue-route-cells,idea-extra-blue-cells,idea-all-blue-cells">
+            <span class="theory-rank medium">Speculative</span>
+            <h3 class="theory-title">The blue-solution rooms form the backbone the rest of the True Draft grows around</h3>
+            <p class="theory-desc">The blue route already resolves to a clean sentence, and the extra blue-box rooms are the strongest unused remainder. That makes the 8-room route and the merged 12-room blue set plausible structural anchors for whatever the finished True Draft turns out to be.</p>
+        </div>
+
+        <div class="theory-item" data-issue="313" data-explains="idea-bedroom-corners,idea-bookshop-3x3">
+            <span class="theory-rank medium">Speculative</span>
+            <h3 class="theory-title">The solved Mora Jai hints at a placement of rooms in the entire manor</h3>
+            <p class="theory-desc">The Mora Jai puzzle made from the bookshop books may hint at a specific "correct" draft. Its solution makes all corners purple (= bedrooms), suggesting bedrooms on all four manor corners. Each nation's color maps to a room type, and Mora Jai boxes use the same 3x3 tile pattern as the books. If correct, drafting bedrooms on all corners would trigger an unknown but noticeable event, possibly opening the Bookshop compartment.</p>
+        </div>
+
+        <div class="theory-item" data-issue="284" data-explains="idea-bedroom-corners,idea-blue-route-cells">
+            <span class="theory-rank medium">Speculative</span>
+            <h3 class="theory-title">Paintings encode a drafting pattern: place rooms on the Picture Puzzle grid</h3>
+            <p class="theory-desc">Each room's Directory paintings correspond to a specific position on the Picture Puzzle grid. Placing rooms at those positions creates a drafting pattern that could be replicated in-game. If this and the Atelier clues both point to the same layout, they are independent pieces of a single True Draft.</p>
+        </div>
+
+        <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/issues/new?template=new-theory.yml" target="_blank" class="theory-item theory-item-cta">
+            <h3 class="theory-title">+ Submit a New Theory</h3>
+            <p class="theory-desc">Have another True Draft layout idea? Add it to the board with source and predicted room pattern.</p>
+        </a>
+    </section>
+
+    <section class="discussion-section">
+        <h2 class="section-title">Discussion</h2>
+        <p style="text-align: center; color: var(--text-secondary); margin-bottom: var(--space-lg);">Comments powered by <a href="https://giscus.app" target="_blank">giscus</a>. Uses GitHub Discussions.</p>
+        <script src="https://giscus.app/client.js"
+            data-repo="unsolved-puzzles/unsolved-puzzles"
+            data-repo-id="R_kgDOSTBzlg"
+            data-category="Announcements"
+            data-category-id="DIC_kwDOSTBzls4C8Pva"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="dark_dimmed"
+            data-lang="en"
+            data-loading="lazy"
+            crossorigin="anonymous"
+            async>
+        </script>
+    </section>
+
+    <footer class="site-footer">
+        <p>Built by the community. <a href="https://github.com/unsolved-puzzles/unsolved-puzzles">View on GitHub</a></p>
+        <p class="footer-tagline">"There may be one draft the manor remembers."</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/red-strings.js?v=20260523b"></script>
+    <script src="../assets/js/true-draft.js?v=20260523b"></script>
+</body>
+</html>

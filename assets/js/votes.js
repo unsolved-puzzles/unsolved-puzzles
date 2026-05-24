@@ -117,11 +117,19 @@
     const title = titleEl?.textContent?.trim();
     if (!title) return;
 
-    const titleLower = title.toLowerCase();
-    const issue = issues.find((i) => {
-      const it = i.title.trim().toLowerCase();
-      return it === titleLower || it.endsWith(" - " + titleLower);
-    });
+    // Direct issue link takes priority over title matching
+    const pinnedNum = el.dataset.issue ? parseInt(el.dataset.issue, 10) : null;
+    let issue;
+    if (pinnedNum) {
+      issue = issues.find((i) => i.number === pinnedNum);
+    }
+    if (!issue) {
+      const titleLower = title.toLowerCase();
+      issue = issues.find((i) => {
+        const it = i.title.trim().toLowerCase();
+        return it === titleLower || it.endsWith(" - " + titleLower);
+      });
+    }
     if (!issue) return;
 
     const widget = el.querySelector(".vote-widget");

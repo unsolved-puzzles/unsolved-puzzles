@@ -15,6 +15,7 @@
   const STRING_COLOR = "#c0392b";
   const STRING_WIDTH = 2.5;
   const PIN_RADIUS = 6;
+  const EDGE_INSET = 8;
   const GRAVITY = 0.55;        // sag amount (0 = straight, 1 = very droopy)
   const SPRING_STIFFNESS = 0.10;
   const SPRING_DAMPING = 0.72;
@@ -127,8 +128,6 @@
     activeType = "theory";
     theory.classList.add("theory-active");
 
-    svgOverlay.style.height = document.documentElement.scrollHeight + "px";
-
     const findingIds = theory.dataset.explains.split(",").map((s) => s.trim());
 
     document.querySelectorAll(".finding-card").forEach((card) => {
@@ -145,14 +144,19 @@
       }
     });
 
-    findingIds.forEach((id) => {
-      const finding = document.getElementById(id);
-      if (!finding) return;
-      const s = createString(theory, finding);
-      strings.push(s);
+    // Defer string creation to next frame so co-registered handlers
+    // (e.g. board layout changes) settle before measuring positions
+    requestAnimationFrame(() => {
+      if (activeSource !== theory) return;
+      svgOverlay.style.height = document.documentElement.scrollHeight + "px";
+      findingIds.forEach((id) => {
+        const finding = document.getElementById(id);
+        if (!finding) return;
+        const s = createString(theory, finding);
+        strings.push(s);
+      });
+      animateStrings();
     });
-
-    animateStrings();
   }
 
   function toggleFinding(finding) {
@@ -166,8 +170,6 @@
     activeSource = finding;
     activeType = "finding";
     finding.classList.add("finding-highlighted");
-
-    svgOverlay.style.height = document.documentElement.scrollHeight + "px";
 
     // Find all theories that reference this finding
     const findingId = finding.id;
@@ -194,13 +196,17 @@
       }
     });
 
-    // Create strings from finding to each matching theory
-    matchingTheories.forEach((theory) => {
-      const s = createString(theory, finding);
-      strings.push(s);
+    // Defer string creation to next frame so co-registered handlers
+    // (e.g. board layout changes) settle before measuring positions
+    requestAnimationFrame(() => {
+      if (activeSource !== finding) return;
+      svgOverlay.style.height = document.documentElement.scrollHeight + "px";
+      matchingTheories.forEach((theory) => {
+        const s = createString(finding, theory);
+        strings.push(s);
+      });
+      animateStrings();
     });
-
-    animateStrings();
   }
 
   function dismissStrings(instant) {
@@ -248,21 +254,8 @@
     strings = [];
   }
 
-  function createString(theoryEl, findingEl) {
-    // Get connection points (document-absolute coordinates)
-    const theoryRect = theoryEl.getBoundingClientRect();
-    const findingRect = findingEl.getBoundingClientRect();
-    const scrollX = window.scrollX;
-    const scrollY = window.scrollY;
-
-    const start = {
-      x: theoryRect.left + scrollX + theoryRect.width * 0.5,
-      y: theoryRect.top + scrollY + 20,
-    };
-    const end = {
-      x: findingRect.left + scrollX + findingRect.width * 0.5,
-      y: findingRect.bottom + scrollY - 20,
-    };
+  function createString(sourceEl, targetEl) {
+    const { start, end } = getStringEndpoints(sourceEl, targetEl);
 
     // Create SVG group
     const group = document.createElementNS("http://www.w3.org/2000/svg", "g");
@@ -293,8 +286,8 @@
     const sag = dist * GRAVITY;
 
     return {
-      theoryEl,
-      findingEl,
+      sourceEl,
+      targetEl,
       group,
       path,
       pinStart,
@@ -335,16 +328,61 @@
     return g;
   }
 
-  function updateStringEndpoints(s) {
-    const theoryRect = s.theoryEl.getBoundingClientRect();
-    const findingRect = s.findingEl.getBoundingClientRect();
+  function getStringEndpoints(sourceEl, targetEl) {
+    const sourceRect = sourceEl.getBoundingClientRect();
+    const targetRect = targetEl.getBoundingClientRect();
     const scrollX = window.scrollX;
     const scrollY = window.scrollY;
+    const sourceCenterX = sourceRect.left + sourceRect.width * 0.5;
+    const sourceCenterY = sourceRect.top + sourceRect.height * 0.5;
+    const targetCenterX = targetRect.left + targetRect.width * 0.5;
+    const targetCenterY = targetRect.top + targetRect.height * 0.5;
+    const deltaX = targetCenterX - sourceCenterX;
+    const deltaY = targetCenterY - sourceCenterY;
+    const useVerticalAnchors = Math.abs(deltaY) >= Math.abs(deltaX);
 
-    s.start.x = theoryRect.left + scrollX + theoryRect.width * 0.5;
-    s.start.y = theoryRect.top + scrollY + 20;
-    s.end.x = findingRect.left + scrollX + findingRect.width * 0.5;
-    s.end.y = findingRect.bottom + scrollY - 20;
+    let startSide;
+    let endSide;
+    if (useVerticalAnchors) {
+      startSide = deltaY >= 0 ? "bottom" : "top";
+      endSide = deltaY >= 0 ? "top" : "bottom";
+    } else {
+      startSide = deltaX >= 0 ? "right" : "left";
+      endSide = deltaX >= 0 ? "left" : "right";
+    }
+
+    return {
+      start: getAnchorPoint(sourceRect, startSide, scrollX, scrollY),
+      end: getAnchorPoint(targetRect, endSide, scrollX, scrollY),
+    };
+  }
+
+  function getAnchorPoint(rect, side, scrollX, scrollY) {
+    const centerX = rect.left + rect.width * 0.5;
+    const centerY = rect.top + rect.height * 0.5;
+    const inset = Math.min(EDGE_INSET, rect.height * 0.15, rect.width * 0.15);
+
+    switch (side) {
+      case "top":
+        return { x: centerX + scrollX, y: rect.top + scrollY + inset };
+      case "bottom":
+        return { x: centerX + scrollX, y: rect.bottom + scrollY - inset };
+      case "left":
+        return { x: rect.left + scrollX + inset, y: centerY + scrollY };
+      case "right":
+        return { x: rect.right + scrollX - inset, y: centerY + scrollY };
+      default:
+        return { x: centerX + scrollX, y: centerY + scrollY };
+    }
+  }
+
+  function updateStringEndpoints(s) {
+    const { start, end } = getStringEndpoints(s.sourceEl, s.targetEl);
+
+    s.start.x = start.x;
+    s.start.y = start.y;
+    s.end.x = end.x;
+    s.end.y = end.y;
 
     const midX = (s.start.x + s.end.x) / 2;
     const midY = (s.start.y + s.end.y) / 2;

@@ -113,7 +113,13 @@ def get_cards(issue_type):
                 content,
                 re.DOTALL,
             )
+            # Skip cards that already link to a specific issue
+            pinned = set()
+            for m in re.finditer(r'<div class="finding-card"[^>]*data-issue="(\d+)"[^>]*>.*?<h3>(.*?)</h3>', content, re.DOTALL):
+                pinned.add(m.group(2).strip())
             for title, desc in matches:
+                if title.strip() in pinned:
+                    continue
                 items.append({
                     "page": page_path,
                     "title": f"{prefix} - {title.strip()}",
@@ -129,7 +135,13 @@ def get_cards(issue_type):
                 content,
                 re.DOTALL,
             )
+            # Skip items that already link to a specific issue
+            pinned = set()
+            for m in re.finditer(r'<div class="theory-item"[^>]*data-issue="(\d+)"[^>]*>.*?<h3 class="theory-title">(.*?)</h3>', content, re.DOTALL):
+                pinned.add(m.group(2).strip())
             for title, desc in matches:
+                if title.strip() in pinned:
+                    continue
                 items.append({
                     "page": page_path,
                     "title": f"{prefix} - {title.strip()}",

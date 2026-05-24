@@ -185,13 +185,21 @@
         anchorLabel: "black",
       },
     },
+    {
+      id: "finding-entrance-hall-doorways-have-distinct-frames",
+      title: "Entrance Hall doorways have distinct frames",
+      source: "dummyn00b",
+      description:
+        "Each of the three Entrance Hall doorways has a different frame design. The purpose for this difference, if any, is unknown. No specific room placements are implied by this finding.",
+      targets: [],
+    },
   ];
 
   const state = {
     lookup: null,
     placements: new Map(FIXED_PLACEMENTS),
     selectedCoord: "C2",
-    activeIdeaId: "idea-blue-route-cells",
+    activeIdeaId: "idea-bookshop-3x3",
     patternAnchor: "D5",
   };
 
@@ -473,7 +481,7 @@
     dom.activeIdeaTitle.textContent = idea.title;
     dom.activeIdeaDesc.textContent = buildIdeaDescription(idea);
     if (dom.activeIdeaCount) dom.activeIdeaCount.textContent = state.lookup ? formatBigInt(idea.count) : "...";
-    dom.activeIdeaProgress.textContent = `${matches} / ${targets.length}`;
+    dom.activeIdeaProgress.textContent = targets.length ? `${matches} / ${targets.length}` : "Observation only";
     dom.activeIdeaSource.innerHTML = idea.source;
     dom.activeIdeaPill.textContent = idea.title;
   }

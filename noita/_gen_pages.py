@@ -86,6 +86,43 @@ def render_theories(theories):
     return "\n".join(items) + "\n" + cta
 
 
+TOOL_ICON = ('<svg class="resource-link-icon" viewBox="0 0 24 24" fill="none" stroke="#fb923c" stroke-width="2">'
+             '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>'
+             '<line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/>'
+             '<line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/></svg>')
+
+
+def render_tools(tools):
+    cards = []
+    for t in tools:
+        author = ""
+        if t.get("author"):
+            date = f" &middot; {et(t['date'])}" if t.get("date") else ""
+            author = f'\n                    <span class="resource-author"><strong>{et(t["author"])}</strong>{date}</span>'
+        cards.append(f"""                <a href="{ea(t['url'])}" target="_blank" class="resource-link tool">
+                    {TOOL_ICON}
+                    <h4>{et(t['title'])}</h4>
+                    <p>{et(t['desc'])}</p>{author}
+                </a>""")
+    cards.append("""                <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/issues/new?template=community-resource.yml" target="_blank" class="resource-link resource-link-cta">
+                    <h4>+ Share a Community Resource</h4>
+                    <p>Know a tool, guide, dataset, or reference that helps? Submit it.</p>
+                </a>""")
+    return f"""    <section class="resources-section">
+        <h2 class="section-title">Tools &amp; Guides</h2>
+        <div class="resource-category">
+            <div class="resource-category-header tool">
+                <span class="resource-category-icon">&#x1F527;</span>
+                <h3>Tools &amp; Guides</h3>
+            </div>
+            <div class="resource-category-items">
+{chr(10).join(cards)}
+            </div>
+        </div>
+    </section>
+"""
+
+
 def page_html(p):
     status_cls, status_txt = PAGE_STATUS.get(p["status"], ("unsolved", "Unsolved"))
     img_style = ""
@@ -105,6 +142,7 @@ def page_html(p):
         fade_style = (f' style="background: linear-gradient(to bottom, '
                       f'rgba(15, 15, 26, {a1:.3f}) 0%, rgba(15, 15, 26, {a2:.3f}) 60%, '
                       f'var(--bg-primary) 100%);"')
+    tools_section = render_tools(p["tools"]) if p.get("tools") else ""
     return f"""<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
@@ -173,6 +211,7 @@ def page_html(p):
 {render_theories(p['theories'])}
     </section>
 
+{tools_section}
     <!-- Discussion -->
     <section class="discussion-section">
         <h2 class="section-title">Discussion</h2>

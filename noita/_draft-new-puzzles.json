@@ -504,6 +504,15 @@
           ]
         }
       ],
+      "tools": [
+        {
+          "url": "https://sirreldar.github.io/",
+          "title": "Earthquake Circle Manipulator",
+          "desc": "Interactive cipher disk for rotating and aligning the earthquake circle rings.",
+          "author": "SirReldar",
+          "date": "September 2024"
+        }
+      ],
       "further_reading": [],
       "_todo_reddit": true
     },

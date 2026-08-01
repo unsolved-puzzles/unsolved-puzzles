@@ -979,6 +979,28 @@ body.votes-loading .theories-section {
     border: 1px solid #ddd;
 }
 
+.finding-metric {
+    margin-top: 0.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.finding-metric > span {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: #888;
+}
+
+.finding-metric > strong {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #4a4a4a;
+    line-height: 1.4;
+}
+
 /* ── Theories Section ─────────────────────────────────────── */
 
 .theories-section {

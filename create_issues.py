@@ -16,6 +16,7 @@ import argparse
 import os
 import re
 import glob
+import html
 import time
 import requests
 
@@ -82,8 +83,8 @@ def get_cards(issue_type):
                 )
                 if not m:
                     continue
-                title_clean = re.sub(r"<[^>]+>", "", m.group(1)).strip()
-                desc = re.sub(r"<[^>]+>", "", m.group(2)).strip()
+                title_clean = html.unescape(re.sub(r"<[^>]+>", "", m.group(1)).strip())
+                desc = html.unescape(re.sub(r"<[^>]+>", "", m.group(2)).strip())
                 page_path = f"{game_dir}/{href_match.group(1).replace('.html', '')}"
                 items.append({
                     "page": page_path,
@@ -122,9 +123,9 @@ def get_cards(issue_type):
                     continue
                 items.append({
                     "page": page_path,
-                    "title": f"{prefix} - {title.strip()}",
-                    "card_title": title.strip(),
-                    "description": re.sub(r"<[^>]+>", "", desc.strip()),
+                    "title": f"{prefix} - {html.unescape(title.strip())}",
+                    "card_title": html.unescape(title.strip()),
+                    "description": html.unescape(re.sub(r"<[^>]+>", "", desc.strip())),
                 })
 
         elif issue_type == "theory":
@@ -144,9 +145,9 @@ def get_cards(issue_type):
                     continue
                 items.append({
                     "page": page_path,
-                    "title": f"{prefix} - {title.strip()}",
-                    "card_title": title.strip(),
-                    "description": re.sub(r"<[^>]+>", "", desc.strip()),
+                    "title": f"{prefix} - {html.unescape(title.strip())}",
+                    "card_title": html.unescape(title.strip()),
+                    "description": html.unescape(re.sub(r"<[^>]+>", "", desc.strip())),
                 })
 
     return items

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Broken Monoliths | Noita | Unsolved Puzzles</title>
+    <meta name="description" content="Two tutorial stones have been broken since before early access. What did they say, and are there hidden control inputs?">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css?v=4">
+</head>
+<body class="votes-loading">
+    <canvas id="game-atmosphere"></canvas>
+
+    <!-- Hero Banner -->
+    <div class="game-hero-banner">
+        <img src="../assets/img/noita-broken-monoliths.jpg" alt="The Broken Monoliths" class="game-hero-img" style="opacity: 1.0;">
+        <div class="game-hero-fade" style="background: linear-gradient(to bottom, rgba(15, 15, 26, 0.060) 0%, rgba(15, 15, 26, 0.220) 60%, var(--bg-primary) 100%);"></div>
+    </div>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="../" class="logo">
+                <span class="logo-icon">🔍</span>
+                <span class="logo-text">Unsolved Puzzles</span>
+            </a>
+            <nav class="header-nav">
+                <a href="../">All Games</a>
+                <a href="./">Noita</a>
+                <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/discussions" target="_blank">Discuss</a>
+                <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/blob/main/README.md" target="_blank">Help</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Puzzle Header -->
+    <section class="puzzle-header">
+        <p class="puzzle-breadcrumb"><a href="../">Home</a> / <a href="./">Noita</a> / The Broken Monoliths</p>
+        <h1 class="puzzle-title">The Broken Monoliths</h1>
+        <p class="puzzle-subtitle">Two tutorial stones have been broken since before early access. What did they say, and are there hidden control inputs?</p>
+        <span class="puzzle-status unsolved">Unsolved</span>
+    </section>
+
+    <!-- Context -->
+    <section class="findings-section">
+        <h2 class="section-title">What We Know</h2>
+        <div style="max-width: 700px; margin: 0 auto var(--space-xl); color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8;">
+            <p>Among the tutorial monoliths in the entrance cave, the left reads RUBEDO (the final stage of the alchemical magnum opus) and the right reads ETERNAL LIFE.</p>
+            <p style="margin-top: var(--space-md);">Two other stones, next to the control-input stones, have been broken since before early access (already broken in the 2017 build).</p>
+            <p style="margin-top: var(--space-md);">The launch giveaway GIF wrote, in eye-glyphs, 'Tears in the eye gazing the sky and receive thy reward' plus encoded Steam keys, on the kick/inventory control stones.</p>
+        </div>
+
+        <!-- Filters -->
+        <div class="findings-filters">
+            <button class="filter-btn active" data-filter="all">All Findings</button>
+            <button class="filter-btn" data-filter="confirmed">Confirmed</button>
+        </div>
+
+        <!-- Findings Grid -->
+        <div class="findings-grid">
+            <div class="finding-card" data-status="confirmed" id="finding-left-rubedo-right-eternal-life">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Left = RUBEDO, right = ETERNAL LIFE</h3>
+                <p>Alchemical/hermetic glyphs framing the game's reincarnation-through-runs theme.</p>
+                <div class="finding-card-meta">
+                    <span>Source: FuryForged</span>
+                </div>
+            </div>
+            <div class="finding-card" data-status="confirmed" id="finding-two-stones-broken-since-before-early-access">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Two stones broken since before early access</h3>
+                <p>The two monoliths were already broken in the 2017 pre-release build.</p>
+                <div class="finding-card-meta">
+                    <span>Source: FuryForged</span>
+                </div>
+            </div>
+            <div class="finding-card" data-status="confirmed" id="finding-2017-build-had-different-untranslated-glyphs">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>2017 build had different, untranslated glyphs</h3>
+                <p>The starting stones in the 2017 build used an entirely different glyph set that has not been translated.</p>
+                <div class="finding-card-meta">
+                    <span>Source: FuryForged</span>
+                </div>
+            </div>
+            <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/issues/new?template=new-finding.yml" target="_blank" class="finding-card finding-card-cta">
+                <h3>+ Submit a New Finding</h3>
+                <p>Discovered something new? Report it here.</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- Theories -->
+    <section class="theories-section">
+        <h2 class="section-title">Theories (Ranked)</h2>
+        <div class="theory-item" data-explains="finding-two-stones-broken-since-before-early-access">
+            <span class="theory-rank medium">Promising</span>
+            <h3 class="theory-title">The tablets showed an ordinary (obscure) mechanic</h3>
+            <p class="theory-desc">The community's practical read: the smashed control tablets likely depicted a real but non-obvious mechanic - top guesses are the kick-parry (kick a melee attacker at the right moment to reflect the hit) or eating (press down) and drinking potions (right-click). Some argue there is no hidden control at all, only movement tech.
+            <span style="display:block; margin-top:0.6rem; color: var(--text-secondary); font-size: 0.82rem;">Source: u/Givened, u/lidaster, u/Dev_Oleksii</span></p>
+        </div>
+        <div class="theory-item" data-explains="finding-two-stones-broken-since-before-early-access">
+            <span class="theory-rank low">Speculative</span>
+            <h3 class="theory-title">Hidden control inputs</h3>
+            <p class="theory-desc">Their position beside the control stones hints at secret inputs (a key sequence or a word to type). Precedent: Environmental Station Alpha (same dev, Arvi) requires typed input at certain spots.</p>
+        </div>
+        <div class="theory-item" data-explains="finding-two-stones-broken-since-before-early-access,finding-2017-build-had-different-untranslated-glyphs">
+            <span class="theory-rank low">Speculative</span>
+            <h3 class="theory-title">Environmental storytelling</h3>
+            <p class="theory-desc">The broken stones may simply be lore/atmosphere, with the original content lost.</p>
+        </div>
+        <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/issues/new?template=new-theory.yml" target="_blank" class="theory-item theory-item-cta">
+            <h3 class="theory-title">+ Submit a New Theory</h3>
+            <p class="theory-desc">Have a theory or idea to test? Share it.</p>
+        </a>
+    </section>
+
+    <!-- Discussion -->
+    <section class="discussion-section">
+        <h2 class="section-title">Discussion</h2>
+        <p style="text-align: center; color: var(--text-secondary); margin-bottom: var(--space-lg);">
+            Comments powered by <a href="https://giscus.app" target="_blank">giscus</a>. Uses GitHub Discussions.
+        </p>
+        <script src="https://giscus.app/client.js"
+            data-repo="unsolved-puzzles/unsolved-puzzles"
+            data-repo-id="R_kgDOSTBzlg"
+            data-category="Announcements"
+            data-category-id="DIC_kwDOSTBzls4C8Pva"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="dark_dimmed"
+            data-lang="en"
+            data-loading="lazy"
+            crossorigin="anonymous"
+            async>
+        </script>
+    </section>
+
+    <footer class="site-footer">
+        <p>Built by the community. <a href="https://github.com/unsolved-puzzles/unsolved-puzzles">View on GitHub</a></p>
+        <p class="footer-tagline">"Noita: the one who knows."</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <script src="../assets/js/main.js?v=3"></script>
+    <script src="../assets/js/votes.js?v=3"></script>
+    <script src="../assets/js/red-strings.js?v=2"></script>
+    <script src="../assets/js/noita-bg.js"></script>
+</body>
+</html>

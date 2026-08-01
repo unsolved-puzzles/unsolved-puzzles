@@ -1,0 +1,652 @@
+{
+  "_meta": {
+    "purpose": "Draft content plan for new Noita unsolved-puzzle pages on unsolved-puzzles. Mirrors the page anatomy of eye-puzzle.html / cauldron.html so each block can become HTML cards.",
+    "status": "DRAFT - pre-filled from FuryForged transcript + our Obsidian KB. Awaiting Reddit theories to refine.",
+    "conventions": {
+      "finding.status": [
+        "confirmed",
+        "tentative",
+        "debunked",
+        "explained"
+      ],
+      "theory.rank": [
+        "Established",
+        "Promising",
+        "Speculative"
+      ],
+      "page.status": [
+        "unsolved",
+        "debated",
+        "teaser"
+      ]
+    },
+    "source_video": "https://www.youtube.com/watch?v=RI9DDwTVcBI",
+    "template_pages": [
+      "noita/eye-puzzle.html",
+      "noita/cauldron.html"
+    ],
+    "reddit_todo": "Add community theories per puzzle under theories[] and any new findings[]; tag source."
+  },
+  "puzzles": [
+    {
+      "slug": "dollar-symbol",
+      "title": "The Alchemy Symbol",
+      "aliases": [
+        "Dollar Symbol",
+        "Dollar Arrow"
+      ],
+      "status": "unsolved",
+      "kb_note": "Alchemy Dollar Symbol",
+      "hero_image": "../assets/img/noita-dollar-symbol.jpg",
+      "attribution": "Petri Purho",
+      "subtitle": "A dollar-sign-in-a-capsule buried above the High Alchemist's Arena. Attributed to Petri, like the eyes.",
+      "context": [
+        "Buried beneath the snow above the High Alchemist's Arena. Community-named the 'alchemy symbol' or 'dollar symbol'.",
+        "It predates the arena, boss, and tech egg: it existed in early access when the biome was the old 'twisty passages', was briefly removed, then re-added.",
+        "Every developer denies knowledge of it except Petri, so it is attributed to him (as are the eyes)."
+      ],
+      "findings": [
+        {
+          "status": "confirmed",
+          "title": "Predates the arena/boss/tech-egg",
+          "text": "Present in the old 'twisty passages' biome, removed for a couple updates, then re-added long before the arena existed.",
+          "source": "FuryForged"
+        },
+        {
+          "status": "tentative",
+          "title": "Reads as $ over Aqua Vitae; whole shape a down arrow",
+          "text": "A dollar sign inside a capsule with what may be the alchemic symbol for Aqua Vitae underneath; the whole glyph also resembles a down arrow.",
+          "source": "FuryForged",
+          "link": {
+            "url": "https://images.steamusercontent.com/ugc/2497890817552695662/0BA69416302C02F585B27B8F42C83E2D1CB581DA/",
+            "label": "Full photo",
+            "title": "View the full symbol on Steam"
+          }
+        },
+        {
+          "status": "debunked",
+          "title": "Material interactions in the basins",
+          "text": "Filling the basins with whiskey, Midas, precursor, gold nuggets, gold powder, helium, and lively concoction produced no reaction. No material-interaction triggers exist here (unlike orb rooms).",
+          "source": "FuryForged"
+        },
+        {
+          "status": "tentative",
+          "title": "The lower glyph is the alchemical Essence of Earth",
+          "text": "The inverted triangle with a horizontal line is the alchemical sign for Earth; players read the '$' as the gold biome that sits above/near it. The Essence of Water (also an inverted triangle) likewise sits near a gold biome.",
+          "source": "u/RoseAndLorelei"
+        }
+      ],
+      "theories": [
+        {
+          "rank": "Promising",
+          "title": "A signpost: 'go down for gold'",
+          "desc": "The most common community reading: the '$' plus down-arrow simply flags the gold biome / Essence of Earth below it, a directional label rather than an interactive puzzle.",
+          "explains": [
+            "The lower glyph is the alchemical Essence of Earth",
+            "Reads as $ over Aqua Vitae; whole shape a down arrow"
+          ],
+          "source": "u/RoseAndLorelei, u/demonly48"
+        },
+        {
+          "rank": "Speculative",
+          "title": "Material cue (Aqua Vitae -> whiskey)",
+          "desc": "The Aqua Vitae symbol may call for whiskey, the strongest in-game spirit (closest to ethanol). Tests so far have failed, but the material set may be incomplete.",
+          "explains": [
+            "Reads as $ over Aqua Vitae; whole shape a down arrow",
+            "Material interactions in the basins"
+          ]
+        },
+        {
+          "rank": "Speculative",
+          "title": "Rod of Asclepius origin",
+          "desc": "The '$' may derive from the alchemic S-over-T (the brazen serpent / Rod of Asclepius).",
+          "explains": [
+            "Reads as $ over Aqua Vitae; whole shape a down arrow"
+          ]
+        }
+      ],
+      "further_reading": [],
+      "_todo_reddit": true
+    },
+    {
+      "slug": "master-statues",
+      "title": "The Master Statues",
+      "aliases": [
+        "Temple of the Art Statues",
+        "Order of Masters"
+      ],
+      "status": "unsolved",
+      "kb_note": "Temple of the Art Statues",
+      "hero_image": "../assets/img/noita-master-statues.png",
+      "hero_fade_dim": 0.4,
+      "hero_opacity": 1.0,
+      "attribution": "Unknown",
+      "subtitle": "Three spell-master statues marked P, B, G over distinct shapes, plus a defaced fourth. A puzzle, or lore disguised as decoration?",
+      "context": [
+        "In the Temple of the Art stand three statues of spell-casting masters: teleportation, blinding, and polymorphing.",
+        "Each is marked with a glyph over a distinct shape and holds an orb at a different height. Right-to-left the glyphs are P, B, G.",
+        "There is also a fourth statue, defaced, with only the bottom third remaining."
+      ],
+      "findings": [
+        {
+          "status": "confirmed",
+          "title": "Three masters, glyphs P/B/G",
+          "text": "Teleportation, blinding, polymorphing masters; each glyph sits over a different shape; each holds an orb at a different position.",
+          "source": "FuryForged"
+        },
+        {
+          "status": "confirmed",
+          "title": "A fourth statue is defaced",
+          "text": "Only the bottom third of the fourth statue remains.",
+          "source": "FuryForged"
+        },
+        {
+          "status": "tentative",
+          "title": "P = Polymorph, B = Blinding",
+          "text": "Two of the three glyphs line up with their mage. Teleportation = G is unexplained.",
+          "source": "FuryForged"
+        },
+        {
+          "status": "confirmed",
+          "title": "The sarcophagi were once enemies",
+          "text": "The common Temple-of-the-Art sarcophagi used to spawn a ghoul when approached; their script broke, so the devs kept them as decoration (per a dev message on the Noita Discord).",
+          "source": "u/Samug, dev"
+        },
+        {
+          "status": "tentative",
+          "title": "Rare red-eye, three-eyed sarcophagus variant",
+          "text": "A scarce variant (only ~2 found) has three glowing red eyes and glyphs unlike the known legend; its rarity suggests significance and it may tie to the game's three-eye motif.",
+          "source": "u/ShwaMallah, u/Deuphoric"
+        },
+        {
+          "status": "tentative",
+          "title": "Undeciphered glyphs (a possible third glyph set)",
+          "text": "These statues and nearby background doors bear glyphs that match neither of Noita's two known glyph languages.",
+          "source": "u/ShwaMallah"
+        }
+      ],
+      "theories": [
+        {
+          "rank": "Promising",
+          "title": "Glyphs map to the objects, not the mages",
+          "desc": "The P/B/G glyphs may correspond to the shapes/objects (egg, vase, mountain?) each statue holds, not to the mage type.",
+          "explains": [
+            "Three masters, glyphs P/B/G",
+            "P = Polymorph, B = Blinding"
+          ]
+        },
+        {
+          "rank": "Promising",
+          "title": "The glyphs depict specific wands",
+          "desc": "Several solvers note the unmatched glyphs resemble unique wand sprites, hinting you may need to bring or use particular wands at the statues.",
+          "explains": [
+            "Undeciphered glyphs (a possible third glyph set)",
+            "Rare red-eye, three-eyed sarcophagus variant"
+          ],
+          "source": "u/Rantar508, u/Nombre_D_Usuario"
+        },
+        {
+          "rank": "Speculative",
+          "title": "Orb + death-count interaction",
+          "desc": "Kick or carry an Orb to the red-eye statues, possibly at a specific death count (the night-sky star count equals deaths). One thread even aligns the statue's orb and stars with sky structures as a route to a 'natural' 34th orb.",
+          "explains": [
+            "Rare red-eye, three-eyed sarcophagus variant"
+          ],
+          "source": "u/Winged_Blade, u/ShwaMallah"
+        },
+        {
+          "rank": "Speculative",
+          "title": "The fourth master was technology/grounding",
+          "desc": "The defaced statue may be a master of technology (grounding), struck from the record by mages who saw technology as a perversion of magic.",
+          "explains": [
+            "A fourth statue is defaced"
+          ]
+        },
+        {
+          "rank": "Speculative",
+          "title": "Important lore disguised as decoration",
+          "desc": "It may not be an interactive puzzle at all, but lore the order of masters passed down.",
+          "explains": [
+            "Three masters, glyphs P/B/G"
+          ]
+        }
+      ],
+      "further_reading": [],
+      "_todo_reddit": true
+    },
+    {
+      "slug": "music-animals",
+      "title": "Music-Attracted Animals",
+      "aliases": [
+        "Innocent Creatures Attracted to Music"
+      ],
+      "status": "unsolved",
+      "kb_note": "Music-Attracted Animals",
+      "hero_image": "../assets/img/noita-music-animals.jpg",
+      "hero_fade_dim": 0.4,
+      "hero_opacity": 1.0,
+      "attribution": "Unknown",
+      "subtitle": "Only innocent creatures swarm the music machines and disperse when the music stops. Why program this?",
+      "context": [
+        "Scorpions, fish, sheep, stags, ducks, and deer behave curiously around the music machines scattered through the world.",
+        "When the fish-pond machine plays, the fish swarm it and disperse the instant it stops; island animals and watchtower scorpions act similarly enamored.",
+        "Only the innocent, helpless animals are affected. No hostile creatures react this way."
+      ],
+      "findings": [
+        {
+          "status": "confirmed",
+          "title": "Innocent creatures swarm active music machines",
+          "text": "Fish swarm the machine while it plays and disperse immediately when it stops; other innocent animals act confused/enamored.",
+          "source": "u/Ralsus"
+        },
+        {
+          "status": "confirmed",
+          "title": "Only innocent animals are affected",
+          "text": "Hostile creatures are unaffected; the behaviour is restricted to helpless animals.",
+          "source": "u/AliasRed"
+        },
+        {
+          "status": "confirmed",
+          "title": "Reaction shows heart and question-mark icons",
+          "text": "Affected creatures display heart and '?' symbols above them while a nearby music machine plays (e.g., the Watchtower scorpions and the fish-pond fish).",
+          "source": "u/Ralsus, u/TerraShrimp"
+        }
+      ],
+      "theories": [
+        {
+          "rank": "Promising",
+          "title": "Worldbuilding flavour",
+          "desc": "It may simply be atmosphere: gentle animals are drawn to music. Nothing more.",
+          "explains": [
+            "Innocent creatures swarm active music machines",
+            "Only innocent animals are affected"
+          ]
+        },
+        {
+          "rank": "Speculative",
+          "title": "A hint or trigger",
+          "desc": "Given how much in Noita has purpose, the behaviour might be a hint toward a secret, or music may act as a lure somewhere (cf. the Crystal Key charged by music).",
+          "explains": [
+            "Only innocent animals are affected"
+          ]
+        },
+        {
+          "rank": "Speculative",
+          "title": "Relocate the music machine to test other creatures",
+          "desc": "Use the 'bring to me' spell to move a music machine (or gather creatures) and check whether other creatures react, or whether different machines affect different creatures.",
+          "explains": [
+            "Innocent creatures swarm active music machines"
+          ],
+          "source": "u/PartTimeCouchPotato"
+        },
+        {
+          "rank": "Speculative",
+          "title": "Play the tune back with a music wand",
+          "desc": "Build a note-playing wand (Kantele/Huilu note spells) and play the machine's melody at the creatures to see if it triggers anything.",
+          "explains": [
+            "Reaction shows heart and question-mark icons"
+          ],
+          "source": "r/noita"
+        }
+      ],
+      "further_reading": [],
+      "_todo_reddit": true
+    },
+    {
+      "slug": "desert-ruins",
+      "title": "The Desert Ruins Markings",
+      "aliases": [
+        "Desert Stones",
+        "Ruin Glyphs"
+      ],
+      "status": "debated",
+      "kb_note": "Desert Ruins Markings",
+      "hero_image": "../assets/img/noita-desert-stones.jpg",
+      "attribution": "Unknown",
+      "subtitle": "Procedural desert ruins bear three ovals, a triangle sequence, and a diamond. Hints for the eyes, or ancient lore?",
+      "context": [
+        "Ruins generate randomly across the surface of the desert, and some are carved with small, deliberate-looking markings.",
+        "A handful of distinct motifs recur across these ruins. Like the Master Statues, they read as more purposeful than typical background decoration, which is why the community scrutinises them.",
+        "Several of the motifs echo symbols seen elsewhere in Noita, from alchemical signs to the game's recurring three-eye imagery."
+      ],
+      "findings": [
+        {
+          "status": "confirmed",
+          "title": "The three eyes (three ovals)",
+          "text": "A set of three ovals arranged in a triangle. It echoes Noita's pervasive three-eye motif (the boss Kolmisilma = 'three-eye', the three creation eggs, the Master of Masters' robe) and also resembles the alchemical symbol for oil.",
+          "source": "FuryForged"
+        },
+        {
+          "status": "confirmed",
+          "title": "The rotated square (diamond)",
+          "text": "A diamond glyph. Diamonds recur in-game: the essence chambers were formerly diamond-shaped, and the diamond is also the alchemical symbol for soap and echoes the spell-refresh icon.",
+          "source": "FuryForged"
+        },
+        {
+          "status": "confirmed",
+          "title": "The three inverted 'i's (down/up/down)",
+          "text": "A row of three triangular strokes in alternating orientation, mirroring the alternating up/down grouping used to read the eye trigrams.",
+          "source": "FuryForged"
+        },
+        {
+          "status": "tentative",
+          "title": "More common in the East parallel world",
+          "text": "Ruins bearing these markings appear more often in the East parallel world (several, each with diamonds) and don't show up on the in-game map.",
+          "source": "u/-Fatmeatball-"
+        }
+      ],
+      "theories": [
+        {
+          "rank": "Promising",
+          "title": "Reading-order hint for the eyes",
+          "desc": "The down/up/down triangle sequence plus the diamond may encode how to read (and rotate) the eye trigrams.",
+          "explains": [
+            "The three inverted 'i's (down/up/down)",
+            "The rotated square (diamond)",
+            "The three eyes (three ovals)"
+          ]
+        },
+        {
+          "rank": "Speculative",
+          "title": "Just lore",
+          "desc": "The markings may be decorative lore handed down by the earlier civilization, with no puzzle content. The diamond could be the essence chambers, spell refresh, or even the alchemic symbol for soap.",
+          "explains": [
+            "The three eyes (three ovals)",
+            "The rotated square (diamond)"
+          ]
+        },
+        {
+          "rank": "Speculative",
+          "title": "The diamond is the spell-refresh icon (or Verikristalli)",
+          "desc": "A common reading is that the diamond is simply the spell-refresh symbol; an alternative is the Verikristalli (blood crystal), which is also diamond-shaped.",
+          "explains": [
+            "The rotated square (diamond)"
+          ],
+          "source": "u/Complete-Basket-291"
+        },
+        {
+          "rank": "Speculative",
+          "title": "The strokes encode directions",
+          "desc": "The three strokes may be movement instructions (up, down, up with distances) rather than an eye reading-order hint.",
+          "explains": [
+            "The three inverted 'i's (down/up/down)"
+          ],
+          "source": "u/Complete-Basket-291"
+        }
+      ],
+      "further_reading": [],
+      "_todo_reddit": true
+    },
+    {
+      "slug": "broken-monoliths",
+      "title": "The Broken Monoliths",
+      "aliases": [
+        "Tutorial Stones",
+        "Starting Stones"
+      ],
+      "status": "unsolved",
+      "kb_note": "Broken Tutorial Monoliths",
+      "hero_image": "../assets/img/noita-broken-monoliths.jpg",
+      "hero_fade_dim": 0.4,
+      "hero_opacity": 1.0,
+      "attribution": "Unknown",
+      "subtitle": "Two tutorial stones have been broken since before early access. What did they say, and are there hidden control inputs?",
+      "context": [
+        "Among the tutorial monoliths in the entrance cave, the left reads RUBEDO (the final stage of the alchemical magnum opus) and the right reads ETERNAL LIFE.",
+        "Two other stones, next to the control-input stones, have been broken since before early access (already broken in the 2017 build).",
+        "The launch giveaway GIF wrote, in eye-glyphs, 'Tears in the eye gazing the sky and receive thy reward' plus encoded Steam keys, on the kick/inventory control stones."
+      ],
+      "findings": [
+        {
+          "status": "confirmed",
+          "title": "Left = RUBEDO, right = ETERNAL LIFE",
+          "text": "Alchemical/hermetic glyphs framing the game's reincarnation-through-runs theme.",
+          "source": "FuryForged"
+        },
+        {
+          "status": "confirmed",
+          "title": "Two stones broken since before early access",
+          "text": "The two monoliths were already broken in the 2017 pre-release build.",
+          "source": "FuryForged"
+        },
+        {
+          "status": "confirmed",
+          "title": "2017 build had different, untranslated glyphs",
+          "text": "The starting stones in the 2017 build used an entirely different glyph set that has not been translated.",
+          "source": "FuryForged"
+        }
+      ],
+      "theories": [
+        {
+          "rank": "Promising",
+          "title": "The tablets showed an ordinary (obscure) mechanic",
+          "desc": "The community's practical read: the smashed control tablets likely depicted a real but non-obvious mechanic - top guesses are the kick-parry (kick a melee attacker at the right moment to reflect the hit) or eating (press down) and drinking potions (right-click). Some argue there is no hidden control at all, only movement tech.",
+          "explains": [
+            "Two stones broken since before early access"
+          ],
+          "source": "u/Givened, u/lidaster, u/Dev_Oleksii"
+        },
+        {
+          "rank": "Speculative",
+          "title": "Hidden control inputs",
+          "desc": "Their position beside the control stones hints at secret inputs (a key sequence or a word to type). Precedent: Environmental Station Alpha (same dev, Arvi) requires typed input at certain spots.",
+          "explains": [
+            "Two stones broken since before early access"
+          ]
+        },
+        {
+          "rank": "Speculative",
+          "title": "Environmental storytelling",
+          "desc": "The broken stones may simply be lore/atmosphere, with the original content lost.",
+          "explains": [
+            "Two stones broken since before early access",
+            "2017 build had different, untranslated glyphs"
+          ]
+        }
+      ],
+      "further_reading": [],
+      "_todo_reddit": true
+    },
+    {
+      "slug": "earthquake-circle",
+      "title": "The Earthquake Circle",
+      "aliases": [
+        "Earthquake Runes",
+        "MAGICK Circle"
+      ],
+      "status": "unsolved",
+      "kb_note": "Earthquake Spell Circle",
+      "hero_image": "../assets/img/noita-earthquake-symbol.png",
+      "attribution": "Unknown",
+      "subtitle": "The earthquake spell draws a magic circle of runes and binary that matches the number of Holy Mountain portals.",
+      "context": [
+        "The Earthquake spell renders an unusually elaborate magic circle, a detail most players never stop to inspect.",
+        "The same 'MAGICK' circle motif appears at other pivotal moments in the game, such as the Holy Mountain collapse, the Suomuhauki's spawn, and the ending sequences, which marks it as a significant symbol rather than throwaway art.",
+        "What draws scrutiny is that the circle mixes readable runes with strings of ones and zeros."
+      ],
+      "findings": [
+        {
+          "status": "confirmed",
+          "title": "Rings: MGICK / zeros / 101010 / 1110110110110 / MAGICK",
+          "text": "Concentric rings of runes and binary; the innermost glyph resembles Virgo (or Sin / arabic-indic 3).",
+          "source": "FuryForged"
+        },
+        {
+          "status": "confirmed",
+          "title": "Binary matches the Holy Mountain portal count",
+          "text": "The 1s and 0s in the circle equal the number of Holy Mountain portals in a new world.",
+          "source": "FuryForged"
+        },
+        {
+          "status": "debunked",
+          "title": "Materials in portal eyes to change destination",
+          "text": "Filling the portal eyes with assorted materials has not redirected any portal.",
+          "source": "FuryForged"
+        }
+      ],
+      "theories": [
+        {
+          "rank": "Promising",
+          "title": "A decoding wheel for a portal cipher",
+          "desc": "The circle may be a wheel that decodes which material(s) to place in specific portal eyes to redirect a portal to a new destination.",
+          "explains": [
+            "Binary matches the Holy Mountain portal count",
+            "Materials in portal eyes to change destination",
+            "Rings: MGICK / zeros / 101010 / 1110110110110 / MAGICK"
+          ]
+        },
+        {
+          "rank": "Speculative",
+          "title": "MGICK vs MAGICK is meaningful",
+          "desc": "The outer ring omits the 'A'; the difference between the outer 'MGICK' and inner 'MAGICK' may be an index or key.",
+          "explains": [
+            "Rings: MGICK / zeros / 101010 / 1110110110110 / MAGICK"
+          ]
+        }
+      ],
+      "further_reading": [],
+      "_todo_reddit": true
+    },
+    {
+      "slug": "34-orb-qr",
+      "title": "The 34-Orb QR Code",
+      "aliases": [
+        "34 Orb End Credits",
+        "Thanks for the Fish"
+      ],
+      "status": "unsolved",
+      "kb_note": "34-Orb QR Code",
+      "hero_image": "../assets/img/noita-34-orbs-qr-code.jpg",
+      "attribution": "Unknown",
+      "subtitle": "A QR code overlaid with structured noise, loaded into memory when you get the 34th orb, with its first pixel inexplicably flipped.",
+      "context": [
+        "Inside the '34 orb end credits' blob in the executable, Kaliuresis found the phrase 'kiitos kaloista' ('thanks for the fish', a Hitchhiker's Guide reference) and a QR code overlaid with noise.",
+        "Scanning the QR opens a link. The overlaid noise is not from any known generator: some rows match other rows in specific colour channels.",
+        "Getting the 34th orb loads the QR into memory for the rest of the run, and it persists into a new run until the game process restarts. On load, its very first pixel is changed to white. The 34-orb credits screen itself never actually appears."
+      ],
+      "findings": [
+        {
+          "status": "confirmed",
+          "title": "'Kiitos kaloista' + a QR code",
+          "text": "The end-credits blob contains the phrase and a scannable QR that opens a link.",
+          "source": "FuryForged / Kaliuresis"
+        },
+        {
+          "status": "confirmed",
+          "title": "The overlaid noise is structured",
+          "text": "Rows match other rows in specific colour channels; the noise is not from any known generator.",
+          "source": "FuryForged / Kaliuresis"
+        },
+        {
+          "status": "confirmed",
+          "title": "QR loads into memory at 34 orbs and persists",
+          "text": "Acquiring the 34th orb loads the QR; it persists into a new run until the process restarts.",
+          "source": "FuryForged"
+        },
+        {
+          "status": "confirmed",
+          "title": "First pixel flipped to white",
+          "text": "On load, the QR's very first pixel is inexplicably changed to white.",
+          "source": "FuryForged"
+        },
+        {
+          "status": "confirmed",
+          "title": "The 34-orb credits never appear in-game",
+          "text": "Despite the credits blob existing, the screen is never shown.",
+          "source": "FuryForged"
+        }
+      ],
+      "theories": [
+        {
+          "rank": "Promising",
+          "title": "The noise encodes a second payload",
+          "desc": "The structured noise may hide a second image, a key, or a checksum distinct from the QR.",
+          "explains": [
+            "The overlaid noise is structured"
+          ]
+        },
+        {
+          "rank": "Speculative",
+          "title": "The flipped pixel is a real signal",
+          "desc": "The single white pixel may trigger the engine to generate a change somewhere in the world (precedent: the engine draws the cauldron room and cessation cipher on the fly).",
+          "explains": [
+            "First pixel flipped to white",
+            "QR loads into memory at 34 orbs and persists"
+          ]
+        },
+        {
+          "rank": "Speculative",
+          "title": "A troll for data miners",
+          "desc": "The whole thing may exist only to bait data miners.",
+          "explains": [
+            "The 34-orb credits never appear in-game"
+          ]
+        }
+      ],
+      "further_reading": [],
+      "_todo_reddit": true
+    },
+    {
+      "slug": "microbiomes",
+      "title": "Hills 2 & the Microbiomes",
+      "aliases": [
+        "Hills 2",
+        "Water Biome",
+        "Gold Biomes",
+        "Eye Caves"
+      ],
+      "status": "unsolved",
+      "kb_note": "Microbiomes (Hills 2, Water, Gold)",
+      "hero_image": "../assets/img/noita-microbiomes.jpg",
+      "hero_object_position": "center 42%",
+      "attribution": "Unknown",
+      "subtitle": "Tiny titled biomes nobody can explain, including an empty 'Hills 2' whose data holds eye-shaped caves that never generate.",
+      "context": [
+        "Several 'microbiomes' get official title cards: two gold biomes (money, but oddly titled), and a lone water biome inside the cursed rock around the tower that predates the tower entirely.",
+        "The 'Hills 2' biome sits in empty space on the eastern side, with no visible hills.",
+        "The data has a `caves` folder with six eye-shaped cave structures; the code to generate them exists in, and only in, the `hills` and `hills2` biomes, yet they never seem to appear."
+      ],
+      "findings": [
+        {
+          "status": "confirmed",
+          "title": "Titled gold and water microbiomes",
+          "text": "Two gold biomes and a lone water chunk (present before the tower) each get real biome title cards.",
+          "source": "FuryForged"
+        },
+        {
+          "status": "confirmed",
+          "title": "Hills 2 has no hills",
+          "text": "The Hills 2 biome occupies empty eastern space with no visible hills.",
+          "source": "FuryForged"
+        },
+        {
+          "status": "confirmed",
+          "title": "Six eye-shaped caves that never generate",
+          "text": "A `caves` folder holds six eye-shaped structures; generation code exists only in hills/hills2 but they don't appear to spawn.",
+          "source": "FuryForged"
+        }
+      ],
+      "theories": [
+        {
+          "rank": "Promising",
+          "title": "A dormant or bugged feature",
+          "desc": "The eye-caves may be unfinished/bugged content that never triggers.",
+          "explains": [
+            "Six eye-shaped caves that never generate"
+          ]
+        },
+        {
+          "rank": "Speculative",
+          "title": "Reachable via an undiscovered trigger",
+          "desc": "They may generate only after a convoluted condition, possibly linked to the 34-orb persisted-memory state.",
+          "explains": [
+            "Six eye-shaped caves that never generate",
+            "Hills 2 has no hills"
+          ]
+        }
+      ],
+      "further_reading": [],
+      "_todo_reddit": true
+    }
+  ]
+}

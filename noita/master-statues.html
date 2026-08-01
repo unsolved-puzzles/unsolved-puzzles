@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Master Statues | Noita | Unsolved Puzzles</title>
+    <meta name="description" content="Three spell-master statues marked P, B, G over distinct shapes, plus a defaced fourth. A puzzle, or lore disguised as decoration?">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css?v=4">
+</head>
+<body class="votes-loading">
+    <canvas id="game-atmosphere"></canvas>
+
+    <!-- Hero Banner -->
+    <div class="game-hero-banner">
+        <img src="../assets/img/noita-master-statues.png" alt="The Master Statues" class="game-hero-img" style="opacity: 1.0;">
+        <div class="game-hero-fade" style="background: linear-gradient(to bottom, rgba(15, 15, 26, 0.060) 0%, rgba(15, 15, 26, 0.220) 60%, var(--bg-primary) 100%);"></div>
+    </div>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="../" class="logo">
+                <span class="logo-icon">🔍</span>
+                <span class="logo-text">Unsolved Puzzles</span>
+            </a>
+            <nav class="header-nav">
+                <a href="../">All Games</a>
+                <a href="./">Noita</a>
+                <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/discussions" target="_blank">Discuss</a>
+                <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/blob/main/README.md" target="_blank">Help</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Puzzle Header -->
+    <section class="puzzle-header">
+        <p class="puzzle-breadcrumb"><a href="../">Home</a> / <a href="./">Noita</a> / The Master Statues</p>
+        <h1 class="puzzle-title">The Master Statues</h1>
+        <p class="puzzle-subtitle">Three spell-master statues marked P, B, G over distinct shapes, plus a defaced fourth. A puzzle, or lore disguised as decoration?</p>
+        <span class="puzzle-status unsolved">Unsolved</span>
+    </section>
+
+    <!-- Context -->
+    <section class="findings-section">
+        <h2 class="section-title">What We Know</h2>
+        <div style="max-width: 700px; margin: 0 auto var(--space-xl); color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8;">
+            <p>In the Temple of the Art stand three statues of spell-casting masters: teleportation, blinding, and polymorphing.</p>
+            <p style="margin-top: var(--space-md);">Each is marked with a glyph over a distinct shape and holds an orb at a different height. Right-to-left the glyphs are P, B, G.</p>
+            <p style="margin-top: var(--space-md);">There is also a fourth statue, defaced, with only the bottom third remaining.</p>
+        </div>
+
+        <!-- Filters -->
+        <div class="findings-filters">
+            <button class="filter-btn active" data-filter="all">All Findings</button>
+            <button class="filter-btn" data-filter="confirmed">Confirmed</button>
+            <button class="filter-btn" data-filter="tentative">Tentative</button>
+        </div>
+
+        <!-- Findings Grid -->
+        <div class="findings-grid">
+            <div class="finding-card" data-status="confirmed" id="finding-three-masters-glyphs-p-b-g">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Three masters, glyphs P/B/G</h3>
+                <p>Teleportation, blinding, polymorphing masters; each glyph sits over a different shape; each holds an orb at a different position.</p>
+                <div class="finding-card-meta">
+                    <span>Source: FuryForged</span>
+                </div>
+            </div>
+            <div class="finding-card" data-status="confirmed" id="finding-a-fourth-statue-is-defaced">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>A fourth statue is defaced</h3>
+                <p>Only the bottom third of the fourth statue remains.</p>
+                <div class="finding-card-meta">
+                    <span>Source: FuryForged</span>
+                </div>
+            </div>
+            <div class="finding-card" data-status="tentative" id="finding-p-polymorph-b-blinding">
+                <span class="finding-card-status tentative">Tentative</span>
+                <h3>P = Polymorph, B = Blinding</h3>
+                <p>Two of the three glyphs line up with their mage. Teleportation = G is unexplained.</p>
+                <div class="finding-card-meta">
+                    <span>Source: FuryForged</span>
+                </div>
+            </div>
+            <div class="finding-card" data-status="confirmed" id="finding-the-sarcophagi-were-once-enemies">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>The sarcophagi were once enemies</h3>
+                <p>The common Temple-of-the-Art sarcophagi used to spawn a ghoul when approached; their script broke, so the devs kept them as decoration (per a dev message on the Noita Discord).</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/Samug, dev</span>
+                </div>
+            </div>
+            <div class="finding-card" data-status="tentative" id="finding-rare-red-eye-three-eyed-sarcophagus-variant">
+                <span class="finding-card-status tentative">Tentative</span>
+                <h3>Rare red-eye, three-eyed sarcophagus variant</h3>
+                <p>A scarce variant (only ~2 found) has three glowing red eyes and glyphs unlike the known legend; its rarity suggests significance and it may tie to the game's three-eye motif.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/ShwaMallah, u/Deuphoric</span>
+                </div>
+            </div>
+            <div class="finding-card" data-status="tentative" id="finding-undeciphered-glyphs-a-possible-third-glyph-set">
+                <span class="finding-card-status tentative">Tentative</span>
+                <h3>Undeciphered glyphs (a possible third glyph set)</h3>
+                <p>These statues and nearby background doors bear glyphs that match neither of Noita's two known glyph languages.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/ShwaMallah</span>
+                </div>
+            </div>
+            <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/issues/new?template=new-finding.yml" target="_blank" class="finding-card finding-card-cta">
+                <h3>+ Submit a New Finding</h3>
+                <p>Discovered something new? Report it here.</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- Theories -->
+    <section class="theories-section">
+        <h2 class="section-title">Theories (Ranked)</h2>
+        <div class="theory-item" data-explains="finding-three-masters-glyphs-p-b-g,finding-p-polymorph-b-blinding">
+            <span class="theory-rank medium">Promising</span>
+            <h3 class="theory-title">Glyphs map to the objects, not the mages</h3>
+            <p class="theory-desc">The P/B/G glyphs may correspond to the shapes/objects (egg, vase, mountain?) each statue holds, not to the mage type.</p>
+        </div>
+        <div class="theory-item" data-explains="finding-undeciphered-glyphs-a-possible-third-glyph-set,finding-rare-red-eye-three-eyed-sarcophagus-variant">
+            <span class="theory-rank medium">Promising</span>
+            <h3 class="theory-title">The glyphs depict specific wands</h3>
+            <p class="theory-desc">Several solvers note the unmatched glyphs resemble unique wand sprites, hinting you may need to bring or use particular wands at the statues.
+            <span style="display:block; margin-top:0.6rem; color: var(--text-secondary); font-size: 0.82rem;">Source: u/Rantar508, u/Nombre_D_Usuario</span></p>
+        </div>
+        <div class="theory-item" data-explains="finding-rare-red-eye-three-eyed-sarcophagus-variant">
+            <span class="theory-rank low">Speculative</span>
+            <h3 class="theory-title">Orb + death-count interaction</h3>
+            <p class="theory-desc">Kick or carry an Orb to the red-eye statues, possibly at a specific death count (the night-sky star count equals deaths). One thread even aligns the statue's orb and stars with sky structures as a route to a 'natural' 34th orb.
+            <span style="display:block; margin-top:0.6rem; color: var(--text-secondary); font-size: 0.82rem;">Source: u/Winged_Blade, u/ShwaMallah</span></p>
+        </div>
+        <div class="theory-item" data-explains="finding-a-fourth-statue-is-defaced">
+            <span class="theory-rank low">Speculative</span>
+            <h3 class="theory-title">The fourth master was technology/grounding</h3>
+            <p class="theory-desc">The defaced statue may be a master of technology (grounding), struck from the record by mages who saw technology as a perversion of magic.</p>
+        </div>
+        <div class="theory-item" data-explains="finding-three-masters-glyphs-p-b-g">
+            <span class="theory-rank low">Speculative</span>
+            <h3 class="theory-title">Important lore disguised as decoration</h3>
+            <p class="theory-desc">It may not be an interactive puzzle at all, but lore the order of masters passed down.</p>
+        </div>
+        <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/issues/new?template=new-theory.yml" target="_blank" class="theory-item theory-item-cta">
+            <h3 class="theory-title">+ Submit a New Theory</h3>
+            <p class="theory-desc">Have a theory or idea to test? Share it.</p>
+        </a>
+    </section>
+
+    <!-- Discussion -->
+    <section class="discussion-section">
+        <h2 class="section-title">Discussion</h2>
+        <p style="text-align: center; color: var(--text-secondary); margin-bottom: var(--space-lg);">
+            Comments powered by <a href="https://giscus.app" target="_blank">giscus</a>. Uses GitHub Discussions.
+        </p>
+        <script src="https://giscus.app/client.js"
+            data-repo="unsolved-puzzles/unsolved-puzzles"
+            data-repo-id="R_kgDOSTBzlg"
+            data-category="Announcements"
+            data-category-id="DIC_kwDOSTBzls4C8Pva"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="dark_dimmed"
+            data-lang="en"
+            data-loading="lazy"
+            crossorigin="anonymous"
+            async>
+        </script>
+    </section>
+
+    <footer class="site-footer">
+        <p>Built by the community. <a href="https://github.com/unsolved-puzzles/unsolved-puzzles">View on GitHub</a></p>
+        <p class="footer-tagline">"Noita: the one who knows."</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <script src="../assets/js/main.js?v=3"></script>
+    <script src="../assets/js/votes.js?v=3"></script>
+    <script src="../assets/js/red-strings.js?v=2"></script>
+    <script src="../assets/js/noita-bg.js"></script>
+</body>
+</html>

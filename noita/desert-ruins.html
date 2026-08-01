@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Desert Ruins Markings | Noita | Unsolved Puzzles</title>
+    <meta name="description" content="Procedural desert ruins bear three ovals, a triangle sequence, and a diamond. Hints for the eyes, or ancient lore?">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css?v=4">
+</head>
+<body class="votes-loading">
+    <canvas id="game-atmosphere"></canvas>
+
+    <!-- Hero Banner -->
+    <div class="game-hero-banner">
+        <img src="../assets/img/noita-desert-stones.jpg" alt="The Desert Ruins Markings" class="game-hero-img">
+        <div class="game-hero-fade"></div>
+    </div>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="../" class="logo">
+                <span class="logo-icon">🔍</span>
+                <span class="logo-text">Unsolved Puzzles</span>
+            </a>
+            <nav class="header-nav">
+                <a href="../">All Games</a>
+                <a href="./">Noita</a>
+                <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/discussions" target="_blank">Discuss</a>
+                <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/blob/main/README.md" target="_blank">Help</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Puzzle Header -->
+    <section class="puzzle-header">
+        <p class="puzzle-breadcrumb"><a href="../">Home</a> / <a href="./">Noita</a> / The Desert Ruins Markings</p>
+        <h1 class="puzzle-title">The Desert Ruins Markings</h1>
+        <p class="puzzle-subtitle">Procedural desert ruins bear three ovals, a triangle sequence, and a diamond. Hints for the eyes, or ancient lore?</p>
+        <span class="puzzle-status unsolved">Debated</span>
+    </section>
+
+    <!-- Context -->
+    <section class="findings-section">
+        <h2 class="section-title">What We Know</h2>
+        <div style="max-width: 700px; margin: 0 auto var(--space-xl); color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8;">
+            <p>Ruins generate randomly across the surface of the desert, and some are carved with small, deliberate-looking markings.</p>
+            <p style="margin-top: var(--space-md);">A handful of distinct motifs recur across these ruins. Like the Master Statues, they read as more purposeful than typical background decoration, which is why the community scrutinises them.</p>
+            <p style="margin-top: var(--space-md);">Several of the motifs echo symbols seen elsewhere in Noita, from alchemical signs to the game's recurring three-eye imagery.</p>
+        </div>
+
+        <!-- Filters -->
+        <div class="findings-filters">
+            <button class="filter-btn active" data-filter="all">All Findings</button>
+            <button class="filter-btn" data-filter="confirmed">Confirmed</button>
+            <button class="filter-btn" data-filter="tentative">Tentative</button>
+        </div>
+
+        <!-- Findings Grid -->
+        <div class="findings-grid">
+            <div class="finding-card" data-status="confirmed" id="finding-the-three-eyes-three-ovals">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>The three eyes (three ovals)</h3>
+                <p>A set of three ovals arranged in a triangle. It echoes Noita's pervasive three-eye motif (the boss Kolmisilma = 'three-eye', the three creation eggs, the Master of Masters' robe) and also resembles the alchemical symbol for oil.</p>
+                <div class="finding-card-meta">
+                    <span>Source: FuryForged</span>
+                </div>
+            </div>
+            <div class="finding-card" data-status="confirmed" id="finding-the-rotated-square-diamond">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>The rotated square (diamond)</h3>
+                <p>A diamond glyph. Diamonds recur in-game: the essence chambers were formerly diamond-shaped, and the diamond is also the alchemical symbol for soap and echoes the spell-refresh icon.</p>
+                <div class="finding-card-meta">
+                    <span>Source: FuryForged</span>
+                </div>
+            </div>
+            <div class="finding-card" data-status="confirmed" id="finding-the-three-inverted-i-s-down-up-down">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>The three inverted 'i's (down/up/down)</h3>
+                <p>A row of three triangular strokes in alternating orientation, mirroring the alternating up/down grouping used to read the eye trigrams.</p>
+                <div class="finding-card-meta">
+                    <span>Source: FuryForged</span>
+                </div>
+            </div>
+            <div class="finding-card" data-status="tentative" id="finding-more-common-in-the-east-parallel-world">
+                <span class="finding-card-status tentative">Tentative</span>
+                <h3>More common in the East parallel world</h3>
+                <p>Ruins bearing these markings appear more often in the East parallel world (several, each with diamonds) and don't show up on the in-game map.</p>
+                <div class="finding-card-meta">
+                    <span>Source: u/-Fatmeatball-</span>
+                </div>
+            </div>
+            <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/issues/new?template=new-finding.yml" target="_blank" class="finding-card finding-card-cta">
+                <h3>+ Submit a New Finding</h3>
+                <p>Discovered something new? Report it here.</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- Theories -->
+    <section class="theories-section">
+        <h2 class="section-title">Theories (Ranked)</h2>
+        <div class="theory-item" data-explains="finding-the-three-inverted-i-s-down-up-down,finding-the-rotated-square-diamond,finding-the-three-eyes-three-ovals">
+            <span class="theory-rank medium">Promising</span>
+            <h3 class="theory-title">Reading-order hint for the eyes</h3>
+            <p class="theory-desc">The down/up/down triangle sequence plus the diamond may encode how to read (and rotate) the eye trigrams.</p>
+        </div>
+        <div class="theory-item" data-explains="finding-the-three-eyes-three-ovals,finding-the-rotated-square-diamond">
+            <span class="theory-rank low">Speculative</span>
+            <h3 class="theory-title">Just lore</h3>
+            <p class="theory-desc">The markings may be decorative lore handed down by the earlier civilization, with no puzzle content. The diamond could be the essence chambers, spell refresh, or even the alchemic symbol for soap.</p>
+        </div>
+        <div class="theory-item" data-explains="finding-the-rotated-square-diamond">
+            <span class="theory-rank low">Speculative</span>
+            <h3 class="theory-title">The diamond is the spell-refresh icon (or Verikristalli)</h3>
+            <p class="theory-desc">A common reading is that the diamond is simply the spell-refresh symbol; an alternative is the Verikristalli (blood crystal), which is also diamond-shaped.
+            <span style="display:block; margin-top:0.6rem; color: var(--text-secondary); font-size: 0.82rem;">Source: u/Complete-Basket-291</span></p>
+        </div>
+        <div class="theory-item" data-explains="finding-the-three-inverted-i-s-down-up-down">
+            <span class="theory-rank low">Speculative</span>
+            <h3 class="theory-title">The strokes encode directions</h3>
+            <p class="theory-desc">The three strokes may be movement instructions (up, down, up with distances) rather than an eye reading-order hint.
+            <span style="display:block; margin-top:0.6rem; color: var(--text-secondary); font-size: 0.82rem;">Source: u/Complete-Basket-291</span></p>
+        </div>
+        <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/issues/new?template=new-theory.yml" target="_blank" class="theory-item theory-item-cta">
+            <h3 class="theory-title">+ Submit a New Theory</h3>
+            <p class="theory-desc">Have a theory or idea to test? Share it.</p>
+        </a>
+    </section>
+
+    <!-- Discussion -->
+    <section class="discussion-section">
+        <h2 class="section-title">Discussion</h2>
+        <p style="text-align: center; color: var(--text-secondary); margin-bottom: var(--space-lg);">
+            Comments powered by <a href="https://giscus.app" target="_blank">giscus</a>. Uses GitHub Discussions.
+        </p>
+        <script src="https://giscus.app/client.js"
+            data-repo="unsolved-puzzles/unsolved-puzzles"
+            data-repo-id="R_kgDOSTBzlg"
+            data-category="Announcements"
+            data-category-id="DIC_kwDOSTBzls4C8Pva"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="dark_dimmed"
+            data-lang="en"
+            data-loading="lazy"
+            crossorigin="anonymous"
+            async>
+        </script>
+    </section>
+
+    <footer class="site-footer">
+        <p>Built by the community. <a href="https://github.com/unsolved-puzzles/unsolved-puzzles">View on GitHub</a></p>
+        <p class="footer-tagline">"Noita: the one who knows."</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <script src="../assets/js/main.js?v=3"></script>
+    <script src="../assets/js/votes.js?v=3"></script>
+    <script src="../assets/js/red-strings.js?v=2"></script>
+    <script src="../assets/js/noita-bg.js"></script>
+</body>
+</html>

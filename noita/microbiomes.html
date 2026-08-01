@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hills 2 &amp; the Microbiomes | Noita | Unsolved Puzzles</title>
+    <meta name="description" content="Tiny titled biomes nobody can explain, including an empty &#x27;Hills 2&#x27; whose data holds eye-shaped caves that never generate.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css?v=4">
+</head>
+<body class="votes-loading">
+    <canvas id="game-atmosphere"></canvas>
+
+    <!-- Hero Banner -->
+    <div class="game-hero-banner">
+        <img src="../assets/img/noita-microbiomes.jpg" alt="Hills 2 &amp; the Microbiomes" class="game-hero-img" style="object-position: center 42%;">
+        <div class="game-hero-fade"></div>
+    </div>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="../" class="logo">
+                <span class="logo-icon">🔍</span>
+                <span class="logo-text">Unsolved Puzzles</span>
+            </a>
+            <nav class="header-nav">
+                <a href="../">All Games</a>
+                <a href="./">Noita</a>
+                <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/discussions" target="_blank">Discuss</a>
+                <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/blob/main/README.md" target="_blank">Help</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Puzzle Header -->
+    <section class="puzzle-header">
+        <p class="puzzle-breadcrumb"><a href="../">Home</a> / <a href="./">Noita</a> / Hills 2 &amp; the Microbiomes</p>
+        <h1 class="puzzle-title">Hills 2 &amp; the Microbiomes</h1>
+        <p class="puzzle-subtitle">Tiny titled biomes nobody can explain, including an empty 'Hills 2' whose data holds eye-shaped caves that never generate.</p>
+        <span class="puzzle-status unsolved">Unsolved</span>
+    </section>
+
+    <!-- Context -->
+    <section class="findings-section">
+        <h2 class="section-title">What We Know</h2>
+        <div style="max-width: 700px; margin: 0 auto var(--space-xl); color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8;">
+            <p>Several 'microbiomes' get official title cards: two gold biomes (money, but oddly titled), and a lone water biome inside the cursed rock around the tower that predates the tower entirely.</p>
+            <p style="margin-top: var(--space-md);">The 'Hills 2' biome sits in empty space on the eastern side, with no visible hills.</p>
+            <p style="margin-top: var(--space-md);">The data has a `caves` folder with six eye-shaped cave structures; the code to generate them exists in, and only in, the `hills` and `hills2` biomes, yet they never seem to appear.</p>
+        </div>
+
+        <!-- Filters -->
+        <div class="findings-filters">
+            <button class="filter-btn active" data-filter="all">All Findings</button>
+            <button class="filter-btn" data-filter="confirmed">Confirmed</button>
+        </div>
+
+        <!-- Findings Grid -->
+        <div class="findings-grid">
+            <div class="finding-card" data-status="confirmed" id="finding-titled-gold-and-water-microbiomes">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Titled gold and water microbiomes</h3>
+                <p>Two gold biomes and a lone water chunk (present before the tower) each get real biome title cards.</p>
+                <div class="finding-card-meta">
+                    <span>Source: FuryForged</span>
+                </div>
+            </div>
+            <div class="finding-card" data-status="confirmed" id="finding-hills-2-has-no-hills">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Hills 2 has no hills</h3>
+                <p>The Hills 2 biome occupies empty eastern space with no visible hills.</p>
+                <div class="finding-card-meta">
+                    <span>Source: FuryForged</span>
+                </div>
+            </div>
+            <div class="finding-card" data-status="confirmed" id="finding-six-eye-shaped-caves-that-never-generate">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Six eye-shaped caves that never generate</h3>
+                <p>A `caves` folder holds six eye-shaped structures; generation code exists only in hills/hills2 but they don't appear to spawn.</p>
+                <div class="finding-card-meta">
+                    <span>Source: FuryForged</span>
+                </div>
+            </div>
+            <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/issues/new?template=new-finding.yml" target="_blank" class="finding-card finding-card-cta">
+                <h3>+ Submit a New Finding</h3>
+                <p>Discovered something new? Report it here.</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- Theories -->
+    <section class="theories-section">
+        <h2 class="section-title">Theories (Ranked)</h2>
+        <div class="theory-item" data-explains="finding-six-eye-shaped-caves-that-never-generate">
+            <span class="theory-rank medium">Promising</span>
+            <h3 class="theory-title">A dormant or bugged feature</h3>
+            <p class="theory-desc">The eye-caves may be unfinished/bugged content that never triggers.</p>
+        </div>
+        <div class="theory-item" data-explains="finding-six-eye-shaped-caves-that-never-generate,finding-hills-2-has-no-hills">
+            <span class="theory-rank low">Speculative</span>
+            <h3 class="theory-title">Reachable via an undiscovered trigger</h3>
+            <p class="theory-desc">They may generate only after a convoluted condition, possibly linked to the 34-orb persisted-memory state.</p>
+        </div>
+        <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/issues/new?template=new-theory.yml" target="_blank" class="theory-item theory-item-cta">
+            <h3 class="theory-title">+ Submit a New Theory</h3>
+            <p class="theory-desc">Have a theory or idea to test? Share it.</p>
+        </a>
+    </section>
+
+    <!-- Discussion -->
+    <section class="discussion-section">
+        <h2 class="section-title">Discussion</h2>
+        <p style="text-align: center; color: var(--text-secondary); margin-bottom: var(--space-lg);">
+            Comments powered by <a href="https://giscus.app" target="_blank">giscus</a>. Uses GitHub Discussions.
+        </p>
+        <script src="https://giscus.app/client.js"
+            data-repo="unsolved-puzzles/unsolved-puzzles"
+            data-repo-id="R_kgDOSTBzlg"
+            data-category="Announcements"
+            data-category-id="DIC_kwDOSTBzls4C8Pva"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="dark_dimmed"
+            data-lang="en"
+            data-loading="lazy"
+            crossorigin="anonymous"
+            async>
+        </script>
+    </section>
+
+    <footer class="site-footer">
+        <p>Built by the community. <a href="https://github.com/unsolved-puzzles/unsolved-puzzles">View on GitHub</a></p>
+        <p class="footer-tagline">"Noita: the one who knows."</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <script src="../assets/js/main.js?v=3"></script>
+    <script src="../assets/js/votes.js?v=3"></script>
+    <script src="../assets/js/red-strings.js?v=2"></script>
+    <script src="../assets/js/noita-bg.js"></script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The 34-Orb QR Code | Noita | Unsolved Puzzles</title>
+    <meta name="description" content="A QR code overlaid with structured noise, loaded into memory when you get the 34th orb, with its first pixel inexplicably flipped.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css?v=4">
+</head>
+<body class="votes-loading">
+    <canvas id="game-atmosphere"></canvas>
+
+    <!-- Hero Banner -->
+    <div class="game-hero-banner">
+        <img src="../assets/img/noita-34-orbs-qr-code.jpg" alt="The 34-Orb QR Code" class="game-hero-img">
+        <div class="game-hero-fade"></div>
+    </div>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="../" class="logo">
+                <span class="logo-icon">🔍</span>
+                <span class="logo-text">Unsolved Puzzles</span>
+            </a>
+            <nav class="header-nav">
+                <a href="../">All Games</a>
+                <a href="./">Noita</a>
+                <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/discussions" target="_blank">Discuss</a>
+                <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/blob/main/README.md" target="_blank">Help</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Puzzle Header -->
+    <section class="puzzle-header">
+        <p class="puzzle-breadcrumb"><a href="../">Home</a> / <a href="./">Noita</a> / The 34-Orb QR Code</p>
+        <h1 class="puzzle-title">The 34-Orb QR Code</h1>
+        <p class="puzzle-subtitle">A QR code overlaid with structured noise, loaded into memory when you get the 34th orb, with its first pixel inexplicably flipped.</p>
+        <span class="puzzle-status unsolved">Unsolved</span>
+    </section>
+
+    <!-- Context -->
+    <section class="findings-section">
+        <h2 class="section-title">What We Know</h2>
+        <div style="max-width: 700px; margin: 0 auto var(--space-xl); color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8;">
+            <p>Inside the '34 orb end credits' blob in the executable, Kaliuresis found the phrase 'kiitos kaloista' ('thanks for the fish', a Hitchhiker's Guide reference) and a QR code overlaid with noise.</p>
+            <p style="margin-top: var(--space-md);">Scanning the QR opens a link. The overlaid noise is not from any known generator: some rows match other rows in specific colour channels.</p>
+            <p style="margin-top: var(--space-md);">Getting the 34th orb loads the QR into memory for the rest of the run, and it persists into a new run until the game process restarts. On load, its very first pixel is changed to white. The 34-orb credits screen itself never actually appears.</p>
+        </div>
+
+        <!-- Filters -->
+        <div class="findings-filters">
+            <button class="filter-btn active" data-filter="all">All Findings</button>
+            <button class="filter-btn" data-filter="confirmed">Confirmed</button>
+        </div>
+
+        <!-- Findings Grid -->
+        <div class="findings-grid">
+            <div class="finding-card" data-status="confirmed" id="finding-kiitos-kaloista-a-qr-code">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>'Kiitos kaloista' + a QR code</h3>
+                <p>The end-credits blob contains the phrase and a scannable QR that opens a link.</p>
+                <div class="finding-card-meta">
+                    <span>Source: FuryForged / Kaliuresis</span>
+                </div>
+            </div>
+            <div class="finding-card" data-status="confirmed" id="finding-the-overlaid-noise-is-structured">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>The overlaid noise is structured</h3>
+                <p>Rows match other rows in specific colour channels; the noise is not from any known generator.</p>
+                <div class="finding-card-meta">
+                    <span>Source: FuryForged / Kaliuresis</span>
+                </div>
+            </div>
+            <div class="finding-card" data-status="confirmed" id="finding-qr-loads-into-memory-at-34-orbs-and-persists">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>QR loads into memory at 34 orbs and persists</h3>
+                <p>Acquiring the 34th orb loads the QR; it persists into a new run until the process restarts.</p>
+                <div class="finding-card-meta">
+                    <span>Source: FuryForged</span>
+                </div>
+            </div>
+            <div class="finding-card" data-status="confirmed" id="finding-first-pixel-flipped-to-white">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>First pixel flipped to white</h3>
+                <p>On load, the QR's very first pixel is inexplicably changed to white.</p>
+                <div class="finding-card-meta">
+                    <span>Source: FuryForged</span>
+                </div>
+            </div>
+            <div class="finding-card" data-status="confirmed" id="finding-the-34-orb-credits-never-appear-in-game">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>The 34-orb credits never appear in-game</h3>
+                <p>Despite the credits blob existing, the screen is never shown.</p>
+                <div class="finding-card-meta">
+                    <span>Source: FuryForged</span>
+                </div>
+            </div>
+            <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/issues/new?template=new-finding.yml" target="_blank" class="finding-card finding-card-cta">
+                <h3>+ Submit a New Finding</h3>
+                <p>Discovered something new? Report it here.</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- Theories -->
+    <section class="theories-section">
+        <h2 class="section-title">Theories (Ranked)</h2>
+        <div class="theory-item" data-explains="finding-the-overlaid-noise-is-structured">
+            <span class="theory-rank medium">Promising</span>
+            <h3 class="theory-title">The noise encodes a second payload</h3>
+            <p class="theory-desc">The structured noise may hide a second image, a key, or a checksum distinct from the QR.</p>
+        </div>
+        <div class="theory-item" data-explains="finding-first-pixel-flipped-to-white,finding-qr-loads-into-memory-at-34-orbs-and-persists">
+            <span class="theory-rank low">Speculative</span>
+            <h3 class="theory-title">The flipped pixel is a real signal</h3>
+            <p class="theory-desc">The single white pixel may trigger the engine to generate a change somewhere in the world (precedent: the engine draws the cauldron room and cessation cipher on the fly).</p>
+        </div>
+        <div class="theory-item" data-explains="finding-the-34-orb-credits-never-appear-in-game">
+            <span class="theory-rank low">Speculative</span>
+            <h3 class="theory-title">A troll for data miners</h3>
+            <p class="theory-desc">The whole thing may exist only to bait data miners.</p>
+        </div>
+        <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/issues/new?template=new-theory.yml" target="_blank" class="theory-item theory-item-cta">
+            <h3 class="theory-title">+ Submit a New Theory</h3>
+            <p class="theory-desc">Have a theory or idea to test? Share it.</p>
+        </a>
+    </section>
+
+    <!-- Discussion -->
+    <section class="discussion-section">
+        <h2 class="section-title">Discussion</h2>
+        <p style="text-align: center; color: var(--text-secondary); margin-bottom: var(--space-lg);">
+            Comments powered by <a href="https://giscus.app" target="_blank">giscus</a>. Uses GitHub Discussions.
+        </p>
+        <script src="https://giscus.app/client.js"
+            data-repo="unsolved-puzzles/unsolved-puzzles"
+            data-repo-id="R_kgDOSTBzlg"
+            data-category="Announcements"
+            data-category-id="DIC_kwDOSTBzls4C8Pva"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="dark_dimmed"
+            data-lang="en"
+            data-loading="lazy"
+            crossorigin="anonymous"
+            async>
+        </script>
+    </section>
+
+    <footer class="site-footer">
+        <p>Built by the community. <a href="https://github.com/unsolved-puzzles/unsolved-puzzles">View on GitHub</a></p>
+        <p class="footer-tagline">"Noita: the one who knows."</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <script src="../assets/js/main.js?v=3"></script>
+    <script src="../assets/js/votes.js?v=3"></script>
+    <script src="../assets/js/red-strings.js?v=2"></script>
+    <script src="../assets/js/noita-bg.js"></script>
+</body>
+</html>

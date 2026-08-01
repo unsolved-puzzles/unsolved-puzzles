@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Earthquake Circle | Noita | Unsolved Puzzles</title>
+    <meta name="description" content="The earthquake spell draws a magic circle of runes and binary that matches the number of Holy Mountain portals.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css?v=4">
+</head>
+<body class="votes-loading">
+    <canvas id="game-atmosphere"></canvas>
+
+    <!-- Hero Banner -->
+    <div class="game-hero-banner">
+        <img src="../assets/img/noita-earthquake-symbol.png" alt="The Earthquake Circle" class="game-hero-img">
+        <div class="game-hero-fade"></div>
+    </div>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="../" class="logo">
+                <span class="logo-icon">🔍</span>
+                <span class="logo-text">Unsolved Puzzles</span>
+            </a>
+            <nav class="header-nav">
+                <a href="../">All Games</a>
+                <a href="./">Noita</a>
+                <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/discussions" target="_blank">Discuss</a>
+                <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/blob/main/README.md" target="_blank">Help</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Puzzle Header -->
+    <section class="puzzle-header">
+        <p class="puzzle-breadcrumb"><a href="../">Home</a> / <a href="./">Noita</a> / The Earthquake Circle</p>
+        <h1 class="puzzle-title">The Earthquake Circle</h1>
+        <p class="puzzle-subtitle">The earthquake spell draws a magic circle of runes and binary that matches the number of Holy Mountain portals.</p>
+        <span class="puzzle-status unsolved">Unsolved</span>
+    </section>
+
+    <!-- Context -->
+    <section class="findings-section">
+        <h2 class="section-title">What We Know</h2>
+        <div style="max-width: 700px; margin: 0 auto var(--space-xl); color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8;">
+            <p>The Earthquake spell renders an unusually elaborate magic circle, a detail most players never stop to inspect.</p>
+            <p style="margin-top: var(--space-md);">The same 'MAGICK' circle motif appears at other pivotal moments in the game, such as the Holy Mountain collapse, the Suomuhauki's spawn, and the ending sequences, which marks it as a significant symbol rather than throwaway art.</p>
+            <p style="margin-top: var(--space-md);">What draws scrutiny is that the circle mixes readable runes with strings of ones and zeros.</p>
+        </div>
+
+        <!-- Filters -->
+        <div class="findings-filters">
+            <button class="filter-btn active" data-filter="all">All Findings</button>
+            <button class="filter-btn" data-filter="confirmed">Confirmed</button>
+            <button class="filter-btn" data-filter="debunked">Debunked</button>
+        </div>
+
+        <!-- Findings Grid -->
+        <div class="findings-grid">
+            <div class="finding-card" data-status="confirmed" id="finding-rings-mgick-zeros-101010-1110110110110-magick">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Rings: MGICK / zeros / 101010 / 1110110110110 / MAGICK</h3>
+                <p>Concentric rings of runes and binary; the innermost glyph resembles Virgo (or Sin / arabic-indic 3).</p>
+                <div class="finding-card-meta">
+                    <span>Source: FuryForged</span>
+                </div>
+            </div>
+            <div class="finding-card" data-status="confirmed" id="finding-binary-matches-the-holy-mountain-portal-count">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Binary matches the Holy Mountain portal count</h3>
+                <p>The 1s and 0s in the circle equal the number of Holy Mountain portals in a new world.</p>
+                <div class="finding-card-meta">
+                    <span>Source: FuryForged</span>
+                </div>
+            </div>
+            <div class="finding-card" data-status="debunked" id="finding-materials-in-portal-eyes-to-change-destination">
+                <span class="finding-card-status debunked">Debunked</span>
+                <h3>Materials in portal eyes to change destination</h3>
+                <p>Filling the portal eyes with assorted materials has not redirected any portal.</p>
+                <div class="finding-card-meta">
+                    <span>Source: FuryForged</span>
+                </div>
+            </div>
+            <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/issues/new?template=new-finding.yml" target="_blank" class="finding-card finding-card-cta">
+                <h3>+ Submit a New Finding</h3>
+                <p>Discovered something new? Report it here.</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- Theories -->
+    <section class="theories-section">
+        <h2 class="section-title">Theories (Ranked)</h2>
+        <div class="theory-item" data-explains="finding-binary-matches-the-holy-mountain-portal-count,finding-materials-in-portal-eyes-to-change-destination,finding-rings-mgick-zeros-101010-1110110110110-magick">
+            <span class="theory-rank medium">Promising</span>
+            <h3 class="theory-title">A decoding wheel for a portal cipher</h3>
+            <p class="theory-desc">The circle may be a wheel that decodes which material(s) to place in specific portal eyes to redirect a portal to a new destination.</p>
+        </div>
+        <div class="theory-item" data-explains="finding-rings-mgick-zeros-101010-1110110110110-magick">
+            <span class="theory-rank low">Speculative</span>
+            <h3 class="theory-title">MGICK vs MAGICK is meaningful</h3>
+            <p class="theory-desc">The outer ring omits the 'A'; the difference between the outer 'MGICK' and inner 'MAGICK' may be an index or key.</p>
+        </div>
+        <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/issues/new?template=new-theory.yml" target="_blank" class="theory-item theory-item-cta">
+            <h3 class="theory-title">+ Submit a New Theory</h3>
+            <p class="theory-desc">Have a theory or idea to test? Share it.</p>
+        </a>
+    </section>
+
+    <!-- Discussion -->
+    <section class="discussion-section">
+        <h2 class="section-title">Discussion</h2>
+        <p style="text-align: center; color: var(--text-secondary); margin-bottom: var(--space-lg);">
+            Comments powered by <a href="https://giscus.app" target="_blank">giscus</a>. Uses GitHub Discussions.
+        </p>
+        <script src="https://giscus.app/client.js"
+            data-repo="unsolved-puzzles/unsolved-puzzles"
+            data-repo-id="R_kgDOSTBzlg"
+            data-category="Announcements"
+            data-category-id="DIC_kwDOSTBzls4C8Pva"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="dark_dimmed"
+            data-lang="en"
+            data-loading="lazy"
+            crossorigin="anonymous"
+            async>
+        </script>
+    </section>
+
+    <footer class="site-footer">
+        <p>Built by the community. <a href="https://github.com/unsolved-puzzles/unsolved-puzzles">View on GitHub</a></p>
+        <p class="footer-tagline">"Noita: the one who knows."</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <script src="../assets/js/main.js?v=3"></script>
+    <script src="../assets/js/votes.js?v=3"></script>
+    <script src="../assets/js/red-strings.js?v=2"></script>
+    <script src="../assets/js/noita-bg.js"></script>
+</body>
+</html>

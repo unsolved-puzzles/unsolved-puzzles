@@ -20,14 +20,21 @@
       <a href="${esc(p.url)}">${esc(p.name)}</a>
     </li>`;
 
-  const renderContribution = (it) => `
+  const renderContribution = (it) => {
+    // A "Puzzle" contribution is a whole new page: link the puzzle name itself and
+    // drop the redundant "New puzzle page" action text.
+    const body = (it.kind === 'Puzzle')
+      ? `<a class="cl-puzzle" href="${esc(it.url)}">${esc(it.puzzle)}</a>`
+      : `<span class="cl-puzzle">${esc(it.puzzle)}</span>
+      &middot; <a href="${esc(it.url)}">${esc(it.text)}</a>`;
+    return `
     <li class="cl-item">
       <span class="cl-tag" data-game="${esc(it.game)}">${esc(it.game)}</span>
       <span class="cl-kind" data-kind="${esc(it.kind)}">${esc(it.kind)}</span>
-      <span class="cl-puzzle">${esc(it.puzzle)}</span>
-      &middot; <a href="${esc(it.url)}">${esc(it.text)}</a>
+      ${body}
       <a class="cl-user" href="https://github.com/${esc(it.user)}" target="_blank" rel="noopener">${esc(it.user)}</a>
     </li>`;
+  };
 
   const renderWelcome = (w) => `
     <div class="cl-welcome">

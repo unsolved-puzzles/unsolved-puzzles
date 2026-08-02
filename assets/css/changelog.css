@@ -1,0 +1,215 @@
+/* Activity Log (changelog) — matches the investigation-board aesthetic */
+.changelog-section {
+    position: relative;
+    z-index: 1;
+    max-width: 820px;
+    margin: 0 auto;
+    padding: var(--space-xl) var(--space-lg);
+}
+
+.cl-intro {
+    text-align: center;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: -1rem auto var(--space-xl);
+    font-size: 0.9rem;
+}
+
+.changelog-timeline {
+    position: relative;
+    margin: 0 auto;
+    padding-left: 30px;
+    border-left: 2px solid rgba(212, 175, 55, 0.25);
+}
+
+.cl-day {
+    position: relative;
+    padding-bottom: var(--space-lg);
+}
+
+.cl-day:last-child {
+    padding-bottom: 0;
+}
+
+/* Node dot on the timeline */
+.cl-day::before {
+    content: '';
+    position: absolute;
+    left: -37px;
+    top: 3px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--accent-red);
+    box-shadow: 0 0 8px var(--accent-red-glow);
+    border: 2px solid var(--bg-primary);
+}
+
+.cl-date {
+    font-family: 'Special Elite', var(--font-body);
+    color: var(--accent-gold);
+    font-size: 0.82rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.cl-summary {
+    color: var(--text-primary);
+    font-size: 0.98rem;
+    line-height: 1.55;
+    margin-top: 3px;
+}
+
+.cl-items {
+    list-style: none;
+    margin: 10px 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+/* Contributor finding/theory line, styled like a small sticky note */
+.cl-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    background: rgba(245, 230, 200, 0.04);
+    border-left: 2px solid var(--accent-gold);
+    border-radius: var(--radius-sm);
+    padding: 6px 10px;
+    line-height: 1.4;
+}
+
+.cl-tag {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-secondary);
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+    padding: 1px 8px;
+    white-space: nowrap;
+}
+
+.cl-tag[data-game="Noita"] {
+    color: #9db8ff;
+    border-color: rgba(157, 184, 255, 0.35);
+}
+
+.cl-tag[data-game="Blue Prince"] {
+    color: #7fd6c2;
+    border-color: rgba(127, 214, 194, 0.35);
+}
+
+.cl-kind {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--accent-red);
+    white-space: nowrap;
+}
+
+.cl-kind[data-kind="Theory"] {
+    color: #b083e0;
+}
+
+.cl-kind[data-kind="Puzzle"] {
+    color: #6fb1e0;
+}
+
+.cl-kind-job {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #e6d27a;
+    white-space: nowrap;
+}
+
+.cl-puzzle {
+    color: var(--text-secondary);
+}
+
+.cl-item a {
+    color: var(--accent-gold);
+    text-decoration: none;
+}
+
+.cl-item a:hover {
+    text-decoration: underline;
+    color: var(--text-primary);
+}
+
+.cl-user {
+    margin-left: auto;
+    font-size: 0.78rem;
+    color: var(--accent-gold);
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+.cl-user:hover {
+    color: var(--text-primary);
+    text-decoration: underline;
+}
+
+.cl-user::before {
+    content: '\2014\00a0';
+    opacity: 0.6;
+}
+
+/* New-page launches (e.g. the 8 Noita pages) */
+.cl-pages {
+    list-style: none;
+    margin: 10px 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px 18px;
+}
+
+.cl-page {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+}
+
+.cl-page a {
+    color: var(--accent-gold);
+    text-decoration: none;
+}
+
+.cl-page a:hover {
+    text-decoration: underline;
+    color: var(--text-primary);
+}
+
+/* Job-board welcome line — styled to match the contribution rows */
+.cl-welcome {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    background: rgba(245, 230, 200, 0.04);
+    border-left: 2px solid var(--accent-gold);
+    border-radius: var(--radius-sm);
+    padding: 6px 10px;
+    line-height: 1.4;
+}
+
+@media (max-width: 560px) {
+    .cl-user {
+        margin-left: 0;
+    }
+    .cl-pages {
+        grid-template-columns: 1fr;
+    }
+}

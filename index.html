@@ -23,6 +23,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="assets/css/style.css?v=5">
     <link rel="stylesheet" href="assets/css/job-board.css?v=1">
+    <link rel="stylesheet" href="assets/css/changelog.css?v=11">
 </head>
 <body>
     <!-- Starfield background -->
@@ -40,6 +41,7 @@
             </a>
             <nav class="header-nav">
                 <a href="#games">Games</a>
+                <a href="#changelog">Activity Log</a>
                 <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/discussions" target="_blank">Discuss</a>
                 <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/issues/new/choose" target="_blank">Submit Finding</a>
                 <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/blob/main/README.md" target="_blank">Help</a>
@@ -241,6 +243,13 @@
         <p class="jb-footnote">No formal application needed, just introduce yourself on the discussion thread.</p>
     </section>
 
+    <!-- Activity Log -->
+    <section id="changelog" class="changelog-section">
+        <h2 class="section-title">Activity Log</h2>
+        <p class="cl-intro">What the community has shipped, grouped by day. New-contributor findings and theories are credited below their day.</p>
+        <div id="changelog-timeline" class="changelog-timeline"></div>
+    </section>
+
     <!-- Footer -->
     <footer class="site-footer">
         <p>Built by the community. <a href="https://github.com/unsolved-puzzles/unsolved-puzzles">View on GitHub</a></p>
@@ -254,6 +263,7 @@
     <script src="assets/js/main.js?v=3"></script>
     <script src="assets/js/starfield.js"></script>
     <script src="assets/js/hero-string.js"></script>
+    <script src="assets/js/changelog.js?v=9"></script>
     <script>
     // Job Board: populate assignees from roles.json
     fetch('roles.json')

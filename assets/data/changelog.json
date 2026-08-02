@@ -1,0 +1,84 @@
+{
+  "days": [
+    {
+      "date": "2026-08-02",
+      "milestone": "Added this Activity Log to the site."
+    },
+    {
+      "date": "2026-08-01",
+      "milestone": "Launched 8 new Noita puzzle pages, following FuryForged's latest mysteries video.",
+      "milestone_links": [
+        { "phrase": "FuryForged's latest mysteries video", "url": "https://www.youtube.com/watch?v=RI9DDwTVcBI" }
+      ],
+      "pages": [
+        { "game": "Noita", "name": "The Alchemy Symbol", "url": "noita/dollar-symbol.html" },
+        { "game": "Noita", "name": "The Master Statues", "url": "noita/master-statues.html" },
+        { "game": "Noita", "name": "Music-Attracted Animals", "url": "noita/music-animals.html" },
+        { "game": "Noita", "name": "The Desert Ruins Markings", "url": "noita/desert-ruins.html" },
+        { "game": "Noita", "name": "The Broken Monoliths", "url": "noita/broken-monoliths.html" },
+        { "game": "Noita", "name": "The Earthquake Circle", "url": "noita/earthquake-circle.html" },
+        { "game": "Noita", "name": "The 34-Orb QR Code", "url": "noita/34-orb-qr.html" },
+        { "game": "Noita", "name": "Hills 2 & the Microbiomes", "url": "noita/microbiomes.html" }
+      ],
+      "contributions": [
+        { "game": "Blue Prince", "kind": "Finding", "puzzle": "Bookshop Compartment", "text": "Table books are named in-game titles with known colours", "user": "phraxx727", "url": "blue-prince/bookshop-compartment.html#finding-table-books-are-named-in-game-titles-with-known-colors" }
+      ]
+    },
+    {
+      "date": "2026-06-15",
+      "contributions": [
+        { "game": "Blue Prince", "kind": "Finding", "puzzle": "Hidden Letters", "text": "Workshop chairs/stools spell HEAL", "user": "phraxx727", "url": "blue-prince/hidden-letters.html#finding-workshop-chairs-stools-spell-heal" }
+      ]
+    },
+    {
+      "date": "2026-05-24",
+      "milestone": "Built the True Draft interactive drafting workbench.",
+      "contributions": [
+        { "game": "Blue Prince", "kind": "Finding", "puzzle": "True Draft", "text": "Entrance Hall doorways have distinct frames", "user": "pedroff1", "url": "blue-prince/true-draft.html#finding-entrance-hall-doorways-have-distinct-frames" },
+        { "game": "Blue Prince", "kind": "Theory", "puzzle": "Bookshop Compartment", "text": "Mora Jai solution hints at whole-manor room placement", "user": "pedroff1", "url": "blue-prince/bookshop-compartment.html#theory-the-solved-mora-jai-hints-at-a-placement-of-rooms-in-the-entire-manor" },
+        { "game": "Blue Prince", "kind": "Finding", "puzzle": "Hidden Letters", "text": "Hidden numbers 1-2-3-4 in Mount Holly", "user": "erjonas", "url": "blue-prince/hidden-letters.html#finding-hidden-numbers-1-2-3-4-in-mount-holly" }
+      ]
+    },
+    {
+      "date": "2026-05-20",
+      "contributions": [
+        { "game": "Blue Prince", "kind": "Theory", "puzzle": "Does It Never End", "text": "Replicate the Atelier room layout in the real manor", "user": "valentindckrs", "url": "blue-prince/does-it-never-end.html#theory-replicate-the-atelier-room-layout-in-the-real-manor" }
+      ]
+    },
+    {
+      "date": "2026-05-18",
+      "welcomes": [
+        { "game": "Blue Prince", "text": "Welcomed our first", "role": "Room Detective", "user": "pedroff1", "url": "https://github.com/unsolved-puzzles/unsolved-puzzles/discussions/289" }
+      ],
+      "contributions": [
+        { "game": "Blue Prince", "kind": "Puzzle", "puzzle": "These Vying Plans", "text": "New puzzle page", "user": "pedroff1", "url": "blue-prince/these-vying-plans.html" }
+      ]
+    },
+    {
+      "date": "2026-05-12",
+      "milestone": "Added the Job Board with open community roles."
+    },
+    {
+      "date": "2026-05-04",
+      "milestone": "Added the voting system and issue templates so anyone can submit findings and theories."
+    },
+    {
+      "date": "2026-05-03",
+      "milestone": "Launched the Unsolved Puzzles investigation board, with Blue Prince and Noita.",
+      "pages": [
+        { "game": "Noita", "name": "The Eye Puzzle", "url": "noita/eye-puzzle.html" },
+        { "game": "Noita", "name": "The Cauldron Room", "url": "noita/cauldron.html" },
+        { "game": "Blue Prince", "name": "Music Room", "url": "blue-prince/music-room.html" },
+        { "game": "Blue Prince", "name": "Does It Never End?", "url": "blue-prince/does-it-never-end.html" },
+        { "game": "Blue Prince", "name": "Hand Statues", "url": "blue-prince/hand-statues.html" },
+        { "game": "Blue Prince", "name": "Boiler Room Panels", "url": "blue-prince/boiler-room.html" },
+        { "game": "Blue Prince", "name": "Tomb Candles", "url": "blue-prince/tomb-candles.html" },
+        { "game": "Blue Prince", "name": "The Missing 'I'", "url": "blue-prince/missing-i.html" },
+        { "game": "Blue Prince", "name": "Castle, Court, Cloak", "url": "blue-prince/castle-cloak-court.html" },
+        { "game": "Blue Prince", "name": "Garage Acronym", "url": "blue-prince/garage-acronym.html" },
+        { "game": "Blue Prince", "name": "Hidden Letters", "url": "blue-prince/hidden-letters.html" },
+        { "game": "Blue Prince", "name": "Bookshop Compartment", "url": "blue-prince/bookshop-compartment.html" }
+      ]
+    }
+  ]
+}

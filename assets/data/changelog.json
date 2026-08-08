@@ -1,6 +1,12 @@
 {
   "days": [
     {
+      "date": "2026-08-08",
+      "contributions": [
+        { "game": "Blue Prince", "kind": "Finding", "puzzle": "Bookshop Compartment", "text": "LASTING HOPE anagrams to A LIGHT OPENS", "user": "elloelle", "url": "blue-prince/bookshop-compartment.html#finding-lasting-hope-anagrams-to-a-light-opens" }
+      ]
+    },
+    {
       "date": "2026-08-02",
       "milestone": "Added this Activity Log to the site."
     },

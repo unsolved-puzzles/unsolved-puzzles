@@ -288,7 +288,7 @@
   }
 
   async function fetchIssues(label) {
-    const cacheKey = "up_issues_" + label;
+    const cacheKey = "up_issues_v4_" + label;
 
     // Check cache
     try {
@@ -298,10 +298,10 @@
       }
     } catch (e) {}
 
-    // Fetch all issues with the given label (paginated, up to 200)
+    // Fetch all issues with the given label (paginated)
     try {
       let allIssues = [];
-      for (let page = 1; page <= 2; page++) {
+      for (let page = 1; ; page++) {
         const url =
           `${API_BASE}/repos/${REPO_OWNER}/${REPO_NAME}/issues` +
           `?labels=${label}&state=open&per_page=100&page=${page}`;

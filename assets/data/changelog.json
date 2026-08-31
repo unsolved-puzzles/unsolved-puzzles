@@ -1,6 +1,12 @@
 {
   "days": [
     {
+      "date": "2026-08-31",
+      "contributions": [
+        { "game": "Blue Prince", "kind": "Finding", "puzzle": "Tomb Candles", "text": "Packet Management repeats an 8 + 8 structure", "user": "dizuane", "url": "blue-prince/tomb-candles.html#finding-packet-management-repeats-an-8-plus-8-structure" }
+      ]
+    },
+    {
       "date": "2026-08-08",
       "contributions": [
         { "game": "Blue Prince", "kind": "Finding", "puzzle": "Bookshop Compartment", "text": "LASTING HOPE anagrams to A LIGHT OPENS", "user": "elloelle", "url": "blue-prince/bookshop-compartment.html#finding-lasting-hope-anagrams-to-a-light-opens" }

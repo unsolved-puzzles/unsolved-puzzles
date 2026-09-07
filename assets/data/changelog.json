@@ -1,6 +1,12 @@
 {
   "days": [
     {
+      "date": "2026-09-07",
+      "contributions": [
+        { "game": "Blue Prince", "kind": "Finding", "puzzle": "Boiler Room Panels", "text": "Panel overlay has a 1-3-6-4-2 frequency pattern", "user": "BluePrince-Theories", "url": "blue-prince/boiler-room.html#finding-panel-overlay-has-a-1-3-6-4-2-frequency-pattern" }
+      ]
+    },
+    {
       "date": "2026-08-31",
       "contributions": [
         { "game": "Blue Prince", "kind": "Finding", "puzzle": "Tomb Candles", "text": "Packet Management repeats an 8 + 8 structure", "user": "dizuane", "url": "blue-prince/tomb-candles.html#finding-packet-management-repeats-an-8-plus-8-structure" }

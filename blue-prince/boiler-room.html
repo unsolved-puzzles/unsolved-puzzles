@@ -39,7 +39,7 @@
     <section class="puzzle-header">
         <p class="puzzle-breadcrumb"><a href="../">Home</a> / <a href="./">Blue Prince</a> / Boiler Room Panels</p>
         <h1 class="puzzle-title">Boiler Room Panels</h1>
-        <p class="puzzle-subtitle">15 binary 4×4 grids cycle on a conveyor. 13 unique patterns, 2 blanks. 80+ decode methods tried. Still unsolved after a year of community effort.</p>
+        <p class="puzzle-subtitle">15 binary 4×4 grids cycle on a conveyor. 13 unique patterns, 2 blanks, and no confirmed decoding yet.</p>
         <span class="puzzle-status unsolved">Unsolved</span>
     </section>
 
@@ -48,16 +48,17 @@
         <h2 class="section-title">What We Know</h2>
         <div style="max-width: 700px; margin: 0 auto var(--space-xl); color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8;">
             <p><strong>Setup:</strong> In the Boiler Room, 15 panels cycle upward on a vertical conveyor belt. Each panel is a 4×4 grid where tiles are either ON (warm/brown) or OFF (cool/blue-gray). The belt loops: grids 16-18 repeat grids 1-3. You can activate the conveyor to scroll through all panels.</p>
-            <p style="margin-top: var(--space-md);"><strong>Gap structure:</strong> Gaps of varying size (Small, Medium, Large) separate the panels. Using L as word breaks and M as sub-breaks, the message structure is: <code style="background: rgba(255,255,255,0.06); padding: 2px 6px; border-radius: 3px;">_ XXXXX XXXXXXX</code> (a single character, then a 5-character group, then a 7-character group). All 13 non-blank grids are unique (no repeats), suggesting an <strong>isogram</strong> where every letter appears exactly once.</p>
-            <p style="margin-top: var(--space-md);"><strong>Grid 6 is special:</strong> It has two mini-rectangle decorations on its conveyor bars that no other panel has. This may mark the start or end of the sequence.</p>
-            <p style="margin-top: var(--space-md);"><strong>Cell (0,0) is never lit:</strong> Across all 13 non-empty grids, the top-left cell is never ON. This is statistically significant and likely a structural constraint of the encoding system.</p>
-            <p style="margin-top: var(--space-md);"><strong>Cross-location pattern:</strong> The same 4×4 grid format appears in 15+ locations: tomb candle racks (ternary: lit/unlit/absent), underpass hallway walls, sanctum tunnel floors, classroom chairs, garage gas tank, attic box, darkroom cabinet, Deny Revane's drawing (accurately depicted), and more. This is clearly a game-wide encoding system.</p>
-            <p style="margin-top: var(--space-md);"><strong>Community status:</strong> After 1000+ Steam discussion posts, extensive data mining, and a full year of community effort, nobody has solved this puzzle. The leading hypothesis is that a <strong>cipher key</strong> from another location (likely the tomb candles or underground pass arches) is required.</p>
+            <p style="margin-top: var(--space-md);"><strong>Possible message structure:</strong> Treating blank panels 2 and 8 as spaces produces groups of <code style="background: rgba(255,255,255,0.06); padding: 2px 6px; border-radius: 3px;">1 + 5 + 7</code> non-blank panels. This interpretation is separate from the recorded Small, Medium, and Large gaps, which do not create those same breaks.</p>
+            <p style="margin-top: var(--space-md);"><strong>Grid 6 is visually distinct:</strong> It has two mini-rectangle decorations on its conveyor bars that no other panel has. Whether they mark a sequence boundary is unknown.</p>
+            <p style="margin-top: var(--space-md);"><strong>Cell (0,0) is never lit:</strong> Across the complete 15-panel loop, the top-left cell is the only position that is never ON. It may be an orientation marker or reserved position, but chance has not been ruled out.</p>
+            <p style="margin-top: var(--space-md);"><strong>Cross-location format:</strong> The same 4×4 dimensions appear in 15+ locations, including tomb candle racks, underpass hallway walls, sanctum tunnel floors, classroom chairs, the garage gas tank, the attic box, and the darkroom cabinet. Shared dimensions are confirmed; a shared encoding system remains a theory. See <a href="tomb-candles.html">Tomb Candles</a> for the related catalogue.</p>
+            <p style="margin-top: var(--space-md);"><strong>Community status:</strong> Despite extensive discussion, data mining, and testing, no decoding has been confirmed. An external key from another 4×4 display is one of several active hypotheses.</p>
         </div>
 
         <!-- Raw Data Reference -->
         <details style="max-width: 700px; margin: 0 auto var(--space-xl); color: var(--text-secondary); font-size: 0.85rem;">
             <summary style="cursor: pointer; color: var(--text-primary); font-weight: 600; margin-bottom: var(--space-md);">📋 Raw Grid Data (click to expand)</summary>
+            <p style="margin-bottom: var(--space-md);">This is one complete 15-panel loop, manually transcribed and cross-checked against the source images. Rows run top to bottom and columns left to right when viewed from the front. <code>1</code> marks a warm/red tile and <code>0</code> a cool/unlit tile. Each gap label describes the spacing immediately after that panel. The next three observed panels repeat grids 1-3.</p>
             <pre style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: var(--space-md); overflow-x: auto; font-size: 0.75rem; line-height: 1.6;">
 Grid  1: [0,0,1,1] [0,1,0,0] [0,0,0,0] [0,0,0,0]  gap=S  ON=3
 Grid  2: [0,0,0,0] [0,0,0,0] [0,0,0,0] [0,0,0,0]  gap=S  ON=0 (blank)
@@ -82,6 +83,7 @@ Grid 15: [0,0,0,0] [1,0,0,0] [0,0,0,0] [0,0,1,1]  gap=M  ON=3</pre>
             <button class="filter-btn" data-filter="confirmed">Confirmed</button>
             <button class="filter-btn" data-filter="tentative">Tentative</button>
             <button class="filter-btn" data-filter="debunked">Debunked</button>
+            <button class="filter-btn" data-filter="explained">Explained</button>
         </div>
 
         <!-- Findings Grid -->
@@ -90,27 +92,27 @@ Grid 15: [0,0,0,0] [1,0,0,0] [0,0,0,0] [0,0,1,1]  gap=M  ON=3</pre>
             <div class="finding-card" data-status="confirmed" id="finding-15-grids-13-unique-non-empty-patterns">
                 <span class="finding-card-status confirmed">Confirmed</span>
                 <h3>15 grids, 13 unique non-empty patterns</h3>
-                <p>The conveyor carries exactly 15 panels before looping. Grids 2 and 8 are completely blank (all OFF). The remaining 13 each have a unique pattern, no two identical. This strongly suggests each grid encodes a distinct character.</p>
+                <p>The conveyor carries exactly 15 panels before looping. Grids 2 and 8 are completely blank (all OFF). The remaining 13 each have a unique pattern, with no two identical. Whether those patterns represent distinct characters remains unconfirmed.</p>
                 <div class="finding-card-meta">
                     <span>Source: u/Shadowkiller00</span>
                     <span>Independently confirmed</span>
                 </div>
             </div>
 
-            <div class="finding-card" data-status="confirmed" id="finding-message-structure-1-5-7-characters">
-                <span class="finding-card-status confirmed">Confirmed</span>
+            <div class="finding-card" data-status="tentative" id="finding-message-structure-1-5-7-characters">
+                <span class="finding-card-status tentative">Tentative</span>
                 <h3>Message structure: 1 + 5 + 7 characters</h3>
-                <p>Gap sizes create clear groupings. Large gaps separate words, medium gaps separate sub-groups. The structure reads as a single character, then a 5-letter word, then a 7-letter word. Blank grids (positions 2 and 8) act as spaces. All 13 characters are unique = isogram.</p>
+                <p>If blank grids 2 and 8 are spaces, the sequence reads as one non-blank panel, then groups of five and seven. The recorded gap sizes do not independently support these breaks, and the non-blank panels have not been shown to represent letters.</p>
                 <div class="finding-card-meta">
                     <span>Source: u/Shadowkiller00, u/SquirrelEmergency175</span>
-                    <span>Consistent with game's wordplay themes</span>
+                    <span>Depends on treating blank panels as spaces</span>
                 </div>
             </div>
 
             <div class="finding-card" data-status="confirmed" id="finding-panels-accurately-depicted-on-deny-revanes-drawing">
                 <span class="finding-card-status confirmed">Confirmed</span>
                 <h3>Panels accurately depicted on Deny Revane's drawing</h3>
-                <p>The in-game artwork by Deny Revane (the Underpass drawing) includes these 4×4 grid patterns drawn accurately. As one community member noted: "they're important enough to be one of the few things depicted on that drawing." This confirms intentional design, not filler.</p>
+                <p>The in-game artwork by Deny Revane (the Underpass drawing) includes these 4×4 grid patterns drawn accurately. This confirms that the artist deliberately reproduced the panels, but does not by itself establish an encoded message.</p>
                 <div class="finding-card-meta">
                     <span>Source: u/Vambok</span>
                     <span>In-game artwork confirmation</span>
@@ -120,10 +122,10 @@ Grid 15: [0,0,0,0] [1,0,0,0] [0,0,0,0] [0,0,1,1]  gap=M  ON=3</pre>
             <div class="finding-card" data-status="confirmed" id="finding-diagonal-staircase-in-composite-sum">
                 <span class="finding-card-status confirmed">Confirmed</span>
                 <h3>Diagonal staircase in composite sum</h3>
-                <p>When all 10 grids between the two Large gaps (grids 5-14) are summed, the cells lit ≥2 times form a perfect descending staircase from top-right to bottom-left. This is too structured to be coincidence and proves the data is correctly transcribed and has internal geometric structure.</p>
+                <p>When grids 5-14 are summed, the cells lit at least twice form a descending staircase from top-right to bottom-left. The result is reproducible, but the subset and threshold were selected after inspecting the data, so its significance is unknown and it does not independently validate the transcription.</p>
                 <div class="finding-card-meta">
                     <span>Source: jewe</span>
-                    <span>Mathematical verification</span>
+                    <span>Reproducible calculation; significance unknown</span>
                 </div>
             </div>
 
@@ -134,76 +136,6 @@ Grid 15: [0,0,0,0] [1,0,0,0] [0,0,0,0] [0,0,1,1]  gap=M  ON=3</pre>
                 <div class="finding-card-meta">
                     <span>Source: u/ClassBlowz420</span>
                     <span>Observed in-game</span>
-                </div>
-            </div>
-
-            <div class="finding-card" data-status="tentative" id="finding-tomb-candles-as-cipher-key">
-                <span class="finding-card-status tentative">Tentative</span>
-                <h3>Tomb candles as cipher key</h3>
-                <p>The tomb candle racks use the same 4×4 grid layout but with THREE states (lit/unlit/absent). If the boiler is the ciphertext and the tomb provides the key, combining them could unlock the decode. Community notes the candles "are in the same arrangement but can't be lit," a possible cut input mechanism.</p>
-                <div class="finding-card-meta">
-                    <span>Source: u/tonydeez, Draaloff</span>
-                    <span>Highest priority lead, needs data collection</span>
-                </div>
-            </div>
-
-            <div class="finding-card" data-status="tentative" id="finding-underground-pass-arches-as-rosetta-stone">
-                <span class="finding-card-status tentative">Tentative</span>
-                <h3>Underground Pass arches as Rosetta Stone</h3>
-                <p>The underpass hallway arches have rivet patterns and 4×4 wall panels with filled/empty squares. These may use a base-4 encoding (vs the boiler's binary). If three locations encode the same message in different bases, comparing them could crack the cipher.</p>
-                <div class="finding-card-meta">
-                    <span>Source: u/ProperTurnip, u/Nain-Parable</span>
-                    <span>Needs systematic mapping</span>
-                </div>
-            </div>
-
-            <div class="finding-card" data-status="tentative" id="finding-isogram-constraint-narrows-solutions">
-                <span class="finding-card-status tentative">Tentative</span>
-                <h3>Isogram constraint narrows solutions</h3>
-                <p>If the message is 13 unique letters in structure X + XXXXX + XXXXXXX, it's an isogram. Combined with Blue Prince's known wordplay themes (anagrams, isograms, ambigrams), this narrows valid solutions dramatically. First word is likely "A" or "I". Candidates include phrases like "A GLYPH OBSCURE" or "I FOUND ALCHEMY".</p>
-                <div class="finding-card-meta">
-                    <span>Source: jewe</span>
-                    <span>Computational brute-force partially attempted</span>
-                </div>
-            </div>
-
-            <div class="finding-card" data-status="tentative" id="finding-grid-6-marks-the-sequence-startend">
-                <span class="finding-card-status tentative">Tentative</span>
-                <h3>Grid 6 marks the sequence start/end</h3>
-                <p>Grid 6 is the only panel with two mini-rectangle decorations on its conveyor bars. This may indicate it's the first or last panel in the intended reading order. Re-ordering the sequence starting from Grid 6 hasn't produced results yet, but the marking is clearly intentional.</p>
-                <div class="finding-card-meta">
-                    <span>Source: jewe</span>
-                    <span>Needs more testing with different decode methods</span>
-                </div>
-            </div>
-
-            <div class="finding-card" data-status="tentative" id="finding-gate-bars-encode-additional-information">
-                <span class="finding-card-status tentative">Tentative</span>
-                <h3>Gate bars encode additional information</h3>
-                <p>The gate/grille behind the footbridge in the boiler room has black vertical bars of varying lengths. These could be an additional encoding layer (similar to a barcode) that provides the reading key for the panels.</p>
-                <div class="finding-card-meta">
-                    <span>Source: u/SquirrelEmergency175</span>
-                    <span>Recently discovered, not yet decoded</span>
-                </div>
-            </div>
-
-            <div class="finding-card" data-status="tentative" id="finding-conveyor-activation-triggers-something-elsewhere">
-                <span class="finding-card-status tentative">Tentative</span>
-                <h3>Conveyor activation triggers something elsewhere</h3>
-                <p>When drafted and the conveyor runs, the panels extend through the roof. Multiple players report feeling this should trigger another mechanism in the house or underground. One player linked the boiler via ducts to the garage and observed the panels from outside, but found no secondary effect.</p>
-                <div class="finding-card-meta">
-                    <span>Source: u/ClassBlowz420, u/voidmind, u/fraylo</span>
-                    <span>Unconfirmed; needs systematic testing</span>
-                </div>
-            </div>
-
-            <div class="finding-card" data-status="tentative" id="finding-terry-pratchetts-clacks-signaling-system">
-                <span class="finding-card-status tentative">Tentative</span>
-                <h3>Terry Pratchett's Clacks signaling system</h3>
-                <p>The panels bear a striking similarity to Pratchett's Clacks towers: 4×4 grids where lit/unlit bulbs transmit messages. If the game references this, the encoding may follow Clacks conventions (character-by-character semaphore with start/stop signals).</p>
-                <div class="finding-card-meta">
-                    <span>Source: jewe</span>
-                    <span>Thematic connection; encoding rules differ</span>
                 </div>
             </div>
 
@@ -257,13 +189,13 @@ Grid 15: [0,0,0,0] [1,0,0,0] [0,0,0,0] [0,0,1,1]  gap=M  ON=3</pre>
                 </div>
             </div>
 
-            <div class="finding-card" data-status="debunked" id="finding-blackbridge-grotto-red-dots-puzzle-key">
-                <span class="finding-card-status debunked">Debunked</span>
+            <div class="finding-card" data-status="explained" id="finding-blackbridge-grotto-red-dots-puzzle-key">
+                <span class="finding-card-status explained">Explained</span>
                 <h3>Blackbridge Grotto red dots = puzzle key</h3>
                 <p>One player mapped the red dots on server cabinets in Blackbridge Grotto to binary/hex. It decoded to the first 3 sentences of "Never Gonna Give You Up." Confirmed developer rickroll, not a cipher key.</p>
                 <div class="finding-card-meta">
                     <span>Source: u/sabrina-amsterdam-78</span>
-                    <span>Intentional easter egg</span>
+                    <span>Explained as an intentional easter egg</span>
                 </div></div>
 
             <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/issues/new?template=new-finding.yml" target="_blank" class="finding-card finding-card-cta">
@@ -278,74 +210,86 @@ Grid 15: [0,0,0,0] [1,0,0,0] [0,0,0,0] [0,0,1,1]  gap=M  ON=3</pre>
     <section class="theories-section">
         <h2 class="section-title">Theories (Ranked)</h2>
 
-        <div class="theory-item" data-explains="finding-tomb-candles-as-cipher-key">
-            <span class="theory-rank high">Established</span>
+        <div class="theory-item" data-explains="finding-15-grids-13-unique-non-empty-patterns">
+            <span class="theory-rank medium">Promising</span>
             <h3 class="theory-title">Cross-location cipher: Tomb candles provide the decryption key</h3>
-            <p class="theory-desc">The boiler panels (binary) and tomb candles (ternary: lit/unlit/absent) share the same 4×4 format. The community suspects the candles "are in the same arrangement but can't be lit" = a cut input mechanism that was meant to be the key. Applying the ternary tomb data as a cipher key to the binary boiler data is the highest-priority untested approach. Without this key, no brute-force method will work.</p>
+            <p class="theory-desc">The Boiler panels and Tomb candles share a 4×4 format, while the candles visibly have lit, unlit, and absent states. A machine-readable transcription of the Tomb grids could be compared with the Boiler data under rotations, reflections, and state mappings. No positional correspondence or decryption rule has been demonstrated yet.</p>
         </div>
 
-        <div class="theory-item" data-explains="finding-15-grids-13-unique-non-empty-patterns,finding-message-structure-1-5-7-characters,finding-panels-accurately-depicted-on-deny-revanes-drawing">
-            <span class="theory-rank high">Established</span>
+        <div class="theory-item" data-explains="finding-15-grids-13-unique-non-empty-patterns,finding-message-structure-1-5-7-characters">
+            <span class="theory-rank low">Speculative</span>
             <h3 class="theory-title">Substitution cipher with isogram constraint</h3>
-            <p class="theory-desc">13 unique grids → 13 unique letters. Structure: X + XXXXX + XXXXXXX. The game uses isograms as a wordplay device. First character is almost certainly "A" or "I". If we find the correct grid→letter mapping (possibly from another location), the answer is a 13-letter isogram phrase. Thematic candidates: "A GLYPH OBSCURE", "A BLITZ CONVEYOR", "I FOUND ALCHEMY".</p>
+            <p class="theory-desc">If each unique non-blank grid represents one letter and the two blanks are spaces, the result would be a 13-letter isogram in a 1 + 5 + 7 structure. No grid-to-letter mapping or independent plaintext constraint has been found, so candidate phrases remain unconstrained guesses.</p>
         </div>
 
-        <div class="theory-item" data-explains="finding-15-grids-13-unique-non-empty-patterns,finding-message-structure-1-5-7-characters,finding-panels-accurately-depicted-on-deny-revanes-drawing">
-            <span class="theory-rank high">Established</span>
-            <h3 class="theory-title">Possibly cut/incomplete, awaiting v1.10 "definitive version"</h3>
-            <p class="theory-desc">The game is at v1.7 (April 2026). Prominent community member Draaloff states: "The panels could easily be another remnant of a cut puzzle." The Dirigiblocks update and v1.10 "definitive version" were promised to include unfinished items. The tomb candle input mechanism may be restored, finally making this solvable.</p>
-        </div>
-
-        <div class="theory-item" data-explains="finding-15-grids-13-unique-non-empty-patterns,finding-message-structure-1-5-7-characters,finding-panels-accurately-depicted-on-deny-revanes-drawing">
-            <span class="theory-rank medium">Promising</span>
-            <h3 class="theory-title">Erajan alphabet: grid shapes ARE the letters</h3>
-            <p class="theory-desc">Blue Prince has a constructed in-game alphabet (Erajan). If its letter-forms happen to be defined on 4×4 grids, the panels could be directly readable without any cipher, just a font lookup. Nobody has yet mapped the full Erajan alphabet to verify this. The shape classification (L-shapes, lines, dots, diagonals) could be letter strokes.</p>
-        </div>
-
-        <div class="theory-item" data-explains="finding-underground-pass-arches-as-rosetta-stone">
-            <span class="theory-rank medium">Promising</span>
-            <h3 class="theory-title">Underground Pass arches as Rosetta Stone</h3>
-            <p class="theory-desc">The underpass arches use a higher-base encoding (possibly base-4) of the same data. If three locations (boiler=binary, tomb=ternary, arches=base-4) all encode the same message differently, comparing them would crack the system, similar to how the actual Rosetta Stone worked. Requires systematic mapping of arch patterns.</p>
-        </div>
-
-        <div class="theory-item" data-explains="finding-gate-bars-encode-additional-information">
-            <span class="theory-rank medium">Promising</span>
-            <h3 class="theory-title">Gate bar lengths as reading instructions</h3>
-            <p class="theory-desc">The boiler room gate has vertical bars of varying lengths. These could encode the reading order, column selection, or row priority for decoding the panels. If the bar lengths correspond to "which row/column to read from each grid," they'd reduce each 4×4 grid to a single value without needing an external key.</p>
+        <div class="theory-item" data-explains="finding-15-grids-13-unique-non-empty-patterns">
+            <span class="theory-rank low">Speculative</span>
+            <h3 class="theory-title">Puzzle may be incomplete or await an external clue</h3>
+            <p class="theory-desc">Some community members suspect the panels are remnants of an incomplete puzzle and that future content could add a missing clue or interaction. No announced update has been shown to connect directly to the Boiler panels or Tomb candles.</p>
         </div>
 
         <div class="theory-item" data-explains="finding-15-grids-13-unique-non-empty-patterns,finding-message-structure-1-5-7-characters,finding-panels-accurately-depicted-on-deny-revanes-drawing">
             <span class="theory-rank low">Speculative</span>
+            <h3 class="theory-title">Erajan alphabet: grid shapes ARE the letters</h3>
+            <p class="theory-desc">The grid shapes could be letter forms from Eraja's constructed writing system. No matching 4×4 Erajan alphabet or repeated character correspondence has been identified.</p>
+        </div>
+
+        <div class="theory-item" data-explains="finding-panels-accurately-depicted-on-deny-revanes-drawing">
+            <span class="theory-rank medium">Promising</span>
+            <h3 class="theory-title">Underground Pass arches as Rosetta Stone</h3>
+            <p class="theory-desc">The Underpass contains rivet patterns and 4×4 wall panels, and Deny Revane's drawing accurately reproduces Boiler panel details. A systematic transcription could test whether these locations encode related data. The proposed higher-base relationship has not been demonstrated.</p>
+        </div>
+
+        <div class="theory-item">
+            <span class="theory-rank low">Speculative</span>
+            <h3 class="theory-title">Gate bar lengths as reading instructions</h3>
+            <p class="theory-desc">The Boiler Room gate has vertical bars of varying lengths. They could indicate a reading order, column selection, or row priority, but no mapping from bar lengths to the panels has been found.</p>
+        </div>
+
+        <div class="theory-item" data-explains="finding-panels-visible-from-both-sides-and-from-outside">
+            <span class="theory-rank low">Speculative</span>
             <h3 class="theory-title">Mechanical trigger: conveyor powers something elsewhere</h3>
-            <p class="theory-desc">When the conveyor runs, panels extend through the roof. Multiple players believe this should trigger something in another room (underground gate, museum display, etc.). Testing with various duct configurations hasn't revealed a secondary effect, but not all room combinations have been tried.</p>
+            <p class="theory-desc">The panels extend through the roof while the conveyor runs, which may suggest a connection to another room or exterior mechanism. Tests with several duct configurations have not revealed a secondary effect.</p>
+        </div>
+
+        <div class="theory-item">
+            <span class="theory-rank low">Speculative</span>
+            <h3 class="theory-title">Grid 6 marks the sequence start/end</h3>
+            <p class="theory-desc">Grid 6 is the only panel with two mini-rectangle decorations on its conveyor bars. These may mark a sequence boundary, although starting the known decoding methods at Grid 6 has not produced a readable result.</p>
+        </div>
+
+        <div class="theory-item">
+            <span class="theory-rank low">Speculative</span>
+            <h3 class="theory-title">Terry Pratchett's Clacks signaling system</h3>
+            <p class="theory-desc">The panels visually resemble the lit and unlit semaphore arrays used by the Clacks in Terry Pratchett's Discworld. No direct reference or compatible Clacks encoding has been identified in-game.</p>
         </div>
     </section>
 
     <!-- Methods Tried Summary -->
     <section class="theories-section">
-        <h2 class="section-title">What's Been Ruled Out</h2>
-        <p style="text-align: center; color: var(--text-secondary); max-width: 700px; margin: -1rem auto var(--space-lg); font-size: 0.9rem;">80+ decoding methods have been tried computationally. If you have a new idea, check this list first.</p>
+        <h2 class="section-title">Methods Tested So Far</h2>
+        <p style="text-align: center; color: var(--text-secondary); max-width: 700px; margin: -1rem auto var(--space-lg); font-size: 0.9rem;">These approaches have not produced a readable result from the current transcription. New data, a justified orientation, or an external key could make some worth revisiting.</p>
         <div style="max-width: 700px; margin: 0 auto; columns: 2; column-gap: var(--space-xl); font-size: 0.82rem; color: var(--text-muted); line-height: 2;">
-            <p>❌ Standard Braille (6-dot, 8-dot, all orientations)</p>
-            <p>❌ Inverted Braille (OFF = raised)</p>
-            <p>❌ Binary/ASCII (16-bit, 8-bit, 4-bit, all reading orders)</p>
-            <p>❌ Morse code (from ON counts, gaps, positions)</p>
-            <p>❌ Polybius / Tap code (all key variants)</p>
-            <p>❌ Semaphore flag positions</p>
-            <p>❌ Vigenère with 9 game keywords</p>
-            <p>❌ ON-count mapping (A=1, B=2...)</p>
-            <p>❌ Position sum mod 26</p>
-            <p>❌ XOR between consecutive grids</p>
-            <p>❌ Visual pixel font (all layouts)</p>
-            <p>❌ Centroid angle/direction encoding</p>
-            <p>❌ Quadrant bits (5-bit values)</p>
-            <p>❌ Connected components classification</p>
-            <p>❌ Row/column sum encoding</p>
-            <p>❌ Matrix trace / diagonal reading</p>
-            <p>❌ Monotonic ordering vs 3714 phrases</p>
-            <p>❌ Shape rotation/symmetry mapping</p>
-            <p>❌ Pigpen / grid-border encoding</p>
-            <p>❌ Negative space / outline reading</p>
+            <p>Standard Braille (6-dot, 8-dot, all orientations)</p>
+            <p>Inverted Braille (OFF = raised)</p>
+            <p>Binary/ASCII (16-bit, 8-bit, 4-bit, all reading orders)</p>
+            <p>Morse code (from ON counts, gaps, positions)</p>
+            <p>Polybius / Tap code (tested key variants)</p>
+            <p>Semaphore flag positions</p>
+            <p>Vigenère with 9 game keywords</p>
+            <p>ON-count mapping (A=1, B=2...)</p>
+            <p>Position sum mod 26</p>
+            <p>XOR between consecutive grids</p>
+            <p>Visual pixel font (tested layouts)</p>
+            <p>Centroid angle/direction encoding</p>
+            <p>Quadrant bits (5-bit values)</p>
+            <p>Connected components classification</p>
+            <p>Row/column sum encoding</p>
+            <p>Matrix trace / diagonal reading</p>
+            <p>Monotonic ordering against candidate phrases</p>
+            <p>Shape rotation/symmetry mapping</p>
+            <p>Pigpen / grid-border encoding</p>
+            <p>Negative space / outline reading</p>
         </div>
         <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/issues/new?template=new-theory.yml" target="_blank" class="theory-item theory-item-cta">
             <h3 class="theory-title">+ Submit a New Theory</h3>

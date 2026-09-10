@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Eclipse | Blue Prince | Unsolved Puzzles</title>
+    <meta name="description" content="Datamined files reference an unactivated eclipse event. Classroom maps, Planetarium orbit harmonic ratios, and estate lore point to celestial conjunctions waiting to be triggered.">
+    <link rel="canonical" href="https://unsolved-puzzles.github.io/unsolved-puzzles/blue-prince/the-eclipse.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css?v=5">
+</head>
+<body class="votes-loading">
+    <canvas id="game-atmosphere"></canvas>
+
+    <!-- Hero Banner -->
+    <div class="game-hero-banner">
+        <img src="../assets/img/blue-prince-hero-banner.png" alt="Blue Prince" class="game-hero-img">
+        <div class="game-hero-fade"></div>
+    </div>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="../" class="logo">
+                <span class="logo-icon">🔍</span>
+                <span class="logo-text">Unsolved Puzzles</span>
+            </a>
+            <nav class="header-nav">
+                <a href="../">All Games</a>
+                <a href="./">Blue Prince</a>
+                <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/discussions" target="_blank">Discuss</a>
+                <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/blob/main/README.md" target="_blank">Help</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Puzzle Header -->
+    <section class="puzzle-header">
+        <p class="puzzle-breadcrumb"><a href="../">Home</a> / <a href="./">Blue Prince</a> / The Eclipse</p>
+        <h1 class="puzzle-title">The Eclipse</h1>
+        <p class="puzzle-subtitle">Datamined files reference an unactivated eclipse event. Inneclipse maps, Planetarium orbit clockwork, and 1952 estate records hint at celestial conjunctions waiting to be triggered.</p>
+        <span class="puzzle-status unsolved">Unsolved</span>
+    </section>
+
+    <!-- Context -->
+    <section class="findings-section">
+        <h2 class="section-title">What We Know</h2>
+        <div style="max-width: 700px; margin: 0 auto var(--space-xl); color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8;">
+            <p><strong>The datamined event:</strong> Data miners have identified references in the game code to an unactivated astronomical eclipse sequence. The community has long wondered whether this event can be triggered during regular play or if it remains unhooked. Speculation links it to Day 46, a reserved blank space in the scrapbook, and notes in the Clock Tower.</p>
+            <p style="margin-top: var(--space-md);"><strong>Two distinct eclipses:</strong> Classroom 4 features an old geography map illustrating two distinct celestial occurrences: the <em>Inneclipse</em> (a northern sky eclipse, crescent facing right) and the <em>Isseclipse</em> (a southern sky eclipse, crescent facing left). Inneclipses appear prominently on the Antechamber door, in Room 46, on Auravei's pendant, and in the New Clue manuscript. The Isseclipse is far rarer, appearing in Alzara's first vision and framing the save file icon around number 46.</p>
+            <p style="margin-top: var(--space-md);"><strong>Planetarium clockwork:</strong> The planetary orbits displayed in the Planetarium are not random animations. They follow strict harmonic ratios based on a 45-second fundamental period. This mathematical clockwork guarantees recurring alignments and conjunctions at predictable intervals.</p>
+            <p style="margin-top: var(--space-md);"><strong>The 1952 timeline:</strong> A photograph in the Ballroom records an Inneclipse Ball held in 1952. In that same year, Auravei penned her Blue Testament on 16 April 1952. The Ballroom sheet music notes "dancing clock hands," suggesting a connection between eclipse dates and estate timepieces.</p>
+        </div>
+
+        <!-- Filters -->
+        <div class="findings-filters">
+            <button class="filter-btn active" data-filter="all">All Findings</button>
+            <button class="filter-btn" data-filter="confirmed">Confirmed</button>
+            <button class="filter-btn" data-filter="tentative">Tentative</button>
+            <button class="filter-btn" data-filter="debunked">Debunked</button>
+        </div>
+
+        <!-- Findings Grid -->
+        <div class="findings-grid">
+
+            <div class="finding-card" data-status="confirmed" id="finding-planetarium-orbits-follow-exact-45-second-harmonic-ratios">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Planetarium orbits follow exact 45-second harmonic ratios</h3>
+                <p>Timing the planetary bodies in the Planetarium shows that every orbit is an exact integer multiple of 45 seconds real time: Mamora takes 45s (1x), Fennmora takes 1m 30s (2x), Mora takes 3m (4x), Dauja takes 6m (8x), and Veia takes 7m 30s (10x). These harmonic ratios cause regular, predictable alignments: for example, Mamora and Fennmora align every 90 seconds along the ceiling guiding lines.</p>
+                <div class="finding-card-meta">
+                    <span>Source: julianiacoponi</span>
+                    <span>Measured in-game</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed" id="finding-two-distinct-eclipse-types-documented-inneclipse-and-isseclipse">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Two distinct eclipse types documented: Inneclipse and Isseclipse</h3>
+                <p>The geography map in Classroom 4 distinguishes between the Inneclipse (northern sky, crescent right) and Isseclipse (southern sky, crescent left). The Inneclipse is depicted across the estate on the Antechamber door, Room 46, Auravei's necklace, and the New Clue manuscript. The Isseclipse is rarer, appearing in Alzara's first vision and framing the save file icon around the number 46.</p>
+                <div class="finding-card-meta">
+                    <span>Source: <a href="https://www.reddit.com/r/BluePrince/comments/1mjqzdm/information_gathering/" target="_blank" rel="noopener">u/IneffableQualia</a></span>
+                    <span>Classroom 4 map verified</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed" id="finding-inneclipse-ball-and-blue-testament-date-to-april-1952">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Inneclipse Ball and Blue Testament date to April 1952</h3>
+                <p>A Ballroom photograph records that an Inneclipse Ball took place in 1952. In the same historical window, Auravei signed her Blue Testament on 16 April 1952. Community members note that because the ball photo omits the month and day, the Inneclipse Ball may recur on the same calendar date annually, similar to other fixed manor holidays.</p>
+                <div class="finding-card-meta">
+                    <span>Source: <a href="https://www.reddit.com/r/BluePrinceUncensored/comments/1vu4ibn/the_mystery_of_the_inneclipse/" target="_blank" rel="noopener">u/Carter7132</a></span>
+                    <span>Ballroom photo &amp; Blue Testament text</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed" id="finding-clock-tower-blue-memo-inneclipses-only-appear-in-the-north-sky">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Clock Tower memo: "Inneclipses only appear in the north sky"</h3>
+                <p>A blue memo in the Rank 8 Clock Tower explicitly states: "INNECLIPSES ONLY APPEAR IN THE NORTH SKY." In Erajan, "inn" translates to north. Looking through the Clock Tower's north window reveals an otherwise hidden eclipse rooftop ornament on a detached structure behind the manor.</p>
+                <div class="finding-card-meta">
+                    <span>Source: <a href="https://www.reddit.com/r/BluePrince69/comments/1lvc2w5/inneclipse_in_the_north/" target="_blank" rel="noopener">u/twistysnacks</a>, <a href="https://www.reddit.com/r/BluePrince69/comments/1kgz0y7/questions_re_possible_ballroom_states_and_eclipse/" target="_blank" rel="noopener">u/Borealum_Studios</a></span>
+                    <span>Clock Tower memo &amp; window detail</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed" id="finding-auravei-pendant-depicts-rogue-and-devoted-moons">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Auravei's pendant depicts rogue and devoted moons</h3>
+                <p>In her Attic portrait, Auravei wears a necklace featuring a large blue moon aligned with a smaller red moon. The Classroom 4 map identifies celestial bodies as devoted and rogue moons, matching Alzara's visions and Mary's scrawl on the chalkboard: "WE SEEK WHAT'S IN THE SHADE OF TRUTH."</p>
+                <div class="finding-card-meta">
+                    <span>Source: <a href="https://www.reddit.com/r/BluePrince/comments/1mjqzdm/information_gathering/" target="_blank" rel="noopener">u/IneffableQualia</a></span>
+                    <span>Attic portrait detail</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed" id="finding-secret-garden-pillar-reveals-inneclipse-when-pointed-north">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Secret Garden pillar reveals Inneclipse when pointed north</h3>
+                <p>In the Secret Garden, rotating the central pillar mechanism to point the arrows north causes the Inneclipse moon symbol to appear. When the garden is drafted on the west wing and the garage door opened, an Inneclipse statue outside the manor is visible facing toward the Atelier.</p>
+                <div class="finding-card-meta">
+                    <span>Source: <a href="https://www.reddit.com/r/BluePrinceUncensored/comments/1vu4ibn/the_mystery_of_the_inneclipse/" target="_blank" rel="noopener">u/Carter7132</a></span>
+                    <span>In-game mechanic verified</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="confirmed" id="finding-gallery-blueprint-letters-spell-moon">
+                <span class="finding-card-status confirmed">Confirmed</span>
+                <h3>Gallery blueprint letters spell MOON</h3>
+                <p>The four gallery words in the blueprint world (EMPTY, ONESELF, MOTHER, SWANSONG) correspond to blueprint letters spelling MOON. This reinforces that the alternate estate and its architectural puzzles are tied to lunar and astronomical symbolism. <a href="https://blue-prince.fandom.com/wiki/Atelier" target="_blank" rel="noopener" title="Read full transcript on Fandom Wiki">&#x1F4DC; Full text</a></p>
+                <div class="finding-card-meta">
+                    <span>Source: <a href="https://www.reddit.com/r/BluePrinceUncensored/comments/1vu4ibn/the_mystery_of_the_inneclipse/" target="_blank" rel="noopener">u/monochromicorn</a></span>
+                    <span>Confirmed</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="tentative" id="finding-datamined-eclipse-objects-and-distant-moon-camera">
+                <span class="finding-card-status tentative">Tentative</span>
+                <h3>Datamined "day 46 Eclipse" objects and distant moon camera</h3>
+                <p>Data mining in the Unity asset tree reveals a game object group under <code>.../TERRAIN/MOONS/</code> named "day 46 Eclipse", containing <code>BILBOARD MOON</code>, <code>ROGUE MOON</code>, an occluding circle, and a spotlight. An unactivated "moon distance camera" (culling distance 12,215 to 16,191) exists under the Entrance Hall archway facing south toward the mountain, freezing player motion when toggled. However, no active triggers, scripts, or state machines invoking these objects have been found in the executable code.</p>
+                <div class="finding-card-meta">
+                    <span>Source: <a href="https://www.reddit.com/r/BluePrince69/comments/1nh86rl/inneclipse_trigger/" target="_blank" rel="noopener">u/Borealum_Studios</a></span>
+                    <span>Unity asset tree extraction</span>
+                </div>
+            </div>
+
+            <div class="finding-card" data-status="explained" id="finding-night-sky-cycle-is-a-natural-time-passage">
+                <span class="finding-card-status explained">Explained</span>
+                <h3>Night sky transitions occur naturally after extended in-game time</h3>
+                <p>Several players reported seeing the outdoor sky turn pitch black with visible stars and wondered if they had accidentally triggered the eclipse. Extended testing confirmed that the sky simply transitions to nighttime if a run is kept active for a very long duration (several real-time hours). It is standard ambient lighting progression rather than an eclipse cutscene.</p>
+                <div class="finding-card-meta">
+                    <span>Source: <a href="https://www.reddit.com/r/BluePrinceUncensored/comments/1ttztzi/eclipse_potentially_discovered/" target="_blank" rel="noopener">u/Shift1532</a>, u/Peachk33n</span>
+                    <span>Explained game mechanic</span>
+                </div>
+            </div>
+
+            <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/issues/new?template=new-finding.yml" target="_blank" class="finding-card finding-card-cta">
+                <h3>+ Submit a New Finding</h3>
+                <p>Spotted an astronomical clue or alignment we missed? Report it here.</p>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- Theories -->
+    <section class="theories-section">
+        <h2 class="section-title">Theories (Ranked)</h2>
+
+        <div class="theory-item" data-issue="412" data-explains="finding-planetarium-orbits-follow-exact-45-second-harmonic-ratios,finding-two-distinct-eclipse-types-documented-inneclipse-and-isseclipse,finding-datamined-eclipse-objects-and-distant-moon-camera">
+            <span class="theory-rank medium">Promising</span>
+            <h3 class="theory-title">Planetarium celestial alignment triggers the eclipse</h3>
+            <p class="theory-desc">Because the Planetarium orbits are mathematically synchronized to a 45-second clock, waiting for a multi-planet conjunction (such as Fennmora crossing Mora's line of sight toward Dauja) may trigger the datamined eclipse event or unlock an astronomical observation sequence.</p>
+        </div>
+
+        <div class="theory-item" data-explains="finding-inneclipse-ball-and-blue-testament-date-to-april-1952,finding-two-distinct-eclipse-types-documented-inneclipse-and-isseclipse">
+            <span class="theory-rank medium">Promising</span>
+            <h3 class="theory-title">1952 eclipse date input into estate timepieces</h3>
+            <p class="theory-desc">The Ballroom sheet music specifically references "dancing clock hands," while the room photo documents the 1952 Inneclipse Ball alongside Auravei's Blue Testament on 16 April 1952. Entering 1952 or 04/16 into adjustable estate mechanisms, such as the Desilets tomb clock or the clock tower dials, may be the intended trigger.</p>
+        </div>
+
+        <div class="theory-item" data-explains="finding-auravei-pendant-depicts-rogue-and-devoted-moons,finding-gallery-blueprint-letters-spell-moon">
+            <span class="theory-rank low">Speculative</span>
+            <h3 class="theory-title">Rogue moon eclipse reveals the "Shade of Truth"</h3>
+            <p class="theory-desc">Mary's message "WE SEEK WHAT'S IN THE SHADE OF TRUTH" may describe an eclipse where the rogue (red) moon passes before the devoted (blue) moon. Fulfilling specific conditions across the manor (or in the alternate blueprint estate) may cause this shadow to fall, revealing a hidden pathway or room.</p>
+        </div>
+
+        <div class="theory-item" data-explains="finding-datamined-eclipse-objects-and-distant-moon-camera">
+            <span class="theory-rank low">Speculative</span>
+            <h3 class="theory-title">Content reserved for a future update</h3>
+            <p class="theory-desc">Much like Dirigiblocks and other partially implemented mechanics, the eclipse sequence and its associated scrapbook slot may be groundwork prepared for the upcoming 1.10 update rather than a puzzle that can be completed in the current public build.</p>
+        </div>
+
+        <a href="https://github.com/unsolved-puzzles/unsolved-puzzles/issues/new?template=new-theory.yml" target="_blank" class="theory-item theory-item-cta">
+            <h3 class="theory-title">+ Submit a New Theory</h3>
+            <p class="theory-desc">Have an idea on how to trigger the eclipse? Share your theory.</p>
+        </a>
+    </section>
+
+    <!-- Discussion -->
+    <section class="discussion-section">
+        <h2 class="section-title">Discussion</h2>
+        <p style="text-align: center; color: var(--text-secondary); margin-bottom: var(--space-lg);">
+            Comments powered by <a href="https://giscus.app" target="_blank">giscus</a>. Uses GitHub Discussions.
+        </p>
+        <script src="https://giscus.app/client.js"
+            data-repo="unsolved-puzzles/unsolved-puzzles"
+            data-repo-id="R_kgDOSTBzlg"
+            data-category="Announcements"
+            data-category-id="DIC_kwDOSTBzls4C8Pva"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="dark_dimmed"
+            data-lang="en"
+            data-loading="lazy"
+            crossorigin="anonymous"
+            async>
+        </script>
+    </section>
+
+    <footer class="site-footer">
+        <p>Built by the community. <a href="https://github.com/unsolved-puzzles/unsolved-puzzles">View on GitHub</a></p>
+        <p class="footer-tagline">"In the celestial clockwork, the shadows hold the answer."</p>
+    </footer>
+
+    <script src="../assets/js/blue-prince-bg.js"></script>
+    <script src="../assets/js/main.js?v=3"></script>
+    <script src="../assets/js/votes.js?v=4"></script>
+    <script src="../assets/js/red-strings.js?v=2"></script>
+</body>
+</html>

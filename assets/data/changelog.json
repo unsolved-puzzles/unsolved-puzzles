@@ -1,6 +1,12 @@
 {
   "days": [
     {
+      "date": "2026-09-12",
+      "contributions": [
+        { "game": "Blue Prince", "kind": "Finding", "puzzle": "Hand Statues", "text": "Spare Foyer contains hand statues but no busts", "user": "I-n-f-e-r-n-i", "url": "blue-prince/hand-statues.html#finding-spare-foyer-contains-hand-statues-without-busts" }
+      ]
+    },
+    {
       "date": "2026-09-10",
       "contributions": [
         { "game": "Blue Prince", "kind": "Puzzle", "puzzle": "The Eclipse", "text": "New puzzle page", "user": "julianiacoponi", "url": "blue-prince/the-eclipse.html" }

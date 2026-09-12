@@ -216,6 +216,21 @@
         "Each of the three Entrance Hall doorways has a different frame design. The purpose for this difference, if any, is unknown. No specific room placements are implied by this finding.",
       targets: [],
     },
+    {
+      id: "theory-true-draft-corner-cases",
+      title: "Bookshop corners map to multi-color 'Corner Cases' draft",
+      source: "AntiqueCost3579",
+      description:
+        "The four corners of the Bookshop table represent multi-colored rooms rather than uniform bedrooms: one green (A9), one orange (A1), and two blue (E1 and E9), matching the initial tiles on the table.",
+      countable: false,
+      pattern: true,
+      targets: [
+        { coord: "A9", label: "green", matchMode: "filled" },
+        { coord: "E9", label: "blue", matchMode: "filled" },
+        { coord: "A1", label: "orange", matchMode: "filled" },
+        { coord: "E1", label: "blue", matchMode: "filled" },
+      ],
+    },
   ];
 
   const state = {
@@ -355,7 +370,7 @@
       updateActiveIdeaSummary();
     });
 
-    document.querySelectorAll(".finding-card[data-idea-id]").forEach((card) => {
+    document.querySelectorAll("[data-idea-id]").forEach((card) => {
       card.addEventListener("click", (event) => {
         if (event.target.closest("a")) {
           return;
@@ -476,7 +491,7 @@
   }
 
   function renderIdeaSelection() {
-    document.querySelectorAll(".finding-card[data-idea-id]").forEach((card) => {
+    document.querySelectorAll("[data-idea-id]").forEach((card) => {
       card.classList.toggle("idea-selected", card.dataset.ideaId === state.activeIdeaId);
     });
   }
@@ -496,7 +511,7 @@
     }
 
     // Show/hide the anchor picker for pattern-based ideas
-    const hasPattern = Boolean(idea.pattern);
+    const hasPattern = Boolean(idea.pattern && idea.pattern.cells);
     dom.anchorPickerRow.hidden = !hasPattern;
 
     const targets = getIdeaTargets(idea);
@@ -721,7 +736,7 @@
     if (!idea) {
       return [];
     }
-    if (idea.pattern) {
+    if (idea.pattern && idea.pattern.cells) {
       return resolvePatternTargets(idea.pattern, state.patternAnchor);
     }
     return idea.targets || [];

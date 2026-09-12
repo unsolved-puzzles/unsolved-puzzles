@@ -5,7 +5,17 @@
       "contributions": [
         { "game": "Blue Prince", "kind": "Finding", "puzzle": "Hand Statues", "text": "Spare Foyer contains hand statues but no busts", "user": "I-n-f-e-r-n-i", "url": "blue-prince/hand-statues.html#finding-spare-foyer-contains-hand-statues-without-busts" },
         { "game": "Blue Prince", "kind": "Finding", "puzzle": "Bookshop Compartment", "text": "Secret bookcase seam is blocked by an internal book spine", "user": "AntiqueCost3579", "url": "blue-prince/bookshop-compartment.html#finding-secret-bookcase-seam-occluded-by-book-spine" },
-        { "game": "Blue Prince", "kind": "Theory", "puzzle": "Bookshop Compartment", "text": "Bookshop corners map to multi-color \"Corner Cases\" draft", "user": "AntiqueCost3579", "url": "blue-prince/bookshop-compartment.html#theory-bookshop-corners-map-to-multi-color-corner-cases-draft" },
+        {
+          "game": "Blue Prince",
+          "kind": "Theory",
+          "puzzles": [
+            { "name": "Bookshop Compartment", "url": "blue-prince/bookshop-compartment.html#theory-bookshop-corners-map-to-multi-color-corner-cases-draft" },
+            { "name": "True Draft", "url": "blue-prince/true-draft.html#theory-true-draft-corner-cases" }
+          ],
+          "text": "Bookshop corners map to multi-color \"Corner Cases\" draft",
+          "user": "AntiqueCost3579",
+          "url": "blue-prince/bookshop-compartment.html#theory-bookshop-corners-map-to-multi-color-corner-cases-draft"
+        },
         { "game": "Blue Prince", "kind": "Media", "text": "3 Unsolved Puzzles in Blue Prince", "user": "TheChiptide", "user_url": "https://www.youtube.com/@TheChiptide", "url": "https://www.youtube.com/watch?v=6lvQeN_Ytuo" }
       ]
     },

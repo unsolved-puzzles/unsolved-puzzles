@@ -1,9 +1,9 @@
 /**
- * Red Strings — Detective Board Theory↔Finding Links
+ * Red Strings: Detective Board Theory<->Finding Links
  *
  * When a theory is clicked, red strings animate from the theory to each
  * finding it explains (via data-explains attribute). The strings have
- * slack/sag physics — they droop under gravity and wobble with a spring
+ * slack/sag physics: they droop under gravity and wobble with a spring
  * damping effect after appearing.
  *
  * Click the same theory again (or click elsewhere) to dismiss.
@@ -35,7 +35,7 @@
   document.addEventListener("DOMContentLoaded", init);
 
   function init() {
-    const theories = document.querySelectorAll(".theory-item[data-explains]");
+    const theories = document.querySelectorAll(".theory-item:not(.theory-item-cta)");
     const findings = document.querySelectorAll(".finding-card[id]");
     if (!theories.length && !findings.length) return;
 
@@ -50,26 +50,28 @@
     // Add badge rows and click handlers to theories
     theories.forEach((theory) => {
       // Build badge row showing which findings this theory explains
-      const findingIds = theory.dataset.explains.split(",").map((s) => s.trim());
-      const badgeRow = document.createElement("div");
-      badgeRow.className = "theory-explains-badges";
+      if (theory.dataset.explains) {
+        const findingIds = theory.dataset.explains.split(",").map((s) => s.trim()).filter(Boolean);
+        const badgeRow = document.createElement("div");
+        badgeRow.className = "theory-explains-badges";
 
-      findingIds.forEach((id) => {
-        const finding = document.getElementById(id);
-        if (!finding) return;
-        const title = finding.querySelector("h3")?.textContent?.trim() || id;
-        const status = finding.dataset.status || "";
-        const badge = document.createElement("span");
-        badge.className = "theory-explains-badge badge-status-" + status;
-        badge.textContent = title;
-        badge.dataset.target = id;
-        badgeRow.appendChild(badge);
-      });
+        findingIds.forEach((id) => {
+          const finding = document.getElementById(id);
+          if (!finding) return;
+          const title = finding.querySelector("h3")?.textContent?.trim() || id;
+          const status = finding.dataset.status || "";
+          const badge = document.createElement("span");
+          badge.className = "theory-explains-badge badge-status-" + status;
+          badge.textContent = title;
+          badge.dataset.target = id;
+          badgeRow.appendChild(badge);
+        });
 
-      // Insert badge row after theory-desc
-      const desc = theory.querySelector(".theory-desc");
-      if (desc && badgeRow.children.length) {
-        desc.parentNode.insertBefore(badgeRow, desc.nextSibling);
+        // Insert badge row after theory-desc
+        const desc = theory.querySelector(".theory-desc");
+        if (desc && badgeRow.children.length) {
+          desc.parentNode.insertBefore(badgeRow, desc.nextSibling);
+        }
       }
 
       theory.addEventListener("click", (e) => {
@@ -128,12 +130,13 @@
     activeType = "theory";
     theory.classList.add("theory-active");
 
-    const findingIds = theory.dataset.explains.split(",").map((s) => s.trim());
+    const explains = theory.dataset.explains || "";
+    const findingIds = explains ? explains.split(",").map((s) => s.trim()).filter(Boolean) : [];
 
     document.querySelectorAll(".finding-card").forEach((card) => {
-      if (findingIds.includes(card.id)) {
+      if (findingIds.length > 0 && findingIds.includes(card.id)) {
         card.classList.add("finding-highlighted");
-      } else {
+      } else if (findingIds.length > 0) {
         card.classList.add("finding-dimmed");
       }
     });
@@ -144,19 +147,21 @@
       }
     });
 
-    // Defer string creation to next frame so co-registered handlers
-    // (e.g. board layout changes) settle before measuring positions
-    requestAnimationFrame(() => {
-      if (activeSource !== theory) return;
-      svgOverlay.style.height = document.documentElement.scrollHeight + "px";
-      findingIds.forEach((id) => {
-        const finding = document.getElementById(id);
-        if (!finding) return;
-        const s = createString(theory, finding);
-        strings.push(s);
+    if (findingIds.length > 0) {
+      // Defer string creation to next frame so co-registered handlers
+      // (e.g. board layout changes) settle before measuring positions
+      requestAnimationFrame(() => {
+        if (activeSource !== theory) return;
+        svgOverlay.style.height = document.documentElement.scrollHeight + "px";
+        findingIds.forEach((id) => {
+          const finding = document.getElementById(id);
+          if (!finding) return;
+          const s = createString(theory, finding);
+          strings.push(s);
+        });
+        animateStrings();
       });
-      animateStrings();
-    });
+    }
   }
 
   function toggleFinding(finding) {

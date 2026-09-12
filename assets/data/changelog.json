@@ -8,10 +8,7 @@
         {
           "game": "Blue Prince",
           "kind": "Theory",
-          "puzzles": [
-            { "name": "Bookshop Compartment", "url": "blue-prince/bookshop-compartment.html#theory-bookshop-corners-map-to-multi-color-corner-cases-draft" },
-            { "name": "True Draft", "url": "blue-prince/true-draft.html#theory-true-draft-corner-cases" }
-          ],
+          "puzzle": "Bookshop Compartment · True Draft",
           "text": "Bookshop corners map to multi-color \"Corner Cases\" draft",
           "user": "AntiqueCost3579",
           "url": "blue-prince/bookshop-compartment.html#theory-bookshop-corners-map-to-multi-color-corner-cases-draft"

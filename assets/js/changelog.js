@@ -29,11 +29,8 @@
     let body;
     if (it.kind === 'Puzzle') {
       body = `<a class="cl-puzzle" href="${esc(it.url)}">${esc(it.puzzle)}</a>`;
-    } else if (it.kind === 'Media' || (!it.puzzle && !it.puzzles)) {
+    } else if (it.kind === 'Media' || !it.puzzle) {
       body = `<a href="${esc(it.url)}"${targetAttr}>${esc(it.text)}</a>`;
-    } else if (it.puzzles && Array.isArray(it.puzzles)) {
-      const puzzleLinks = it.puzzles.map(p => `<a href="${esc(p.url)}">${esc(p.name)}</a>`).join(' &middot; ');
-      body = `<span class="cl-puzzle">${puzzleLinks}</span> &middot; <a href="${esc(it.url)}"${targetAttr}>${esc(it.text)}</a>`;
     } else {
       body = `<span class="cl-puzzle">${esc(it.puzzle)}</span>
       &middot; <a href="${esc(it.url)}"${targetAttr}>${esc(it.text)}</a>`;

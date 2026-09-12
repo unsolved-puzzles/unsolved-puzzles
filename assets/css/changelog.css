@@ -1,4 +1,4 @@
-/* Activity Log (changelog) — matches the investigation-board aesthetic */
+/* Activity Log (changelog): matches the investigation-board aesthetic */
 .changelog-section {
     position: relative;
     z-index: 1;
@@ -120,6 +120,10 @@
 
 .cl-kind[data-kind="Puzzle"] {
     color: #6fb1e0;
+}
+
+.cl-kind[data-kind="Media"] {
+    color: #c084fc;
 }
 
 .cl-kind-job {

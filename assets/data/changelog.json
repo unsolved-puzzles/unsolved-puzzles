@@ -3,7 +3,8 @@
     {
       "date": "2026-09-12",
       "contributions": [
-        { "game": "Blue Prince", "kind": "Finding", "puzzle": "Hand Statues", "text": "Spare Foyer contains hand statues but no busts", "user": "I-n-f-e-r-n-i", "url": "blue-prince/hand-statues.html#finding-spare-foyer-contains-hand-statues-without-busts" }
+        { "game": "Blue Prince", "kind": "Finding", "puzzle": "Hand Statues", "text": "Spare Foyer contains hand statues but no busts", "user": "I-n-f-e-r-n-i", "url": "blue-prince/hand-statues.html#finding-spare-foyer-contains-hand-statues-without-busts" },
+        { "game": "Blue Prince", "kind": "Media", "text": "3 Unsolved Puzzles in Blue Prince", "user": "TheChiptide", "user_url": "https://www.youtube.com/@TheChiptide", "url": "https://www.youtube.com/watch?v=6lvQeN_Ytuo" }
       ]
     },
     {
@@ -33,7 +34,8 @@
     {
       "date": "2026-08-08",
       "contributions": [
-        { "game": "Blue Prince", "kind": "Finding", "puzzle": "Bookshop Compartment", "text": "LASTING HOPE anagrams to A LIGHT OPENS", "user": "elloelle", "url": "blue-prince/bookshop-compartment.html#finding-lasting-hope-anagrams-to-a-light-opens" }
+        { "game": "Blue Prince", "kind": "Finding", "puzzle": "Bookshop Compartment", "text": "LASTING HOPE anagrams to A LIGHT OPENS", "user": "elloelle", "url": "blue-prince/bookshop-compartment.html#finding-lasting-hope-anagrams-to-a-light-opens" },
+        { "game": "Blue Prince", "kind": "Media", "text": "I Think I Solved Gaming's Greatest Mystery", "user": "TheChiptide", "user_url": "https://www.youtube.com/@TheChiptide", "url": "https://www.youtube.com/watch?v=v-5lXUPyqCQ" }
       ]
     },
     {
@@ -57,7 +59,8 @@
         { "game": "Noita", "name": "Hills 2 & the Microbiomes", "url": "noita/microbiomes.html" }
       ],
       "contributions": [
-        { "game": "Blue Prince", "kind": "Finding", "puzzle": "Bookshop Compartment", "text": "Table books are named in-game titles with known colours", "user": "phraxx727", "url": "blue-prince/bookshop-compartment.html#finding-table-books-are-named-in-game-titles-with-known-colors" }
+        { "game": "Blue Prince", "kind": "Finding", "puzzle": "Bookshop Compartment", "text": "Table books are named in-game titles with known colours", "user": "phraxx727", "url": "blue-prince/bookshop-compartment.html#finding-table-books-are-named-in-game-titles-with-known-colors" },
+        { "game": "Noita", "kind": "Media", "text": "The Unsolved Mysteries of Noita", "user": "FuryForged", "user_url": "https://www.youtube.com/@FuryForged", "url": "https://www.youtube.com/watch?v=RI9DDwTVcBI" }
       ]
     },
     {

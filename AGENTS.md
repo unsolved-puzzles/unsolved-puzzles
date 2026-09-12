@@ -19,13 +19,15 @@ Action.
 4. **A milestone** (major site/tooling update). Manual decision by the owner. If
    you think a change is big enough to be a milestone, ASK the owner first; never
    add milestones unprompted.
+5. **A new community resource or media item is added.** A new video, tool, or
+   guide added to a game index page (`contributions[]` entry with `kind: "Media"`).
 
 ### Schema (each element of `days[]`)
 - `date`: `"YYYY-MM-DD"`.
 - `milestone` (string, optional) + `milestone_links` `[{phrase, url}]` (optional).
 - `pages` `[{game, name, url}]`: new puzzle pages.
 - `contributions` `[{game, kind, puzzle, text, user, url}]`: `kind` is
-  `Finding` | `Theory` | `Puzzle`.
+  `Finding` | `Theory` | `Puzzle` | `Media`.
 - `welcomes` `[{game, text, role, user, url}]`.
 
 ### Where each field comes from (read the page markup)
@@ -36,7 +38,11 @@ Action.
 - Theory: `div.theory-item[id^="theory-"]` (exclude `.theory-item-cta`); `text` =
   `.theory-title`; `user` = author of the linked `data-issue` GitHub issue
   (theories have no Source line in the markup).
-- `url`: page path + `#<id>` for findings/theories; page path for pages/Puzzle.
+- Media: `a.resource-link` in game index; `text` = its `<h4>`; `user` = author
+  `.resource-author strong`; `user_url` = author channel or profile URL (optional);
+  `url` = resource link (the `puzzle` field is omitted for media).
+- `url`: page path + `#<id>` for findings/theories; page path for pages/Puzzle;
+  external URL for media.
 
 ### Rules
 - Idempotent: never add an id already present (dedupe by `url#id`); only append

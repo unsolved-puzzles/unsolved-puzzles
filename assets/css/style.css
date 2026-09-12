@@ -977,6 +977,68 @@ body.votes-loading .theories-section {
     width: 100%;
     border-radius: 6px;
     border: 1px solid #ddd;
+    cursor: zoom-in;
+    transition: opacity 0.2s ease;
+}
+
+.finding-card details img:hover {
+    opacity: 0.92;
+}
+
+/* ── Image Lightbox Modal ────────────────────────────────────── */
+
+.image-lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(5px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    cursor: zoom-out;
+}
+
+.image-lightbox.active {
+    display: flex;
+}
+
+.image-lightbox-img {
+    max-width: 92vw;
+    max-height: 90vh;
+    border-radius: 8px;
+    box-shadow: 0 16px 50px rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    object-fit: contain;
+    transform: scale(0.96);
+    transition: transform 0.2s ease;
+}
+
+.image-lightbox.active .image-lightbox-img {
+    transform: scale(1);
+}
+
+.image-lightbox-close {
+    position: absolute;
+    top: 18px;
+    right: 24px;
+    font-size: 2.2rem;
+    color: #fff;
+    cursor: pointer;
+    line-height: 1;
+    opacity: 0.7;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    background: none;
+    border: none;
+    padding: 6px;
+}
+
+.image-lightbox-close:hover {
+    opacity: 1;
+    transform: scale(1.1);
 }
 
 .finding-metric {

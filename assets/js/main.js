@@ -226,6 +226,50 @@ function initCounters() {
     });
 }
 
+// ── Image Lightbox ────────────────────────────────────────────
+
+function initLightbox() {
+    const images = document.querySelectorAll('.finding-card details img');
+    if (!images.length) return;
+
+    let overlay = document.querySelector('.image-lightbox');
+    if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.className = 'image-lightbox';
+        overlay.innerHTML = `
+            <button class="image-lightbox-close" aria-label="Close enlarged image">&times;</button>
+            <img class="image-lightbox-img" src="" alt="Enlarged view">
+        `;
+        document.body.appendChild(overlay);
+
+        const closeBtn = overlay.querySelector('.image-lightbox-close');
+        const overlayImg = overlay.querySelector('.image-lightbox-img');
+
+        const close = () => {
+            overlay.classList.remove('active');
+            overlayImg.src = '';
+        };
+
+        overlay.addEventListener('click', (e) => {
+            if (e.target !== overlayImg) close();
+        });
+        closeBtn.addEventListener('click', close);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && overlay.classList.contains('active')) close();
+        });
+    }
+
+    const overlayImg = overlay.querySelector('.image-lightbox-img');
+    images.forEach(img => {
+        img.addEventListener('click', (e) => {
+            e.preventDefault();
+            overlayImg.src = img.src;
+            overlayImg.alt = img.alt || 'Enlarged view';
+            overlay.classList.add('active');
+        });
+    });
+}
+
 // ── Init ──────────────────────────────────────────────────────
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -235,4 +279,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initFilters();
     initSearch();
     initCounters();
+    initLightbox();
 });

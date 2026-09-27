@@ -1,5 +1,38 @@
 # unsolved-puzzles: agent instructions
 
+## Reviewing new issues and comments
+
+When asked what to do with a new issue or comment, read the full submission,
+its parent discussion, and the corresponding site finding or theory before
+recommending an action. Check primary evidence when available (in-game
+transcripts, screenshots, raw puzzle data, reproducible calculations), and
+distinguish verified observations from proposed interpretations. Test the
+reasoning independently: a plausible coincidence is not a confirmed solve,
+and a flaw in one interpretation does not necessarily debunk a broader claim.
+Do not automatically agree with either the submitter or the site.
+
+Suggest an action and a brief reason for each submission: add or revise a
+finding/theory, mark a specific claim explained or debunked when evidence
+warrants it, request a source or clarification, reply without changing the
+site, or take no further action. Include draft reply wording when useful.
+Upvoting or downvoting the issue's finding/theory is also a valid response to
+signal support or skepticism without changing the site's factual status.
+Votes measure community opinion, not proof; do not cast reactions on the
+owner's behalf unless asked.
+
+Preserve the scope of the evidence. An unresolved theory is not debunked
+merely because its proposed mechanism is weak. Conversely, do not retain an
+obsolete "unresolved" claim when a documented explanation exists. If the
+issue title, site card, and comment describe different claims, name the
+difference explicitly before proposing a status change. Use `confirmed` for
+verified observations, `tentative` for unverified claims, `explained` for real
+observations whose purpose is known, and `debunked` for claims contradicted by
+evidence. Keep issue bodies unchanged when editing site findings; the HTML is
+the source of truth. Do not post issue comments by default for minor site
+updates, but do so when explicitly asked. Follow any additional local site
+conventions when available. Do not edit the site or post a public reply when
+only an assessment was requested.
+
 ## Activity Log / changelog (`assets/data/changelog.json`)
 
 Keep the homepage Activity Log current. When a pushed change matches a trigger

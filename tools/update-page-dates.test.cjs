@@ -6,7 +6,19 @@ const { contentFingerprint, jsonFingerprint, localDate, updateHtmlDate, updateSi
 
 const root = path.resolve(__dirname, '..');
 const page = 'blue-prince/bookshop-compartment.html';
-const original = fs.readFileSync(path.join(root, ...page.split('/')), 'utf8');
+const original = `<html><head>
+<link rel="stylesheet" href="../assets/css/style.css?v=8">
+<link rel="icon" href="../assets/img/favicon.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://unsolved-puzzles.github.io/unsolved-puzzles/blue-prince/bookshop-compartment.html","dateModified":"2026-09-12"}</script>
+</head><body>
+<h1 class="puzzle-title">Date updater fixture</h1>
+<p>Original evidence.</p>
+<div data-status="confirmed"><a href="https://github.com/unsolved-puzzles/unsolved-puzzles/discussions">Evidence</a></div>
+<img width="1913" height="822" src="../assets/img/blue-prince-hero-banner.png" class="game-hero-img" alt="Blue Prince">
+<img width="1535" height="768" src="../assets/img/blue-prince-bookshop-compartment-seam.png" alt="Content screenshot">
+<footer><p class="page-updated">Last updated: <time datetime="2026-09-12">12 September 2026</time></p></footer>
+<script src="../assets/js/main.js?v=5"></script>
+</body></html>`;
 const sitemap = fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8');
 
 test('styling, dates, dimensions, icons, scripts and formatting do not refresh content dates', () => {
@@ -22,7 +34,7 @@ test('styling, dates, dimensions, icons, scripts and formatting do not refresh c
 
 test('substantive text, evidence links and finding statuses refresh dates', () => {
     for (const changed of [
-        original.replace('A modeled space hides', 'A hidden space lies'),
+        original.replace('Original evidence.', 'Updated evidence.'),
         original.replace('data-status="confirmed"', 'data-status="tentative"'),
         original.replace('href="https://github.com/unsolved-puzzles/unsolved-puzzles/discussions"', 'href="https://github.com/unsolved-puzzles/unsolved-puzzles/issues"'),
     ]) {
@@ -62,7 +74,7 @@ test('staged content and shared data update only their affected pages', () => {
         ['roles.json', Buffer.from('{}')],
         ['assets/data/room-coordinate-lookup.v1.json', Buffer.from('{}')]]);
     const staged = new Map(before);
-    staged.set(page, Buffer.from(original.replace('A modeled space hides', 'A hidden space lies')));
+    staged.set(page, Buffer.from(original.replace('Original evidence.', 'Updated evidence.')));
     const readBefore = file => before.get(file) || null;
     const readStaged = file => {
         assert(staged.has(file), file);

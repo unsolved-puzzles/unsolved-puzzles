@@ -238,7 +238,7 @@ function initLightbox() {
         overlay.className = 'image-lightbox';
         overlay.innerHTML = `
             <button class="image-lightbox-close" aria-label="Close enlarged image">&times;</button>
-            <img class="image-lightbox-img" src="" alt="Enlarged view">
+            <img class="image-lightbox-img" width="0" height="0" alt="Enlarged view">
         `;
         document.body.appendChild(overlay);
 
@@ -263,6 +263,8 @@ function initLightbox() {
     images.forEach(img => {
         img.addEventListener('click', (e) => {
             e.preventDefault();
+            overlayImg.width = img.naturalWidth || Number(img.getAttribute('width'));
+            overlayImg.height = img.naturalHeight || Number(img.getAttribute('height'));
             overlayImg.src = img.src;
             overlayImg.alt = img.alt || 'Enlarged view';
             overlay.classList.add('active');

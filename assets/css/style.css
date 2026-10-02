@@ -84,6 +84,10 @@ a:hover {
     color: var(--text-primary);
 }
 
+img {
+    height: auto;
+}
+
 /* ── Starfield / Canvas Background ─────────────────────────── */
 
 #starfield,
@@ -679,6 +683,13 @@ body.votes-loading .theories-section {
     color: var(--text-muted);
 }
 
+.site-footer .page-updated {
+    margin-top: var(--space-md);
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    text-align: right;
+}
+
 .footer-scale {
     font-size: 0.8rem;
     color: var(--text-muted);
@@ -1007,6 +1018,8 @@ body.votes-loading .theories-section {
 }
 
 .image-lightbox-img {
+    width: auto;
+    height: auto;
     max-width: 92vw;
     max-height: 90vh;
     border-radius: 8px;

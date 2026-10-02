@@ -40,4 +40,45 @@ Fill in the form and **include a source whenever possible** (Reddit thread, Disc
 
 ---
 
+## Maintaining page metadata
+
+Enable automatic date updates for local commits once per clone:
+
+```sh
+git config core.hooksPath .githooks
+```
+
+The [pre-commit hook](.githooks/pre-commit) requires Node.js and synchronizes
+the bottom-right **Last updated** date, JSON-LD `dateModified`, and
+[sitemap](sitemap.xml) `lastmod` when staged page text, evidence links, finding
+statuses, or content screenshots change. Updates to the Activity Log, roles,
+and room-coordinate data refresh their consuming pages too. Dates use the
+local commit day. Partially staged affected pages or sitemap edits must be fully
+staged before the hook can safely update them.
+
+Hooks are local: contributors must enable them, and edits made directly on
+GitHub or with hooks bypassed still need manual date updates. New pages need
+the existing date markup and a sitemap entry. Substantive changes to content
+generated only by JavaScript also need a manual date update.
+
+Formatting, favicon changes, live votes, and metadata-only edits do not make
+the puzzle evidence newly reviewed. Existing dates were established from
+content changes in Git history; publication dates are omitted where unverified.
+
+Declare measured `width` and `height` attributes on images, preserving their
+aspect ratios. The shared stylesheet keeps content images responsive and hero
+images cropped. Generated avatars and enlarged lightbox images also declare
+dimensions.
+
+Every page uses the shared [tent favicon](assets/img/favicon.png), with
+[ICO variants](assets/img/favicon.ico) for 16, 32, and 48 pixel sizes.
+
+Validate metadata, sitemap dates, image dimensions, and icon assets with:
+
+```sh
+node --test tools/site-metadata.test.cjs tools/update-page-dates.test.cjs
+```
+
+---
+
 *Made with ☕ by the community.*

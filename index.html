@@ -6,6 +6,17 @@
     <title>Unsolved Puzzles | Community Investigation Board</title>
     <meta name="description" content="A collaborative hub for tracking and solving hidden puzzles in games. Community-driven findings, theories, and breakthroughs.">
     <link rel="canonical" href="https://unsolved-puzzles.github.io/unsolved-puzzles/">
+    <link rel="icon" href="assets/img/favicon.ico" sizes="16x16 32x32 48x48">
+    <link rel="icon" type="image/png" href="assets/img/favicon.png" sizes="32x32">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "The Investigation Board",
+        "url": "https://unsolved-puzzles.github.io/unsolved-puzzles/",
+        "dateModified": "2026-09-27"
+    }
+    </script>
 
     <!-- Open Graph for Discord/social previews -->
     <meta property="og:title" content="Unsolved Puzzles | Community Investigation Board">
@@ -22,7 +33,7 @@
     <link href="https://cdn.jsdelivr.net/npm/lucide-static@latest/font/lucide.min.css" rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="assets/css/style.css?v=5">
+    <link rel="stylesheet" href="assets/css/style.css?v=8">
     <link rel="stylesheet" href="assets/css/job-board.css?v=1">
     <link rel="stylesheet" href="assets/css/changelog.css?v=13">
 </head>
@@ -257,12 +268,13 @@
         <p>Built by the community. <a href="https://github.com/unsolved-puzzles/unsolved-puzzles">View on GitHub</a></p>
         <p class="footer-scale">More games and puzzles welcome. Open an issue to suggest one.</p>
         <p class="footer-tagline">"Does it never end?"</p>
+        <p class="page-updated">Last updated: <time datetime="2026-09-27">27 September 2026</time></p>
     </footer>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
-    <script src="assets/js/main.js?v=3"></script>
+    <script src="assets/js/main.js?v=5"></script>
     <script src="assets/js/starfield.js"></script>
     <script src="assets/js/hero-string.js"></script>
     <script src="assets/js/changelog.js?v=12"></script>
@@ -295,7 +307,7 @@
             role.assignees.forEach(a => {
               crewEl.innerHTML += `
                 <a class="jb-crew-member" href="https://github.com/${a.username}" target="_blank">
-                  <img src="https://github.com/${a.username}.png?size=32" alt="${a.username}" class="jb-avatar"/>
+                  <img width="22" height="22" src="https://github.com/${a.username}.png?size=32" alt="${a.username}" class="jb-avatar"/>
                   <span>@${a.username}</span>
                 </a>`;
             });

@@ -70,8 +70,11 @@ aspect ratios. The shared stylesheet keeps content images responsive and hero
 images cropped. Generated avatars and enlarged lightbox images also declare
 dimensions.
 
-Every page uses the shared [tent favicon](assets/img/favicon.png), with
+Every page uses the shared [magnifying-glass favicon](assets/img/favicon.png),
+rendered from the same symbol as the header logo, with
 [ICO variants](assets/img/favicon.ico) for 16, 32, and 48 pixel sizes.
+When replacing the icon assets, bump their `?v=` references across every page
+so browsers do not keep displaying a cached icon.
 
 Validate metadata, sitemap dates, image dimensions, and icon assets with:
 

@@ -53,6 +53,7 @@ const sitemapEntries = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>\s*<lastmod>([^<
 const sitemapDates = new Map(sitemapEntries.map(match => [match[1], match[2]]));
 const files = htmlFiles(root);
 const urls = new Set();
+const iconVersions = new Set();
 
 for (const file of files) {
     const relative = path.relative(root, file);
@@ -92,7 +93,11 @@ for (const file of files) {
         const icons = [...html.matchAll(/<link rel="icon"[^>]*>/g)];
         assert.equal(icons.length, 2, 'Expected shared PNG and ICO icons');
         for (const [tag] of icons) {
-            const icon = localResource(new URL(attribute(tag, 'href'), expectedUrl));
+            const iconUrl = new URL(attribute(tag, 'href'), expectedUrl);
+            const version = iconUrl.searchParams.get('v');
+            assert.match(version || '', /^[1-9]\d*$/, 'Icon URL needs a cache version');
+            iconVersions.add(version);
+            const icon = localResource(iconUrl);
             assert(fs.existsSync(icon), `Missing icon: ${icon}`);
             assert(['favicon.png', 'favicon.ico'].includes(path.basename(icon)));
             if (icon.endsWith('.png')) {
@@ -128,6 +133,10 @@ test('sitemap covers every page exactly once', () => {
     assert(files.length > 0);
     assert.equal(sitemapEntries.length, sitemapDates.size, 'Duplicate sitemap URL');
     assert.deepEqual([...sitemapDates.keys()].sort(), [...urls].sort());
+});
+
+test('all pages use the same favicon cache version', () => {
+    assert.equal(iconVersions.size, 1);
 });
 
 test('ICO variants contain valid PNG images matching their directory dimensions', () => {

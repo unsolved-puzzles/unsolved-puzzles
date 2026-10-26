@@ -14,7 +14,7 @@
         "@type": "CollectionPage",
         "name": "The Investigation Board",
         "url": "https://unsolved-puzzles.github.io/unsolved-puzzles/",
-        "dateModified": "2026-09-27"
+        "dateModified": "2026-10-26"
     }
     </script>
 
@@ -35,7 +35,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="assets/css/style.css?v=8">
     <link rel="stylesheet" href="assets/css/job-board.css?v=1">
-    <link rel="stylesheet" href="assets/css/changelog.css?v=13">
+    <link rel="stylesheet" href="assets/css/changelog.css?v=18">
 </head>
 <body>
     <!-- Starfield background -->
@@ -76,7 +76,7 @@
                     <span class="stat-label">Open Cases</span>
                 </div>
                 <div class="stat">
-                    <span class="stat-number" id="stat-contributors">26</span>
+                    <span class="stat-number" id="stat-contributors">29</span>
                     <span class="stat-label">Contributors</span>
                 </div>
                 <div class="stat">
@@ -256,6 +256,19 @@
         <p class="jb-footnote">No formal application needed, just introduce yourself on the discussion thread.</p>
     </section>
 
+    <!-- Recent Discussions -->
+    <section id="recent-discussions" class="changelog-section rd-section">
+        <h2 class="section-title">Recent Discussions</h2>
+        <p class="cl-intro">Latest community comments across open investigations.</p>
+        <details class="rd-details" open>
+            <summary class="rd-summary">
+                <span class="rd-summary-title">Latest 5 community comments</span>
+                <span class="rd-summary-toggle" aria-hidden="true"></span>
+            </summary>
+            <div id="recent-discussions-list" class="changelog-timeline rd-timeline"></div>
+        </details>
+    </section>
+
     <!-- Activity Log -->
     <section id="changelog" class="changelog-section">
         <h2 class="section-title">Activity Log</h2>
@@ -268,7 +281,7 @@
         <p>Built by the community. <a href="https://github.com/unsolved-puzzles/unsolved-puzzles">View on GitHub</a></p>
         <p class="footer-scale">More games and puzzles welcome. Open an issue to suggest one.</p>
         <p class="footer-tagline">"Does it never end?"</p>
-        <p class="page-updated">Last updated: <time datetime="2026-09-27">27 September 2026</time></p>
+        <p class="page-updated">Last updated: <time datetime="2026-10-26">26 October 2026</time></p>
     </footer>
 
     <!-- Scripts -->
@@ -277,7 +290,7 @@
     <script src="assets/js/main.js?v=5"></script>
     <script src="assets/js/starfield.js"></script>
     <script src="assets/js/hero-string.js"></script>
-    <script src="assets/js/changelog.js?v=12"></script>
+    <script src="assets/js/changelog.js?v=16"></script>
     <script>
     // Job Board: populate assignees from roles.json
     fetch('roles.json')

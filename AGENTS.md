@@ -60,7 +60,7 @@ Action.
 - `milestone` (string, optional) + `milestone_links` `[{phrase, url}]` (optional).
 - `pages` `[{game, name, url}]`: new puzzle pages.
 - `contributions` `[{game, kind, puzzle, text, user, url}]`: `kind` is
-  `Finding` | `Theory` | `Puzzle` | `Media`.
+  `Finding` | `Theory` | `Puzzle` | `Media` | `Feature`.
 - `welcomes` `[{game, text, role, user, url}]`.
 
 ### Where each field comes from (read the page markup)

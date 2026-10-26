@@ -1,6 +1,12 @@
 #!/usr/bin/env node
 const path = require('node:path');
 const { spawnSync } = require('node:child_process');
+
+const syncResult = spawnSync(process.execPath, [path.join(__dirname, '..', 'tools', 'sync-contributors.cjs'), '--staged'], { stdio: 'inherit' });
+if (syncResult.error) {
+    console.error(syncResult.error);
+}
+
 const result = spawnSync(process.execPath, [path.join(__dirname, '..', 'tools', 'update-page-dates.cjs'), '--staged'], { stdio: 'inherit' });
 if (result.error) {
     console.error(result.error);

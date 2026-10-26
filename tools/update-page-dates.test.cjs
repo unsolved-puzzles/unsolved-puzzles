@@ -12,6 +12,7 @@ const original = `<html><head>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://unsolved-puzzles.github.io/unsolved-puzzles/blue-prince/bookshop-compartment.html","dateModified":"2026-09-12"}</script>
 </head><body>
 <h1 class="puzzle-title">Date updater fixture</h1>
+<span class="stat-number" id="stat-contributors">26</span>
 <p>Original evidence.</p>
 <div data-status="confirmed"><a href="https://github.com/unsolved-puzzles/unsolved-puzzles/discussions">Evidence</a></div>
 <img width="1913" height="822" src="../assets/img/blue-prince-hero-banner.png" class="game-hero-img" alt="Blue Prince">
@@ -27,6 +28,7 @@ test('styling, dates, dimensions, icons, scripts and formatting do not refresh c
         .replace('width="1913"', 'width="2000"')
         .replace('class="puzzle-title"', 'class="puzzle-title new-style"')
         .replace('favicon.png', 'new-favicon.png')
+        .replace('id="stat-contributors">26<', 'id="stat-contributors">29<')
         .replace('<h1', '<!-- Layout change -->\n<h1');
     const updated = updateHtmlDate(changed, '2026-10-02').html;
     assert.equal(contentFingerprint(original), contentFingerprint(updated));

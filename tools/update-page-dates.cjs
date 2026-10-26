@@ -16,6 +16,7 @@ function editorialBody(html) {
         .replace(/<!--[\s\S]*?-->/g, '')
         .replace(/<(script|style|canvas)\b[^>]*>[\s\S]*?<\/\1>/gi, '')
         .replace(/<p class="page-updated">[\s\S]*?<\/p>/g, '')
+        .replace(/<span class="stat-number" id="stat-contributors">[\s\S]*?<\/span>/g, '')
         .replace(/<img\b[^>]*class="[^"]*\bgame-hero-img\b[^"]*"[^>]*>/g, '');
 }
 

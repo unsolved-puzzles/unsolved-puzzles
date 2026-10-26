@@ -126,6 +126,10 @@
     color: #c084fc;
 }
 
+.cl-kind[data-kind="Feature"] {
+    color: #34d399;
+}
+
 .cl-kind-job {
     font-size: 0.68rem;
     text-transform: uppercase;
@@ -193,7 +197,7 @@
     color: var(--text-primary);
 }
 
-/* Job-board welcome line — styled to match the contribution rows */
+/* Job-board welcome line - styled to match the contribution rows */
 .cl-welcome {
     display: flex;
     align-items: center;
@@ -207,6 +211,94 @@
     border-radius: var(--radius-sm);
     padding: 6px 10px;
     line-height: 1.4;
+}
+
+/* Recent Discussions collapsible section */
+.rd-section {
+    padding-bottom: 0;
+}
+
+.rd-details {
+    background: rgba(26, 26, 46, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-md);
+    padding: 14px 18px;
+}
+
+.rd-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+    font-family: 'Special Elite', var(--font-body);
+    color: var(--text-primary);
+    font-size: 0.86rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.rd-summary::-webkit-details-marker {
+    display: none;
+}
+
+.rd-summary-toggle::before {
+    content: 'Hide \25B4';
+    font-family: var(--font-body);
+    font-size: 0.76rem;
+    color: var(--text-secondary);
+    text-transform: none;
+    letter-spacing: normal;
+}
+
+.rd-details:not([open]) .rd-summary-toggle::before {
+    content: 'Show \25BE';
+}
+
+.rd-timeline {
+    margin-top: 14px;
+    margin-left: 8px;
+}
+
+.cl-item.rd-item {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.rd-item-top {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+    min-width: 0;
+}
+
+.rd-item-top .cl-tag,
+.rd-item-top .cl-user {
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.rd-item-top .cl-puzzle {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.rd-item a.rd-comment-link {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 @media (max-width: 560px) {

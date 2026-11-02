@@ -36,10 +36,13 @@ only an assessment was requested.
 ## Activity Log / changelog (`assets/data/changelog.json`)
 
 Keep the homepage Activity Log current. When a pushed change matches a trigger
-below, add or merge an entry into `assets/data/changelog.json` under today's
-date (group by date; merge into an existing same-day block rather than making a
-second one). This is done as part of the normal edit/commit flow, not a GitHub
-Action.
+below, add or merge an entry into `assets/data/changelog.json` (group by date
+and keep `days[]` sorted descending; merge into an existing same-day block
+rather than making a second one). Use the **submission date** (`created_at` of
+the GitHub issue/discussion) for community contributions (`Finding`, `Theory`,
+`Puzzle`), and use the publish date for site features, milestones, media, and
+owner-authored pages. This is done as part of the normal edit/commit flow, not
+a GitHub Action.
 
 ### When to add an entry (and only then)
 1. **A contribution goes live from someone other than the repo owner

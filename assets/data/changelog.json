@@ -7,6 +7,12 @@
       ]
     },
     {
+      "date": "2026-10-17",
+      "contributions": [
+        { "game": "Blue Prince", "kind": "Finding", "puzzle": "Does It Never End?", "text": "\"Investor needed\" diagram shows an electromagnet", "user": "ValdisIngvars", "url": "blue-prince/does-it-never-end.html#finding-investor-needed-diagram-shows-an-electromagnet" }
+      ]
+    },
+    {
       "date": "2026-09-12",
       "contributions": [
         { "game": "Blue Prince", "kind": "Finding", "puzzle": "Hand Statues", "text": "Spare Foyer contains hand statues but no busts", "user": "I-n-f-e-r-n-i", "url": "blue-prince/hand-statues.html#finding-spare-foyer-contains-hand-statues-without-busts" },
@@ -23,25 +29,20 @@
       ]
     },
     {
-      "date": "2026-09-10",
+      "date": "2026-09-07",
       "contributions": [
-        { "game": "Blue Prince", "kind": "Puzzle", "puzzle": "The Eclipse", "text": "New puzzle page", "user": "julianiacoponi", "url": "blue-prince/the-eclipse.html" }
-      ]
-    },
-    {
-      "date": "2026-09-08",
-      "contributions": [
+        { "game": "Blue Prince", "kind": "Puzzle", "puzzle": "The Eclipse", "text": "New puzzle page", "user": "julianiacoponi", "url": "blue-prince/the-eclipse.html" },
         { "game": "Blue Prince", "kind": "Finding", "puzzle": "Hand Statues", "text": "Foyer hands frame Major Nicolas Key IV and Je Ari Yenna", "user": "Sc0tu", "url": "blue-prince/hand-statues.html#finding-foyer-hands-frame-major-nicolas-key-iv-and-je-ari-yenna" }
       ]
     },
     {
-      "date": "2026-09-07",
+      "date": "2026-09-05",
       "contributions": [
         { "game": "Blue Prince", "kind": "Finding", "puzzle": "Boiler Room Panels", "text": "Panel overlay has a 1-3-6-4-2 frequency pattern", "user": "BluePrince-Theories", "url": "blue-prince/boiler-room.html#finding-panel-overlay-has-a-1-3-6-4-2-frequency-pattern" }
       ]
     },
     {
-      "date": "2026-08-31",
+      "date": "2026-08-23",
       "contributions": [
         { "game": "Blue Prince", "kind": "Finding", "puzzle": "Tomb Candles", "text": "Packet Management repeats an 8 + 8 structure", "user": "dizuane", "url": "blue-prince/tomb-candles.html#finding-packet-management-repeats-an-8-plus-8-structure" }
       ]
@@ -88,14 +89,14 @@
       "date": "2026-05-24",
       "milestone": "Built the True Draft interactive drafting workbench.",
       "contributions": [
-        { "game": "Blue Prince", "kind": "Finding", "puzzle": "True Draft", "text": "Entrance Hall doorways have distinct frames", "user": "pedroff1", "url": "blue-prince/true-draft.html#finding-entrance-hall-doorways-have-distinct-frames" },
-        { "game": "Blue Prince", "kind": "Theory", "puzzle": "Bookshop Compartment", "text": "Mora Jai solution hints at whole-manor room placement", "user": "pedroff1", "url": "blue-prince/bookshop-compartment.html#theory-the-solved-mora-jai-hints-at-a-placement-of-rooms-in-the-entire-manor" },
         { "game": "Blue Prince", "kind": "Finding", "puzzle": "Hidden Letters", "text": "Hidden numbers 1-2-3-4 in Mount Holly", "user": "erjonas", "url": "blue-prince/hidden-letters.html#finding-hidden-numbers-1-2-3-4-in-mount-holly" }
       ]
     },
     {
-      "date": "2026-05-20",
+      "date": "2026-05-19",
       "contributions": [
+        { "game": "Blue Prince", "kind": "Finding", "puzzle": "True Draft", "text": "Entrance Hall doorways have distinct frames", "user": "pedroff1", "url": "blue-prince/true-draft.html#finding-entrance-hall-doorways-have-distinct-frames" },
+        { "game": "Blue Prince", "kind": "Theory", "puzzle": "Bookshop Compartment", "text": "Mora Jai solution hints at whole-manor room placement", "user": "pedroff1", "url": "blue-prince/bookshop-compartment.html#theory-the-solved-mora-jai-hints-at-a-placement-of-rooms-in-the-entire-manor" },
         { "game": "Blue Prince", "kind": "Theory", "puzzle": "Does It Never End", "text": "Replicate the Atelier room layout in the real manor", "user": "valentindckrs", "url": "blue-prince/does-it-never-end.html#theory-replicate-the-atelier-room-layout-in-the-real-manor" }
       ]
     },

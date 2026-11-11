@@ -6,7 +6,7 @@
   const REPO_OWNER = 'unsolved-puzzles';
   const REPO_NAME = 'unsolved-puzzles';
   const OWNER_LOGIN = 'jewe6889';
-  const CACHE_KEY = 'up_recent_discussions_v3';
+  const CACHE_KEY = 'up_recent_discussions_v4';
   const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
   const MAX_RECENT = 5;
 
@@ -160,9 +160,17 @@
       </div>`).join('');
   };
 
+  function stripTagBrackets(s) {
+    return String(s || '')
+      .replace(/^\s*\[[^\]]+\]\s*/, '')
+      .replace(/\s*\[[^\]]+\]\s*$/, '')
+      .trim();
+  }
+
   function parseIssueMeta(issue) {
     if (!issue || issue.pull_request) return null;
     const title = (issue.title || '').trim();
+    const cleanTitle = stripTagBrackets(title);
     const body = issue.body || '';
 
     const pageMatch = body.match(/\*\*Page:\*\*\s*\[([a-z0-9-]+)\/([a-z0-9-]+)\]/i);
@@ -188,25 +196,46 @@
       return { game, puzzle: rawPuzzle, cardTitle };
     }
 
-    const puzzleColonSection = body.match(/###\s*Puzzle\s+(Blue Prince|Noita)\s*:\s*([^\r\n]+)/i);
+    const puzzleColonSection = body.match(
+      /###\s*(?:Puzzle|Which puzzle page\?)\s*\r?\n+\s*(Blue Prince|Noita)\s*:\s*([^\r\n]+)/i
+    );
     if (puzzleColonSection) {
       return {
         game: puzzleColonSection[1].trim(),
         puzzle: puzzleColonSection[2].trim(),
-        cardTitle: title
+        cardTitle: cleanTitle
       };
     }
 
-    const gameSection = body.match(/###\s*Game\s+([^\r\n]+)/i);
-    const puzzleSection = body.match(/###\s*Puzzle\s+([^\r\n]+)/i);
+    const gameSection = body.match(/###\s*Game\s*\r?\n+\s*([^\r\n]+)/i);
+    const puzzleSection = body.match(/###\s*Puzzle(?:\s+name)?\s*\r?\n+\s*([^\r\n]+)/i);
     if (gameSection && puzzleSection) {
       return {
         game: gameSection[1].trim(),
         puzzle: puzzleSection[1].trim(),
-        cardTitle: title
+        cardTitle: cleanTitle
       };
     }
+    if (gameSection) {
+      const rawGame = gameSection[1].trim();
+      const colonIdx = rawGame.indexOf(':');
+      if (colonIdx !== -1) {
+        return {
+          game: rawGame.slice(0, colonIdx).trim(),
+          puzzle: rawGame.slice(colonIdx + 1).trim(),
+          cardTitle: cleanTitle
+        };
+      }
+    }
     return null;
+  }
+
+  function extractIssueInitialBody(body) {
+    const raw = String(body || '');
+    const sectionMatch = raw.match(
+      /###\s*(?:Describe the puzzle|Describe your finding|Theory description|What should be changed\?|What is it and how does it help\?|Why should this game be tracked\?|What happened\?|What would you like to see\?)\s*\r?\n+([\s\S]*?)(?=\r?\n###\s|$)/i
+    );
+    return sectionMatch ? sectionMatch[1] : raw;
   }
 
   function cleanCommentLine(raw) {
@@ -227,8 +256,9 @@
       .replace(/<[^>]+>/g, ' ')
       .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ');
     const lines = cleaned.split(/\r?\n/)
+      .filter((raw) => !/^\s*>/.test(raw))
       .map(cleanCommentLine)
-      .filter((l) => l && !/^(update|edit|note|you can assume[^\r\n]*)$/i.test(l));
+      .filter((l) => l && !/^(update|edit|note|you can assume[^\r\n]*|_no response_)$/i.test(l));
     let line = lines[0] || fallbackTitle || 'New comment';
     if (line.length < 28 && lines[1]) {
       line = `${line}: ${lines[1]}`;
@@ -238,6 +268,11 @@
       line = (cut || line.slice(0, 112)) + '...';
     }
     return line || fallbackTitle || 'New comment';
+  }
+
+  function isCommunityUser(userObj) {
+    const login = userObj && userObj.login;
+    return Boolean(login && login !== OWNER_LOGIN && userObj.type !== 'Bot');
   }
 
   async function fetchRecentDiscussions() {
@@ -258,14 +293,13 @@
 
     const [comments, issues] = await Promise.all([commentsRes.json(), issuesRes.json()]);
     const issueMap = new Map(issues.map((i) => [i.url, i]));
+    const latestCommunityCommentAt = new Map();
+    const candidates = [];
 
-    const items = [];
     for (const c of comments) {
-      if (items.length >= MAX_RECENT) break;
-      const user = c.user && c.user.login;
-      if (!user || user === OWNER_LOGIN || (c.user && c.user.type === 'Bot')) continue;
+      if (!isCommunityUser(c.user)) continue;
       let issue = issueMap.get(c.issue_url);
-      if (!issue && c.issue_url) {
+      if (!issue && c.issue_url && candidates.length < MAX_RECENT) {
         try {
           const r = await fetch(c.issue_url);
           if (r.ok) {
@@ -274,18 +308,52 @@
           }
         } catch (_) {}
       }
+      if (!issue || issue.pull_request) continue;
+
+      if (isCommunityUser(issue.user)) {
+        const prev = latestCommunityCommentAt.get(issue.url);
+        if (!prev || c.created_at > prev) {
+          latestCommunityCommentAt.set(issue.url, c.created_at);
+        }
+        continue;
+      }
+
       const meta = parseIssueMeta(issue);
       if (!meta) continue;
-      items.push({
-        date: String(c.created_at || '').slice(0, 10),
+      const ts = String(c.created_at || '');
+      candidates.push({
+        ts,
+        date: ts.slice(0, 10),
         game: meta.game,
         puzzle: meta.puzzle,
         cardTitle: meta.cardTitle,
         text: summarizeComment(c.body, meta.cardTitle),
-        user,
+        user: c.user.login,
         url: c.html_url
       });
     }
+
+    for (const issue of issueMap.values()) {
+      if (!issue || issue.pull_request || !isCommunityUser(issue.user)) continue;
+      const meta = parseIssueMeta(issue);
+      if (!meta) continue;
+      const createdAt = String(issue.created_at || '');
+      const bumpedAt = latestCommunityCommentAt.get(issue.url);
+      const ts = bumpedAt && bumpedAt > createdAt ? bumpedAt : createdAt;
+      candidates.push({
+        ts,
+        date: ts.slice(0, 10),
+        game: meta.game,
+        puzzle: meta.puzzle,
+        cardTitle: meta.cardTitle,
+        text: summarizeComment(extractIssueInitialBody(issue.body), meta.cardTitle),
+        user: issue.user.login,
+        url: issue.html_url
+      });
+    }
+
+    candidates.sort((a, b) => b.ts.localeCompare(a.ts));
+    const items = candidates.slice(0, MAX_RECENT).map(({ ts, ...rest }) => rest);
 
     try {
       sessionStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), items }));

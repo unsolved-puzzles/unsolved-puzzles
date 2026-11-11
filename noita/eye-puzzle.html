@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/style.css?v=8">
+    <link rel="stylesheet" href="../assets/css/style.css?v=9">
 </head>
 <body class="votes-loading">
     <canvas id="game-atmosphere"></canvas>
@@ -468,59 +468,59 @@
     </section>
 
     <!-- Pyry's Conditions -->
-    <section class="theories-section">
+    <section class="theories-section conditions-section">
         <h2 class="section-title">Pyry's Conditions</h2>
         <p style="text-align: center; color: var(--text-secondary); max-width: 700px; margin: -1rem auto var(--space-xl); font-size: 0.9rem;">Any proposed theory must explain ALL of the following observations. These are the community's litmus test for viable cipher candidates.</p>
 
-        <div class="theory-item" data-explains="finding-simple-substitution-cipher">
+        <div class="condition-item" data-explains="finding-simple-substitution-cipher">
             <span class="theory-rank high">1</span>
             <h3 class="theory-title">Random (flat) letter distribution</h3>
             <p class="theory-desc">The frequency of each symbol across messages is approximately uniform, eliminating simple substitution ciphers.</p>
         </div>
 
-        <div class="theory-item" data-explains="finding-83-symbol-alphabet-with-unbroken-range">
+        <div class="condition-item" data-explains="finding-83-symbol-alphabet-with-unbroken-range">
             <span class="theory-rank high">2</span>
             <h3 class="theory-title">Unbroken set of values 0-82</h3>
             <p class="theory-desc">The orthodox reading order uses exactly 83 consecutive values with no gaps from the 125 possible. No other reading order achieves this.</p>
         </div>
 
-        <div class="theory-item" data-explains="finding-messages-share-sections-alignments">
+        <div class="condition-item" data-explains="finding-messages-share-sections-alignments">
             <span class="theory-rank high">3</span>
             <h3 class="theory-title">Shared sections (alignments) between messages</h3>
             <p class="theory-desc">Identical character sequences appear at the same positions across different messages, implying shared plaintext with the same key/cipher.</p>
         </div>
 
-        <div class="theory-item" data-explains="finding-cipher-is-polyalphabetic">
+        <div class="condition-item" data-explains="finding-cipher-is-polyalphabetic">
             <span class="theory-rank high">4</span>
             <h3 class="theory-title">Isomorphs (Lymm's Patterns)</h3>
             <p class="theory-desc">Gap patterns between repeated characters are consistent across messages. This constrains the cipher to specific classes of polyalphabetic systems.</p>
         </div>
 
-        <div class="theory-item" data-explains="finding-messages-share-sections-alignments">
+        <div class="condition-item" data-explains="finding-messages-share-sections-alignments">
             <span class="theory-rank high">5</span>
             <h3 class="theory-title">Shared sections after varying first character</h3>
             <p class="theory-desc">Despite different first characters (message numbering), subsequent shared sections still align. The cipher's state must reset or be independent of the first character.</p>
         </div>
 
-        <div class="theory-item" data-explains="finding-isomorphs-lymms-patterns-found">
+        <div class="condition-item" data-explains="finding-isomorphs-lymms-patterns-found">
             <span class="theory-rank high">6</span>
             <h3 class="theory-title">Isomorphs with slightly differing composition</h3>
             <p class="theory-desc">Some isomorphs share the same pattern structure but use different actual symbol values, implying position-dependent encoding.</p>
         </div>
 
-        <div class="theory-item" data-explains="finding-messages-share-sections-alignments,finding-no-double-trigrams-exist">
+        <div class="condition-item" data-explains="finding-messages-share-sections-alignments,finding-no-double-trigrams-exist">
             <span class="theory-rank high">7</span>
             <h3 class="theory-title">First trigram differs but second is shared</h3>
             <p class="theory-desc">The first character in each message is unique (message number), but the second character can be the same across messages. The cipher must allow this.</p>
         </div>
 
-        <div class="theory-item" data-explains="finding-no-double-trigrams-exist">
+        <div class="condition-item" data-explains="finding-no-double-trigrams-exist">
             <span class="theory-rank high">8</span>
             <h3 class="theory-title">Complete absence of double trigrams</h3>
             <p class="theory-desc">The same trigram never appears twice consecutively in any message, though identical trigrams can appear at adjacent positions in different messages.</p>
         </div>
 
-        <div class="theory-item" data-explains="finding-messages-share-sections-alignments">
+        <div class="condition-item" data-explains="finding-messages-share-sections-alignments">
             <span class="theory-rank high">9</span>
             <h3 class="theory-title">Non-shared isomorphs have unique sequences</h3>
             <p class="theory-desc">All isomorphs that aren't part of shared sections have different trigram sequences and never share the same trigram value at the same relative position.</p>
@@ -558,8 +558,8 @@
     </footer>
 
     <script src="../assets/js/noita-bg.js"></script>
-    <script src="../assets/js/main.js?v=5"></script>
-    <script src="../assets/js/votes.js?v=4"></script>
-    <script src="../assets/js/red-strings.js?v=2"></script>
+    <script src="../assets/js/main.js?v=6"></script>
+    <script src="../assets/js/votes.js?v=5"></script>
+    <script src="../assets/js/red-strings.js?v=3"></script>
 </body>
 </html>

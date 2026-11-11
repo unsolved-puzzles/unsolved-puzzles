@@ -9,6 +9,7 @@ body:
       label: Game
       options:
         - Blue Prince
+        - Noita
         - "Noita: The Eye Puzzle"
         - "Noita: The Cauldron Room"
     validations:

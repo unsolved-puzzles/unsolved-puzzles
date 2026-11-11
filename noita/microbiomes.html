@@ -14,7 +14,7 @@
         "@type": "WebPage",
         "name": "Hills 2 & the Microbiomes",
         "url": "https://unsolved-puzzles.github.io/unsolved-puzzles/noita/microbiomes.html",
-        "dateModified": "2026-08-02"
+        "dateModified": "2026-11-11"
     }
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -60,7 +60,7 @@
         <div style="max-width: 700px; margin: 0 auto var(--space-xl); color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8;">
             <p>Several 'microbiomes' get official title cards: two gold biomes (money, but oddly titled), and a lone water biome inside the cursed rock around the tower that predates the tower entirely.</p>
             <p style="margin-top: var(--space-md);">The 'Hills 2' biome sits in empty space on the eastern side, with no visible hills.</p>
-            <p style="margin-top: var(--space-md);">The data has a `caves` folder with six eye-shaped cave structures; the code to generate them exists in, and only in, the `hills` and `hills2` biomes, yet they never seem to appear.</p>
+            <p style="margin-top: var(--space-md);">The unpacked <code>biome_impl/caves/</code> folder holds six eye-shaped cave stencils (<code>eye.png</code> and <code>eye_01.png</code> through <code>eye_05.png</code>). Unpacked biome definitions show <code>hills.xml</code> explicitly schedules three of them near the surface (<code>count_min="3"</code>, <code>count_max="3"</code>) and <code>hills2.xml</code> allows <code>0-3</code>, yet players have never clearly spotted them in-game.</p>
         </div>
 
         <!-- Filters -->
@@ -90,9 +90,9 @@
             <div class="finding-card" data-status="confirmed" id="finding-six-eye-shaped-caves-that-never-generate">
                 <span class="finding-card-status confirmed">Confirmed</span>
                 <h3>Six eye-shaped caves that never generate</h3>
-                <p>A `caves` folder holds six eye-shaped structures; generation code exists only in hills/hills2 but they don't appear to spawn.</p>
+                <p><code>biome_impl/caves/</code> holds six eye stencils; <code>hills.xml</code> schedules 3 guaranteed spawns (<code>eye_01..04.png</code>) and <code>hills2.xml</code> allows 0-3 (<code>eye.png</code>), yet they either fail to render visibly or go unrecognised near the surface.</p>
                 <div class="finding-card-meta">
-                    <span>Source: FuryForged</span>
+                    <span>Source: FuryForged, unpacked data.wak</span>
                 </div>
             </div>
             <div class="finding-card" data-status="confirmed" id="finding-ng-14-turns-the-whole-surface-into-hills-2">
@@ -156,7 +156,7 @@
     <footer class="site-footer">
         <p>Built by the community. <a href="https://github.com/unsolved-puzzles/unsolved-puzzles">View on GitHub</a></p>
         <p class="footer-tagline">"Noita: the one who knows."</p>
-        <p class="page-updated">Last updated: <time datetime="2026-08-02">2 August 2026</time></p>
+        <p class="page-updated">Last updated: <time datetime="2026-11-11">11 November 2026</time></p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>

@@ -9,7 +9,7 @@ const base = new URL('https://unsolved-puzzles.github.io/unsolved-puzzles/');
 function htmlFiles(directory) {
     return fs.readdirSync(directory, { withFileTypes: true }).flatMap(entry => {
         const file = path.join(directory, entry.name);
-        if (entry.name.startsWith('.')) return [];
+        if (entry.name.startsWith('.') || entry.name.startsWith('_')) return [];
         if (entry.isDirectory()) return htmlFiles(file);
         return entry.name.endsWith('.html') ? [file] : [];
     });

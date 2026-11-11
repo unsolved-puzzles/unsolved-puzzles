@@ -226,6 +226,10 @@
           cardTitle: cleanTitle
         };
       }
+      if (/^(Blue Prince|Noita)/i.test(rawGame)) {
+        const g = /^noita/i.test(rawGame) ? 'Noita' : 'Blue Prince';
+        return { game: g, puzzle: g, cardTitle: cleanTitle };
+      }
     }
     return null;
   }

@@ -87,8 +87,8 @@ function initScrollAnimations() {
         });
     });
 
-    // Theory items
-    gsap.utils.toArray('.theory-item').forEach((item, i) => {
+    // Theory & condition items
+    gsap.utils.toArray('.theory-item, .condition-item').forEach((item, i) => {
         gsap.from(item, {
             x: -20,
             opacity: 0,

@@ -239,8 +239,8 @@
     });
   }
 
-  // Puzzle status priority: Unsolved > Solved > Not Yet Implemented > Likely Red Herring
-  const PUZZLE_STATUS_ORDER = { unsolved: 0, solved: 1, "not yet implemented": 2, "likely red herring": 3 };
+  // Puzzle status priority: Unsolved > Debated > Solved > Not Yet Implemented > Likely Red Herring
+  const PUZZLE_STATUS_ORDER = { unsolved: 0, debated: 1, solved: 2, "not yet implemented": 3, "likely red herring": 4 };
 
   function rankPuzzles() {
     const grids = document.querySelectorAll(".games-grid");

@@ -35,7 +35,7 @@
   document.addEventListener("DOMContentLoaded", init);
 
   function init() {
-    const theories = document.querySelectorAll(".theory-item:not(.theory-item-cta)");
+    const theories = document.querySelectorAll(".theory-item:not(.theory-item-cta), .condition-item");
     const findings = document.querySelectorAll(".finding-card[id]");
     if (!theories.length && !findings.length) return;
 
@@ -94,7 +94,7 @@
     // Click outside dismisses
     document.addEventListener("click", (e) => {
       if (!activeSource) return;
-      if (!e.target.closest(".theory-item") && !e.target.closest(".finding-card")) {
+      if (!e.target.closest(".theory-item") && !e.target.closest(".condition-item") && !e.target.closest(".finding-card")) {
         dismissStrings();
       }
     });
@@ -141,7 +141,7 @@
       }
     });
 
-    document.querySelectorAll(".theory-item").forEach((item) => {
+    document.querySelectorAll(".theory-item, .condition-item").forEach((item) => {
       if (item !== theory) {
         item.classList.add("theory-dimmed");
       }
@@ -176,10 +176,10 @@
     activeType = "finding";
     finding.classList.add("finding-highlighted");
 
-    // Find all theories that reference this finding
+    // Find all theories/conditions that reference this finding
     const findingId = finding.id;
     const matchingTheories = [];
-    document.querySelectorAll(".theory-item[data-explains]").forEach((theory) => {
+    document.querySelectorAll(".theory-item[data-explains], .condition-item[data-explains]").forEach((theory) => {
       const ids = theory.dataset.explains.split(",").map((s) => s.trim());
       if (ids.includes(findingId)) {
         matchingTheories.push(theory);
@@ -193,7 +193,7 @@
       }
     });
 
-    document.querySelectorAll(".theory-item").forEach((item) => {
+    document.querySelectorAll(".theory-item, .condition-item").forEach((item) => {
       if (matchingTheories.includes(item)) {
         item.classList.add("theory-active");
       } else {

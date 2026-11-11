@@ -1238,7 +1238,8 @@ body.votes-loading .theories-section {
     color: var(--text-secondary);
 }
 
-.theory-item {
+.theory-item,
+.condition-item {
     background: var(--bg-secondary);
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: var(--radius-md);
@@ -1247,7 +1248,8 @@ body.votes-loading .theories-section {
     transition: border-color var(--transition-base);
 }
 
-.theory-item:hover {
+.theory-item:hover,
+.condition-item:hover {
     border-color: rgba(212, 175, 55, 0.2);
 }
 
@@ -1419,16 +1421,19 @@ body.votes-loading .theories-section {
    Red Strings — Theory↔Finding Links
    ═══════════════════════════════════════════════════════════════ */
 
-.theory-item[data-explains] {
+.theory-item[data-explains],
+.condition-item[data-explains] {
     cursor: pointer;
     transition: border-color var(--transition-base), box-shadow var(--transition-base);
 }
 
-.theory-item[data-explains]:hover {
+.theory-item[data-explains]:hover,
+.condition-item[data-explains]:hover {
     border-color: rgba(192, 57, 43, 0.3);
 }
 
-.theory-item.theory-active {
+.theory-item.theory-active,
+.condition-item.theory-active {
     border-color: rgba(192, 57, 43, 0.6);
     box-shadow: 0 0 12px rgba(192, 57, 43, 0.2), inset 0 0 8px rgba(192, 57, 43, 0.05);
 }
@@ -1558,7 +1563,8 @@ body.votes-loading .theories-section {
     font-size: 0.65rem;
 }
 
-.theory-item.theory-dimmed {
+.theory-item.theory-dimmed,
+.condition-item.theory-dimmed {
     opacity: 0.3 !important;
     filter: grayscale(0.6) !important;
     transition: opacity 0.3s ease, filter 0.3s ease;
